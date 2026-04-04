@@ -68,7 +68,7 @@ Este template nao tem build step. NUNCA rode npm, node, ou comandos de build. HT
 
 ## Fontes
 
-NUNCA use fontes overused: Montserrat, Poppins, Roboto, Lato, Playfair Display, Open Sans, Raleway, Oswald, Merriweather, Source Sans Pro.
+NUNCA use fontes overused: Montserrat, Poppins, Roboto, Lato, Playfair Display, Open Sans, Raleway, Oswald, Merriweather, Source Sans Pro, Inter, Fraunces, Lora.
 
 Consulte `references/creative-reference.md` para font pairings curados.
 

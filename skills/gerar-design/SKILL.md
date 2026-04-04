@@ -1,220 +1,129 @@
 ---
 name: gerar-design
-description: Define identidade visual completa da landing page. Gera design system, seleciona efeitos da biblioteca, define DNA Visual, implementa hero + primeira secao como demonstracao.
+description: Define identidade visual da landing page com escolhas interativas. Apresenta opcoes de paleta, tipografia e hero no browser para o usuario escolher. Gera design system completo.
 ---
 
 # Instrucoes
 
-Voce vai definir a identidade visual completa da landing page. Isso inclui um design system robusto, selecao de efeitos da biblioteca, DNA visual, e uma demonstracao real (Hero + primeira secao).
+Voce vai definir a identidade visual da landing page. O principio central: **cada decisao criativa e apresentada como opcoes visuais no browser para o usuario escolher.** Voce NUNCA escolhe paleta, fonte ou hero sozinho.
 
 ## Antes de Comecar
 
 1. Leia `rules.md` na raiz do plugin
 2. Leia `references/creative-reference.md` — arquetipos, constraints, font pairings
 3. Leia `references/design-system-guide.md` — guia completo de tokens
+4. Leia `references/effects/README.md` — indice da biblioteca de efeitos
 
 ## Escopo
 
-Esta skill APENAS:
-- Coleta referencias visuais do usuario
-- Gera design system completo (tokens CSS)
-- Seleciona efeitos da biblioteca
+Esta skill:
+- Apresenta opcoes visuais de paleta, tipografia e hero para o usuario escolher
+- Gera design system completo (tokens CSS) baseado nas escolhas
 - Define DNA Visual
+- Seleciona efeitos complementares da biblioteca
 - Implementa Hero + primeira secao como demonstracao
-- Abre preview no browser para validacao
-
-Esta skill NAO:
-- Cria a pagina inteira
-- Cria layout de todas as secoes
-- Escreve copy
+- Abre preview no browser
 
 ---
 
-## Etapa 1: Coletar Informacoes
+## Etapa 1: Coletar Contexto
 
-### Identificar a Pasta da Pagina
-
-Localize a pasta da pagina (criada por `gerar-copy`). Leia o `copy.md` dentro dela.
-
-### Versao Alternativa (se aplicavel)
-
-Se o usuario pedir nova versao:
-1. Criar `_backup_vN/` dentro da pasta da pagina
-2. Mover `index.html` e `style.css` atuais para o backup
-3. Nova versao fica na raiz da pasta
-
-### Perguntar Referencias
-
-"Voce tem alguma referencia visual para este projeto?
-- Sites que gosta do estilo
-- Marcas com identidade visual similar
-- Cores da marca / logo
-- Prints de inspiracao
-
-Pode mandar links, imagens, ou descrever. Se nao tiver, vou criar algo baseado na copy e no nicho."
-
-Se o usuario enviar sites de referencia, analise os padroes visuais. Se nao enviar, derive a direcao do nicho + copy.
+Localize a pasta da pagina. Leia `copy.md`. Se o usuario tiver fornecido referencias visuais, analise-as.
 
 ---
 
-## Etapa 2: Design System Completo
+## Etapa 2: Opcoes de Paleta (3 no browser)
 
-ANTES de qualquer implementacao visual, gere o design system completo seguindo `references/design-system-guide.md`.
+1. Analise o tipo de produto, publico e tom da copy
+2. Gere 3 direcoes visuais DISTINTAS entre si:
+   - Uma light/minimalista
+   - Uma dark/tech
+   - Uma com personalidade forte (colorida, contrastante, ousada)
 
-### 2.1 Font Pairing
+   Cada direcao com: nome, background, primary, secondary, accent, text, surface.
 
-Consulte `references/creative-reference.md` e escolha:
-- Categoria que encaixa no projeto (Editorial, Brutalist, Agnostic, Avant-Garde, Cinematic)
-- Combo especifico com pesos indicados
+3. Crie `_opcoes-visual.html` na pasta da pagina mostrando as 3 paletas lado a lado com cards de exemplo (heading, paragrafo, botao, card surface)
+4. Informe URL ao usuario
 
-**FONTES PROIBIDAS:** Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora, Open Sans, Merriweather, Source Sans Pro.
+**PAUSA:** "Qual direcao visual voce prefere? 1, 2 ou 3?"
 
-Declare: "Fontes: [Heading] (peso) + [Body] (peso) - [Categoria]"
-
-### 2.2 Escala Tipografica
-
-Defina TODOS os niveis com `clamp()`:
-- `--text-display`, `--text-h1`, `--text-h2`, `--text-h3`, `--text-h4`
-- `--text-body`, `--text-body-sm`, `--text-caption`, `--text-overline`
-
-### 2.3 Paleta de Cores
-
-Defina paleta derivada do briefing/nicho/referencias:
-- Primary + light/dark/muted
-- Secondary + light/dark
-- Accent + light/dark
-- Background, Surface, Surface-alt
-- Text, Text-muted, Text-inverse
-- Border, Border-light
-- Error, Success
-
-### 2.4 Sombras, Espacamento, Animacao
-
-- 3 niveis de sombra (subtle, medium, dramatic)
-- Escala de espacamento (xs a 5xl, multiplos de 4px)
-- Tokens de animacao (4 duracoes + 4 easings)
-
-### 2.5 Salvar Tokens no CSS
-
-Atualize o `:root` do `style.css` da pagina com TODOS os tokens. Substitua os placeholders do template pelos valores reais do design system.
+Apos escolha, remover arquivo temporario.
 
 ---
 
-## Etapa 3: DNA Visual
+## Etapa 3: Opcoes de Tipografia (3 no browser)
 
-Defina o DNA Visual — o que torna ESTA pagina unica. Siga `references/design-system-guide.md`:
+1. Leia `references/creative-reference.md` secao FONT PAIRINGS CURADOS
+2. Filtre 3 pairings de CATEGORIAS DIFERENTES que encaixem no produto
 
-1. **Elemento recorrente**: qual elemento visual se repete entre secoes
-2. **Tratamento de midia**: como fotos/videos sao tratados
-3. **Movimento de assinatura**: qual tipo de movimento define a pagina
-4. **Detalhe tipografico**: tratamento tipografico que se repete
+**FONTES PROIBIDAS (individualmente):** Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora, Open Sans, Inter, Merriweather, Source Sans Pro.
 
-O DNA Visual deve ser concreto e especifico. Registre-o como comentario no `style.css` ou em um bloco no topo do arquivo para referencia futura.
+3. Crie `_opcoes-fontes.html` usando a paleta ja escolhida. Mostre heading + body + overline para cada combo. Carregue fontes via Google Fonts
+4. Informe URL ao usuario
 
----
+**PAUSA:** "Qual tipografia voce prefere? 1, 2 ou 3?"
 
-## Etapa 4: Selecao de Efeitos
-
-Consulte `references/effects/README.md` (indice da biblioteca) e selecione:
-
-- **1 hero pattern** da categoria `hero-patterns/`
-- **2-3 scroll effects** da categoria `scroll-effects/`
-- **1-2 transitions** da categoria `transitions/`
-- **3-5 micro-interactions** da categoria `micro-interactions/`
-
-Para cada efeito selecionado, declare:
-- Nome do efeito e caminho do arquivo
-- Por que encaixa no tom do projeto
-- Quais parametros serao customizados
-
-Os efeitos serao referenciados no `layout.md` (gerado por `gerar-layout`) e implementados no `desenvolver`.
+Apos escolha, remover arquivo temporario.
 
 ---
 
-## Etapa 5: Escolhas Criativas para o Hero
+## Etapa 4: Opcoes de Hero (3 no browser)
 
-### Arquetipo de Composicao
+1. Leia `references/effects/README.md` e selecione 3 hero patterns de ALTO IMPACTO
+2. Para CADA opcao, leia o arquivo COMPLETO do efeito em `references/effects/hero-patterns/`
+3. Crie 3 arquivos separados (`_hero-1.html`, `_hero-2.html`, `_hero-3.html`), cada um com:
+   - Paleta escolhida como tokens CSS
+   - Tipografia escolhida carregada
+   - Headline da copy
+   - Codigo do efeito COPIADO LITERALMENTE da biblioteca
+   - Layout que NAO seja coluna centralizada simples
 
-Escolha da `references/creative-reference.md`:
-Declare: "Hero: Arquetipo [NOME] - [ESSENCIA]"
+**REGRA CRITICA:** Copie o codigo do efeito LITERALMENTE. Substitua APENAS variaveis CSS. NAO reescreva, NAO simplifique.
 
-### Constraints Criativos
+4. Informe as 3 URLs ao usuario
 
-Escolha 2+ constraints de categorias DIFERENTES:
-Declare: "Constraints: [A] (categoria), [B] (categoria)"
+**PAUSA:** "Qual hero voce prefere? 1, 2 ou 3?"
 
-### PADROES PROIBIDOS
-
-NUNCA use:
-- Hero centralizado com headline + subheadline + botao
-- 3 cards lado a lado com icones
-- Grid simetrico de features
-- Layout que parece template SaaS
-
----
-
-## Etapa 6: Implementar Demonstracao
-
-Crie o Hero + primeira secao real no `index.html` e `style.css` da pasta da pagina.
-
-### Copiar Efeito da Biblioteca
-
-Para o hero pattern selecionado:
-1. Leia o arquivo do efeito em `references/effects/hero-patterns/`
-2. Copie o codigo (HTML, CSS, JS)
-3. Adapte parametros para o design system do projeto (usar `var(--...)`)
-4. Integre no `index.html`
-
-### Principios de Execucao
-
-**Tipografia:** Hierarquia dramatica, contraste de pesos extremo, tamanho que cria impacto.
-**Layout:** Espaco negativo intencional, relacao visual clara, assimetria com tensao.
-**Cor:** Paleta com personalidade, gradientes sofisticados, contraste que serve a hierarquia.
-**Movimento:** Animacoes com proposito, timing com ritmo, interatividade que surpreende.
-
-### Regras Tecnicas
-
-- Hero NUNCA tem animacao de ENTRADA (opacity:0, fade, data-aos). Animacoes pos-carregamento sao permitidas
-- Todas as cores via `var(--color-...)`, espacamentos via `var(--space-...)`, etc.
-- Fontes carregadas via Google Fonts com preconnect
-- Responsivo (mobile-first ou com media queries adequadas)
-- `prefers-reduced-motion` respeitado
-
-### Recursos Disponiveis
-
-- CSS moderno (grid, flexbox, clamp, container queries)
-- CSS scroll-driven animations
-- clip-path, mask-image, backdrop-filter, mix-blend-mode
-- GSAP para animacoes complexas (Dynamic Import via IntersectionObserver)
-- Three.js para 3D (Dynamic Import)
-- Canvas/WebGL (Dynamic Import)
+Apos escolha, remover temporarios. Mover hero escolhido para `index.html`.
 
 ---
 
-## Etapa 7: Preview e Apresentacao
+## Etapa 5: Design System Completo
 
-### Abrir no Browser
+Com paleta + tipografia + hero escolhidos, gere o design system seguindo `references/design-system-guide.md`:
 
-Consulte `references/local-server.md` para iniciar o Netlify Dev (se nao estiver rodando). Informe a URL ao usuario.
-
-### Apresentar ao Usuario
-
-Informe:
-1. Design system definido (font pairing, paleta, tokens)
-2. DNA Visual escolhido
-3. Efeitos selecionados da biblioteca (com justificativa)
-4. Arquetipo e constraints do hero
-5. URL para preview no browser
-
-Peca feedback: "O que achou da direcao visual? Quer ajustar algo antes de prosseguir?"
+1. Escala tipografica (h1-h6, body, caption, overline com clamp)
+2. Paleta expandida (variantes light/dark/muted de cada cor)
+3. Sombras (3 niveis)
+4. Espacamento (escala 4/8px: xs a 5xl)
+5. Tokens de animacao (4 duracoes + easings)
+6. Salvar TUDO como variaveis CSS no `:root` do `style.css`
 
 ---
 
-## Ao Finalizar
+## Etapa 6: DNA Visual + Efeitos Complementares
 
-1. Informe o que foi criado e as escolhas de design
-2. Forneca link para preview (OBRIGATORIO)
-3. Pergunte se quer ajustar algo
-4. Se o usuario aprovar, sugira: "Use `gerar-layout` para criar a especificacao detalhada de todas as secoes."
+1. Defina o DNA Visual (elemento recorrente, tratamento de midia, movimento de assinatura, detalhe tipografico)
+2. Selecione efeitos complementares da biblioteca:
+   - 2-3 scroll effects
+   - 1-2 transitions
+   - 3-5 micro-interactions
+3. Registre DNA Visual e efeitos como comentario no style.css
 
-Quando rodando standalone (fora de pipeline), PARE e aguarde instrucao do usuario. NUNCA crie mais secoes alem do Hero + primeira secao. NUNCA inicie a proxima skill automaticamente.
+---
+
+## Etapa 7: Implementar Primeira Secao
+
+Alem do hero (ja implementado), construa a primeira secao da copy para demonstrar o design system em contexto.
+
+---
+
+## Etapa 8: Preview e Apresentacao
+
+1. Abra Netlify Dev (consulte `references/local-server.md`)
+2. Informe URL ao usuario
+3. Apresente: design system, DNA visual, efeitos selecionados
+4. Peca feedback: "O que achou? Quer ajustar algo?"
+
+Quando rodando standalone: PARE apos feedback. Sugira `gerar-layout` como proximo passo.
+Quando rodando na pipeline: retorne controle ao orquestrador.

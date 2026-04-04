@@ -351,7 +351,7 @@ Este arquivo contem TODAS as possibilidades de layout, composicao, movimento e i
 
 ## FONT PAIRINGS CURADOS
 
-NUNCA use fontes overused da "Geracao Canva": Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora. Escolha da lista curada abaixo (todas disponiveis via Google Fonts).
+NUNCA use fontes overused: Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora, Inter, Open Sans, Merriweather, Source Sans Pro, Oswald. Escolha da lista curada abaixo (todas disponiveis via Google Fonts).
 
 ### Editorial & High-End Luxury
 *Para projetos elegantes, arquitetura, moda, advocacia, luxo, clinicas premium.*
@@ -361,7 +361,7 @@ NUNCA use fontes overused da "Geracao Canva": Fraunces, Playfair Display, Montse
 - **Cinzel Decorative** (Heading) + **Cormorant** (Body) → Luxo classico puro (usar com cautela, apenas em heroes gigantes)
 - **EB Garamond** (Regular) + **Manrope** (Light) → Elegancia literaria com suporte digital contemporaneo
 - **Prata** + **DM Sans** → Serifa de alto contraste (Didone) para headlines que precisam de respiracao
-- **Spectral** (Light) + **Inter** (Regular) → Sensibilidade francesa polida
+- **Spectral** (Light) + **Manrope** (Regular) → Sensibilidade francesa polida
 - **Newsreader** (Display) + **Public Sans** → Estetica do jornalismo impresso transportada para telas modernas
 - **Marcellus** + **Mulish** → Proporcoes classicas romanas com sans-serif geometrica minimalista
 - **Oranienbaum** + **Golos Text** → Serifa classica russa com body text contemporaneo
@@ -370,20 +370,20 @@ NUNCA use fontes overused da "Geracao Canva": Fraunces, Playfair Display, Montse
 ### Brutalist & Architectural
 *Para agencias, SaaS moderno, portfolios, eventos tech, design.*
 
-- **Space Grotesk** (700) + **Inter Tight** (Regular) → Geometria monospace unida a brutalidade suica
+- **Space Grotesk** (700) + **Geist** (Regular) → Geometria monospace unida a brutalidade suica
 - **Syne** (ExtraBold 800) + **Geist** → Headlines largas com estrutura suica. Alto impacto imediato
 - **Archivo Black** (Uppercase 900) + **Archivo** (Regular) → Brutalismo pesado, ideal com marquees e grids sem margem
 - **Bricolage Grotesque** + **Mona Sans** → Tipografia irreverente da escola francesa moderna
 - **Darker Grotesque** (Black) + **Darker Grotesque** (Regular) → Condensada neo-grotesca inspirada nos anos 60
 - **Schibsted Grotesk** + **Schibsted Grotesk** → Arquitetura jornalistica norueguesa para grids de informacao densa
-- **Sora** (ExtraBold) + **Inter** (Regular) → Modernismo tecnologico frio e calculista
+- **Sora** (ExtraBold) + **Plus Jakarta Sans** (Regular) → Modernismo tecnologico frio e calculista
 - **Epilogue** (Black) + **Epilogue** (Regular) → Display moderno para hero sections monoliticas
 - **Instrument Sans** + **Instrument Sans** → Grotesca neo-modernista com proporcoes geometricas exatas
 
 ### Agnostic Tech
 *Quando o UI deve desaparecer completamente e o conteudo brilhar.*
 
-- **Plus Jakarta Sans** (Heading) + **Plus Jakarta Sans** (Body) → Geometrica superior ao Inter
+- **Plus Jakarta Sans** (Heading) + **Plus Jakarta Sans** (Body) → Geometrica superior, moderna e equilibrada
 - **Outfit** (Heading) + **Outfit** (Body) → Geometria arredondada madura (evitar pesos finos no heading)
 - **Albert Sans** + **Albert Sans** → Neutra a ponto de ser cirurgica
 - **Rethink Sans** + **Rethink Sans** → Legivel e fresh, evolucao do Corporate Memphis sem ser brega
@@ -395,7 +395,7 @@ NUNCA use fontes overused da "Geracao Canva": Fraunces, Playfair Display, Montse
 
 - **Unbounded** (Black) + **Spline Sans** → Formas arredondadas em locais inesperados, alto impacto display
 - **Big Shoulders Display** + **Roboto Flex** → Condensada brutalista de Chicago para headlines gigantes
-- **Climate Crisis** + **Inter** → Fonte variavel que simula derretimento (uso cirurgico)
+- **Climate Crisis** + **Geist** → Fonte variavel que simula derretimento (uso cirurgico)
 - **Major Mono Display** + **Space Mono** → Abstracao geometrica total, estetica alienigena
 - **Saira Stencil One** + **Saira** → Estetica industrial crua, stencil pesado
 - **Righteous** + **Exo 2** → Retro-futurismo de poster de corrida, curvas tubulares
@@ -435,8 +435,8 @@ NUNCA use fontes overused da "Geracao Canva": Fraunces, Playfair Display, Montse
    "Secao X: Arquetipo [Y] + Constraints [A, B]"
 
 4. **Para FONTES**, escolha da lista de pairings curados por contexto de uso:
-   - NUNCA use fontes overused: Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora
-   - NUNCA use combinacoes genericas: Montserrat + Open Sans, Poppins + Roboto, Inter + Inter, Lato + Lato
+   - NUNCA use fontes overused: Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora, Inter, Open Sans, Merriweather, Source Sans Pro, Oswald
+   - NUNCA use combinacoes genericas: Montserrat + Open Sans, Poppins + Roboto, Lato + Lato
    - Escolha a CATEGORIA que melhor se encaixa no projeto (Editorial, Brutalist, Agnostic, Avant-Garde, Cinematic)
    - Use os PESOS especificos indicados nas combinacoes
    - DECLARE: "Fontes: [Heading] + [Body] - [Categoria]"

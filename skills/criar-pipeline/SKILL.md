@@ -1,158 +1,284 @@
 ---
 name: criar-pipeline
-description: Pipeline orquestrada que encadeia todas as etapas automaticamente. Do briefing ao deploy com 3 pausas obrigatorias e 2 condicionais.
+description: Pipeline interativa para criar landing pages de alto impacto. Cada decisao criativa e apresentada ao usuario com opcoes visuais no browser. Do briefing ao deploy, passo a passo.
 ---
 
 # Instrucoes
 
-Voce e o orquestrador da pipeline completa de criacao de landing pages. Encadeia todas as etapas automaticamente, pausando apenas para decisoes reais do usuario.
+Voce e o orquestrador de uma pipeline INTERATIVA de criacao de landing pages. O principio central: **o LLM nunca toma decisoes criativas sozinho.** Voce gera opcoes, renderiza no browser, e o usuario escolhe. Voce executa.
 
 ## Antes de Comecar
 
 Leia `rules.md` na raiz do plugin.
 
-## Visao Geral do Fluxo
+## Fluxo Geral
 
 ```
-1. BRIEFING (interativo)
-2. SCAFFOLD (skill iniciar)
-3. COPY (skill gerar-copy + Critico de Copy) → PAUSA
-4. DESIGN (skill gerar-design) → PAUSA
-5. LAYOUT (skill gerar-layout + Diretor de Arte) → PAUSA
-6. BUILD (skill desenvolver + QA de Fidelidade) → PAUSA
-7. OTIMIZAR (condicional)
-8. PUBLICAR (condicional)
+1. BRIEFING — Coletar informacoes do produto
+2. SCAFFOLD — Criar projeto + iniciar servidor
+3. COPY — Gerar copy, usuario aprova/ajusta
+4. DIRECAO VISUAL — Apresentar 3 opcoes de paleta no browser, usuario escolhe
+5. TIPOGRAFIA — Apresentar 3 opcoes de font pairing no browser, usuario escolhe
+6. HERO — Apresentar 3 opcoes de hero pattern no browser, usuario escolhe
+7. DESIGN SYSTEM — Consolidar escolhas + gerar tokens CSS
+8. LAYOUT — Especificar cada secao, usuario aprova
+9. BUILD SECAO A SECAO — Cada secao renderizada no browser, usuario aprova antes da proxima
+10. AJUSTES FINAIS — Usuario ve pagina completa e pede refinamentos
+11. OTIMIZAR (opcional)
+12. PUBLICAR (opcional)
 ```
-
-## Caracteristicas
-
-- **Sequencial:** Cada etapa depende da anterior
-- **3 pausas obrigatorias:** copy, design (visual), pagina completa (visual)
-- **2 pausas condicionais:** otimizar, publicar
-- **Correcoes automaticas:** Subagents podem corrigir problemas sem envolver o usuario (com limite de iteracoes)
-- **Autonomia total:** NUNCA peca para o usuario rodar comandos
 
 ---
 
 ## Etapa 1: Briefing
 
-Colete do usuario em uma unica interacao:
+Colete do usuario:
 
-1. **O que e o projeto?** Produto/servico, publico-alvo, objetivo da pagina
-2. **Tem referencias visuais?** Links, prints, marcas de referencia
-3. **Tem copy pronta ou precisa criar?** Se ja tem textos, onde estao
-4. **Nome da pasta da pagina** (ex: "pagina-vendas", "lp-lancamento")
-
-Nao faca perguntas individuais — apresente todas de uma vez e aguarde.
+1. **O que e o produto/servico?** O que faz, para quem
+2. **Qual o objetivo da pagina?** Vender, captar lead, inscrever, etc.
+3. **Tem alguma preferencia visual?** Cores da marca, referencias, tom. Se nao tiver, tudo bem — vamos descobrir juntos
+4. **Nome da pasta do projeto**
 
 ---
 
 ## Etapa 2: Scaffold
 
-Execute a skill `iniciar` com o nome fornecido:
-- Copiar templates
-- Criar pasta da pagina
+Execute a skill `iniciar`:
+- Copiar templates para pasta do projeto
+- Criar pasta da pagina com nome fornecido
 - Configurar redirect no netlify.toml
-- Git init
+- Git init + primeiro commit
 - Iniciar Netlify Dev
 
-Avancar automaticamente apos conclusao.
+Informar URL ao usuario. Avancar automaticamente.
 
 ---
 
 ## Etapa 3: Copy
 
-Execute a skill `gerar-copy`:
-- Usar as informacoes do briefing como contexto
-- A skill internamente invoca o Critico de Copy
-- Correcoes automaticas se reprovado (max 2x)
+Execute a skill `gerar-copy` com informacoes do briefing.
 
-**PAUSA OBRIGATORIA:** Apresente a copy ao usuario para feedback.
-
-- Se o usuario aprovar → avancar para Etapa 4
-- Se pedir ajustes → corrigir e reapresentar (quantas iteracoes forem necessarias)
-
----
-
-## Etapa 4: Design
-
-Execute a skill `gerar-design`:
-- Usar referencias visuais do briefing (se fornecidas)
-- A skill gera design system completo + hero + primeira secao
-- Abre preview no browser
-
-**PAUSA OBRIGATORIA:** O usuario avalia o hero VISUALMENTE no browser.
-
-- Se aprovar → avancar para Etapa 5
+**PAUSA:** Apresente a copy ao usuario.
+- Se aprovar → avancar
 - Se pedir ajustes → corrigir e reapresentar
 
 ---
 
-## Etapa 5: Layout
+## Etapa 4: Direcao Visual (3 opcoes no browser)
+
+Este e o primeiro ponto de decisao criativa. NAO escolha sozinho.
+
+### Processo
+
+1. Leia `references/creative-reference.md` e `references/design-system-guide.md`
+2. Analise a copy e o tipo de produto
+3. Gere 3 direcoes visuais DISTINTAS. Cada direcao deve ter:
+   - Nome curto (ex: "Minimalista Claro", "Tech Escuro", "Vibrante Colorido")
+   - Paleta completa (background, primary, secondary, accent, text)
+   - Modo (light ou dark)
+   - Tom geral (descricao em 1 frase)
+
+4. **Renderize as 3 opcoes no browser:**
+
+Crie um arquivo temporario `_opcoes-visual.html` na pasta da pagina com as 3 paletas lado a lado. Cada opcao mostra:
+- Background na cor real
+- Headline na fonte do sistema (a fonte sera escolhida depois) com a cor real
+- Paragrafo com cor de texto real
+- Botao com cor primary real
+- Card com cor surface real
+
+Nao precisa ser bonito — precisa mostrar as CORES ao vivo.
+
+5. Informe a URL ao usuario (ex: `http://localhost:8888/pagina-vendas/_opcoes-visual.html`)
+
+**PAUSA:** "Qual direcao visual voce prefere? 1, 2 ou 3?"
+
+6. Apos escolha, remover `_opcoes-visual.html`. Guardar paleta escolhida.
+
+---
+
+## Etapa 5: Tipografia (3 opcoes no browser)
+
+### Processo
+
+1. Leia `references/creative-reference.md` secao FONT PAIRINGS CURADOS
+2. Baseado no tipo de produto E na direcao visual escolhida, filtre 3 font pairings de CATEGORIAS DIFERENTES. Cada opcao deve vir de uma categoria distinta (ex: uma Editorial, uma Brutalist, uma Agnostic)
+
+**FONTES PROIBIDAS (individualmente):** Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora, Open Sans, Inter, Merriweather, Source Sans Pro.
+
+3. **Renderize as 3 opcoes no browser:**
+
+Crie `_opcoes-fontes.html` com as 3 opcoes usando o BACKGROUND E CORES da paleta ja escolhida. Cada opcao mostra:
+- Heading com a fonte heading no peso indicado (tamanho grande)
+- Subheading com a fonte heading em peso mais leve
+- Paragrafo de corpo com a fonte body
+- Overline/caption com a fonte body em peso diferente
+
+Carregue as fontes via Google Fonts no `<head>` do arquivo.
+
+4. Informe URL ao usuario.
+
+**PAUSA:** "Qual tipografia voce prefere? 1, 2 ou 3?"
+
+5. Apos escolha, remover `_opcoes-fontes.html`. Guardar font pairing.
+
+---
+
+## Etapa 6: Hero (3 opcoes no browser)
+
+Este e o ponto criativo mais importante. O hero define a primeira impressao.
+
+### Processo
+
+1. Leia `references/effects/README.md` (indice da biblioteca de efeitos)
+2. Selecione 3 hero patterns que encaixem no produto. Priorize efeitos de ALTO IMPACTO (particulas, shaders, kinetic typography, parallax, etc.). EVITE gradient-mesh-animated (e o mais generico).
+3. Para cada opcao, leia o arquivo completo do efeito em `references/effects/hero-patterns/`
+
+4. **Renderize as 3 opcoes no browser:**
+
+Para CADA opcao, crie um arquivo separado (`_hero-opcao-1.html`, `_hero-opcao-2.html`, `_hero-opcao-3.html`) na pasta da pagina. Cada arquivo e uma pagina completa com:
+- A paleta ja escolhida (tokens CSS)
+- A tipografia ja escolhida (Google Fonts carregada)
+- A headline da copy (do copy.md, secao Hero)
+- O efeito do hero COPIADO LITERALMENTE do arquivo da biblioteca
+- Parametros do efeito adaptados para os tokens CSS do projeto
+- Layout do hero que NAO seja coluna centralizada simples (usar split, assimetrico, ou off-grid)
+
+**REGRA CRITICA:** Copie o codigo HTML, CSS e JS do efeito LITERALMENTE do arquivo da biblioteca. Substitua APENAS as variaveis CSS. NAO reescreva, NAO simplifique, NAO "adapte a estrutura". Se o efeito tem 200 linhas de JS, copie as 200 linhas.
+
+5. Informe as 3 URLs ao usuario.
+
+**PAUSA:** "Qual hero voce prefere? 1, 2 ou 3?"
+
+6. Apos escolha, mover o hero escolhido para o `index.html` principal. Remover os 3 arquivos temporarios. Guardar efeito escolhido.
+
+---
+
+## Etapa 7: Design System Consolidado
+
+Agora voce tem: paleta + tipografia + hero pattern escolhidos pelo usuario.
+
+1. Leia `references/design-system-guide.md`
+2. Gere o design system COMPLETO:
+   - Escala tipografica (h1-h6, body, caption, overline com clamp)
+   - Paleta expandida (todas as variantes light/dark/muted)
+   - Sombras (3 niveis)
+   - Espacamento (escala 4/8px)
+   - Tokens de animacao (duracoes + easings)
+3. Defina o DNA Visual (elemento recorrente, tratamento de midia, movimento de assinatura, detalhe tipografico)
+4. Salve tudo como variaveis CSS no `:root` do `style.css`
+5. Selecione efeitos complementares da biblioteca:
+   - 2-3 scroll effects
+   - 1-2 transitions
+   - 3-5 micro-interactions
+   Declare as escolhas com justificativa.
+
+Avancar automaticamente (nao precisa de pausa aqui — as decisoes criativas principais ja foram feitas pelo usuario).
+
+---
+
+## Etapa 8: Layout
 
 Execute a skill `gerar-layout`:
-- A skill cria especificacao completa de todas as secoes
-- Internamente invoca o Diretor de Arte para validar coerencia
-- Correcoes automaticas se necessario
+- Usar copy.md, design system, DNA visual, efeitos selecionados
+- Layout serve o CONTEUDO (sem variabilidade forcada)
+- Referenciar efeitos da biblioteca com caminho de arquivo e parametros
 
-**PAUSA OBRIGATORIA:** Apresente resumo das secoes ao usuario.
-
-- Se aprovar → avancar para Etapa 6
-- Se pedir ajustes → corrigir e reapresentar
-
----
-
-## Etapa 6: Build
-
-Execute a skill `desenvolver`:
-- A skill constroi a pagina completa seguindo layout.md
-- Usa efeitos da biblioteca
-- Internamente invoca QA de Fidelidade
-- Correcoes automaticas se divergencias
-
-**PAUSA OBRIGATORIA:** O usuario avalia a pagina completa VISUALMENTE no browser.
-
-- Se aprovar → avancar para Etapa 7
-- Se pedir ajustes → corrigir e reapresentar
+**PAUSA:** Apresente resumo das secoes ao usuario (nome, arquetipo, efeito principal de cada uma).
+- Se aprovar → avancar
+- Se pedir ajustes → corrigir
 
 ---
 
-## Etapa 7: Otimizar (Condicional)
+## Etapa 9: Build Secao a Secao
 
-Pergunte ao usuario: "Quer otimizar a performance antes de publicar? (recomendado para PageSpeed 90+)"
+Esta e a etapa mais longa. Construa CADA secao individualmente e mostre ao usuario.
 
-- Se sim → execute a skill `otimizar` (mede antes/depois, aplica correcoes)
-- Se nao → pular para Etapa 8
+### Para cada secao do layout.md:
+
+1. Leia a especificacao da secao
+2. Se a secao usa um efeito da biblioteca: **LEIA o arquivo do efeito e COPIE o codigo literalmente**. Adapte APENAS os tokens CSS
+3. Implemente HTML + CSS + JS
+4. **Atualize o preview no browser** (o Netlify Dev atualiza automaticamente ao salvar)
+
+### CHECKLIST HERO (bloqueia se falhar)
+
+Antes de apresentar o hero ao usuario, valide:
+- [ ] Hero tem mais de uma coluna OU layout assimetrico OU elemento visual alem de texto?
+- [ ] Hero tem pelo menos 1 elemento interativo/animado funcionando (nao so texto com fade)?
+- [ ] O codigo do efeito da biblioteca foi COPIADO (nao reescrito simplificado)?
+- [ ] Hero NAO e: coluna centralizada + headline + subtitulo + botao sobre fundo chapado?
+
+Se qualquer item falhar: REESCREVER o hero antes de continuar. Leia novamente o arquivo do efeito da biblioteca e copie o codigo completo.
+
+### Apresentacao por blocos
+
+Nao precisa pausar para CADA secao individual. Agrupe em blocos logicos:
+
+**Bloco 1:** Hero + primeira secao → **PAUSA** (usuario ve no browser)
+**Bloco 2:** Secoes do meio (problema, solucao, features, metricas) → **PAUSA**
+**Bloco 3:** Secoes finais (preco, FAQ, CTA, formulario) → **PAUSA**
+
+Em cada pausa, informe a URL e pergunte: "Como esta ficando? Quer ajustar algo neste bloco?"
 
 ---
 
-## Etapa 8: Publicar (Condicional)
+## Etapa 10: Ajustes Finais
 
-Pergunte ao usuario: "Quer publicar agora?"
+Apos todos os blocos construidos:
 
-- Se sim → execute a skill `publicar` (deploy Netlify)
-- Se nao → informe que o projeto esta pronto localmente e o usuario pode publicar quando quiser
+1. Abra o preview da pagina completa
+2. Informe URL ao usuario
+3. Pergunte: "A pagina esta completa. O que voce gostaria de ajustar?"
+4. Faca quantas iteracoes de ajuste forem necessarias
+5. So avance quando o usuario disser que esta satisfeito
+
+---
+
+## Etapa 11: Otimizar (Opcional)
+
+"Quer que eu otimize a performance? (recomendado para PageSpeed 90+)"
+
+- Se sim → execute skill `otimizar`
+- Se nao → pular
+
+---
+
+## Etapa 12: Publicar (Opcional)
+
+"Quer publicar agora?"
+
+- Se sim → execute skill `publicar`
+- Se nao → informar que o projeto esta pronto localmente
 
 ---
 
 ## Regras da Pipeline
 
-### Transicoes Automaticas
-- De scaffold para copy: automatico
-- De copy aprovada para design: automatico
-- De design aprovado para layout: automatico
-- De layout aprovado para build: automatico
-- De build aprovado para otimizar: perguntar
-- De otimizar para publicar: perguntar
+### Decisoes Criativas = Sempre do Usuario
+- Paleta de cores → 3 opcoes no browser
+- Font pairing → 3 opcoes no browser
+- Hero pattern → 3 opcoes no browser
+- Ajustes em cada bloco → feedback visual no browser
+
+### Efeitos da Biblioteca = Sempre Copiados Literalmente
+- LEIA o arquivo .md do efeito
+- COPIE o codigo HTML, CSS e JS
+- SUBSTITUA apenas variaveis CSS pelos tokens do projeto
+- NUNCA reescreva ou simplifique
+- Se o efeito tem IntersectionObserver, Dynamic Import, requestAnimationFrame — MANTENHA
+
+### Validacao Ativa (nao passiva)
+- Checklist HERO e obrigatorio e bloqueia progresso se falhar
+- Se detectar hero centralizado simples → reescrever ANTES de mostrar ao usuario
+- Se detectar efeito simplificado (menos linhas que o original da biblioteca) → recopiar ANTES de mostrar
 
 ### Tratamento de Erros
 - Se uma etapa falhar, informe o erro e pergunte como prosseguir
 - NUNCA pule uma etapa por causa de erro
-- NUNCA continue para a proxima etapa se a atual nao foi concluida
+- NUNCA continue se a etapa atual nao foi concluida
 
-### Formato das Pausas
-Ao pausar para feedback:
-1. Apresente o resultado da etapa
-2. Forneca link do preview quando aplicavel (OBRIGATORIO em design e build)
-3. Pergunte diretamente: "Aprovado? Ou quer ajustar algo?"
-4. NAO faca perguntas extras desnecessarias
+### Autonomia no Terminal
+- Execute TODOS os comandos sozinho
+- NUNCA peca para o usuario rodar comandos
+- Unica excecao: autorizacao OAuth no navegador
