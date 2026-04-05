@@ -95,17 +95,41 @@ CONTEXTO:
 - Leia o copy.md nessa pasta
 - Referencias visuais do usuario: [inserir se houver]
 
-FASE 1 — DESIGN SYSTEM + HERO:
+FASE 1 — ESCOLHAS VISUAIS + HERO:
+O LLM NUNCA decide paleta, tipografia ou hero sozinho. Apresente OPCOES ao usuario.
+
 1. Leia rules.md
 2. Leia references/creative-reference.md
 3. Leia references/design-system-guide.md
-4. Gere design system completo (tokens CSS no :root)
-5. Defina DNA Visual
-6. Selecione efeitos da biblioteca (references/effects/)
-7. Implemente Hero + primeira secao
-8. Inicie Netlify Dev e informe URL
+4. Leia references/effects/README.md
+
+PALETA (3 opcoes no browser):
+- Gere 3 direcoes visuais DISTINTAS (light minimalista, dark tech, colorida bold)
+- Crie _opcoes-visual.html na pasta da pagina mostrando as 3 paletas
+- Informe URL ao usuario. PARE e aguarde escolha.
+
+TIPOGRAFIA (3 opcoes no browser):
+- Filtre 3 font pairings de CATEGORIAS DIFERENTES da creative-reference
+- FONTES PROIBIDAS: Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora, Inter, Open Sans, Merriweather, Source Sans Pro, Oswald
+- Crie _opcoes-fontes.html usando a paleta JA ESCOLHIDA
+- Informe URL. PARE e aguarde escolha.
+
+HERO (3 opcoes no browser):
+- Selecione 3 hero patterns de ALTO IMPACTO de references/effects/hero-patterns/
+- EVITE gradient-mesh-animated (generico demais)
+- Crie _hero-1.html, _hero-2.html, _hero-3.html. Cada um com paleta+fonte escolhidas e codigo do efeito COPIADO LITERALMENTE da biblioteca
+- Layout do hero NAO pode ser coluna centralizada simples
+- Informe URLs. PARE e aguarde escolha.
+
+CONSOLIDAR:
+- Gere design system completo (tokens CSS no :root)
+- Defina DNA Visual
+- Selecione efeitos complementares (scroll, transitions, micro)
+- Mova hero escolhido para index.html, remova temporarios
+- Inicie Netlify Dev
 
 PARE apos implementar o hero. Retorne:
+- Escolhas do usuario (paleta, fonte, hero)
 - Design system definido
 - DNA Visual
 - Efeitos selecionados
@@ -157,9 +181,17 @@ CONTEXTO:
 PROCESSO:
 1. Leia rules.md
 2. Construa TODAS as secoes seguindo layout.md
-3. Use efeitos da biblioteca (references/effects/) — copie e adapte
-4. Use tokens do design system (var(--...))
+3. Use efeitos da biblioteca (references/effects/) — COPIE LITERALMENTE o codigo do arquivo .md. Substitua APENAS variaveis CSS. NAO reescreva, NAO simplifique. Se o efeito tem 200 linhas de JS, o codigo final DEVE ter ~200 linhas.
+4. Use tokens do design system (var(--...)), NUNCA valores hardcoded
 5. Faca checklist de fidelidade por secao
+
+CHECKLIST HERO (OBRIGATORIO antes de continuar):
+- Hero NAO e coluna centralizada + headline + subtitulo + botao?
+- Hero tem efeito interativo/animado FUNCIONANDO?
+- Codigo do efeito foi COPIADO da biblioteca (nao simplificado)?
+- Hero NAO e fundo chapado + texto branco?
+Se qualquer item falhar: REESCREVER o hero.
+
 6. Inicie Netlify Dev e informe URL
 
 Retorne lista de secoes construidas e URL do preview."

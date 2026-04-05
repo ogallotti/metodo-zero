@@ -4,9 +4,9 @@
    ========================================== */
 
 :root {
-  /* Fonts: Substituir pelo font pairing escolhido */
-  --font-heading: 'Inter', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  /* Fonts: OBRIGATORIO substituir em gerar-design. Valores abaixo sao placeholders */
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
 
   /* Typographic Scale: Definir em gerar-design */
   --text-display: clamp(3rem, 6vw, 5rem);
@@ -19,15 +19,15 @@
   --text-caption: 0.75rem;
   --text-overline: 0.75rem;
 
-  /* Cores: Definir paleta em gerar-design */
-  --color-primary: #6366f1;
-  --color-primary-light: #818cf8;
-  --color-primary-dark: #4f46e5;
-  --color-primary-muted: #6366f133;
-  --color-secondary: #8b5cf6;
-  --color-secondary-light: #a78bfa;
-  --color-secondary-dark: #7c3aed;
-  --color-accent: #ec4899;
+  /* Cores: OBRIGATORIO substituir em gerar-design. Valores abaixo sao placeholders */
+  --color-primary: gray;
+  --color-primary-light: gray;
+  --color-primary-dark: gray;
+  --color-primary-muted: gray;
+  --color-secondary: gray;
+  --color-secondary-light: gray;
+  --color-secondary-dark: gray;
+  --color-accent: gray;
   --color-accent-light: #f472b6;
   --color-accent-dark: #db2777;
   --color-bg: #ffffff;
