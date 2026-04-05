@@ -17,6 +17,8 @@ Definir TODOS os niveis com sizes mobile e desktop usando `clamp()`:
 | `--text-h2` | Subtitulos de secao | `clamp(2rem, 4vw, 3rem)` |
 | `--text-h3` | Subsecoes, card titles | `clamp(1.5rem, 3vw, 2rem)` |
 | `--text-h4` | Subheadings menores | `clamp(1.25rem, 2vw, 1.5rem)` |
+| `--text-h5` | Labels de grupo, titulos terciarios | `clamp(1.1rem, 1.5vw, 1.25rem)` |
+| `--text-h6` | Menor heading, meta headings | `1rem` (font-weight 600+) |
 | `--text-body` | Texto corrido principal | `1rem` |
 | `--text-body-sm` | Detalhes, texto secundario | `0.875rem` |
 | `--text-caption` | Meta info, labels, footnotes | `0.75rem` |
@@ -72,6 +74,7 @@ Definir TODAS as cores com variantes:
 **Regras:**
 - Contraste WCAG AA minimo entre texto e background
 - Cores primarias NUNCA devem ser genericas (nao usar #6366f1 sem justificativa)
+- NUNCA gerar design systems que parecem genericos ou de template — se o resultado poderia ser de qualquer site, esta errado. A paleta, tipografia e DNA Visual devem ser traceaveis ao briefing especifico
 - A paleta deve derivar do briefing/nicho, nao ser arbitraria
 - Variantes -light, -dark, -muted sao obrigatorias para as 3 cores principais
 

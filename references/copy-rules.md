@@ -86,6 +86,22 @@ Palavras e expressoes banidas por serem marcadores de texto gerado por IA:
 
 ---
 
+## Principios Estruturais
+
+### Hero com Impacto e Clareza
+A primeira secao da pagina deve comunicar em segundos: o que e, para quem e, e por que importa. Impacto nao e grito — e precisao. A headline deve ser tao clara que funciona isolada, e tao interessante que puxa para o resto da pagina.
+
+### Pontos de Acao Distribuidos
+CTAs nao ficam confinados ao final. A pagina deve ter pontos de acao estrategicamente distribuidos — apos argumentos fortes, apos provas sociais, apos respostas a objecoes. Cada CTA deve ser contextualmente relevante ao conteudo que o precede.
+
+### Variedade Textual entre Secoes
+Cada secao deve ter composicao textual distinta. Se a secao 1 e um bloco narrativo denso, a secao 2 pode ser mais fragmentada. Se a secao 3 faz perguntas, a secao 4 afirma. Uniformidade textual entre secoes e sinal de geracao automatizada.
+
+### Comprimento Narrativo Persuasivo
+Copy persuasiva tem comprimento. Nao e resumo, nao e bullet point, nao e esqueleto. Cada secao deve ter corpo textual suficiente para sustentar um argumento completo. Se o texto parece rascunho ou outline, nao esta pronto. A extensao deve ser justificada pelo conteudo — nem inflada artificialmente, nem enxugada a ponto de perder poder persuasivo.
+
+---
+
 ## Estrutura da Copy
 
 ### O que o copy.md DEVE conter
