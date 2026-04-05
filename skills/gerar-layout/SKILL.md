@@ -20,8 +20,8 @@ Para CADA secao, a primeira pergunta e: **"qual a melhor forma de apresentar EST
 
 1. Leia `rules.md` na raiz do plugin
 2. Leia `references/creative-reference.md` — arquetipos, constraints
-3. Leia `references/design-system-guide.md` — para referenciar tokens
-4. Leia `references/effects/README.md` — indice da biblioteca de efeitos
+3. Leia `references/effects/README.md` — indice da biblioteca de efeitos
+4. Os tokens do design system ja estao definidos no `style.css` da pagina (gerados por `gerar-design`). Consulte o `:root` do CSS, nao releia `design-system-guide.md`
 
 ## Escopo
 

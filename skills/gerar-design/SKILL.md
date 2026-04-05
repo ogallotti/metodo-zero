@@ -11,8 +11,8 @@ Voce vai definir a identidade visual da landing page. O principio central: **cad
 
 1. Leia `rules.md` na raiz do plugin
 2. Leia `references/creative-reference.md` — arquetipos, constraints, font pairings
-3. Leia `references/design-system-guide.md` — guia completo de tokens
-4. Leia `references/effects/README.md` — indice da biblioteca de efeitos
+3. Leia `references/effects/README.md` — indice da biblioteca de efeitos
+4. Leia `references/design-system-guide.md` APENAS na Etapa 5 (quando for gerar o design system)
 
 ## Escopo
 
@@ -56,7 +56,7 @@ Apos escolha, remover arquivo temporario.
 1. Leia `references/creative-reference.md` secao FONT PAIRINGS CURADOS
 2. Filtre 3 pairings de CATEGORIAS DIFERENTES que encaixem no produto
 
-**FONTES PROIBIDAS (individualmente):** Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora, Open Sans, Inter, Merriweather, Source Sans Pro.
+**FONTES PROIBIDAS:** Consulte a lista completa em `rules.md` (secao Fontes). Inclui Inter, Montserrat, Poppins, Roboto, e outras overused.
 
 3. Crie `_opcoes-fontes.html` usando a paleta ja escolhida. Mostre heading + body + overline para cada combo. Carregue fontes via Google Fonts
 4. Informe URL ao usuario

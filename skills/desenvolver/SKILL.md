@@ -94,15 +94,7 @@ Apos copiar, conte as linhas de JS do efeito original e do codigo gerado. Se o g
 
 ## CHECKLIST HERO — VALIDACAO ATIVA (OBRIGATORIO)
 
-O hero e a secao mais critica. Antes de avancar para as demais secoes, valide TODOS estes itens. **Se qualquer item falhar, PARE e REESCREVA o hero.**
-
-- [ ] **Nao e coluna centralizada simples?** O hero DEVE ter: layout assimetrico, split, off-grid, OU pelo menos elementos visuais alem de texto (canvas, video, imagem, 3D, formas SVG)
-- [ ] **Tem efeito interativo/animado FUNCIONANDO?** Nao conta: fade-in de texto, opacity transitions. Conta: particulas, shaders, parallax layers, kinetic type, spotlight, 3D objects
-- [ ] **O codigo do efeito veio da biblioteca?** Compare com o arquivo original. Se o JS tem menos de 70% das linhas do original → recopiar
-- [ ] **Hero NÃO tem animacao de ENTRADA?** (opacity:0, fade-in, data-aos no hero = PROIBIDO). Animacoes pos-carregamento sao OK
-- [ ] **Nao e fundo chapado + texto branco?** Deve haver profundidade visual: gradientes animados, particulas, camadas, texturas, elementos decorativos
-
-**Se falhar:** Releia o arquivo do efeito da biblioteca. Copie novamente LITERALMENTE. Ajuste o layout para nao ser centralizado simples.
+Leia e aplique `references/hero-checklist.md` INTEGRALMENTE. O hero e a secao mais critica. Se qualquer item falhar, PARE e REESCREVA antes de continuar.
 
 ---
 

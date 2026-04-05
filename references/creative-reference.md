@@ -394,7 +394,7 @@ NUNCA use fontes overused: Fraunces, Playfair Display, Montserrat, Poppins, Robo
 *Para moda streetwear, festivais de musica, web3, campanhas subversivas.*
 
 - **Unbounded** (Black) + **Spline Sans** → Formas arredondadas em locais inesperados, alto impacto display
-- **Big Shoulders Display** + **Roboto Flex** → Condensada brutalista de Chicago para headlines gigantes
+- **Big Shoulders Display** + **Darker Grotesque** (Regular) → Condensada brutalista de Chicago para headlines gigantes
 - **Climate Crisis** + **Geist** → Fonte variavel que simula derretimento (uso cirurgico)
 - **Major Mono Display** + **Space Mono** → Abstracao geometrica total, estetica alienigena
 - **Saira Stencil One** + **Saira** → Estetica industrial crua, stencil pesado
@@ -406,7 +406,7 @@ NUNCA use fontes overused: Fraunces, Playfair Display, Montserrat, Poppins, Robo
 - **JetBrains Mono** + **JetBrains Mono** → Estetica 100% data-driven e UI de desenvolvedor
 - **Space Mono** + **Work Sans** → Tecnologico misturando linhas retas e curvas inesperadas
 - **Fira Code** + **Fira Sans** → Estetica hacker limpa com ligaduras
-- **Inconsolata** + **Open Sans** → Terminal classico modernizado para dashboards
+- **Inconsolata** + **Commissioner** → Terminal classico modernizado para dashboards
 
 ### Fontes Alternativas (Substituicoes de Qualidade)
 - Hanken Grotesk → Substitui Circular

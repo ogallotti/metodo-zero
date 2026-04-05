@@ -104,7 +104,7 @@ Nao precisa ser bonito — precisa mostrar as CORES ao vivo.
 1. Leia `references/creative-reference.md` secao FONT PAIRINGS CURADOS
 2. Baseado no tipo de produto E na direcao visual escolhida, filtre 3 font pairings de CATEGORIAS DIFERENTES. Cada opcao deve vir de uma categoria distinta (ex: uma Editorial, uma Brutalist, uma Agnostic)
 
-**FONTES PROIBIDAS (individualmente):** Fraunces, Playfair Display, Montserrat, Poppins, Roboto, Lato, Raleway, Lora, Open Sans, Inter, Merriweather, Source Sans Pro.
+**FONTES PROIBIDAS:** Consulte a lista completa em `rules.md` (secao Fontes). Inclui Inter, Montserrat, Poppins, Roboto, e outras overused.
 
 3. **Renderize as 3 opcoes no browser:**
 
@@ -203,13 +203,7 @@ Esta e a etapa mais longa. Construa CADA secao individualmente e mostre ao usuar
 
 ### CHECKLIST HERO (bloqueia se falhar)
 
-Antes de apresentar o hero ao usuario, valide:
-- [ ] Hero tem mais de uma coluna OU layout assimetrico OU elemento visual alem de texto?
-- [ ] Hero tem pelo menos 1 elemento interativo/animado funcionando (nao so texto com fade)?
-- [ ] O codigo do efeito da biblioteca foi COPIADO (nao reescrito simplificado)?
-- [ ] Hero NAO e: coluna centralizada + headline + subtitulo + botao sobre fundo chapado?
-
-Se qualquer item falhar: REESCREVER o hero antes de continuar. Leia novamente o arquivo do efeito da biblioteca e copie o codigo completo.
+Leia e aplique `references/hero-checklist.md` INTEGRALMENTE. Se qualquer item falhar: REESCREVER o hero antes de continuar.
 
 ### Apresentacao por blocos
 
