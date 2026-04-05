@@ -95,7 +95,9 @@ Em vez disso, **corrija o problema** e tente `netlify dev` novamente. Se nao con
 
 ### Erro de permissao (EACCES / Permission denied)
 
-Problema comum em macOS quando o Netlify CLI foi instalado com `sudo`. Arquivos em `~/.npm` e/ou `~/Library/Preferences/netlify/` ficam com owner root.
+Problema comum em macOS quando o Netlify CLI foi instalado com `sudo`. Arquivos em `~/.npm` e/ou `~/Library/Preferences/netlify/` ficam com owner root, impedindo o `netlify dev` de funcionar.
+
+**VOCE DEVE corrigir isso automaticamente. NUNCA peca ao usuario para rodar comandos no terminal.**
 
 ```bash
 sudo chown -R $(whoami):$(id -gn) ~/.npm 2>/dev/null

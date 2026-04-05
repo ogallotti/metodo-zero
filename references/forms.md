@@ -340,6 +340,12 @@ O `script.js` suporta multiplos formularios na mesma pagina. Cada `form[data-for
 </form>
 ```
 
+### O script.js cuida de tudo automaticamente
+
+- `initPhoneInput()` inicializa TODOS os `input[type="tel"]` da pagina (cada um com sua instancia)
+- `handleFormSubmit` busca o telefone DAQUELE form especifico (via `form.querySelector`)
+- Validacao, submit e feedback sao por form
+
 ---
 
 ## intl-tel-input (Telefone Internacional)
@@ -360,7 +366,21 @@ Ja configurado no template com:
 
 ### Inicializacao (ja no script.js)
 
-O `initPhoneInput()` inicializa TODOS os `input[type="tel"]` da pagina. Cada input recebe sua propria instancia em `input._iti`.
+O `initPhoneInput()` inicializa TODOS os `input[type="tel"]` da pagina. Cada input recebe sua propria instancia em `input._iti`:
+
+```javascript
+document.querySelectorAll('input[type="tel"]').forEach(input => {
+  input._iti = intlTelInput(input, {
+    initialCountry: 'br',
+    preferredCountries: ['br', 'us', 'pt'],
+    separateDialCode: true,
+    strictMode: true,
+    loadUtilsOnInit: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js'
+  });
+});
+```
+
+No submit, o handler busca a instancia do telefone DAQUELE form: `form.querySelector('input[type="tel"]')._iti`
 
 ---
 

@@ -24,6 +24,8 @@ Leia `rules.md` neste diretorio para as regras globais do framework.
 - `metodo-zero:gerar-layout` - Especificacao visual completa de todas as secoes
 - `metodo-zero:desenvolver` - Construcao da pagina completa
 - `metodo-zero:publicar` - Deploy Netlify (GitHub + CI/CD)
+- `metodo-zero:previsualizar` - Deploy Preview via Pull Request
+- `metodo-zero:visualizar-local` - Servidor local (Netlify Dev)
 - `metodo-zero:otimizar` - Performance (PageSpeed 90+)
 - `metodo-zero:debug` - Investigacao de problemas
 - `metodo-zero:configurar-tracking` - GTM + Meta Pixel

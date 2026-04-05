@@ -154,7 +154,28 @@ fbq('track', 'ViewContent', {
 
 ### Pagina de Obrigado
 
-A pagina de obrigado deve ter o **mesmo Pixel com PageView**, mas NAO precisa de `Lead` (ja foi disparado no submit).
+A pagina de obrigado deve ter o **mesmo Pixel com PageView**, mas NAO precisa de `Lead` (ja foi disparado no submit):
+
+```html
+<head>
+  <!-- Meta Pixel Code (MESMO codigo base, MESMO Pixel ID) -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'PIXEL_ID_AQUI');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+```
 
 ### Conversions API (CAPI) - Opcional Avancado
 
@@ -212,7 +233,9 @@ GTM e Meta Pixel sao scripts terceiros. Impacto tipico:
 
 Se o PageSpeed Score for prioridade maxima, usar carregamento adiado:
 
-```javascript
+```html
+<script>
+// Adia GTM e Pixel para apos idle do browser
 function loadTracking() {
   // GTM
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -239,9 +262,13 @@ if ('requestIdleCallback' in window) {
 } else {
   setTimeout(loadTracking, 2000);
 }
+</script>
 ```
 
-**ATENCAO:** O carregamento adiado pode perder PageViews de usuarios que saem muito rapido (<2s). SO usar se a nota do PageSpeed for realmente critica.
+**ATENCAO:** O carregamento adiado pode:
+- Perder PageViews de usuarios que saem muito rapido (<2s)
+- Causar discrepancia nos dados de analytics
+- **Recomendacao:** SO usar se a nota do PageSpeed for realmente critica. Na maioria dos casos, o carregamento normal e preferivel.
 
 ---
 
@@ -249,15 +276,34 @@ if ('requestIdleCallback' in window) {
 
 ### Meta Pixel
 
-1. **Meta Pixel Helper** (extensao Chrome): Mostra quais eventos foram disparados
-2. **Events Manager**: Aba "Test Events" > digitar URL > clicar "Open Website"
-3. **Console do browser:** `typeof fbq` deve retornar "function"
+1. **Meta Pixel Helper** (extensao Chrome): https://chrome.google.com/webstore/detail/meta-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc
+   - Mostra quais eventos foram disparados
+   - Verifica se o Pixel esta ativo
+
+2. **Events Manager**: https://business.facebook.com/events_manager
+   - Aba "Test Events" > digitar URL > clicar "Open Website"
+   - Navegar no site e verificar eventos em tempo real
+
+3. **Console do browser:**
+   ```javascript
+   // Verificar se fbq existe
+   typeof fbq // deve retornar "function"
+   ```
 
 ### GTM
 
 1. **GTM Preview Mode**: No dashboard GTM > clicar "Preview"
+   - Abre o site com painel de debug
+   - Mostra quais tags dispararam e quais nao
+   - Mostra eventos do dataLayer
+
 2. **Google Tag Assistant** (extensao Chrome): Verifica todas as tags Google
-3. **Console do browser:** `dataLayer` mostra todos os eventos
+
+3. **Console do browser:**
+   ```javascript
+   // Ver todos os eventos do dataLayer
+   dataLayer
+   ```
 
 ### Checklist de Verificacao
 

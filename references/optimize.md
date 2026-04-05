@@ -228,11 +228,18 @@ lazyLoadModule('#secao-3d', async () => {
   const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
   initScene(THREE, GLTFLoader);
 });
+
+lazyLoadModule('#secao-particulas', async () => {
+  const { initParticles } = await import('./particles.js');
+  const isMobile = window.innerWidth < 768;
+  initParticles({ count: isMobile ? 25 : 40 });
+});
 ```
 
 **Por que IntersectionObserver e nao Interaction Trigger:**
 - PageSpeed NAO interage com a pagina. Interaction Trigger com fallback de 8s carrega recursos durante a janela de medicao do PageSpeed, gerando pico de TBT.
-- IntersectionObserver so carrega quando a secao esta proxima do viewport.
+- IntersectionObserver so carrega quando a secao esta proxima do viewport. Se a secao esta abaixo do fold, nao carrega durante o teste.
+- Para o usuario real, carrega naturalmente ao scrollar.
 
 ### Script no Caminho Critico (ARMADILHA)
 
@@ -261,6 +268,7 @@ async function initScene() {
 ## 11. Third-Party (Analytics, Pixels)
 
 ```javascript
+// Carregar apos idle do browser
 if ('requestIdleCallback' in window) {
   requestIdleCallback(() => { loadAnalytics(); loadPixels(); });
 } else {
@@ -268,9 +276,14 @@ if ('requestIdleCallback' in window) {
 }
 ```
 
+- [ ] `requestIdleCallback` ou delay de 3s
+- [ ] `dns-prefetch` para dominios terceiros
+
 ## 12. Critical CSS Inline + CSS Async
 
 **Quando usar:** Quando o PageSpeed reporta "Eliminate render-blocking resources" no CSS.
+
+**Pattern correto (2 passos OBRIGATORIOS):**
 
 ```html
 <head>
@@ -281,6 +294,8 @@ if ('requestIdleCallback' in window) {
     body { margin: 0; font-family: ...; background: var(--color-bg); color: ...; }
     .nav { ... }
     .hero { min-height: 100vh; ... }
+    .hero-title { ... }
+    .btn { ... }
     /* TUDO que aparece no primeiro viewport sem scroll */
   </style>
 
@@ -291,10 +306,13 @@ if ('requestIdleCallback' in window) {
 ```
 
 **REGRAS CRITICAS:**
-- [ ] O inline DEVE cobrir TUDO visivel no primeiro viewport
+- [ ] O inline DEVE cobrir TUDO visivel no primeiro viewport (hero, nav, botoes, tipografia, cores, backgrounds)
 - [ ] Incluir `:root` com variaveis, reset basico, todas as classes do hero/nav
 - [ ] O `<noscript>` fallback e OBRIGATORIO
-- [ ] **Medir CLS apos a mudanca** - se CLS > 0.1, o inline esta incompleto
+- [ ] **Medir CLS apos a mudanca** - se CLS > 0.1, o inline esta incompleto → adicionar mais estilos ou reverter
+- [ ] NUNCA fazer CSS async SEM o inline critico (ver secao NUNCA FAZER)
+
+**Por que funciona:** O browser renderiza o above-fold usando o CSS inline (sem request extra). O CSS completo carrega async e aplica estilos das secoes below-fold. Como o above-fold ja tem todos os estilos inline, nao ha layout shift.
 
 ## 13. content-visibility (CUIDADO)
 
@@ -310,8 +328,37 @@ if ('requestIdleCallback' in window) {
 - [ ] NUNCA usar em secoes perto do topo (hero, segunda secao)
 - [ ] O `contain-intrinsic-size` DEVE ser proximo da altura real da secao
 - [ ] Se nao sabe a altura, NAO USE (CLS garantido)
+- [ ] Testar antes e depois - se CLS subiu, remover
 
 ## 14. Three.js (CRITICO)
+
+```javascript
+lazyLoadModule('#secao-3d', async () => {
+  const THREE = await import('three');
+  const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+  const { DRACOLoader } = await import('three/addons/loaders/DRACOLoader.js');
+
+  initScene(THREE, GLTFLoader, DRACOLoader);
+});
+
+function initScene(THREE, GLTFLoader, DRACOLoader) {
+  const isMobile = window.innerWidth < 768;
+
+  const renderer = new THREE.WebGLRenderer({
+    antialias: !isMobile,
+    powerPreference: 'high-performance'
+  });
+  renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
+
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+
+  const gltfLoader = new GLTFLoader();
+  gltfLoader.setDRACOLoader(dracoLoader);
+
+  // Max 3 luzes!
+}
+```
 
 **Checklist Three.js:**
 - [ ] **Dynamic Import** (NUNCA import estatico)
@@ -327,19 +374,75 @@ if ('requestIdleCallback' in window) {
 # NUNCA FAZER (causa queda de nota)
 
 ## 1. NUNCA tornar CSS async SEM critical CSS inline
-Pagina renderiza SEM estilo = CLS 0.3-0.7
+
+```html
+<!-- PROIBIDO - pagina renderiza SEM estilo = CLS 0.3-0.7 -->
+<link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
+<!-- Sem <style> inline = FOUC + CLS massivo -->
+
+<!-- CORRETO opcao A - CSS sincrono (padrao seguro) -->
+<link rel="stylesheet" href="/style.css">
+
+<!-- CORRETO opcao B - Critical CSS inline + async (maior performance) -->
+<style>/* CSS above-the-fold completo aqui */</style>
+<link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/style.css"></noscript>
+```
+
+**Por que:** CSS async SEM critical inline faz a pagina renderizar sem nenhum estilo e re-renderizar quando o CSS carrega = CLS massivo. COM critical inline, o above-fold ja tem estilos e nao ha shift. Ver secao 12 para o pattern correto.
 
 ## 2. NUNCA tornar Google Fonts async via media="print"
-O CSS do Google Fonts e minusculo (~500 bytes). Torna-lo async ATRASA o download das fontes e ANULA o preconnect.
+
+```html
+<!-- PROIBIDO -->
+<link href="https://fonts.googleapis.com/css2?..." rel="stylesheet" media="print" onload="this.media='all'">
+
+<!-- CORRETO - manter sincrono com preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?...&display=swap" rel="stylesheet">
+```
+
+**Por que:** O CSS do Google Fonts e minusculo (~500 bytes, so @font-face). Torna-lo async ATRASA o inicio do download das fontes e ANULA o preconnect. O `display=swap` na URL ja garante que o texto aparece imediatamente.
 
 ## 3. NUNCA adiar AOS com Interaction Trigger
-O CSS do AOS aplica `opacity: 0` nos elementos `[data-aos]` imediatamente. Se o JS so roda apos interacao, os elementos ficam INVISIVEIS.
+
+```javascript
+// PROIBIDO - conteudo fica invisivel ate interacao
+onFirstInteraction(() => {
+  AOS.init({ once: true, disableMutationObserver: true });
+});
+
+// CORRETO - inicializar normalmente no DOMContentLoaded
+AOS.init({
+  once: true,
+  disableMutationObserver: true
+});
+```
+
+**Por que:** O CSS do AOS aplica `opacity: 0` nos elementos `[data-aos]` imediatamente. Se o JS so roda apos interacao, os elementos ficam INVISIVEIS. Quando o AOS finalmente inicia, todos aparecem de uma vez = CLS massivo.
 
 ## 4. NUNCA usar `contain: layout paint` em secoes com overflow
-`contain: paint` cria um novo contexto de pintura e CLIPA todo overflow.
+
+```css
+/* PERIGOSO - pode clipar conteudo que transborda */
+.section { contain: layout paint; }
+
+/* SO usar quando a secao tem altura/largura bem definidas e nenhum overflow */
+```
+
+**Por que:** `contain: paint` cria um novo contexto de pintura e CLIPA todo overflow. Elementos posicionados absolutamente, decoracoes que transbordam, e gradientes que saem da secao serao cortados.
 
 ## 5. NUNCA usar Interaction Trigger com fallback curto
-Um fallback de 8s carrega recursos pesados DURANTE a medicao do PageSpeed.
+
+```javascript
+// PROIBIDO - 8 segundos cai na janela de medicao do PageSpeed
+setTimeout(() => {
+  if (!interacted) { interacted = true; callbacks.forEach(cb => cb()); }
+}, 8000);
+```
+
+**Por que:** PageSpeed Lighthouse mede por ~10-15 segundos e NAO interage. Um fallback de 8s carrega recursos pesados DURANTE a medicao, gerando pico de TBT que derruba a nota. Use IntersectionObserver em vez de timers.
 
 ---
 
@@ -378,6 +481,21 @@ Um fallback de 8s carrega recursos pesados DURANTE a medicao do PageSpeed.
 - [ ] AOS via Interaction Trigger
 - [ ] contain: layout paint em secoes com overflow
 - [ ] Fallback timer < 20 segundos para recursos pesados
+
+---
+
+# ERROS COMUNS DO AGENTE
+
+1. **CSS async sem inline**: Tornar stylesheet async SEM critical CSS inline = CLS massivo
+2. **Fontes async**: Usar media="print" em Google Fonts = atrasa fontes, anula preconnect
+3. **AOS adiado**: Defer AOS com Interaction Trigger = conteudo invisivel + CLS
+4. **Import estatico**: Usar `import THREE from 'three'` no topo (SEMPRE use Dynamic Import)
+5. **Script no HTML**: Linkar modulo pesado no HTML alem do Dynamic Import
+6. **Corrigir parcialmente**: Verificar apenas algumas imagens, nao todas
+7. **Remover incompleto**: Remover JS mas esquecer CSS da biblioteca
+8. **height="auto"**: Usar "auto" mesmo documentacao dizendo para nao usar
+9. **Pular auditoria**: Ir direto para correcoes sem listar problemas
+10. **Nao medir**: Nao comparar nota antes/depois
 
 ---
 

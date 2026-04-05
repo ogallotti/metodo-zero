@@ -95,6 +95,14 @@ Ao final, deve aparecer: `Success! Netlify CI/CD Configured!`
 netlify status
 ```
 
+Deve mostrar informacoes do site com "Linked to" apontando para o repositorio GitHub.
+
+```bash
+netlify open:admin
+```
+
+No painel, va em **"Site configuration"** > **"Build & deploy"** > **"Continuous deployment"**. Deve mostrar o repositorio GitHub conectado.
+
 ---
 
 ## Cenario B: Git OK, Falta Netlify
@@ -155,9 +163,10 @@ Antes de subir, verifique:
 
 Verifique se o `netlify.toml` tem um redirect `from = "/"`. A raiz do site contem apenas o template base e mostra uma pagina em branco sem este redirect.
 
-Se NAO existir, identifique a pagina principal e adicione:
+Se NAO existir, identifique a pagina principal (pasta com `index.html` que nao seja a raiz) e adicione:
 
 ```toml
+# Redirect da home para a pagina principal
 [[redirects]]
   from = "/"
   to = "/nome-da-pagina/"
@@ -200,9 +209,13 @@ O Netlify automaticamente cria um Deploy Preview com URL tipo:
 
 ### Aprovar e ir para producao
 
+Apos testar o preview:
+
 ```bash
 gh pr merge --merge
 ```
+
+Isso faz merge para main e dispara o deploy de producao automaticamente.
 
 ---
 
@@ -212,13 +225,15 @@ Ao informar que o site esta no ar, SEMPRE forneca o link direto para a pagina pr
 
 **Como identificar a pagina principal:**
 1. Verifique o redirect `from = "/"` no `netlify.toml` — o campo `to` indica a pagina principal
-2. Caso nao exista redirect, procure as pastas na raiz que contenham `index.html`
+2. Caso nao exista redirect, procure as pastas na raiz que contenham `index.html` (ignorar a raiz e pastas `_backup_*`)
 
 **Exemplo correto:**
 - "Seu site esta no ar: https://nome.netlify.app/pagina-vendas/"
 
 **ERRADO (nunca faca isso):**
 - "Seu site esta no ar: https://nome.netlify.app/"
+
+A raiz do site contem apenas o template base do framework e mostra uma pagina em branco. O usuario vai achar que o deploy falhou se receber o link raiz.
 
 ---
 
@@ -246,19 +261,36 @@ Ao informar que o site esta no ar, SEMPRE forneca o link direto para a pagina pr
 ## Troubleshooting
 
 ### "Site nao atualiza apos push"
+
 Verifique se a integracao esta ativa:
 ```bash
 netlify open:admin
 ```
 Va em **"Site configuration"** > **"Build & deploy"** > **"Continuous deployment"**.
 
+Se nao mostrar o repositorio GitHub conectado, siga o **Cenario C**.
+
 ### "netlify status mostra site mas nao mostra repo"
-O site foi criado com `--manual` ou `sites:create`. Siga o **Cenario C**.
+
+O site foi criado com `--manual` ou `sites:create`. Precisa reconfigurar. Siga o **Cenario C**.
 
 ### "Netlify init nao pede autorizacao GitHub"
-Se ja estiver logado, pode pular a autorizacao. Verifique com `netlify status`.
+
+Se ja estiver logado, pode pular a autorizacao. Verifique com:
+```bash
+netlify status
+```
+
+Se precisar reautorizar:
+```bash
+netlify logout
+netlify login
+netlify init
+```
 
 ### "Deploy falhou no Netlify"
+
+Verifique os logs:
 ```bash
 netlify open:admin
 ```
