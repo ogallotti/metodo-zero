@@ -14,14 +14,26 @@ O Método Zero automatiza o processo completo de criação de landing pages com 
 
 ## Instalação
 
-Clone o repositório e crie um symlink para a pasta de skills do Claude Code:
+### Via Plugin Marketplace (recomendado)
 
-```bash
-git clone https://github.com/ogallotti/metodo-zero.git ~/dev/metodo-zero
-ln -s ~/dev/metodo-zero ~/.claude/skills/metodo-zero
+No Claude Code, registre o marketplace:
+
+```
+/plugin marketplace add ogallotti/metodo-zero
 ```
 
-Reinicie o Claude Code. As skills ficarão disponíveis automaticamente.
+Depois instale o plugin:
+
+```
+/plugin install metodo-zero@metodo-zero-marketplace
+```
+
+### Via interface visual
+
+1. Execute `/plugin`
+2. Vá em **Discover**
+3. Encontre **metodo-zero**
+4. Selecione o escopo de instalação (User, Project ou Local)
 
 ## Quick Start
 

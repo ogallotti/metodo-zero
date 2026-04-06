@@ -1,0 +1,20 @@
+{
+  "name": "metodo-zero-marketplace",
+  "description": "Método Zero: plugin para criar landing pages de alto impacto visual com Claude Code",
+  "owner": {
+    "name": "ogallotti"
+  },
+  "category": "web-development",
+  "tags": ["landing-page", "html", "css", "netlify", "zero-build", "design-system", "effects-library"],
+  "plugins": [
+    {
+      "name": "metodo-zero",
+      "description": "Landing pages de alto impacto visual com HTML/CSS/JS puro. Zero build step, zero dependências, hospedagem Netlify. Pipeline interativa do briefing ao deploy.",
+      "version": "1.0.0",
+      "source": "./plugins/metodo-zero",
+      "author": {
+        "name": "Gallotti"
+      }
+    }
+  ]
+}
