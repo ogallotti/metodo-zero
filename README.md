@@ -150,10 +150,23 @@ O diretório `references/` contém 10 documentos técnicos consultados pelas ski
 - **Google Fonts** -- acesso via internet para carregar tipografia
 - **Git** -- versionamento de cada etapa
 
-## Estrutura do Projeto
+## Estrutura do Repositório
 
 ```
-metodo-zero/
+ogallotti/metodo-zero/
+  .claude-plugin/
+    marketplace.json    -- Registro do marketplace
+  plugins/
+    metodo-zero/        -- O plugin em si (estrutura abaixo)
+  README.md
+```
+
+### Estrutura do Plugin
+
+```
+plugins/metodo-zero/
+  .claude-plugin/
+    plugin.json         -- Metadata do plugin (nome, versão, autor)
   SKILL.md              -- Entry point do plugin (lista de skills)
   rules.md              -- Regras globais (comunicação, autonomia, padrões visuais)
   skills/
