@@ -1,0 +1,11 @@
+{
+  "name": "metodo-zero",
+  "description": "Landing pages de alto impacto visual com HTML/CSS/JS puro. Zero build step, zero dependencias, hospedagem Netlify. Pipeline interativa do briefing ao deploy.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Gallotti"
+  },
+  "license": "MIT",
+  "keywords": ["landing-page", "html", "css", "netlify", "zero-build", "pipeline", "design-system", "effects-library", "copy", "deploy"],
+  "repository": "https://github.com/ogallotti/metodo-zero-claude"
+}
