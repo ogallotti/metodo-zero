@@ -1,0 +1,23 @@
+{
+  "name": "Gradient Mesh",
+  "slug": "gradient-mesh",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "css-only"],
+  "dependencies": [],
+  "description": "Animated mesh gradient with soft color blobs, grain overlay, and organic motion",
+  "params": {
+    "--gm-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--gm-color-1": { "default": "#ff6b6b", "type": "color", "label": "Color 1" },
+    "--gm-color-2": { "default": "#4ecdc4", "type": "color", "label": "Color 2" },
+    "--gm-color-3": { "default": "#7b68ee", "type": "color", "label": "Color 3" },
+    "--gm-color-4": { "default": "#ffa07a", "type": "color", "label": "Color 4" },
+    "--gm-color-5": { "default": "#00d4ff", "type": "color", "label": "Color 5" },
+    "--gm-speed": { "default": "20s", "type": "duration", "label": "Animation speed", "min": 5, "max": 40 },
+    "--gm-blur": { "default": "100px", "type": "size", "label": "Blur amount", "min": 40, "max": 200 },
+    "--gm-opacity": { "default": "0.7", "type": "number", "label": "Opacity", "min": 0.2, "max": 1 },
+    "--gm-blob-size": { "default": "45%", "type": "size", "label": "Blob size" }
+  },
+  "jsParams": {
+    "blobCount": { "default": 5, "type": "number", "label": "Visible blobs", "min": 2, "max": 5, "step": 1 }
+  }
+}

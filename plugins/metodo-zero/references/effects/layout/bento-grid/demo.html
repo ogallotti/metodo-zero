@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento Grid — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-header">
+    <h1>Bento Grid</h1>
+    <p>Scroll down to watch each cell animate into view with staggered timing.</p>
+  </div>
+  <div class="bg-grid">
+    <div class="bg-cell bg-cell--span-2 bg-cell--accent">
+      <span class="bg-cell-icon">⚡</span>
+      <h2>Lightning Fast</h2>
+      <p>Optimized performance with GPU-accelerated animations and efficient rendering pipelines for 60fps experiences.</p>
+    </div>
+    <div class="bg-cell">
+      <div class="bg-metric">99%</div>
+      <p>Performance score across all lighthouse metrics</p>
+    </div>
+    <div class="bg-cell bg-cell--span-row">
+      <span class="bg-cell-icon">🎨</span>
+      <h2>Design First</h2>
+      <p>Every component is crafted with attention to visual detail, spacing, and typography hierarchy.</p>
+      <img src="https://picsum.photos/seed/bento1/400/200" alt="Design preview">
+    </div>
+    <div class="bg-cell">
+      <span class="bg-cell-icon">📱</span>
+      <h2>Mobile Ready</h2>
+      <p>Responsive layouts that adapt gracefully to any screen size.</p>
+    </div>
+    <div class="bg-cell bg-cell--highlight">
+      <span class="bg-cell-icon">🔒</span>
+      <h2>Accessible</h2>
+      <p>WCAG 2.1 compliant with semantic markup and keyboard navigation.</p>
+    </div>
+    <div class="bg-cell bg-cell--span-2">
+      <span class="bg-cell-icon">🧩</span>
+      <h2>Composable Components</h2>
+      <p>Mix and match components to build complex layouts. Each piece works independently and together.</p>
+    </div>
+    <div class="bg-cell">
+      <div class="bg-metric">38</div>
+      <p>Ready-to-use effects in the library</p>
+    </div>
+    <div class="bg-cell">
+      <span class="bg-cell-icon">🚀</span>
+      <h2>Zero Dependencies</h2>
+      <p>Pure vanilla JS and CSS. No frameworks, no build tools required.</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

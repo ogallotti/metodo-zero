@@ -1,0 +1,165 @@
+:root {
+  --neon-color-1: #ff006e;
+  --neon-color-2: #8338ec;
+  --neon-color-3: #3a86ff;
+  --neon-speed: 3s;
+  --neon-blur: 12px;
+  --neon-bg: #0f0f23;
+  --neon-border-width: 2px;
+  --neon-radius: 16px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #07071a;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+.neon-card-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.neon-card {
+  position: relative;
+  padding: 32px;
+  border-radius: var(--neon-radius);
+  background: var(--neon-bg);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.neon-card::before {
+  content: '';
+  position: absolute;
+  inset: calc(var(--neon-border-width) * -1);
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    var(--neon-color-1),
+    var(--neon-color-2),
+    var(--neon-color-3),
+    var(--neon-color-1)
+  );
+  animation: neon-rotate var(--neon-speed) linear infinite;
+  z-index: -2;
+}
+
+.neon-card::after {
+  content: '';
+  position: absolute;
+  inset: var(--neon-border-width);
+  border-radius: calc(var(--neon-radius) - var(--neon-border-width));
+  background: var(--neon-bg);
+  z-index: -1;
+}
+
+@keyframes neon-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.neon-card__glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    var(--neon-color-1),
+    var(--neon-color-2),
+    var(--neon-color-3),
+    var(--neon-color-1)
+  );
+  filter: blur(var(--neon-blur));
+  opacity: 0.3;
+  animation: neon-rotate var(--neon-speed) linear infinite;
+  z-index: -3;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.neon-card:hover .neon-card__glow {
+  opacity: 0.6;
+}
+
+.neon-card__emoji {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.neon-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.neon-card__desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #7a7f9a;
+  margin-bottom: 20px;
+}
+
+.neon-card__price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.neon-card__price span {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.neon-card__cta {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--neon-color-2), var(--neon-color-3));
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.neon-card__cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-card::before,
+  .neon-card__glow {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .neon-card-wrap {
+    grid-template-columns: 1fr;
+  }
+}

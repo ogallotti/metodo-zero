@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curtain Reveal — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <section class="cr-hero">
+    <h1>Curtain Reveal</h1>
+    <p>Two panels slide apart like theater curtains, revealing the content behind them. Scroll to open the curtain.</p>
+  </section>
+
+  <div class="curtain-wrapper">
+    <div class="curtain-stage">
+      <div class="curtain-content curtain-bg--purple">
+        <h2>The big reveal</h2>
+        <p>Content hides behind the curtain and emerges as the panels part. The theatrical effect creates anticipation and makes the reveal moment feel special.</p>
+      </div>
+      <div class="curtain-left">
+        <div class="curtain-left__inner">
+          <span class="curtain-text">OPEN</span>
+        </div>
+      </div>
+      <div class="curtain-right">
+        <div class="curtain-right__inner">
+          <span class="curtain-text">ING</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="curtain-wrapper">
+    <div class="curtain-stage">
+      <div class="curtain-content curtain-bg--pink">
+        <h2>Dramatic transitions</h2>
+        <p>The curtain effect works perfectly for product launches, announcements, or any moment where you want to build suspense before the payoff.</p>
+      </div>
+      <div class="curtain-left" style="background: #2d1b4e;">
+        <div class="curtain-left__inner">
+          <span class="curtain-text">DIS</span>
+        </div>
+      </div>
+      <div class="curtain-right" style="background: #2d1b4e;">
+        <div class="curtain-right__inner">
+          <span class="curtain-text">COVER</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="curtain-wrapper">
+    <div class="curtain-stage">
+      <div class="curtain-content curtain-bg--teal">
+        <h2>Scroll-driven magic</h2>
+        <p>GSAP ScrollTrigger maps the curtain opening to your scroll position. Scroll back up and the curtains close again — fully bidirectional.</p>
+      </div>
+      <div class="curtain-left" style="background: #0c2d48;">
+        <div class="curtain-left__inner">
+          <span class="curtain-text">UN</span>
+        </div>
+      </div>
+      <div class="curtain-right" style="background: #0c2d48;">
+        <div class="curtain-right__inner">
+          <span class="curtain-text">VEIL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="cr-end">
+    <div>
+      <h2>Show's over</h2>
+      <p>The curtain reveal transforms ordinary section transitions into memorable moments. Use sparingly for maximum impact.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

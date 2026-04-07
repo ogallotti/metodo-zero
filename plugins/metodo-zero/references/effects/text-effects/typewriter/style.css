@@ -1,0 +1,77 @@
+:root {
+  --tw-font-size: 3.5rem;
+  --tw-color: #ffffff;
+  --tw-cursor-color: #6ee7b7;
+  --tw-cursor-width: 3px;
+  --tw-bg: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tw-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.tw-container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 90vw;
+}
+
+.tw-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.tw-text {
+  font-size: var(--tw-font-size);
+  font-weight: 700;
+  color: var(--tw-color);
+  line-height: 1.2;
+  min-height: 1.2em;
+  display: inline;
+}
+
+.tw-cursor {
+  display: inline-block;
+  width: var(--tw-cursor-width);
+  height: 1em;
+  background: var(--tw-cursor-color);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: tw-blink 0.7s step-end infinite;
+}
+
+@keyframes tw-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .tw-text {
+    font-size: calc(var(--tw-font-size) * 0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Scroll Progress",
+  "slug": "scroll-progress",
+  "category": "scroll",
+  "tags": ["section", "continuous"],
+  "dependencies": [],
+  "description": "Progress bar at top of page showing scroll position with smooth animation and customizable appearance.",
+  "params": {
+    "--progress-height": { "type": "range", "min": 2, "max": 12, "default": 4, "unit": "px", "label": "Bar Height" },
+    "--progress-color": { "type": "color", "default": "#6366f1", "label": "Bar Color" },
+    "--progress-bg": { "type": "color", "default": "transparent", "label": "Track Background" },
+    "--progress-z": { "type": "range", "min": 100, "max": 10000, "default": 9999, "unit": "", "label": "Z-Index" }
+  },
+  "jsParams": {}
+}

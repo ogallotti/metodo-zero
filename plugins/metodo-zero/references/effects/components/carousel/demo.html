@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="car-wrapper">
+    <div class="car-viewport">
+      <div class="car-track">
+        <div class="car-slide"><img src="https://picsum.photos/seed/car1/800/450" alt=""><div class="car-slide-overlay"><h3>Design Systems at Scale</h3><p>Building component libraries that grow with your product.</p></div></div>
+        <div class="car-slide"><img src="https://picsum.photos/seed/car2/800/450" alt=""><div class="car-slide-overlay"><h3>Creative Technology</h3><p>Bridging the gap between design vision and technical reality.</p></div></div>
+        <div class="car-slide"><img src="https://picsum.photos/seed/car3/800/450" alt=""><div class="car-slide-overlay"><h3>Performance Engineering</h3><p>Every millisecond counts in user experience.</p></div></div>
+        <div class="car-slide"><img src="https://picsum.photos/seed/car4/800/450" alt=""><div class="car-slide-overlay"><h3>Modern Web Standards</h3><p>Leveraging the platform for better, faster interfaces.</p></div></div>
+      </div>
+    </div>
+    <button class="car-btn car-btn--prev" aria-label="Previous">&larr;</button>
+    <button class="car-btn car-btn--next" aria-label="Next">&rarr;</button>
+  </div>
+  <div class="car-dots"></div>
+  <div class="car-title"><h1>Carousel</h1><p>Smooth carousel with drag/swipe support, arrow navigation, and dot indicators.</p></div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value);if(e.data.scope==='js'&&window.__carouselUpdate)window.__carouselUpdate(e.data.key,e.data.value)}});</script>
+</body>
+</html>

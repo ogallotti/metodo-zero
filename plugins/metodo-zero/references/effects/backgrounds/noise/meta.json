@@ -1,0 +1,18 @@
+{
+  "name": "Noise",
+  "slug": "noise",
+  "category": "backgrounds",
+  "tags": ["hero", "section", "css-only"],
+  "dependencies": [],
+  "description": "Animated grain/noise texture overlay with dual noise layers, scanlines, and vignette",
+  "params": {
+    "--nz-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--nz-color-1": { "default": "#6366f1", "type": "color", "label": "Gradient color 1" },
+    "--nz-color-2": { "default": "#ec4899", "type": "color", "label": "Gradient color 2" },
+    "--nz-opacity": { "default": "0.12", "type": "number", "label": "Noise opacity", "min": 0.02, "max": 0.4 },
+    "--nz-speed": { "default": "0.1s", "type": "duration", "label": "Animation speed", "min": 0.05, "max": 0.5 },
+    "--nz-blend": { "default": "overlay", "type": "select", "label": "Blend mode", "options": ["overlay", "soft-light", "screen", "multiply"] },
+    "--nz-grain-size": { "default": "200px", "type": "size", "label": "Grain tile size", "min": 100, "max": 400 }
+  },
+  "jsParams": {}
+}

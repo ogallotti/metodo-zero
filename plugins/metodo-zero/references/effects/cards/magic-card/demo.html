@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Card — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="magic-grid">
+    <div class="magic-card">
+      <div class="magic-card__icon">&#128736;</div>
+      <h3 class="magic-card__title">Build Pipeline</h3>
+      <p class="magic-card__desc">Automated CI/CD with smart caching and parallel execution.</p>
+    </div>
+    <div class="magic-card">
+      <div class="magic-card__icon">&#128202;</div>
+      <h3 class="magic-card__title">Observability</h3>
+      <p class="magic-card__desc">Deep tracing, metrics, and logging unified in one dashboard.</p>
+    </div>
+    <div class="magic-card">
+      <div class="magic-card__icon">&#128279;</div>
+      <h3 class="magic-card__title">Integrations</h3>
+      <p class="magic-card__desc">Connect with 200+ tools via our REST API and native SDKs.</p>
+    </div>
+    <div class="magic-card">
+      <div class="magic-card__icon">&#127759;</div>
+      <h3 class="magic-card__title">Edge Network</h3>
+      <p class="magic-card__desc">Deploy to 50+ regions with automatic geo-routing.</p>
+    </div>
+    <div class="magic-card">
+      <div class="magic-card__icon">&#128101;</div>
+      <h3 class="magic-card__title">Team Spaces</h3>
+      <p class="magic-card__desc">Collaborative environments with role-based permissions.</p>
+    </div>
+    <div class="magic-card">
+      <div class="magic-card__icon">&#128171;</div>
+      <h3 class="magic-card__title">Auto Scaling</h3>
+      <p class="magic-card__desc">Scale to zero or millions — pay only for what you use.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "Clip Path Reveal",
+  "slug": "clip-path-reveal",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": [],
+  "description": "Content reveals through animated clip-path on scroll, creating dramatic unveiling transitions.",
+  "params": {
+    "--clip-bg": { "type": "color", "default": "#0a0a1a", "label": "Background" },
+    "--clip-reveal-color": { "type": "color", "default": "#6366f1", "label": "Reveal Section Color" }
+  },
+  "jsParams": {}
+}

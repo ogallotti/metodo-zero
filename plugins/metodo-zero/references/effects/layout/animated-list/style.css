@@ -1,0 +1,126 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --al-stagger: 80ms;
+  --al-distance: 20px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 60px 24px;
+}
+
+.al-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.al-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.al-header p {
+  color: #71717a;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.al-list {
+  max-width: 600px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.al-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 12px;
+  padding: 16px 20px;
+  opacity: 0;
+  transform: translateY(var(--al-distance));
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.al-item.al-item--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.al-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.al-item-content h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.al-item-content p {
+  font-size: 0.825rem;
+  color: #71717a;
+  line-height: 1.4;
+}
+
+.al-item-badge {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.al-badge--new {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.al-badge--hot {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.al-badge--soon {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .al-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

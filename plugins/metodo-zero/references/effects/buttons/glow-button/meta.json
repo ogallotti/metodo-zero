@@ -1,0 +1,17 @@
+{
+  "name": "Glow Button",
+  "slug": "glow-button",
+  "category": "buttons",
+  "tags": ["continuous", "hover", "css-only"],
+  "dependencies": [],
+  "description": "Button with pulsing/breathing glow effect that intensifies on hover.",
+  "params": {
+    "--glow-btn-bg": { "type": "color", "default": "#6366f1", "label": "Button Background" },
+    "--glow-btn-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--glow-btn-glow-color": { "type": "color", "default": "rgba(99, 102, 241, 0.5)", "label": "Glow Color" },
+    "--glow-btn-speed": { "type": "range", "min": 1, "max": 6, "default": 2, "unit": "s", "label": "Pulse Speed" },
+    "--glow-btn-blur": { "type": "range", "min": 8, "max": 40, "default": 20, "unit": "px", "label": "Glow Blur" },
+    "--glow-btn-radius": { "type": "range", "min": 0, "max": 50, "default": 12, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progressive Blur — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pb-container">
+    <div class="pb-content">
+      <img src="https://picsum.photos/seed/progblur/800/600" alt="Landscape with progressive blur">
+      <div class="pb-overlay">
+        <div class="pb-layer"></div>
+        <div class="pb-layer"></div>
+        <div class="pb-layer"></div>
+        <div class="pb-layer"></div>
+        <div class="pb-layer"></div>
+      </div>
+      <div class="pb-text-overlay">
+        <h2>Depth of Field</h2>
+        <p>Content fades into a smooth progressive blur, mimicking the shallow depth of field effect from photography.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pb-title">
+    <h1>Progressive Blur</h1>
+    <p>Pure CSS layered backdrop-filter creating a smooth, progressive depth-of-field blur from any edge direction.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

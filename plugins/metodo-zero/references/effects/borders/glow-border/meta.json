@@ -1,0 +1,18 @@
+{
+  "name": "Glow Border",
+  "slug": "glow-border",
+  "category": "borders",
+  "tags": ["continuous", "hover", "css-only"],
+  "dependencies": [],
+  "description": "Soft glowing border that pulses with adjustable intensity, color, and speed.",
+  "params": {
+    "--glow-bdr-color": { "type": "color", "default": "#6366f1", "label": "Glow Color" },
+    "--glow-bdr-intensity": { "type": "range", "min": 0.1, "max": 1, "step": 0.05, "default": 0.4, "label": "Glow Intensity" },
+    "--glow-bdr-blur": { "type": "range", "min": 4, "max": 30, "default": 12, "unit": "px", "label": "Glow Blur" },
+    "--glow-bdr-speed": { "type": "range", "min": 1, "max": 6, "default": 2.5, "unit": "s", "label": "Pulse Speed" },
+    "--glow-bdr-width": { "type": "range", "min": 1, "max": 4, "default": 1, "unit": "px", "label": "Border Width" },
+    "--glow-bdr-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" },
+    "--glow-bdr-bg": { "type": "color", "default": "#111122", "label": "Background" }
+  },
+  "jsParams": {}
+}

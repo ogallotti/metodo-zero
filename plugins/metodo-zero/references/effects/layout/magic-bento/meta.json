@@ -1,0 +1,15 @@
+{
+  "name": "Magic Bento",
+  "slug": "magic-bento",
+  "category": "layout",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Bento grid cards with spotlight hover effect that illuminates card borders on cursor proximity.",
+  "params": {
+    "--mb-gap": { "type": "range", "default": "16", "min": 4, "max": 32, "unit": "px", "label": "Grid Gap" },
+    "--mb-radius": { "type": "range", "default": "16", "min": 0, "max": 32, "unit": "px", "label": "Card Radius" },
+    "--mb-spotlight-color": { "type": "color", "default": "#6366f1", "label": "Spotlight Color" },
+    "--mb-spotlight-size": { "type": "range", "default": "300", "min": 100, "max": 600, "unit": "px", "label": "Spotlight Size" }
+  },
+  "jsParams": {}
+}

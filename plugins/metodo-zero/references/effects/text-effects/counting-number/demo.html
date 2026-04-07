@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counting Number — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cn-container">
+    <p class="cn-label-top">Stats that impress</p>
+    <div class="cn-grid">
+      <div class="cn-stat">
+        <div class="cn-number" data-target="12500" data-duration="2000" data-suffix="+" data-separator=",">0</div>
+        <hr class="cn-divider">
+        <span class="cn-stat-label">Active Users</span>
+      </div>
+      <div class="cn-stat">
+        <div class="cn-number" data-target="99.9" data-duration="2000" data-decimals="1" data-suffix="%" data-separator="">0</div>
+        <hr class="cn-divider">
+        <span class="cn-stat-label">Uptime</span>
+      </div>
+      <div class="cn-stat">
+        <div class="cn-number" data-target="350" data-duration="2000" data-prefix="$" data-suffix="M">0</div>
+        <hr class="cn-divider">
+        <span class="cn-stat-label">Revenue Generated</span>
+      </div>
+      <div class="cn-stat">
+        <div class="cn-number" data-target="48" data-duration="1500" data-easing="easeInOut">0</div>
+        <hr class="cn-divider">
+        <span class="cn-stat-label">Countries</span>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

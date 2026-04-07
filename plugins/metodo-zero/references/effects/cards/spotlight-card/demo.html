@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotlight Card — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="spotlight-group">
+    <div class="spotlight-card">
+      <div class="spotlight-card__icon">&#9889;</div>
+      <h3 class="spotlight-card__title">Lightning Fast</h3>
+      <p class="spotlight-card__desc">Optimized performance with sub-millisecond response times and edge caching worldwide.</p>
+      <a href="#" class="spotlight-card__link">Learn more &rarr;</a>
+    </div>
+    <div class="spotlight-card">
+      <div class="spotlight-card__icon">&#128274;</div>
+      <h3 class="spotlight-card__title">Secure by Default</h3>
+      <p class="spotlight-card__desc">Enterprise-grade encryption, SOC2 compliance, and zero-trust architecture built in.</p>
+      <a href="#" class="spotlight-card__link">Learn more &rarr;</a>
+    </div>
+    <div class="spotlight-card">
+      <div class="spotlight-card__icon">&#128640;</div>
+      <h3 class="spotlight-card__title">Ship Faster</h3>
+      <p class="spotlight-card__desc">Deploy in seconds with git push. Preview environments for every pull request.</p>
+      <a href="#" class="spotlight-card__link">Learn more &rarr;</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

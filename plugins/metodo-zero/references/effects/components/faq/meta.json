@@ -1,0 +1,1 @@
+{"name":"FAQ","slug":"faq","category":"components","tags":["click"],"dependencies":[],"description":"FAQ accordion with smooth height animations and plus/minus toggle icons.","params":{"--faq-radius":{"type":"range","default":"12","min":0,"max":24,"unit":"px","label":"Border Radius"},"--faq-accent":{"type":"color","default":"#6366f1","label":"Accent Color"}},"jsParams":{}}

@@ -1,0 +1,16 @@
+{
+  "name": "Magic Card",
+  "slug": "magic-card",
+  "category": "cards",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Card with radial gradient spotlight that follows cursor, creating a magical glow effect on the surface.",
+  "params": {
+    "--magic-gradient-size": { "type": "range", "min": 100, "max": 500, "default": 250, "unit": "px", "label": "Gradient Size" },
+    "--magic-gradient-color": { "type": "color", "default": "rgba(120, 119, 198, 0.15)", "label": "Gradient Color" },
+    "--magic-bg": { "type": "color", "default": "#111122", "label": "Card Background" },
+    "--magic-border-color": { "type": "color", "default": "rgba(120, 119, 198, 0.25)", "label": "Border Highlight" },
+    "--magic-radius": { "type": "range", "min": 0, "max": 24, "default": 12, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

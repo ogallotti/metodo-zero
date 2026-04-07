@@ -1,0 +1,16 @@
+{
+  "name": "Lens Zoom",
+  "slug": "lens-zoom",
+  "category": "media",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Magnifying lens effect on hover over an image, showing a zoomed-in circular area following the cursor.",
+  "params": {
+    "--lz-lens-size": { "type": "range", "default": "180", "min": 80, "max": 300, "unit": "px", "label": "Lens Size" },
+    "--lz-border-color": { "type": "color", "default": "#ffffff", "label": "Lens Border Color" },
+    "--lz-border-width": { "type": "range", "default": "3", "min": 1, "max": 6, "unit": "px", "label": "Border Width" }
+  },
+  "jsParams": {
+    "zoom": { "type": "range", "default": 2.5, "min": 1.5, "max": 5, "step": 0.1, "label": "Zoom Level" }
+  }
+}

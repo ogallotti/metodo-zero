@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora Borealis — Effects Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="aur-container">
+    <div class="aur-glow">
+      <div class="aur-band aur-band--1"></div>
+      <div class="aur-band aur-band--2"></div>
+      <div class="aur-band aur-band--3"></div>
+      <div class="aur-band aur-band--4"></div>
+    </div>
+    <div class="aur-shimmer"></div>
+    <div class="aur-vignette"></div>
+    <div class="aur-content">
+      <h1>Aurora Borealis</h1>
+      <p>Animated gradient waves dancing across the sky</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

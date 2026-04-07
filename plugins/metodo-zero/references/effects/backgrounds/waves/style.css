@@ -1,0 +1,76 @@
+/* Waves — Layered sine wave animation */
+:root {
+  --wav-bg: #0a0a1a;
+  --wav-color-1: rgba(99, 102, 241, 0.4);
+  --wav-color-2: rgba(168, 85, 247, 0.3);
+  --wav-color-3: rgba(59, 130, 246, 0.25);
+  --wav-color-4: rgba(6, 182, 212, 0.2);
+  --wav-stroke-width: 2;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--wav-bg);
+  color: #fff;
+  overflow: hidden;
+}
+
+.wav-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--wav-bg);
+}
+
+.wav-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wav-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.wav-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wav-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 40ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wav-canvas {
+    display: none;
+  }
+}

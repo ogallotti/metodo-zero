@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scale on Scroll — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="scale-hero">
+    <h1>Scale on Scroll</h1>
+    <p>Elements scale up as they approach the center of the viewport and shrink as they move away. Creates a natural focus-and-blur reading experience.</p>
+  </section>
+
+  <section class="scale-section">
+    <div class="scale-element scale-text">Think big.</div>
+  </section>
+
+  <section class="scale-section">
+    <div class="scale-element scale-card scale-card--purple">
+      <h2>Immersive interfaces</h2>
+      <p>When elements grow as they enter focus, users feel pulled into the content. Scale creates implied depth on a flat screen.</p>
+    </div>
+  </section>
+
+  <section class="scale-section">
+    <div class="scale-element scale-card scale-card--pink">
+      <h2>Guided attention</h2>
+      <p>The scale effect naturally draws the eye to the center of the viewport, creating a reading flow that requires zero conscious effort from the user.</p>
+    </div>
+  </section>
+
+  <section class="scale-section">
+    <div class="scale-element scale-text">Build fast.</div>
+  </section>
+
+  <section class="scale-section">
+    <div class="scale-element scale-card scale-card--blue">
+      <h2>Performance matters</h2>
+      <p>Only transform and opacity are animated — the two properties browsers can composite on the GPU without triggering layout recalculation.</p>
+    </div>
+  </section>
+
+  <section class="scale-section">
+    <div class="scale-element scale-card scale-card--green">
+      <h2>Ship with confidence</h2>
+      <p>Reduced motion support ensures accessibility. The effect degrades gracefully to static elements when the user prefers less motion.</p>
+    </div>
+  </section>
+
+  <footer class="scale-footer">
+    <p>Scale on Scroll — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

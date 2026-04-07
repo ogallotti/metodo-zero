@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noise — Effects Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="nz-container">
+    <div class="nz-gradient"></div>
+    <div class="nz-grain"></div>
+    <div class="nz-grain-2"></div>
+    <div class="nz-scanlines"></div>
+    <div class="nz-vignette"></div>
+    <div class="nz-content">
+      <h1>Noise</h1>
+      <p>Animated grain texture with scanlines and vignette</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

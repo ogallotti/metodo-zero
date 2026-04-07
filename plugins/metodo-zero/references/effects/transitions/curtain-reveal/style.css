@@ -1,0 +1,203 @@
+:root {
+  --curtain-color: #1a1a2e;
+  --curtain-bg: #0a0a1a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--curtain-bg);
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.cr-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.cr-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cr-hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0.85;
+  max-width: 540px;
+}
+
+/* Curtain wrapper */
+.curtain-wrapper {
+  position: relative;
+  min-height: 200vh;
+}
+
+.curtain-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Curtain panels */
+.curtain-left,
+.curtain-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: var(--curtain-color);
+  z-index: 10;
+  will-change: transform;
+}
+
+.curtain-left {
+  left: 0;
+}
+
+.curtain-right {
+  right: 0;
+}
+
+.curtain-left__inner,
+.curtain-right__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+.curtain-left__inner {
+  justify-content: flex-end;
+  padding-right: 1rem;
+}
+
+.curtain-right__inner {
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.curtain-text {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  opacity: 0.15;
+}
+
+/* Revealed content behind curtain */
+.curtain-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
+}
+
+.curtain-content h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.curtain-content p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0;
+  max-width: 540px;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+
+.curtain-content.revealed h2 {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.curtain-content.revealed p {
+  opacity: 0.75;
+  transform: translateY(0);
+}
+
+/* Multi-curtain sections */
+.curtain-bg--purple {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.curtain-bg--pink {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.curtain-bg--teal {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #1a1a2e;
+}
+
+/* End section */
+.cr-end {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.cr-end h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cr-end p {
+  opacity: 0.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain-left,
+  .curtain-right {
+    display: none;
+  }
+  .curtain-content h2,
+  .curtain-content p {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .curtain-stage {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+  }
+  .curtain-wrapper {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .curtain-text {
+    font-size: clamp(1.5rem, 8vw, 3rem);
+  }
+}

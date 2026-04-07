@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagonal Reveal — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="diag-section diag-section--hero diag--bottom-left">
+    <div class="diag-content visible">
+      <h1>Diagonal Reveal</h1>
+      <p>Sections connect with angled cuts that create dynamic, forward-moving transitions. Alternating left and right diagonals add rhythm to the page flow.</p>
+    </div>
+  </section>
+
+  <section class="diag-section diag-section--dark diag--left diag--bottom-right">
+    <div class="diag-content">
+      <h2>Left diagonal entry</h2>
+      <p>This section enters from the left with a rising diagonal edge. The angle creates visual momentum, guiding the eye across and down the page.</p>
+      <p class="sub">The clip-path polygon defines the exact geometry of the cut.</p>
+    </div>
+  </section>
+
+  <section class="diag-section diag-section--light diag--right diag--bottom-left">
+    <div class="diag-content">
+      <h2>Right diagonal entry</h2>
+      <p>Alternating directions between sections prevents the pattern from feeling repetitive. Each transition feels intentional rather than mechanical.</p>
+      <p class="sub">Content fades in with a slight upward motion as the section enters view.</p>
+    </div>
+  </section>
+
+  <section class="diag-section diag-section--pink diag--left diag--bottom-right">
+    <div class="diag-content">
+      <h2>Bold color contrast</h2>
+      <p>Diagonal transitions work best with strong color differences between sections. The angular cut emphasizes the boundary while connecting the visual flow.</p>
+    </div>
+  </section>
+
+  <section class="diag-section diag-section--teal diag--right">
+    <div class="diag-content">
+      <h2>Infinitely stackable</h2>
+      <p>Add as many diagonal sections as your content requires. The negative margin technique ensures seamless overlap without gaps or double-background artifacts.</p>
+    </div>
+  </section>
+
+  <footer class="diag-footer">
+    <p>Diagonal Reveal — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

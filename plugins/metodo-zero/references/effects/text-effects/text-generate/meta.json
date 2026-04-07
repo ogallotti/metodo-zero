@@ -1,0 +1,19 @@
+{
+  "name": "Text Generate",
+  "slug": "text-generate",
+  "category": "text-effects",
+  "tags": ["hero", "section", "reveal"],
+  "dependencies": [],
+  "description": "Text appears word by word with a typing/generation effect, like AI generating text.",
+  "params": {
+    "--tg-font-size": { "type": "range", "default": "2rem", "label": "Font Size", "min": "1rem", "max": "4rem" },
+    "--tg-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--tg-dim-color": { "type": "color", "default": "rgba(255,255,255,0.15)", "label": "Unrevealed Color" },
+    "--tg-cursor-color": { "type": "color", "default": "#6ee7b7", "label": "Cursor Color" },
+    "--tg-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "wordDelay": { "type": "number", "default": 80, "label": "Word Delay (ms)" },
+    "showCursor": { "type": "boolean", "default": true, "label": "Show Cursor" }
+  }
+}

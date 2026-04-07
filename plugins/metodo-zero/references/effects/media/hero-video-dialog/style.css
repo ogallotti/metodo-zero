@@ -1,0 +1,220 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --hvd-radius: 16px;
+  --hvd-overlay: rgba(0, 0, 0, 0.85);
+  --hvd-accent: #6366f1;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.hvd-thumbnail {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--hvd-radius);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hvd-thumbnail:hover {
+  transform: scale(1.02);
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.5);
+}
+
+.hvd-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hvd-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--hvd-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hvd-thumbnail:hover .hvd-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.hvd-play-btn::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 14px 0 14px 24px;
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: 4px;
+}
+
+.hvd-play-btn::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--hvd-accent);
+  opacity: 0.3;
+  animation: hvd-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hvd-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0; }
+}
+
+.hvd-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.hvd-modal.hvd-modal--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hvd-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--hvd-overlay);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hvd-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.hvd-modal--open .hvd-modal-content {
+  transform: scale(1) translateY(0);
+}
+
+.hvd-modal-content video,
+.hvd-modal-content iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+.hvd-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease;
+}
+
+.hvd-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hvd-title {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.hvd-title h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.hvd-title p {
+  color: #71717a;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .hvd-modal {
+    padding: 16px;
+  }
+
+  .hvd-play-btn {
+    width: 56px;
+    height: 56px;
+  }
+
+  .hvd-play-btn::after {
+    border-width: 10px 0 10px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hvd-thumbnail,
+  .hvd-play-btn,
+  .hvd-modal,
+  .hvd-modal-content {
+    transition: none;
+  }
+
+  .hvd-play-btn::before {
+    animation: none;
+  }
+}

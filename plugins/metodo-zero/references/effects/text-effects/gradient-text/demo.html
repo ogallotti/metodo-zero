@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Text — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="gt-container">
+    <p class="gt-label">Pure CSS gradient</p>
+    <h1 class="gt-text">The future is colorful.</h1>
+    <p class="gt-sub">Animated gradient flowing through text with zero JavaScript rendering.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

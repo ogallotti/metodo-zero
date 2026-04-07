@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltip — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="tt-header"><h1>Tooltip</h1><p>Animated tooltips with smart positioning that adjusts to viewport boundaries.</p></div>
+  <div class="tt-demo">
+    <div class="tt-target">Hover me<span class="tt-tooltip tt-tooltip--top">This is a helpful tooltip</span></div>
+    <div class="tt-target">Information<span class="tt-tooltip tt-tooltip--top">Extra details about this item</span></div>
+    <div class="tt-target">Settings<span class="tt-tooltip tt-tooltip--top">Configure your preferences</span></div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

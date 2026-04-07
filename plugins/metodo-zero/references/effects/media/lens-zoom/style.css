@@ -1,0 +1,88 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --lz-lens-size: 180px;
+  --lz-border-color: #ffffff;
+  --lz-border-width: 3px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.lz-container {
+  position: relative;
+  display: inline-block;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: none;
+}
+
+.lz-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lz-lens {
+  position: absolute;
+  width: var(--lz-lens-size);
+  height: var(--lz-lens-size);
+  border-radius: 50%;
+  border: var(--lz-border-width) solid var(--lz-border-color);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  z-index: 10;
+  background-repeat: no-repeat;
+  will-change: transform, background-position;
+}
+
+.lz-container:hover .lz-lens {
+  opacity: 1;
+}
+
+.lz-title {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.lz-title h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.lz-title p {
+  color: #71717a;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lz-lens {
+    transition: none;
+  }
+}

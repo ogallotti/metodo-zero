@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Video Dialog — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hvd-thumbnail">
+    <img src="https://picsum.photos/seed/herovideo/800/450" alt="Video thumbnail">
+    <div class="hvd-play-btn"></div>
+  </div>
+
+  <div class="hvd-modal">
+    <div class="hvd-modal-backdrop"></div>
+    <div class="hvd-modal-content">
+      <button class="hvd-close-btn" aria-label="Close">&times;</button>
+      <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls playsinline></video>
+    </div>
+  </div>
+
+  <div class="hvd-title">
+    <h1>Hero Video Dialog</h1>
+    <p>Click the thumbnail to expand it into a full-screen video modal with smooth scaling animation and blurred backdrop.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

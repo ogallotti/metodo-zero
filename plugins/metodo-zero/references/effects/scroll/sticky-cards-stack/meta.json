@@ -1,0 +1,14 @@
+{
+  "name": "Sticky Cards Stack",
+  "slug": "sticky-cards-stack",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": ["gsap"],
+  "description": "Cards stack on top of each other as you scroll, creating a layered deck effect with depth.",
+  "params": {
+    "--stack-bg": { "type": "color", "default": "#f0f0f5", "label": "Background" },
+    "--stack-card-radius": { "type": "range", "min": 0, "max": 32, "default": 16, "unit": "px", "label": "Card Radius" },
+    "--stack-offset": { "type": "range", "min": 10, "max": 60, "default": 30, "unit": "px", "label": "Stack Offset" }
+  },
+  "jsParams": {}
+}

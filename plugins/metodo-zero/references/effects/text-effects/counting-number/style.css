@@ -1,0 +1,98 @@
+:root {
+  --cn-font-size: 4rem;
+  --cn-color: #ffffff;
+  --cn-accent: #6ee7b7;
+  --cn-label-color: rgba(255, 255, 255, 0.5);
+  --cn-bg: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cn-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.cn-container {
+  padding: 2rem;
+  max-width: 90vw;
+  width: 100%;
+}
+
+.cn-label-top {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.cn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 3rem;
+  text-align: center;
+}
+
+.cn-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cn-number {
+  font-size: var(--cn-font-size);
+  font-weight: 700;
+  color: var(--cn-color);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cn-number .cn-prefix,
+.cn-number .cn-suffix {
+  color: var(--cn-accent);
+}
+
+.cn-stat-label {
+  font-size: 0.9rem;
+  color: var(--cn-label-color);
+  font-weight: 500;
+}
+
+.cn-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--cn-accent);
+  opacity: 0.4;
+  margin: 0.25rem 0;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .cn-number {
+    font-size: calc(var(--cn-font-size) * 0.65);
+  }
+  .cn-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cn-number {
+    /* Numbers will just show final values instantly */
+  }
+}

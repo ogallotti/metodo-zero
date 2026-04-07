@@ -1,0 +1,13 @@
+{
+  "name": "Diagonal Reveal",
+  "slug": "diagonal-reveal",
+  "category": "transitions",
+  "tags": ["section"],
+  "dependencies": [],
+  "description": "Diagonal wipe transition between sections using CSS clip-path polygons that reveal content at an angle.",
+  "params": {
+    "--diag-angle": { "type": "range", "min": 20, "max": 80, "default": 40, "unit": "px", "label": "Diagonal Height" },
+    "--diag-direction": { "type": "select", "options": ["left", "right"], "default": "left", "label": "Direction" }
+  },
+  "jsParams": {}
+}

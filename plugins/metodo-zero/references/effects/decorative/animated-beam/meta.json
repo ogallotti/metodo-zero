@@ -1,0 +1,15 @@
+{
+  "name": "Animated Beam",
+  "slug": "animated-beam",
+  "category": "decorative",
+  "tags": ["continuous"],
+  "dependencies": [],
+  "description": "SVG beam connecting two points with animated dash pattern and glow effect.",
+  "params": {
+    "--ab-color": { "type": "color", "default": "#6366f1", "label": "Beam Color" },
+    "--ab-width": { "type": "range", "default": "2", "min": 1, "max": 6, "unit": "px", "label": "Beam Width" },
+    "--ab-glow": { "type": "range", "default": "8", "min": 0, "max": 20, "unit": "px", "label": "Glow Size" },
+    "--ab-speed": { "type": "range", "default": "2", "min": 0.5, "max": 6, "unit": "s", "label": "Animation Speed" }
+  },
+  "jsParams": {}
+}

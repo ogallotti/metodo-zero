@@ -1,0 +1,16 @@
+{
+  "name": "Shiny Button",
+  "slug": "shiny-button",
+  "category": "buttons",
+  "tags": ["hover", "css-only"],
+  "dependencies": [],
+  "description": "Metallic shine sweep across button on hover, like light reflecting off a polished surface.",
+  "params": {
+    "--shiny-bg": { "type": "color", "default": "#6366f1", "label": "Button Background" },
+    "--shiny-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--shiny-shine-color": { "type": "color", "default": "rgba(255, 255, 255, 0.3)", "label": "Shine Color" },
+    "--shiny-speed": { "type": "range", "min": 200, "max": 1000, "default": 500, "unit": "ms", "label": "Shine Speed" },
+    "--shiny-radius": { "type": "range", "min": 0, "max": 50, "default": 12, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

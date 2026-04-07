@@ -1,0 +1,20 @@
+{
+  "name": "Split Text",
+  "slug": "split-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "reveal", "scroll-trigger"],
+  "dependencies": [],
+  "description": "Splits text into characters or words and animates each individually with stagger.",
+  "params": {
+    "--st-font-size": { "type": "range", "default": "4rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--st-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--st-stagger": { "type": "range", "default": "0.03s", "label": "Stagger Delay", "min": "0.01s", "max": "0.15s" },
+    "--st-duration": { "type": "range", "default": "0.6s", "label": "Animation Duration", "min": "0.2s", "max": "2s" },
+    "--st-distance": { "type": "range", "default": "40px", "label": "Travel Distance", "min": "10px", "max": "100px" },
+    "--st-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "splitBy": { "type": "select", "default": "chars", "label": "Split By", "options": ["chars", "words"] },
+    "direction": { "type": "select", "default": "up", "label": "Direction", "options": ["up", "down", "left", "right"] }
+  }
+}

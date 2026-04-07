@@ -1,0 +1,100 @@
+:root {
+  --gt-font-size: 4.5rem;
+  --gt-color-1: #6ee7b7;
+  --gt-color-2: #3b82f6;
+  --gt-color-3: #a78bfa;
+  --gt-color-4: #f472b6;
+  --gt-speed: 4s;
+  --gt-angle: 135deg;
+  --gt-bg: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gt-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.gt-container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 90vw;
+}
+
+.gt-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.gt-text {
+  font-size: var(--gt-font-size);
+  font-weight: 700;
+  line-height: 1.2;
+  background: linear-gradient(
+    var(--gt-angle),
+    var(--gt-color-1),
+    var(--gt-color-2),
+    var(--gt-color-3),
+    var(--gt-color-4),
+    var(--gt-color-1)
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gt-flow var(--gt-speed) ease infinite;
+}
+
+@keyframes gt-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gt-sub {
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+  max-width: 40ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .gt-text {
+    font-size: calc(var(--gt-font-size) * 0.5);
+  }
+  .gt-sub {
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gt-text {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}

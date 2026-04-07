@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glare Hover — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="gh-grid">
+    <div class="gh-card">
+      <img src="https://picsum.photos/seed/glare1/600/375" alt="Interface Design">
+      <div class="gh-glare"></div>
+      <div class="gh-card-body">
+        <h3>Interface Design</h3>
+        <p>Crafting pixel-perfect interfaces with attention to visual hierarchy and interactive feedback.</p>
+      </div>
+    </div>
+    <div class="gh-card">
+      <img src="https://picsum.photos/seed/glare2/600/375" alt="Motion Design">
+      <div class="gh-glare"></div>
+      <div class="gh-card-body">
+        <h3>Motion Design</h3>
+        <p>Adding life to interfaces through purposeful animation and fluid transitions.</p>
+      </div>
+    </div>
+    <div class="gh-card">
+      <img src="https://picsum.photos/seed/glare3/600/375" alt="Brand Identity">
+      <div class="gh-glare"></div>
+      <div class="gh-card-body">
+        <h3>Brand Identity</h3>
+        <p>Building cohesive visual systems that communicate brand values at every touchpoint.</p>
+      </div>
+    </div>
+  </div>
+  <div class="gh-title">
+    <h1>Glare Hover</h1>
+    <p>Hover over the cards to see a glossy reflective glare that follows your cursor, adding a premium tactile feel.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

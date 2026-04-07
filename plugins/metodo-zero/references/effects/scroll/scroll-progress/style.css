@@ -1,0 +1,106 @@
+:root {
+  --progress-height: 4px;
+  --progress-color: #6366f1;
+  --progress-bg: transparent;
+  --progress-z: 9999;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1a1a2e;
+  background: #fafafa;
+  line-height: 1.6;
+}
+
+.scroll-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--progress-height);
+  background: var(--progress-bg);
+  z-index: var(--progress-z);
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--progress-color);
+  transition: width 0.05s linear;
+  will-change: width;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar {
+    transition: none;
+  }
+}
+
+/* Demo content styles */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+.content-section {
+  padding: 6rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.content-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1a1a2e;
+}
+
+.content-section p {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+}
+
+.content-section--alt {
+  background: #f0f0f5;
+}
+
+.footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.footer p {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}

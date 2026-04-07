@@ -1,0 +1,17 @@
+{
+  "name": "Blur Text",
+  "slug": "blur-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "reveal"],
+  "dependencies": [],
+  "description": "Text appears from blur to sharp, staggered per character.",
+  "params": {
+    "--bt-font-size": { "type": "range", "default": "4rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--bt-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--bt-blur-amount": { "type": "range", "default": "12px", "label": "Blur Amount", "min": "4px", "max": "30px" },
+    "--bt-stagger": { "type": "range", "default": "0.04s", "label": "Stagger Delay", "min": "0.01s", "max": "0.15s" },
+    "--bt-duration": { "type": "range", "default": "0.8s", "label": "Duration", "min": "0.2s", "max": "2s" },
+    "--bt-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {}
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Glitch Text",
+  "slug": "glitch-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "hover", "continuous"],
+  "dependencies": [],
+  "description": "Digital glitch/corruption effect on text with chromatic aberration and noise.",
+  "params": {
+    "--gl-font-size": { "type": "range", "default": "5rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--gl-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--gl-color-r": { "type": "color", "default": "#ff0040", "label": "Red Channel" },
+    "--gl-color-b": { "type": "color", "default": "#00d4ff", "label": "Blue Channel" },
+    "--gl-intensity": { "type": "range", "default": "6px", "label": "Glitch Intensity", "min": "1px", "max": "20px" },
+    "--gl-speed": { "type": "range", "default": "3s", "label": "Animation Speed", "min": "0.5s", "max": "8s" },
+    "--gl-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "hoverOnly": { "type": "boolean", "default": false, "label": "Hover Only" }
+  }
+}

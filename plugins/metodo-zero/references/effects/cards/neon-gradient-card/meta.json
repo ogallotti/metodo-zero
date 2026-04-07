@@ -1,0 +1,19 @@
+{
+  "name": "Neon Gradient Card",
+  "slug": "neon-gradient-card",
+  "category": "cards",
+  "tags": ["hover", "continuous"],
+  "dependencies": [],
+  "description": "Card with animated neon gradient border that rotates continuously and intensifies on hover.",
+  "params": {
+    "--neon-color-1": { "type": "color", "default": "#ff006e", "label": "Neon Color 1" },
+    "--neon-color-2": { "type": "color", "default": "#8338ec", "label": "Neon Color 2" },
+    "--neon-color-3": { "type": "color", "default": "#3a86ff", "label": "Neon Color 3" },
+    "--neon-speed": { "type": "range", "min": 1, "max": 10, "default": 3, "unit": "s", "label": "Animation Speed" },
+    "--neon-blur": { "type": "range", "min": 4, "max": 30, "default": 12, "unit": "px", "label": "Glow Blur" },
+    "--neon-bg": { "type": "color", "default": "#0f0f23", "label": "Card Background" },
+    "--neon-border-width": { "type": "range", "min": 1, "max": 4, "default": 2, "unit": "px", "label": "Border Width" },
+    "--neon-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Reflective Card",
+  "slug": "reflective-card",
+  "category": "cards",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Card with reflective sheen that moves with cursor, simulating a holographic foil effect.",
+  "params": {
+    "--ref-sheen-size": { "type": "range", "min": 100, "max": 600, "default": 300, "unit": "px", "label": "Sheen Size" },
+    "--ref-sheen-color-1": { "type": "color", "default": "rgba(255, 255, 255, 0.15)", "label": "Sheen Color 1" },
+    "--ref-sheen-color-2": { "type": "color", "default": "rgba(120, 119, 198, 0.1)", "label": "Sheen Color 2" },
+    "--ref-bg": { "type": "color", "default": "#141428", "label": "Card Background" },
+    "--ref-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

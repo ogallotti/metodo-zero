@@ -1,0 +1,15 @@
+{
+  "name": "Tracing Beam",
+  "slug": "tracing-beam",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": [],
+  "description": "A beam/line that draws along the page as you scroll, connecting content sections with a visual thread.",
+  "params": {
+    "--beam-color": { "type": "color", "default": "#6366f1", "label": "Beam Color" },
+    "--beam-width": { "type": "range", "min": 1, "max": 6, "default": 2, "unit": "px", "label": "Beam Width" },
+    "--beam-glow": { "type": "range", "min": 0, "max": 20, "default": 8, "unit": "px", "label": "Glow Size" },
+    "--beam-dot-size": { "type": "range", "min": 6, "max": 20, "default": 12, "unit": "px", "label": "Dot Size" }
+  },
+  "jsParams": {}
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Shiny Text",
+  "slug": "shiny-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "continuous", "css-only"],
+  "dependencies": [],
+  "description": "Text with a metallic/shiny sweep animation. Pure CSS.",
+  "params": {
+    "--sn-font-size": { "type": "range", "default": "4.5rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--sn-color": { "type": "color", "default": "#94a3b8", "label": "Base Color" },
+    "--sn-shine-color": { "type": "color", "default": "#ffffff", "label": "Shine Color" },
+    "--sn-shine-width": { "type": "range", "default": "120px", "label": "Shine Width", "min": "40px", "max": "300px" },
+    "--sn-speed": { "type": "range", "default": "3s", "label": "Speed", "min": "1s", "max": "10s" },
+    "--sn-delay": { "type": "range", "default": "1s", "label": "Delay Between", "min": "0s", "max": "5s" },
+    "--sn-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {}
+}

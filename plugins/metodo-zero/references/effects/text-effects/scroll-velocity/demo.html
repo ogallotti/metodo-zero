@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Velocity — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sv-spacer">Scroll down to see the effect</div>
+
+  <div class="sv-section" data-base-speed="1" data-scroll-multiplier="3">
+    <div class="sv-track">
+      <span class="sv-item">Design</span>
+      <span class="sv-separator">/</span>
+      <span class="sv-item sv-item-stroke">Develop</span>
+      <span class="sv-separator">/</span>
+      <span class="sv-item">Deploy</span>
+      <span class="sv-separator">/</span>
+      <span class="sv-item sv-item-stroke">Iterate</span>
+      <span class="sv-separator">/</span>
+    </div>
+    <div class="sv-track sv-track-reverse" style="margin-top: 1rem;">
+      <span class="sv-item sv-item-stroke">Strategy</span>
+      <span class="sv-separator">/</span>
+      <span class="sv-item">Execution</span>
+      <span class="sv-separator">/</span>
+      <span class="sv-item sv-item-stroke">Growth</span>
+      <span class="sv-separator">/</span>
+      <span class="sv-item">Scale</span>
+      <span class="sv-separator">/</span>
+    </div>
+  </div>
+
+  <div class="sv-spacer">Keep scrolling</div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

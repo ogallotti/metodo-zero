@@ -1,0 +1,150 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --mb-gap: 16px;
+  --mb-radius: 16px;
+  --mb-spotlight-color: #6366f1;
+  --mb-spotlight-size: 300px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 60px 24px;
+}
+
+.mb-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.mb-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.mb-header p {
+  color: #71717a;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.mb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--mb-gap);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mb-card {
+  position: relative;
+  background: #18181b;
+  border-radius: var(--mb-radius);
+  padding: 32px 24px;
+  overflow: hidden;
+}
+
+.mb-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--mb-radius);
+  padding: 1px;
+  background: radial-gradient(
+    circle var(--mb-spotlight-size) at var(--mb-mouse-x, 50%) var(--mb-mouse-y, 50%),
+    var(--mb-spotlight-color),
+    transparent
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mb-card:hover::before {
+  opacity: 1;
+}
+
+.mb-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--mb-radius);
+  background: radial-gradient(
+    circle var(--mb-spotlight-size) at var(--mb-mouse-x, 50%) var(--mb-mouse-y, 50%),
+    rgba(99, 102, 241, 0.05),
+    transparent
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mb-card:hover::after {
+  opacity: 1;
+}
+
+.mb-card--span-2 {
+  grid-column: span 2;
+}
+
+.mb-card-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.mb-card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.mb-card p {
+  font-size: 0.875rem;
+  color: #71717a;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .mb-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .mb-grid {
+    grid-template-columns: 1fr;
+  }
+  .mb-card--span-2 {
+    grid-column: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mb-card::before,
+  .mb-card::after {
+    transition: none;
+  }
+}

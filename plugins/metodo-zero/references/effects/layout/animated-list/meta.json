@@ -1,0 +1,13 @@
+{
+  "name": "Animated List",
+  "slug": "animated-list",
+  "category": "layout",
+  "tags": ["scroll-trigger"],
+  "dependencies": [],
+  "description": "List items animate in with stagger effect on scroll, sliding up with fade.",
+  "params": {
+    "--al-stagger": { "type": "range", "default": "80", "min": 30, "max": 200, "unit": "ms", "label": "Stagger Delay" },
+    "--al-distance": { "type": "range", "default": "20", "min": 10, "max": 60, "unit": "px", "label": "Slide Distance" }
+  },
+  "jsParams": {}
+}

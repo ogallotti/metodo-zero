@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoom Through — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <section class="zoom-hero">
+    <h1>Zoom Through</h1>
+    <p>Zoom into an element that fills and then passes through the screen, revealing the next section behind it. A spatial navigation effect that creates depth.</p>
+  </section>
+
+  <div class="zoom-wrapper">
+    <div class="zoom-stage">
+      <div class="zoom-frame">
+        <div class="zoom-frame__surface zoom-frame__surface--purple">
+          <div>
+            <h2>Enter the portal</h2>
+            <p>This card scales up as you scroll, eventually zooming past you to reveal what's behind it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="zoom-revealed zoom-revealed--dark">
+        <div>
+          <h2>You've arrived</h2>
+          <p>The zoom-through effect creates a sense of spatial movement — like flying through a window into a new space. The scaling element fades as it grows beyond the viewport.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zoom-wrapper">
+    <div class="zoom-stage">
+      <div class="zoom-frame">
+        <div class="zoom-frame__surface zoom-frame__surface--pink">
+          <div>
+            <h2>Deeper still</h2>
+            <p>Chain multiple zoom-through sections for a spatial journey through your content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="zoom-revealed zoom-revealed--gradient">
+        <div>
+          <h2>Layered depth</h2>
+          <p>Each zoom creates the illusion of moving forward through layers. The brain interprets the scaling motion as physical movement toward the content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zoom-wrapper">
+    <div class="zoom-stage">
+      <div class="zoom-frame">
+        <div class="zoom-frame__surface zoom-frame__surface--teal">
+          <div>
+            <h2>One more leap</h2>
+            <p>The max scale controls how far the element zooms before fully fading. Higher values create a faster, more dramatic pass-through.</p>
+          </div>
+        </div>
+      </div>
+      <div class="zoom-revealed zoom-revealed--dark">
+        <div>
+          <h2>Journey complete</h2>
+          <p>The zoom-through transition is perfect for immersive storytelling, product demos, and any narrative that benefits from a sense of forward motion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="zoom-end">
+    <div>
+      <h2>Destination reached</h2>
+      <p>Three zoom-through transitions later, the spatial journey ends. Use this effect to transport users through conceptual spaces.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

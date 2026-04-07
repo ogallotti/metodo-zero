@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section Clip Path — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="scp-section scp-section--hero scp-clip scp-clip--arrow">
+    <h1>Section Clip Path</h1>
+    <p>Sections transition with geometric clip-path shapes — arrows, scoops, slashes, and diamonds — creating seamless visual connections between content blocks.</p>
+  </section>
+
+  <section class="scp-section scp-section--dark scp-clip scp-clip--scoop">
+    <h2>Scoop transition</h2>
+    <p>An elliptical scoop at the bottom of this section reveals the next one beneath, creating an organic curved handoff between backgrounds.</p>
+    <p class="sub">The ellipse shape works especially well for hero-to-content transitions.</p>
+  </section>
+
+  <section class="scp-section scp-section--light scp-clip scp-clip--slash">
+    <h2>Angular slash</h2>
+    <p>A diagonal cut at the section boundary adds energy and forward momentum. The angle draws the eye downward, encouraging continued scrolling.</p>
+    <p class="sub">Adjust the overlap with the --scp-overlap variable.</p>
+  </section>
+
+  <section class="scp-section scp-section--accent scp-clip scp-clip--diamond">
+    <h2>Diamond notch</h2>
+    <p>A geometric diamond shape punctuates the transition between sections. The angular cutout creates a distinctive, modern separation.</p>
+    <p class="sub">This shape pairs well with bold color contrasts between sections.</p>
+  </section>
+
+  <section class="scp-section scp-section--green scp-clip scp-clip--arrow">
+    <h2>Arrow revisited</h2>
+    <p>The same arrow shape from the hero, now with different colors. Clip-path transitions are infinitely reusable across different section themes.</p>
+    <p class="sub">Mix and match shapes throughout your page for visual variety.</p>
+  </section>
+
+  <footer class="scp-footer">
+    <p>Section Clip Path — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

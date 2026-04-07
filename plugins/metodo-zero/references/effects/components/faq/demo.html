@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="faq-header"><h1>FAQ</h1><p>Frequently asked questions with smooth animated expand/collapse.</p></div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-question">How do I install the effects library?<span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner">Simply copy the HTML, CSS, and JS files for the effects you need into your project. No build step or package manager required. Each effect is self-contained and independent.</div></div></div>
+    <div class="faq-item"><button class="faq-question">Are the effects accessible?<span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner">Yes. All effects respect prefers-reduced-motion, use semantic HTML, and include appropriate ARIA attributes. Animations are disabled for users who prefer reduced motion.</div></div></div>
+    <div class="faq-item"><button class="faq-question">Can I customize the colors and sizes?<span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner">Every effect uses CSS custom properties for theming. You can override them at the root level or per-instance to match your brand. JS parameters are also configurable at runtime.</div></div></div>
+    <div class="faq-item"><button class="faq-question">Do they work on mobile?<span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner">All effects are mobile-responsive by default. Touch interactions are supported where applicable, and layouts adapt to smaller screens using responsive CSS.</div></div></div>
+    <div class="faq-item"><button class="faq-question">What about performance?<span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner">Effects use GPU-accelerated properties (transform, opacity), IntersectionObserver to pause offscreen animations, and efficient event handling. Most achieve consistent 60fps.</div></div></div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

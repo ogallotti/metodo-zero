@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pin and Reveal — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <section class="intro-section">
+    <h1>Pin and Reveal</h1>
+    <p>A section that pins in place while its inner content cycles through steps as you scroll. Perfect for storytelling sequences.</p>
+  </section>
+
+  <div class="pin-wrapper">
+    <section class="pin-section">
+      <div class="pin-progress">
+        <div class="pin-dot active"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+      </div>
+      <div class="pin-content">
+        <div class="pin-step">
+          <div class="step-number">1</div>
+          <h2>Identify the problem</h2>
+          <p>Every great solution begins with understanding the pain point. We research, interview, and map out the exact friction your users experience daily.</p>
+        </div>
+        <div class="pin-step">
+          <div class="step-number">2</div>
+          <h2>Design the solution</h2>
+          <p>Armed with insights, we craft a solution architecture that balances simplicity with power. Every interaction is deliberate, every flow is optimized.</p>
+        </div>
+        <div class="pin-step">
+          <div class="step-number">3</div>
+          <h2>Build and iterate</h2>
+          <p>We ship fast and learn faster. Each sprint brings measurable improvements, validated by real user data rather than assumptions.</p>
+        </div>
+        <div class="pin-step">
+          <div class="step-number">4</div>
+          <h2>Scale with confidence</h2>
+          <p>With a proven foundation, scaling becomes a matter of execution. Performance, reliability, and user satisfaction grow together.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="outro-section">
+    <div>
+      <h2>Continue scrolling</h2>
+      <p>The pinned section is behind you. This pattern works beautifully for process flows, feature tours, and narrative sequences.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

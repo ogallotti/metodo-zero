@@ -1,0 +1,15 @@
+{
+  "name": "Meteors",
+  "slug": "meteors",
+  "category": "decorative",
+  "tags": ["continuous", "css-only"],
+  "dependencies": [],
+  "description": "Meteor streaks flying across the screen at an angle with glowing trails. Pure CSS animation.",
+  "params": {
+    "--mt-color": { "type": "color", "default": "#6366f1", "label": "Meteor Color" },
+    "--mt-count": { "type": "range", "default": "8", "min": 3, "max": 20, "label": "Meteor Count" },
+    "--mt-speed": { "type": "range", "default": "3", "min": 1, "max": 8, "unit": "s", "label": "Animation Speed" },
+    "--mt-angle": { "type": "range", "default": "215", "min": 180, "max": 270, "unit": "deg", "label": "Angle" }
+  },
+  "jsParams": {}
+}

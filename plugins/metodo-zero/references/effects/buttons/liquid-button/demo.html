@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Button — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="liq-svg-filters">
+    <defs>
+      <filter id="liq-goo">
+        <feGaussianBlur in="SourceGraphic" id="liq-blur" stdDeviation="12" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="liq-btn-wrap">
+    <span class="liq-btn__blob"></span>
+    <span class="liq-btn__blob"></span>
+    <span class="liq-btn__blob"></span>
+    <span class="liq-btn__blob"></span>
+    <button class="liq-btn">
+      <span class="liq-btn__text">Get Started Free</span>
+    </button>
+  </div>
+
+  <div class="liq-btn-wrap" style="--liq-bg: #ec4899">
+    <span class="liq-btn__blob"></span>
+    <span class="liq-btn__blob"></span>
+    <span class="liq-btn__blob"></span>
+    <span class="liq-btn__blob"></span>
+    <button class="liq-btn">
+      <span class="liq-btn__text">Join Waitlist</span>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

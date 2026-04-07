@@ -1,0 +1,14 @@
+{
+  "name": "Progressive Blur",
+  "slug": "progressive-blur",
+  "category": "media",
+  "tags": ["css-only"],
+  "dependencies": [],
+  "description": "Content blurs progressively from edge, creating a depth-of-field effect. Pure CSS with layered backdrops.",
+  "params": {
+    "--pb-direction": { "type": "select", "default": "to bottom", "options": ["to bottom", "to top", "to left", "to right"], "label": "Blur Direction" },
+    "--pb-max-blur": { "type": "range", "default": "12", "min": 2, "max": 30, "unit": "px", "label": "Max Blur" },
+    "--pb-start": { "type": "range", "default": "40", "min": 0, "max": 80, "unit": "%", "label": "Blur Start Point" }
+  },
+  "jsParams": {}
+}

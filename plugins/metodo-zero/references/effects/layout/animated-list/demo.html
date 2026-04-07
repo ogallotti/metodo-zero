@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated List — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="al-header">
+    <h1>Animated List</h1>
+    <p>List items cascade into view with staggered timing as you scroll.</p>
+  </div>
+  <ul class="al-list">
+    <li class="al-item">
+      <div class="al-item-icon">🚀</div>
+      <div class="al-item-content"><h3>Performance Optimization</h3><p>Sub-second load times with code splitting</p></div>
+      <span class="al-item-badge al-badge--hot">Hot</span>
+    </li>
+    <li class="al-item">
+      <div class="al-item-icon">🎨</div>
+      <div class="al-item-content"><h3>Design Tokens</h3><p>Centralized design decisions as data</p></div>
+      <span class="al-item-badge al-badge--new">New</span>
+    </li>
+    <li class="al-item">
+      <div class="al-item-icon">📦</div>
+      <div class="al-item-content"><h3>Component Library</h3><p>38 production-ready effects and components</p></div>
+    </li>
+    <li class="al-item">
+      <div class="al-item-icon">🔄</div>
+      <div class="al-item-content"><h3>Continuous Integration</h3><p>Automated testing and deployment pipelines</p></div>
+    </li>
+    <li class="al-item">
+      <div class="al-item-icon">📊</div>
+      <div class="al-item-content"><h3>Analytics Dashboard</h3><p>Real-time metrics and user behavior insights</p></div>
+      <span class="al-item-badge al-badge--soon">Soon</span>
+    </li>
+    <li class="al-item">
+      <div class="al-item-icon">🛡️</div>
+      <div class="al-item-content"><h3>Security Audit</h3><p>Regular vulnerability scanning and patching</p></div>
+    </li>
+    <li class="al-item">
+      <div class="al-item-icon">🌐</div>
+      <div class="al-item-content"><h3>Edge Deployment</h3><p>Global CDN with sub-50ms latency worldwide</p></div>
+      <span class="al-item-badge al-badge--new">New</span>
+    </li>
+    <li class="al-item">
+      <div class="al-item-icon">⚙️</div>
+      <div class="al-item-content"><h3>API Gateway</h3><p>Rate limiting, caching, and request routing</p></div>
+    </li>
+  </ul>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

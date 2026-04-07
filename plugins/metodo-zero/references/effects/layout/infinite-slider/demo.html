@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Slider — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="inf-header">
+    <h1>Infinite Slider</h1>
+    <p>Seamless infinite horizontal scroll. Hover to pause. Items auto-duplicate for smooth looping.</p>
+  </div>
+  <div class="inf-container">
+    <div class="inf-track">
+      <div class="inf-item"><div class="inf-item-logo">⚛️</div><span class="inf-item-name">React</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🟢</div><span class="inf-item-name">Vue.js</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🔺</div><span class="inf-item-name">Next.js</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🟣</div><span class="inf-item-name">Svelte</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🔷</div><span class="inf-item-name">TypeScript</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🎨</div><span class="inf-item-name">Tailwind</span></div>
+      <div class="inf-item"><div class="inf-item-logo">📦</div><span class="inf-item-name">Vite</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🧪</div><span class="inf-item-name">Vitest</span></div>
+    </div>
+  </div>
+  <div class="inf-container">
+    <div class="inf-track" style="animation-direction: reverse;">
+      <div class="inf-item"><div class="inf-item-logo">🐳</div><span class="inf-item-name">Docker</span></div>
+      <div class="inf-item"><div class="inf-item-logo">☸️</div><span class="inf-item-name">Kubernetes</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🔥</div><span class="inf-item-name">Firebase</span></div>
+      <div class="inf-item"><div class="inf-item-logo">⚡</div><span class="inf-item-name">Supabase</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🗄️</div><span class="inf-item-name">PostgreSQL</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🔴</div><span class="inf-item-name">Redis</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🌊</div><span class="inf-item-name">Cloudflare</span></div>
+      <div class="inf-item"><div class="inf-item-logo">🚀</div><span class="inf-item-name">Vercel</span></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

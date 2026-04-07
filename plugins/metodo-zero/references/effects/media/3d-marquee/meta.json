@@ -1,0 +1,15 @@
+{
+  "name": "3D Marquee",
+  "slug": "3d-marquee",
+  "category": "media",
+  "tags": ["continuous"],
+  "dependencies": [],
+  "description": "3D perspective marquee of images/cards that scroll continuously with depth and rotation effects.",
+  "params": {
+    "--m3d-speed": { "type": "range", "default": "30", "min": 10, "max": 60, "unit": "s", "label": "Scroll Speed" },
+    "--m3d-gap": { "type": "range", "default": "24", "min": 8, "max": 48, "unit": "px", "label": "Item Gap" },
+    "--m3d-perspective": { "type": "range", "default": "800", "min": 400, "max": 1600, "unit": "px", "label": "Perspective Depth" },
+    "--m3d-rotate": { "type": "range", "default": "5", "min": 0, "max": 15, "unit": "deg", "label": "Rotation Angle" }
+  },
+  "jsParams": {}
+}

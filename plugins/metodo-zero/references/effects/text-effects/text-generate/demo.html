@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Generate — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="tg-container">
+    <p class="tg-label">AI-style text generation</p>
+    <p class="tg-text" data-word-delay="80" data-show-cursor="true">
+      The best products are not built by chance. They emerge from a relentless focus on understanding what people truly need, combined with the craft to deliver it beautifully. Every decision, every pixel, every line of code serves a purpose. That is how you build something that lasts.
+    </p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

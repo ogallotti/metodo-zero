@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Marquee — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="m3d-title">
+    <h1>3D Marquee</h1>
+    <p>Cards scroll endlessly in a 3D perspective with depth rotation, creating a dynamic showcase wall.</p>
+  </div>
+  <div class="m3d-scene m3d-fade">
+    <div class="m3d-track-wrapper">
+      <div class="m3d-track">
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d1/400/250" alt="">
+          <div class="m3d-item-body"><h3>Design Systems</h3><p>Scalable component architecture</p></div>
+        </div>
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d2/400/250" alt="">
+          <div class="m3d-item-body"><h3>Creative Code</h3><p>Generative art and visuals</p></div>
+        </div>
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d3/400/250" alt="">
+          <div class="m3d-item-body"><h3>Brand Identity</h3><p>Visual language and systems</p></div>
+        </div>
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d4/400/250" alt="">
+          <div class="m3d-item-body"><h3>Product Design</h3><p>User-centered digital products</p></div>
+        </div>
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d5/400/250" alt="">
+          <div class="m3d-item-body"><h3>Motion Graphics</h3><p>Animated storytelling</p></div>
+        </div>
+      </div>
+      <div class="m3d-track m3d-track--reverse">
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d6/400/250" alt="">
+          <div class="m3d-item-body"><h3>Typography</h3><p>Type as visual expression</p></div>
+        </div>
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d7/400/250" alt="">
+          <div class="m3d-item-body"><h3>Photography</h3><p>Visual narrative and composition</p></div>
+        </div>
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d8/400/250" alt="">
+          <div class="m3d-item-body"><h3>Illustration</h3><p>Hand-crafted digital art</p></div>
+        </div>
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d9/400/250" alt="">
+          <div class="m3d-item-body"><h3>3D Rendering</h3><p>Photorealistic digital scenes</p></div>
+        </div>
+        <div class="m3d-item">
+          <img src="https://picsum.photos/seed/m3d10/400/250" alt="">
+          <div class="m3d-item-body"><h3>Data Viz</h3><p>Information made beautiful</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

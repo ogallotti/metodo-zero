@@ -1,0 +1,139 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --inf-speed: 25s;
+  --inf-gap: 32px;
+  --inf-direction: normal;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 0;
+}
+
+.inf-header {
+  text-align: center;
+  padding: 0 24px;
+}
+
+.inf-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.inf-header p {
+  color: #71717a;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.inf-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.inf-container::before,
+.inf-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.inf-container::before {
+  left: 0;
+  background: linear-gradient(to right, #09090b, transparent);
+}
+
+.inf-container::after {
+  right: 0;
+  background: linear-gradient(to left, #09090b, transparent);
+}
+
+.inf-track {
+  display: flex;
+  gap: var(--inf-gap);
+  width: max-content;
+  animation: inf-scroll var(--inf-speed) linear infinite;
+  animation-direction: var(--inf-direction);
+}
+
+@keyframes inf-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.inf-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 12px;
+  padding: 12px 20px;
+  white-space: nowrap;
+}
+
+.inf-item-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #27272a, #3f3f46);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.inf-item-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.inf-track--logos .inf-item {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+}
+
+.inf-track--logos .inf-item-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+}
+
+.inf-container:hover .inf-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inf-track {
+    animation: none;
+  }
+}

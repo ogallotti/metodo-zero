@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Stack — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stack-container" data-scroll-trigger>
+    <div class="stack-card">
+      <div class="stack-card__icon">&#127912;</div>
+      <h3 class="stack-card__title">Creative Studio</h3>
+      <p class="stack-card__desc">Transform ideas into stunning visual experiences with our AI-powered design tools.</p>
+      <span class="stack-card__tag">Design</span>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card__icon">&#128187;</div>
+      <h3 class="stack-card__title">Dev Platform</h3>
+      <p class="stack-card__desc">Ship production-ready apps 10x faster with intelligent code generation.</p>
+      <span class="stack-card__tag">Engineering</span>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card__icon">&#128200;</div>
+      <h3 class="stack-card__title">Analytics Hub</h3>
+      <p class="stack-card__desc">Real-time insights with beautiful dashboards and smart alerting.</p>
+      <span class="stack-card__tag">Data</span>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card__icon">&#128272;</div>
+      <h3 class="stack-card__title">Security Suite</h3>
+      <p class="stack-card__desc">Enterprise-grade protection with zero-trust architecture built in.</p>
+      <span class="stack-card__tag">Security</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

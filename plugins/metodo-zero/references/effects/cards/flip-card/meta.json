@@ -1,0 +1,18 @@
+{
+  "name": "Flip Card",
+  "slug": "flip-card",
+  "category": "cards",
+  "tags": ["hover", "click"],
+  "dependencies": [],
+  "description": "Card that flips 180 degrees in 3D to reveal backside content on hover or click.",
+  "params": {
+    "--flip-speed": { "type": "range", "min": 200, "max": 1000, "default": 600, "unit": "ms", "label": "Flip Speed" },
+    "--flip-perspective": { "type": "range", "min": 400, "max": 2000, "default": 1000, "unit": "px", "label": "Perspective" },
+    "--flip-front-bg": { "type": "color", "default": "#1a1a2e", "label": "Front Background" },
+    "--flip-back-bg": { "type": "color", "default": "#16213e", "label": "Back Background" },
+    "--flip-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {
+    "trigger": { "type": "select", "options": ["hover", "click"], "default": "hover", "label": "Trigger Mode" }
+  }
+}

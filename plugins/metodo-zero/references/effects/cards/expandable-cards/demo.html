@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expandable Cards — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="exp-grid">
+    <div class="exp-card" tabindex="0" role="button" aria-label="Expand card">
+      <img class="exp-card__image" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&h=300&fit=crop" alt="Technology">
+      <div class="exp-card__body">
+        <span class="exp-card__tag">Technology</span>
+        <h3 class="exp-card__title">The Future of AI Agents</h3>
+        <p class="exp-card__preview">Autonomous AI agents are transforming how we build software...</p>
+      </div>
+      <div class="exp-card__detail">
+        <p>Autonomous AI agents are transforming how we build software. Unlike traditional chatbots, these agents can plan, execute multi-step tasks, and learn from their environment.</p>
+        <p>From code generation to data analysis, AI agents are becoming indispensable tools for developers and businesses alike. The key breakthrough is their ability to decompose complex goals into actionable steps.</p>
+        <p>As we look ahead, the convergence of large language models with tool-use capabilities promises a new paradigm in human-computer interaction.</p>
+      </div>
+    </div>
+    <div class="exp-card" tabindex="0" role="button" aria-label="Expand card">
+      <img class="exp-card__image" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=300&fit=crop" alt="Infrastructure">
+      <div class="exp-card__body">
+        <span class="exp-card__tag">Infrastructure</span>
+        <h3 class="exp-card__title">Edge Computing Revolution</h3>
+        <p class="exp-card__preview">Moving compute closer to users is reshaping application architecture...</p>
+      </div>
+      <div class="exp-card__detail">
+        <p>Moving compute closer to users is reshaping application architecture. Edge computing eliminates latency barriers and enables real-time processing at unprecedented scale.</p>
+        <p>Modern edge platforms support serverless functions, databases, and even AI inference — all running within milliseconds of end users. This distributed model fundamentally changes how we think about deployment.</p>
+      </div>
+    </div>
+    <div class="exp-card" tabindex="0" role="button" aria-label="Expand card">
+      <img class="exp-card__image" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Design">
+      <div class="exp-card__body">
+        <span class="exp-card__tag">Design</span>
+        <h3 class="exp-card__title">Generative UI Patterns</h3>
+        <p class="exp-card__preview">AI-generated interfaces adapt in real-time to user context...</p>
+      </div>
+      <div class="exp-card__detail">
+        <p>AI-generated interfaces adapt in real-time to user context, preferences, and behavior. This marks a shift from static component libraries to dynamic, context-aware layouts.</p>
+        <p>Generative UI combines design systems with machine learning to create interfaces that evolve based on usage patterns, accessibility needs, and business goals.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay & Expanded View -->
+  <div class="exp-overlay"></div>
+  <div class="exp-expanded">
+    <button class="exp-expanded__close" aria-label="Close">&times;</button>
+    <img class="exp-expanded__image" src="" alt="">
+    <div class="exp-expanded__body">
+      <span class="exp-expanded__tag"></span>
+      <h2 class="exp-expanded__title"></h2>
+      <div class="exp-expanded__text"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

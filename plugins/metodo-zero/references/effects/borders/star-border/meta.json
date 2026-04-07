@@ -1,0 +1,17 @@
+{
+  "name": "Star Border",
+  "slug": "star-border",
+  "category": "borders",
+  "tags": ["continuous"],
+  "dependencies": [],
+  "description": "Border with animated star/sparkle particles that float along the perimeter.",
+  "params": {
+    "--star-bdr-color": { "type": "color", "default": "#fbbf24", "label": "Star Color" },
+    "--star-bdr-size": { "type": "range", "min": 2, "max": 8, "default": 4, "unit": "px", "label": "Star Size" },
+    "--star-bdr-count": { "type": "range", "min": 5, "max": 30, "default": 15, "label": "Star Count" },
+    "--star-bdr-speed": { "type": "range", "min": 3, "max": 15, "default": 8, "unit": "s", "label": "Speed" },
+    "--star-bdr-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" },
+    "--star-bdr-bg": { "type": "color", "default": "#111122", "label": "Background" }
+  },
+  "jsParams": {}
+}

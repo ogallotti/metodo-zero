@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Wipe — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="wipe-section wipe-section--hero">
+    <div class="wipe-content visible">
+      <h1>Color Wipe</h1>
+      <p>A solid color sweeps across the viewport to transition between sections. Three directional variants: left-to-right, right-to-left, and bottom-to-top.</p>
+    </div>
+  </section>
+
+  <section class="wipe-section wipe-section--dark">
+    <div class="wipe-overlay wipe-overlay--ltr"></div>
+    <div class="wipe-content">
+      <h2>Left to right</h2>
+      <p>The wipe enters from the left, covers the full section, then exits to the right — revealing the new content beneath. The scaleX animation keeps it performant.</p>
+      <p class="sub">Uses cubic-bezier easing for a satisfying acceleration curve.</p>
+    </div>
+  </section>
+
+  <section class="wipe-section wipe-section--light">
+    <div class="wipe-overlay wipe-overlay--rtl" style="background: #ec4899;"></div>
+    <div class="wipe-content">
+      <h2>Right to left</h2>
+      <p>Same technique, reversed direction. Alternating wipe directions between sections creates visual rhythm and prevents the transition from feeling repetitive.</p>
+      <p class="sub">Custom wipe color via inline style or --wipe-color variable.</p>
+    </div>
+  </section>
+
+  <section class="wipe-section wipe-section--pink">
+    <div class="wipe-overlay wipe-overlay--btt" style="background: #1a1a2e;"></div>
+    <div class="wipe-content">
+      <h2>Bottom to top</h2>
+      <p>The vertical variant sweeps upward, aligning with the natural scroll direction. This creates a curtain-rising feeling that complements the downward scroll motion.</p>
+    </div>
+  </section>
+
+  <section class="wipe-section wipe-section--green">
+    <div class="wipe-overlay wipe-overlay--ltr" style="background: #0a0a1a;"></div>
+    <div class="wipe-content">
+      <h2>One-shot triggers</h2>
+      <p>Each wipe fires once when its section enters the viewport. The observer disconnects after triggering, so scrolling back up won't replay the animation. Clean and intentional.</p>
+    </div>
+  </section>
+
+  <footer class="wipe-footer">
+    <p>Color Wipe — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

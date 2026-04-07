@@ -1,0 +1,17 @@
+{
+  "name": "Animated Border Button",
+  "slug": "animated-border-button",
+  "category": "buttons",
+  "tags": ["continuous", "css-only"],
+  "dependencies": [],
+  "description": "Button with animated rotating gradient border that spins continuously.",
+  "params": {
+    "--abtn-color-1": { "type": "color", "default": "#6366f1", "label": "Gradient Color 1" },
+    "--abtn-color-2": { "type": "color", "default": "#ec4899", "label": "Gradient Color 2" },
+    "--abtn-speed": { "type": "range", "min": 1, "max": 8, "default": 3, "unit": "s", "label": "Rotation Speed" },
+    "--abtn-border": { "type": "range", "min": 1, "max": 4, "default": 2, "unit": "px", "label": "Border Width" },
+    "--abtn-radius": { "type": "range", "min": 0, "max": 50, "default": 12, "unit": "px", "label": "Border Radius" },
+    "--abtn-bg": { "type": "color", "default": "#0f0f1a", "label": "Inner Background" }
+  },
+  "jsParams": {}
+}

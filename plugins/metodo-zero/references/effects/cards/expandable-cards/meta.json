@@ -1,0 +1,15 @@
+{
+  "name": "Expandable Cards",
+  "slug": "expandable-cards",
+  "category": "cards",
+  "tags": ["click"],
+  "dependencies": [],
+  "description": "Cards that expand smoothly to full detail view on click using FLIP animation technique.",
+  "params": {
+    "--exp-bg": { "type": "color", "default": "#141428", "label": "Card Background" },
+    "--exp-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" },
+    "--exp-transition": { "type": "range", "min": 200, "max": 800, "default": 400, "unit": "ms", "label": "Transition Speed" },
+    "--exp-overlay": { "type": "color", "default": "rgba(0, 0, 0, 0.6)", "label": "Overlay Color" }
+  },
+  "jsParams": {}
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Masonry",
+  "slug": "masonry",
+  "category": "layout",
+  "tags": ["scroll-trigger"],
+  "dependencies": [],
+  "description": "Animated masonry grid layout with staggered scroll-triggered reveal animations.",
+  "params": {
+    "--ms-columns": { "type": "range", "default": "3", "min": 2, "max": 5, "label": "Columns" },
+    "--ms-gap": { "type": "range", "default": "16", "min": 4, "max": 32, "unit": "px", "label": "Gap" },
+    "--ms-radius": { "type": "range", "default": "12", "min": 0, "max": 24, "unit": "px", "label": "Card Radius" }
+  },
+  "jsParams": {}
+}

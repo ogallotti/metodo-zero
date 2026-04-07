@@ -1,0 +1,16 @@
+{
+  "name": "Image Hover Parallax",
+  "slug": "image-hover-parallax",
+  "category": "media",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Image shifts with subtle 3D parallax tilt on hover, responding to cursor position.",
+  "params": {
+    "--ihp-radius": { "type": "range", "default": "16", "min": 0, "max": 32, "unit": "px", "label": "Border Radius" },
+    "--ihp-shadow": { "type": "range", "default": "30", "min": 0, "max": 60, "unit": "px", "label": "Shadow Depth" }
+  },
+  "jsParams": {
+    "intensity": { "type": "range", "default": 15, "min": 5, "max": 30, "label": "Tilt Intensity (deg)" },
+    "scale": { "type": "range", "default": 1.05, "min": 1, "max": 1.15, "step": 0.01, "label": "Hover Scale" }
+  }
+}

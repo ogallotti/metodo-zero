@@ -1,0 +1,21 @@
+{
+  "name": "Hyperspeed",
+  "slug": "hyperspeed",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "canvas", "performance-heavy"],
+  "dependencies": [],
+  "description": "Hyperspace speed lines radiating from center with bloom, gradients, and motion blur",
+  "params": {
+    "--hs-bg": { "default": "#030014", "type": "color", "label": "Background color" }
+  },
+  "jsParams": {
+    "lineCount": { "default": 300, "type": "number", "label": "Line count", "min": 50, "max": 800, "step": 25 },
+    "speed": { "default": 8, "type": "number", "label": "Speed", "min": 1, "max": 20, "step": 1 },
+    "maxLength": { "default": 400, "type": "number", "label": "Max trail length", "min": 50, "max": 800, "step": 50 },
+    "maxWidth": { "default": 3, "type": "number", "label": "Max line width", "min": 0.5, "max": 6, "step": 0.5 },
+    "fadeSpeed": { "default": 0.15, "type": "number", "label": "Fade speed", "min": 0.05, "max": 0.4, "step": 0.05 },
+    "centerX": { "default": 0.5, "type": "number", "label": "Center X", "min": 0, "max": 1, "step": 0.05 },
+    "centerY": { "default": 0.5, "type": "number", "label": "Center Y", "min": 0, "max": 1, "step": 0.05 },
+    "bloomRadius": { "default": 200, "type": "number", "label": "Bloom radius", "min": 50, "max": 500, "step": 25 }
+  }
+}

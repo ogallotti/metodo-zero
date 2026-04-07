@@ -1,0 +1,106 @@
+:root {
+  --shiny-bg: #6366f1;
+  --shiny-color: #ffffff;
+  --shiny-shine-color: rgba(255, 255, 255, 0.3);
+  --shiny-speed: 500ms;
+  --shiny-radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: #0a0a14;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+.shiny-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  border: none;
+  border-radius: var(--shiny-radius);
+  background: var(--shiny-bg);
+  color: var(--shiny-color);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.15s ease;
+}
+
+.shiny-btn:hover {
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+}
+
+.shiny-btn:active {
+  transform: scale(0.98);
+}
+
+.shiny-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    var(--shiny-shine-color),
+    transparent
+  );
+  transition: none;
+  pointer-events: none;
+}
+
+.shiny-btn:hover::before {
+  animation: shiny-sweep var(--shiny-speed) ease-in-out;
+}
+
+@keyframes shiny-sweep {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+.shiny-btn--dark {
+  background: #1e1e3a;
+  color: #e0e0e0;
+}
+
+.shiny-btn--dark:hover {
+  box-shadow: 0 6px 20px rgba(30, 30, 58, 0.5);
+}
+
+.shiny-btn--gradient {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-btn::before {
+    display: none;
+  }
+  .shiny-btn:hover::before {
+    animation: none;
+  }
+}

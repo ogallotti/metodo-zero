@@ -1,0 +1,13 @@
+{
+  "name": "Section Clip Path",
+  "slug": "section-clip-path",
+  "category": "transitions",
+  "tags": ["section"],
+  "dependencies": [],
+  "description": "Section transitions with animated clip-path shapes — circles, diamonds, and angular cuts between sections.",
+  "params": {
+    "--scp-duration": { "type": "range", "min": 200, "max": 1200, "default": 600, "unit": "ms", "label": "Transition Duration" },
+    "--scp-overlap": { "type": "range", "min": 0, "max": 200, "default": 80, "unit": "px", "label": "Section Overlap" }
+  },
+  "jsParams": {}
+}

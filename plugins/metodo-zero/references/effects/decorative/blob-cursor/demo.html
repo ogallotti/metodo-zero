@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blob Cursor — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bc-blob"></div>
+  <div class="bc-demo">
+    <h1>Blob Cursor</h1>
+    <p>A large soft gradient blob follows your cursor with smooth elastic easing, creating a liquid ambient glow behind your content.</p>
+    <div class="bc-grid">
+      <div class="bc-card">
+        <h2>Elastic Motion</h2>
+        <p>The blob uses interpolation-based easing for a natural, organic feel that responds fluidly to cursor movement.</p>
+      </div>
+      <div class="bc-card">
+        <h2>Screen Blend</h2>
+        <p>Uses mix-blend-mode: screen for additive light blending that naturally interacts with your dark background.</p>
+      </div>
+      <div class="bc-card">
+        <h2>GPU Accelerated</h2>
+        <p>Transform and filter operations leverage GPU compositing for smooth 60fps animation without layout thrashing.</p>
+      </div>
+      <div class="bc-card">
+        <h2>Configurable</h2>
+        <p>Size, blur, colors, opacity, and easing are all adjustable via CSS custom properties and JS parameters.</p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+        if (e.data.scope === 'js' && window.__blobCursorUpdate) window.__blobCursorUpdate(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "Images Slider",
+  "slug": "images-slider",
+  "category": "media",
+  "tags": ["click", "continuous"],
+  "dependencies": [],
+  "description": "Horizontal image slider with smooth transitions, navigation arrows, and dot indicators.",
+  "params": {
+    "--is-radius": { "type": "range", "default": "16", "min": 0, "max": 32, "unit": "px", "label": "Border Radius" },
+    "--is-gap": { "type": "range", "default": "16", "min": 0, "max": 32, "unit": "px", "label": "Slide Gap" },
+    "--is-accent": { "type": "color", "default": "#6366f1", "label": "Accent Color" }
+  },
+  "jsParams": {
+    "autoplay": { "type": "range", "default": 4000, "min": 0, "max": 10000, "step": 500, "label": "Autoplay (ms, 0 = off)" }
+  }
+}

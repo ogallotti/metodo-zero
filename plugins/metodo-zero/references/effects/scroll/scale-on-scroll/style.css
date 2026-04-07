@@ -1,0 +1,132 @@
+:root {
+  --scale-min: 0.7;
+  --scale-max: 1.1;
+  --scale-bg: #0a0a1a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--scale-bg);
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.scale-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.scale-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.scale-hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0.7;
+  max-width: 540px;
+}
+
+/* Scale elements */
+.scale-section {
+  padding: 10rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.scale-element {
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.scale-card {
+  max-width: 600px;
+  width: 100%;
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.scale-card--purple {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.scale-card--pink {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.scale-card--blue {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #1a1a2e;
+}
+
+.scale-card--green {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #1a1a2e;
+}
+
+.scale-card h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.scale-card p {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  opacity: 0.85;
+  line-height: 1.7;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+/* Scale text variant */
+.scale-text {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.scale-footer {
+  text-align: center;
+  padding: 6rem 2rem;
+  opacity: 0.4;
+  font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scale-element {
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .scale-card {
+    padding: 2rem 1.5rem;
+  }
+  .scale-section {
+    padding: 6rem 1rem;
+  }
+}

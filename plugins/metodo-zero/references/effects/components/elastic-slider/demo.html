@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elastic Slider — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="es-header"><h1>Elastic Slider</h1><p>Slider with elastic bouncy snap behavior and animated fill.</p></div>
+  <div class="es-container">
+    <div class="es-label"><span>Volume</span><span class="es-value">50</span></div>
+    <div class="es-track" data-min="0" data-max="100"><div class="es-fill"></div><div class="es-thumb"></div></div>
+    <div class="es-label"><span>Brightness</span><span class="es-value">50</span></div>
+    <div class="es-track" data-min="0" data-max="100"><div class="es-fill"></div><div class="es-thumb"></div></div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value);if(e.data.scope==='js'&&window.__elasticSliderUpdate)window.__elasticSliderUpdate(e.data.key,e.data.value)}});</script>
+</body>
+</html>

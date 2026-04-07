@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morphing Text — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mt-container">
+    <p class="mt-label">Smooth word transitions</p>
+    <h1>
+      <span class="mt-static">We are </span>
+      <span class="mt-wrapper" data-phrases='["designers.","engineers.","dreamers.","builders.","creators."]' data-pause-between="2500">
+        <span class="mt-text-current mt-text"></span>
+        <span class="mt-text-next mt-text"></span>
+      </span>
+    </h1>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

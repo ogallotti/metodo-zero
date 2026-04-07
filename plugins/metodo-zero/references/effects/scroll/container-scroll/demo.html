@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Container Scroll — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <section class="ct-hero">
+    <h1>Container Scroll</h1>
+    <p>Containers transform in 3D space — rotating, scaling, and adjusting perspective — as you scroll through the page.</p>
+  </section>
+
+  <div class="perspective-wrapper">
+    <div class="transform-container">
+      <div class="transform-container__inner">
+        <h2>Adaptive architecture</h2>
+        <p>Our platform adapts to your infrastructure needs. Whether you're running a single service or orchestrating hundreds of microservices, the architecture bends to fit your reality.</p>
+        <p>Built on battle-tested primitives with a flexible composition model that scales from startup to enterprise without rewrites.</p>
+        <div class="tag-row">
+          <span class="tag">Microservices</span>
+          <span class="tag">Auto-scaling</span>
+          <span class="tag">Edge-first</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="transform-container transform-container--mockup">
+      <div class="transform-container__inner">
+        <div class="mockup-bar">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+        </div>
+        <div class="mockup-body">
+          <h3>Real-time dashboard</h3>
+          <p>Monitor performance metrics, error rates, and user behavior in real time. Customizable widgets give you the data that matters, when it matters.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="transform-container">
+      <div class="transform-container__inner">
+        <h2>Developer-first workflows</h2>
+        <p>From local development to production deployment, every step is optimized for developer happiness. Hot reload, type safety, and instant feedback loops make building a joy.</p>
+        <p>Integrate with your existing tools through our extensive plugin ecosystem. GitHub, Slack, Linear, and 50+ more integrations work out of the box.</p>
+        <div class="tag-row">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Hot Reload</span>
+          <span class="tag">CI/CD</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="transform-container transform-container--mockup">
+      <div class="transform-container__inner">
+        <div class="mockup-bar">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+        </div>
+        <div class="mockup-body">
+          <h3>Deployment pipeline</h3>
+          <p>Preview every change before it hits production. Automatic rollbacks, canary releases, and blue-green deployments keep your users safe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ct-footer">
+    <p>Container Scroll — Effects Library</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

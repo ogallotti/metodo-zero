@@ -1,0 +1,105 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --sp-color: #fbbf24;
+  --sp-size-min: 4px;
+  --sp-size-max: 12px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.sp-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.sp-sparkle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  animation: sp-twinkle var(--sp-duration, 1.5s) ease-in-out infinite;
+}
+
+.sp-sparkle svg {
+  display: block;
+  filter: drop-shadow(0 0 4px var(--sp-color));
+}
+
+@keyframes sp-twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.sp-demo {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.sp-demo h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  color: #fbbf24;
+}
+
+.sp-demo > p {
+  font-size: 1.125rem;
+  color: #a1a1aa;
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto 48px;
+}
+
+.sp-hero-card {
+  position: relative;
+  background: linear-gradient(135deg, #18181b, #1c1917);
+  border: 1px solid #292524;
+  border-radius: 20px;
+  padding: 64px 32px;
+  overflow: hidden;
+}
+
+.sp-hero-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sp-hero-card p {
+  color: #a8a29e;
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-sparkle {
+    display: none;
+  }
+}

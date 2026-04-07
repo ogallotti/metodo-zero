@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glare Card — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glare-wrapper">
+    <div class="glare-card">
+      <div class="glare-card__glare"></div>
+      <div class="glare-card__gradient"></div>
+      <div class="glare-card__body">
+        <span class="glare-card__eyebrow">Performance Report</span>
+        <h3 class="glare-card__title">System Health Dashboard</h3>
+        <p class="glare-card__desc">Real-time monitoring of all production services across three regions with automated incident response.</p>
+        <div class="glare-card__stats">
+          <div class="glare-card__stat">
+            <span class="glare-card__stat-value">99.99%</span>
+            <span class="glare-card__stat-label">Uptime</span>
+          </div>
+          <div class="glare-card__stat">
+            <span class="glare-card__stat-value">23ms</span>
+            <span class="glare-card__stat-label">Avg Latency</span>
+          </div>
+          <div class="glare-card__stat">
+            <span class="glare-card__stat-value">1.2M</span>
+            <span class="glare-card__stat-label">Req/sec</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

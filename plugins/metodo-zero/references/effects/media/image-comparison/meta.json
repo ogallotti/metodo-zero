@@ -1,0 +1,15 @@
+{
+  "name": "Image Comparison",
+  "slug": "image-comparison",
+  "category": "media",
+  "tags": ["cursor", "click"],
+  "dependencies": [],
+  "description": "Drag slider to compare two images side by side with a smooth divider line.",
+  "params": {
+    "--ic-divider-color": { "type": "color", "default": "#ffffff", "label": "Divider Color" },
+    "--ic-divider-width": { "type": "range", "default": "3", "min": 1, "max": 8, "unit": "px", "label": "Divider Width" },
+    "--ic-handle-size": { "type": "range", "default": "44", "min": 28, "max": 64, "unit": "px", "label": "Handle Size" },
+    "--ic-radius": { "type": "range", "default": "16", "min": 0, "max": 32, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

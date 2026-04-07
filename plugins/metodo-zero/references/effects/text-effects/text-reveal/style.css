@@ -1,0 +1,114 @@
+:root {
+  --tr-font-size: 4rem;
+  --tr-color: #ffffff;
+  --tr-accent: #6ee7b7;
+  --tr-duration: 0.8s;
+  --tr-stagger: 0.15s;
+  --tr-bg: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tr-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.tr-container {
+  text-align: left;
+  padding: 2rem;
+  max-width: 90vw;
+}
+
+.tr-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.tr-line {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  font-size: var(--tr-font-size);
+  font-weight: 700;
+  color: var(--tr-color);
+  line-height: 1.3;
+}
+
+.tr-line-inner {
+  display: block;
+  opacity: 0;
+  transform: translateY(100%);
+  transition:
+    opacity 0.01s,
+    transform var(--tr-duration) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tr-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--tr-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--tr-duration) cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.tr-line[data-direction="right"]::after {
+  transform-origin: right center;
+}
+
+/* Phase 1: mask slides in */
+.tr-visible .tr-line::after {
+  transform: scaleX(1);
+}
+
+/* Phase 2: text appears, mask slides out */
+.tr-visible .tr-line.tr-text-show .tr-line-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tr-visible .tr-line.tr-text-show::after {
+  transform-origin: right center;
+  transform: scaleX(0);
+}
+
+.tr-visible .tr-line.tr-text-show[data-direction="right"]::after {
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+@media (max-width: 768px) {
+  .tr-line {
+    font-size: calc(var(--tr-font-size) * 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tr-line-inner {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .tr-line::after {
+    display: none !important;
+  }
+}

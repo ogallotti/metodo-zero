@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lens Zoom — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="lz-container">
+    <img src="https://picsum.photos/seed/lenszoom/800/500" alt="Detailed photograph for lens zoom">
+    <div class="lz-lens"></div>
+  </div>
+  <div class="lz-title">
+    <h1>Lens Zoom</h1>
+    <p>Hover over the image to see a magnifying lens that follows your cursor, showing a zoomed-in view of the detail beneath.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+        if (e.data.scope === 'js' && window.__lensZoomUpdate) window.__lensZoomUpdate(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

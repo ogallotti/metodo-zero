@@ -1,0 +1,18 @@
+{
+  "name": "Orbiting Circles",
+  "slug": "orbiting-circles",
+  "category": "decorative",
+  "tags": ["continuous", "css-only"],
+  "dependencies": [],
+  "description": "Circles orbiting around a center point at different radii and speeds. Pure CSS animation.",
+  "params": {
+    "--oc-color-1": { "type": "color", "default": "#6366f1", "label": "Circle Color 1" },
+    "--oc-color-2": { "type": "color", "default": "#ec4899", "label": "Circle Color 2" },
+    "--oc-color-3": { "type": "color", "default": "#06b6d4", "label": "Circle Color 3" },
+    "--oc-radius-1": { "type": "range", "default": "100", "min": 50, "max": 200, "unit": "px", "label": "Orbit 1 Radius" },
+    "--oc-radius-2": { "type": "range", "default": "160", "min": 80, "max": 280, "unit": "px", "label": "Orbit 2 Radius" },
+    "--oc-radius-3": { "type": "range", "default": "220", "min": 120, "max": 360, "unit": "px", "label": "Orbit 3 Radius" },
+    "--oc-speed": { "type": "range", "default": "8", "min": 3, "max": 20, "unit": "s", "label": "Base Speed" }
+  },
+  "jsParams": {}
+}

@@ -1,0 +1,1 @@
+{"name":"Tabs","slug":"tabs","category":"components","tags":["click"],"dependencies":[],"description":"Animated tabs with sliding indicator and smooth content transitions.","params":{"--tab-accent":{"type":"color","default":"#6366f1","label":"Accent Color"},"--tab-radius":{"type":"range","default":"12","min":0,"max":24,"unit":"px","label":"Border Radius"}},"jsParams":{}}

@@ -1,0 +1,133 @@
+:root {
+  --sr-font-size: 2.5rem;
+  --sr-color: #ffffff;
+  --sr-muted: rgba(255, 255, 255, 0.5);
+  --sr-duration: 0.8s;
+  --sr-stagger: 0.1s;
+  --sr-distance: 30px;
+  --sr-bg: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 200vh;
+  background: var(--sr-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.sr-spacer {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.sr-section {
+  padding: 6rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sr-item {
+  opacity: 0;
+  transition:
+    opacity var(--sr-duration) cubic-bezier(0.16, 1, 0.3, 1),
+    transform var(--sr-duration) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* fade-up */
+.sr-item[data-sr="fade-up"] {
+  transform: translateY(var(--sr-distance));
+}
+
+/* fade-down */
+.sr-item[data-sr="fade-down"] {
+  transform: translateY(calc(var(--sr-distance) * -1));
+}
+
+/* fade-left */
+.sr-item[data-sr="fade-left"] {
+  transform: translateX(var(--sr-distance));
+}
+
+/* fade-right */
+.sr-item[data-sr="fade-right"] {
+  transform: translateX(calc(var(--sr-distance) * -1));
+}
+
+/* scale */
+.sr-item[data-sr="scale"] {
+  transform: scale(0.85);
+}
+
+/* rotate */
+.sr-item[data-sr="rotate"] {
+  transform: translateY(var(--sr-distance)) rotate(3deg);
+}
+
+/* Visible state */
+.sr-item.sr-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1) rotate(0deg);
+}
+
+.sr-heading {
+  font-size: var(--sr-font-size);
+  font-weight: 700;
+  color: var(--sr-color);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.sr-subheading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1rem;
+}
+
+.sr-text {
+  font-size: 1.125rem;
+  color: var(--sr-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 55ch;
+}
+
+.sr-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #6ee7b7, #3b82f6);
+  border: none;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .sr-heading {
+    font-size: calc(var(--sr-font-size) * 0.7);
+  }
+  .sr-section {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sr-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

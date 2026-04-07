@@ -1,0 +1,14 @@
+{
+  "name": "Pin and Reveal",
+  "slug": "pin-and-reveal",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": ["gsap"],
+  "description": "Section pins in place while content reveals and animates within it, creating a storytelling scroll experience.",
+  "params": {
+    "--pin-bg": { "type": "color", "default": "#0a0a1a", "label": "Background" },
+    "--pin-accent": { "type": "color", "default": "#6366f1", "label": "Accent Color" },
+    "--pin-text-color": { "type": "color", "default": "#ffffff", "label": "Text Color" }
+  },
+  "jsParams": {}
+}

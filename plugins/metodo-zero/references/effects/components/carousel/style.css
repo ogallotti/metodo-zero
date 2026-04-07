@@ -1,0 +1,29 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--car-radius:16px;--car-accent:#6366f1}
+body{font-family:'Inter',system-ui,sans-serif;background:#09090b;color:#fafafa;min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px}
+
+.car-wrapper{position:relative;width:100%;max-width:700px}
+.car-viewport{overflow:hidden;border-radius:var(--car-radius);cursor:grab}
+.car-viewport:active{cursor:grabbing}
+.car-track{display:flex;transition:transform 0.5s cubic-bezier(0.25,1,0.5,1);will-change:transform}
+.car-slide{min-width:100%;position:relative}
+.car-slide img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.car-slide-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,0.7))}
+.car-slide-overlay h3{font-size:1.125rem;font-weight:600;margin-bottom:4px}
+.car-slide-overlay p{font-size:0.85rem;color:#d4d4d8;line-height:1.4}
+
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:none;border-radius:50%;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.2s;z-index:2}
+.car-btn:hover{background:rgba(0,0,0,0.7);transform:translateY(-50%) scale(1.1)}
+.car-btn--prev{left:12px}
+.car-btn--next{right:12px}
+
+.car-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.car-dot{width:8px;height:8px;border-radius:50%;border:none;background:#3f3f46;cursor:pointer;padding:0;transition:background 0.3s,transform 0.3s}
+.car-dot--active{background:var(--car-accent);transform:scale(1.3)}
+
+.car-title{text-align:center;margin-top:40px}
+.car-title h1{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
+.car-title p{color:#71717a;font-size:1rem;max-width:480px;margin:0 auto;line-height:1.6}
+
+@media(max-width:600px){.car-btn{width:36px;height:36px;font-size:1rem}}
+@media(prefers-reduced-motion:reduce){.car-track{transition:none}.car-dot,.car-btn{transition:none}}

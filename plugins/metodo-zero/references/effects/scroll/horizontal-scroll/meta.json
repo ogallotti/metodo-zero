@@ -1,0 +1,14 @@
+{
+  "name": "Horizontal Scroll",
+  "slug": "horizontal-scroll",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": ["gsap"],
+  "description": "Section scrolls horizontally while the page scrolls vertically, creating a cinematic panel experience.",
+  "params": {
+    "--hscroll-bg": { "type": "color", "default": "#0a0a1a", "label": "Background" },
+    "--hscroll-panel-gap": { "type": "range", "min": 0, "max": 60, "default": 24, "unit": "px", "label": "Panel Gap" },
+    "--hscroll-panel-radius": { "type": "range", "min": 0, "max": 32, "default": 16, "unit": "px", "label": "Panel Radius" }
+  },
+  "jsParams": {}
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Beam — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ab-scene">
+    <svg class="ab-svg" preserveAspectRatio="none"></svg>
+    <div class="ab-nodes">
+      <div class="ab-node">
+        <div class="ab-node-icon">📡</div>
+        <span class="ab-node-label">Source</span>
+      </div>
+      <div class="ab-node ab-center-node">
+        <div class="ab-node-icon">⚡</div>
+        <span class="ab-node-label">Processing</span>
+      </div>
+      <div class="ab-node">
+        <div class="ab-node-icon">🎯</div>
+        <span class="ab-node-label">Target</span>
+      </div>
+    </div>
+    <div class="ab-title">
+      <h1>Animated Beam</h1>
+      <p>SVG beams connecting nodes with animated dashes and glow, perfect for flow diagrams and architecture visualizations.</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

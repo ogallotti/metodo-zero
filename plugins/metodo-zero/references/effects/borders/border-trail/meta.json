@@ -1,0 +1,17 @@
+{
+  "name": "Border Trail",
+  "slug": "border-trail",
+  "category": "borders",
+  "tags": ["continuous", "css-only"],
+  "dependencies": [],
+  "description": "Glowing trail that follows the border path with a fading tail.",
+  "params": {
+    "--trail-color": { "type": "color", "default": "#a855f7", "label": "Trail Color" },
+    "--trail-length": { "type": "range", "min": 30, "max": 180, "default": 90, "unit": "deg", "label": "Trail Length" },
+    "--trail-speed": { "type": "range", "min": 2, "max": 10, "default": 4, "unit": "s", "label": "Speed" },
+    "--trail-width": { "type": "range", "min": 1, "max": 4, "default": 2, "unit": "px", "label": "Border Width" },
+    "--trail-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" },
+    "--trail-bg": { "type": "color", "default": "#111125", "label": "Background" }
+  },
+  "jsParams": {}
+}

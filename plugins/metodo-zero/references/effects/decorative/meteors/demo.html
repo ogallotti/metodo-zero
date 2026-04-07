@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meteors — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mt-container">
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+    <div class="mt-meteor"></div>
+  </div>
+  <div class="mt-demo">
+    <h1>Meteors</h1>
+    <p>Luminous meteor streaks fall across the viewport with glowing trails and staggered timing for a cosmic atmosphere.</p>
+    <div class="mt-feature-grid">
+      <div class="mt-feature">
+        <h2>Pure CSS</h2>
+        <p>No JavaScript needed for the animation — just CSS keyframes and custom properties.</p>
+      </div>
+      <div class="mt-feature">
+        <h2>Staggered Timing</h2>
+        <p>Each meteor has unique delay, speed, and size for a natural, randomized feel.</p>
+      </div>
+      <div class="mt-feature">
+        <h2>Glow Effect</h2>
+        <p>CSS filter drop-shadow creates the characteristic glow trail behind each meteor.</p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

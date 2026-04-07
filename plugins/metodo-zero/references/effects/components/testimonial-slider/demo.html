@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonial Slider — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ts-header"><h1>Testimonials</h1><p>Testimonial carousel with avatars, quotes, and smooth transitions.</p></div>
+  <div class="ts-slider">
+    <div class="ts-track">
+      <div class="ts-slide"><div class="ts-card"><div class="ts-quote">"</div><p class="ts-text">This effects library transformed our landing page. The animations are smooth, performant, and incredibly easy to customize to match our brand.</p><div class="ts-author"><img class="ts-avatar" src="https://picsum.photos/seed/av1/88/88" alt=""><div class="ts-info"><h4>Sarah Chen</h4><p>Design Lead, TechCorp</p></div></div></div></div>
+      <div class="ts-slide"><div class="ts-card"><div class="ts-quote">"</div><p class="ts-text">Zero dependencies and production-ready out of the box. We integrated five effects into our site in under an hour. The code quality is exceptional.</p><div class="ts-author"><img class="ts-avatar" src="https://picsum.photos/seed/av2/88/88" alt=""><div class="ts-info"><h4>Marcus Rivera</h4><p>Frontend Engineer, StartupXYZ</p></div></div></div></div>
+      <div class="ts-slide"><div class="ts-card"><div class="ts-quote">"</div><p class="ts-text">The attention to accessibility and performance is remarkable. Every effect respects reduced motion preferences and pauses when offscreen.</p><div class="ts-author"><img class="ts-avatar" src="https://picsum.photos/seed/av3/88/88" alt=""><div class="ts-info"><h4>Emily Torres</h4><p>Product Manager, DesignCo</p></div></div></div></div>
+      <div class="ts-slide"><div class="ts-card"><div class="ts-quote">"</div><p class="ts-text">Finally, a library that doesn't force a framework on you. Pure vanilla JS that works everywhere. Our conversion rate improved 23% after adding these effects.</p><div class="ts-author"><img class="ts-avatar" src="https://picsum.photos/seed/av4/88/88" alt=""><div class="ts-info"><h4>James Park</h4><p>CTO, GrowthLabs</p></div></div></div></div>
+    </div>
+  </div>
+  <div class="ts-controls"></div>
+  <div class="ts-nav"><button class="ts-nav-btn ts-nav-btn--prev" aria-label="Previous">&larr;</button><button class="ts-nav-btn ts-nav-btn--next" aria-label="Next">&rarr;</button></div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value);if(e.data.scope==='js'&&window.__testimonialUpdate)window.__testimonialUpdate(e.data.key,e.data.value)}});</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Gradient Card — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="neon-card-wrap">
+    <div class="neon-card">
+      <div class="neon-card__glow"></div>
+      <div class="neon-card__emoji">&#9734;</div>
+      <h3 class="neon-card__title">Starter</h3>
+      <p class="neon-card__desc">Perfect for side projects and prototypes. Everything you need to get started.</p>
+      <div class="neon-card__price">$9<span>/month</span></div>
+      <button class="neon-card__cta">Get Started</button>
+    </div>
+    <div class="neon-card">
+      <div class="neon-card__glow"></div>
+      <div class="neon-card__emoji">&#9733;</div>
+      <h3 class="neon-card__title">Pro</h3>
+      <p class="neon-card__desc">For growing teams that need advanced features and priority support.</p>
+      <div class="neon-card__price">$29<span>/month</span></div>
+      <button class="neon-card__cta">Upgrade to Pro</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

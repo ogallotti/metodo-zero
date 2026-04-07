@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masonry — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ms-header">
+    <h1>Masonry Grid</h1>
+    <p>Cards with varying heights animate into a masonry layout as you scroll.</p>
+  </div>
+  <div class="ms-grid">
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas1/400/300" alt="">
+      <div class="ms-item-body"><h3>Responsive Typography</h3><p>Fluid type scales that adapt to viewport using clamp() and custom properties.</p></div>
+    </div>
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas2/400/500" alt="">
+      <div class="ms-item-body"><h3>Color Theory</h3><p>Understanding complementary, analogous, and triadic color harmonies for digital design.</p></div>
+    </div>
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas3/400/250" alt="">
+      <div class="ms-item-body"><h3>Grid Systems</h3><p>Structured layouts that bring order and rhythm.</p></div>
+    </div>
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas4/400/400" alt="">
+      <div class="ms-item-body"><h3>Animation Principles</h3><p>Timing, easing, and choreography that bring interfaces to life with purpose.</p></div>
+    </div>
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas5/400/350" alt="">
+      <div class="ms-item-body"><h3>Accessibility</h3><p>Designing for everyone means designing better.</p></div>
+    </div>
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas6/400/280" alt="">
+      <div class="ms-item-body"><h3>Performance</h3><p>Fast loading, smooth scrolling, efficient rendering.</p></div>
+    </div>
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas7/400/450" alt="">
+      <div class="ms-item-body"><h3>Interaction Design</h3><p>Meaningful feedback that guides users through complex flows.</p></div>
+    </div>
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas8/400/320" alt="">
+      <div class="ms-item-body"><h3>Visual Hierarchy</h3><p>Directing attention through size, contrast, and spacing.</p></div>
+    </div>
+    <div class="ms-item">
+      <img src="https://picsum.photos/seed/mas9/400/380" alt="">
+      <div class="ms-item-body"><h3>Prototyping</h3><p>Rapid iteration from concept to high-fidelity interactive mockups.</p></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

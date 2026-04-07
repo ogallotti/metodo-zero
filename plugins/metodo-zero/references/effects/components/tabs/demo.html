@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="tab-header"><h1>Tabs</h1><p>Animated tabs with a sliding indicator and smooth content transitions.</p></div>
+  <div class="tab-container">
+    <div class="tab-list">
+      <button class="tab-btn tab-btn--active">Overview</button>
+      <button class="tab-btn">Features</button>
+      <button class="tab-btn">Integration</button>
+      <div class="tab-indicator"></div>
+    </div>
+    <div class="tab-panels">
+      <div class="tab-panel tab-panel--active"><div class="tab-panel-content"><h3>Product Overview</h3><p>A comprehensive effects library built with vanilla JS and CSS. Zero dependencies, maximum performance. Every effect is production-ready with full accessibility support and responsive design built in from the ground up.</p></div></div>
+      <div class="tab-panel"><div class="tab-panel-content"><h3>Key Features</h3><p>CSS custom properties for theming, IntersectionObserver for performance, prefers-reduced-motion support, mobile-first responsive design, and a clean API for runtime configuration. Each effect works independently.</p></div></div>
+      <div class="tab-panel"><div class="tab-panel-content"><h3>Easy Integration</h3><p>Copy the HTML, CSS, and JS files into your project. No build step required. Works with any framework or static site generator. Simply include the files and add the required markup to your page.</p></div></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

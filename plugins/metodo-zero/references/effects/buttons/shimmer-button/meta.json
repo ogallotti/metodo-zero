@@ -1,0 +1,17 @@
+{
+  "name": "Shimmer Button",
+  "slug": "shimmer-button",
+  "category": "buttons",
+  "tags": ["continuous", "css-only"],
+  "dependencies": [],
+  "description": "Animated shimmer/shine sweep continuously traveling across button surface.",
+  "params": {
+    "--shim-bg": { "type": "color", "default": "#1a1a2e", "label": "Button Background" },
+    "--shim-color": { "type": "color", "default": "#e0e0e0", "label": "Text Color" },
+    "--shim-shine": { "type": "color", "default": "rgba(255, 255, 255, 0.12)", "label": "Shimmer Color" },
+    "--shim-speed": { "type": "range", "min": 1, "max": 6, "default": 2.5, "unit": "s", "label": "Shimmer Speed" },
+    "--shim-radius": { "type": "range", "min": 0, "max": 50, "default": 12, "unit": "px", "label": "Border Radius" },
+    "--shim-border-color": { "type": "color", "default": "rgba(255, 255, 255, 0.08)", "label": "Border Color" }
+  },
+  "jsParams": {}
+}

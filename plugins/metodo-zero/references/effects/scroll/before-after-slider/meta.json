@@ -1,0 +1,14 @@
+{
+  "name": "Before After Slider",
+  "slug": "before-after-slider",
+  "category": "scroll",
+  "tags": ["section", "cursor"],
+  "dependencies": [],
+  "description": "Drag slider to compare two states side by side with a draggable divider.",
+  "params": {
+    "--slider-handle-color": { "type": "color", "default": "#ffffff", "label": "Handle Color" },
+    "--slider-handle-width": { "type": "range", "min": 2, "max": 8, "default": 3, "unit": "px", "label": "Divider Width" },
+    "--slider-radius": { "type": "range", "min": 0, "max": 24, "default": 12, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

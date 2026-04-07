@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Table — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pt-header"><h1>Pricing Table</h1><p>Animated pricing cards with monthly/yearly toggle.</p></div>
+  <div class="pt-toggle">
+    <span class="pt-toggle-label pt-toggle-label--active">Monthly</span>
+    <button class="pt-switch"><span class="pt-switch-knob"></span></button>
+    <span class="pt-toggle-label">Yearly</span>
+    <span class="pt-save">Save 20%</span>
+  </div>
+  <div class="pt-grid">
+    <div class="pt-card">
+      <div class="pt-plan">Starter</div>
+      <div class="pt-price"><span class="pt-amount">$9</span><span class="pt-period">/month</span></div>
+      <p class="pt-desc">Perfect for personal projects and experimentation.</p>
+      <ul class="pt-features"><li>5 effects</li><li>Basic customization</li><li>Community support</li></ul>
+      <button class="pt-cta pt-cta--ghost">Get Started</button>
+    </div>
+    <div class="pt-card pt-card--featured">
+      <div class="pt-plan">Pro</div>
+      <div class="pt-price"><span class="pt-amount">$29</span><span class="pt-period">/month</span></div>
+      <p class="pt-desc">For professional teams building production products.</p>
+      <ul class="pt-features"><li>All 38 effects</li><li>Full customization</li><li>Priority support</li><li>Source code access</li></ul>
+      <button class="pt-cta pt-cta--primary">Get Started</button>
+    </div>
+    <div class="pt-card">
+      <div class="pt-plan">Enterprise</div>
+      <div class="pt-price"><span class="pt-amount">$79</span><span class="pt-period">/month</span></div>
+      <p class="pt-desc">Custom solutions for large-scale deployments.</p>
+      <ul class="pt-features"><li>Everything in Pro</li><li>Custom effects</li><li>Dedicated engineer</li><li>SLA guarantee</li><li>White-label license</li></ul>
+      <button class="pt-cta pt-cta--ghost">Contact Sales</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

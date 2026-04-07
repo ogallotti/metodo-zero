@@ -1,0 +1,14 @@
+{
+  "name": "Infinite Slider",
+  "slug": "infinite-slider",
+  "category": "layout",
+  "tags": ["continuous"],
+  "dependencies": [],
+  "description": "Infinite horizontal scrolling content with smooth seamless looping.",
+  "params": {
+    "--inf-speed": { "type": "range", "default": "25", "min": 10, "max": 60, "unit": "s", "label": "Scroll Speed" },
+    "--inf-gap": { "type": "range", "default": "32", "min": 8, "max": 64, "unit": "px", "label": "Item Gap" },
+    "--inf-direction": { "type": "select", "default": "normal", "options": ["normal", "reverse"], "label": "Direction" }
+  },
+  "jsParams": {}
+}

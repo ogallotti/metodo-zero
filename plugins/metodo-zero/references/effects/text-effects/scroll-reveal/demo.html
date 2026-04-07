@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Reveal — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sr-spacer">Scroll down to see the effect</div>
+
+  <div class="sr-section">
+    <p class="sr-item sr-subheading" data-sr="fade-up">Why choose us</p>
+    <hr class="sr-item sr-divider" data-sr="fade-up">
+    <h2 class="sr-item sr-heading" data-sr="fade-up">We build products that people genuinely love to use.</h2>
+    <p class="sr-item sr-text" data-sr="fade-up">Every detail matters. From the first pixel to the last line of code, we obsess over craft because your users deserve nothing less.</p>
+    <p class="sr-item sr-text" data-sr="fade-up">Our team combines deep technical expertise with design sensibility to create experiences that feel effortless yet powerful.</p>
+  </div>
+
+  <div class="sr-section">
+    <p class="sr-item sr-subheading" data-sr="fade-left">Our approach</p>
+    <hr class="sr-item sr-divider" data-sr="fade-left">
+    <h2 class="sr-item sr-heading" data-sr="fade-left">Strategy first. Execution always.</h2>
+    <p class="sr-item sr-text" data-sr="fade-left">We start with understanding your business goals and user needs, then work backwards to build the right solution at the right time.</p>
+  </div>
+
+  <div class="sr-spacer"></div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

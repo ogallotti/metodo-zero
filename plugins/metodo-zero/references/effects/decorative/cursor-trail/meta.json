@@ -1,0 +1,17 @@
+{
+  "name": "Cursor Trail",
+  "slug": "cursor-trail",
+  "category": "decorative",
+  "tags": ["cursor", "continuous", "canvas"],
+  "dependencies": [],
+  "description": "Glowing particle trail that follows the cursor with fading afterglow. Canvas-based for high performance.",
+  "params": {
+    "--ct-color": { "type": "color", "default": "#6366f1", "label": "Trail Color" },
+    "--ct-glow-size": { "type": "range", "default": "30", "min": 10, "max": 80, "unit": "px", "label": "Glow Size" },
+    "--ct-fade-speed": { "type": "range", "default": "0.92", "min": 0.8, "max": 0.99, "step": 0.01, "label": "Fade Speed" }
+  },
+  "jsParams": {
+    "trailLength": { "type": "range", "default": 30, "min": 5, "max": 80, "label": "Trail Length" },
+    "particleCount": { "type": "range", "default": 3, "min": 1, "max": 8, "label": "Particles per Frame" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Rotating Text",
+  "slug": "rotating-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "continuous"],
+  "dependencies": [],
+  "description": "Rotates/cycles through words with slide, fade, or flip animation.",
+  "params": {
+    "--rt-font-size": { "type": "range", "default": "4rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--rt-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--rt-accent": { "type": "color", "default": "#6ee7b7", "label": "Rotating Word Color" },
+    "--rt-duration": { "type": "range", "default": "0.5s", "label": "Transition Duration", "min": "0.2s", "max": "1.5s" },
+    "--rt-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "interval": { "type": "number", "default": 2500, "label": "Interval (ms)" },
+    "mode": { "type": "select", "default": "slide", "label": "Mode", "options": ["slide", "fade", "flip"] }
+  }
+}

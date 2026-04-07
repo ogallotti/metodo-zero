@@ -1,0 +1,19 @@
+{
+  "name": "Waves",
+  "slug": "waves",
+  "category": "backgrounds",
+  "tags": ["hero", "section", "continuous", "canvas"],
+  "dependencies": [],
+  "description": "Layered sine wave animation with gradient fills and dynamic stroke lines",
+  "params": {
+    "--wav-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--wav-stroke-width": { "default": "2", "type": "number", "label": "Stroke width", "min": 0.5, "max": 4 }
+  },
+  "jsParams": {
+    "speed": { "default": 0.015, "type": "number", "label": "Speed", "min": 0.005, "max": 0.04, "step": 0.005 },
+    "waveCount": { "default": 6, "type": "number", "label": "Wave count", "min": 2, "max": 10, "step": 1 },
+    "baseAmplitude": { "default": 50, "type": "number", "label": "Amplitude", "min": 10, "max": 150, "step": 10 },
+    "verticalCenter": { "default": 0.55, "type": "number", "label": "Vertical position", "min": 0.2, "max": 0.8, "step": 0.05 },
+    "verticalSpread": { "default": 0.4, "type": "number", "label": "Vertical spread", "min": 0.1, "max": 0.8, "step": 0.05 }
+  }
+}

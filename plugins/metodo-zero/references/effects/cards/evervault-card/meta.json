@@ -1,0 +1,19 @@
+{
+  "name": "Evervault Card",
+  "slug": "evervault-card",
+  "category": "cards",
+  "tags": ["hover", "cursor", "canvas"],
+  "dependencies": [],
+  "description": "Card with matrix-like random character grid background that reacts to cursor proximity.",
+  "params": {
+    "--ev-bg": { "type": "color", "default": "#0a0a1a", "label": "Card Background" },
+    "--ev-char-color": { "type": "color", "default": "#3b3b5c", "label": "Character Color" },
+    "--ev-highlight-color": { "type": "color", "default": "#818cf8", "label": "Highlight Color" },
+    "--ev-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" },
+    "--ev-char-size": { "type": "range", "min": 8, "max": 18, "default": 12, "unit": "px", "label": "Character Size" }
+  },
+  "jsParams": {
+    "scrambleRadius": { "type": "range", "min": 50, "max": 300, "default": 150, "label": "Scramble Radius" },
+    "scrambleSpeed": { "type": "range", "min": 30, "max": 200, "default": 80, "label": "Scramble Speed (ms)" }
+  }
+}

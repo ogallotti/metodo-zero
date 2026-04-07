@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Images Slider — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="is-slider">
+    <div class="is-track">
+      <div class="is-slide" data-caption="Minimalist workspace setup with natural light">
+        <img src="https://picsum.photos/seed/slide1/800/450" alt="Slide 1">
+      </div>
+      <div class="is-slide" data-caption="Abstract architectural forms and geometric patterns">
+        <img src="https://picsum.photos/seed/slide2/800/450" alt="Slide 2">
+      </div>
+      <div class="is-slide" data-caption="Aerial perspective of urban design infrastructure">
+        <img src="https://picsum.photos/seed/slide3/800/450" alt="Slide 3">
+      </div>
+      <div class="is-slide" data-caption="Nature-inspired textures and organic compositions">
+        <img src="https://picsum.photos/seed/slide4/800/450" alt="Slide 4">
+      </div>
+      <div class="is-slide" data-caption="Technology meets artistry in modern interfaces">
+        <img src="https://picsum.photos/seed/slide5/800/450" alt="Slide 5">
+      </div>
+    </div>
+    <button class="is-nav is-nav--prev" aria-label="Previous">&larr;</button>
+    <button class="is-nav is-nav--next" aria-label="Next">&rarr;</button>
+  </div>
+  <div class="is-dots"></div>
+  <div class="is-caption"></div>
+  <div class="is-title">
+    <h1>Images Slider</h1>
+    <p>Smooth image slider with arrows, dots, autoplay, touch swipe, and captions. Fully responsive.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+        if (e.data.scope === 'js' && window.__imagesSliderUpdate) window.__imagesSliderUpdate(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

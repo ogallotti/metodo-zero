@@ -1,0 +1,19 @@
+{
+  "name": "Magnetic Button",
+  "slug": "magnetic-button",
+  "category": "buttons",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Button pulls toward cursor when nearby, creating a magnetic attraction effect.",
+  "params": {
+    "--mag-bg": { "type": "color", "default": "#6366f1", "label": "Button Background" },
+    "--mag-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--mag-radius": { "type": "range", "min": 0, "max": 50, "default": 12, "unit": "px", "label": "Border Radius" },
+    "--mag-padding-x": { "type": "range", "min": 16, "max": 60, "default": 36, "unit": "px", "label": "Horizontal Padding" },
+    "--mag-padding-y": { "type": "range", "min": 8, "max": 24, "default": 14, "unit": "px", "label": "Vertical Padding" }
+  },
+  "jsParams": {
+    "strength": { "type": "range", "min": 10, "max": 60, "default": 30, "label": "Magnetic Strength" },
+    "triggerArea": { "type": "range", "min": 1, "max": 3, "step": 0.1, "default": 1.5, "label": "Trigger Area Multiplier" }
+  }
+}

@@ -1,0 +1,110 @@
+:root {
+  --rain-speed: 3s;
+  --rain-border-width: 2px;
+  --rain-radius: 12px;
+  --rain-bg: #0f0f1a;
+  --rain-glow-blur: 12px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: #0a0a14;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+.rainbow-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--rain-border-width);
+  border-radius: var(--rain-radius);
+  background: linear-gradient(
+    var(--rain-angle, 0deg),
+    #ff0080, #ff8c00, #40e0d0, #7b68ee, #ff0080
+  );
+  background-size: 300% 300%;
+  animation: rainbow-shift var(--rain-speed) linear infinite;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.rainbow-btn::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--rain-radius) + 4px);
+  background: inherit;
+  background-size: 300% 300%;
+  animation: rainbow-shift var(--rain-speed) linear infinite;
+  filter: blur(var(--rain-glow-blur));
+  opacity: 0.5;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.rainbow-btn:hover::before {
+  opacity: 0.8;
+}
+
+@keyframes rainbow-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rainbow-btn__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: calc(var(--rain-radius) - var(--rain-border-width));
+  background: var(--rain-bg);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+
+.rainbow-btn:hover .rainbow-btn__inner {
+  background: transparent;
+}
+
+/* Filled variant — no inner background */
+.rainbow-btn--filled .rainbow-btn__inner {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rainbow-btn,
+  .rainbow-btn::before {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}

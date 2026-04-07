@@ -1,0 +1,23 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ts-accent:#6366f1;--ts-radius:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:#09090b;color:#fafafa;min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px}
+.ts-header{text-align:center;margin-bottom:40px}
+.ts-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
+.ts-header p{color:#71717a;font-size:1rem;max-width:480px;margin:0 auto;line-height:1.6}
+.ts-slider{position:relative;width:100%;max-width:600px;overflow:hidden}
+.ts-track{display:flex;transition:transform 0.5s cubic-bezier(0.25,1,0.5,1)}
+.ts-slide{min-width:100%;padding:0 4px}
+.ts-card{background:#18181b;border:1px solid #27272a;border-radius:var(--ts-radius);padding:32px 28px;text-align:center}
+.ts-quote{font-size:2rem;color:var(--ts-accent);line-height:1;margin-bottom:16px}
+.ts-text{font-size:1rem;color:#d4d4d8;line-height:1.7;margin-bottom:24px;font-style:italic}
+.ts-author{display:flex;align-items:center;justify-content:center;gap:12px}
+.ts-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #27272a}
+.ts-info h4{font-size:0.9rem;font-weight:600;margin-bottom:1px}
+.ts-info p{font-size:0.75rem;color:#71717a}
+.ts-controls{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.ts-dot{width:8px;height:8px;border-radius:50%;border:none;background:#3f3f46;cursor:pointer;padding:0;transition:background 0.3s,transform 0.3s}
+.ts-dot--active{background:var(--ts-accent);transform:scale(1.3)}
+.ts-nav{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.ts-nav-btn{width:36px;height:36px;border:1px solid #3f3f46;border-radius:50%;background:transparent;color:#a1a1aa;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,color 0.2s}
+.ts-nav-btn:hover{background:rgba(255,255,255,0.06);color:#fff}
+@media(prefers-reduced-motion:reduce){.ts-track{transition:none}.ts-dot,.ts-nav-btn{transition:none}}

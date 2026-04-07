@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hover Border Gradient — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hbg-box">
+    <div class="hbg-box__glow"></div>
+    <h3 class="hbg-box__title">Default Gradient</h3>
+    <p class="hbg-box__desc">Border transitions from subtle monochrome to vivid multi-color gradient on hover with smooth background-position shift.</p>
+  </div>
+  <div class="hbg-box" style="--hbg-color-1: #10b981; --hbg-color-2: #06b6d4; --hbg-color-3: #8b5cf6">
+    <div class="hbg-box__glow"></div>
+    <h3 class="hbg-box__title">Custom Colors</h3>
+    <p class="hbg-box__desc">Override gradient colors via inline custom properties for different themes and moods.</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

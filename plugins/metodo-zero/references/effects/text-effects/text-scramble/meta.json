@@ -1,0 +1,19 @@
+{
+  "name": "Text Scramble",
+  "slug": "text-scramble",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "reveal"],
+  "dependencies": [],
+  "description": "Scrambles and decodes text with random characters before revealing the final text.",
+  "params": {
+    "--ts-font-size": { "type": "range", "default": "3.5rem", "label": "Font Size", "min": "1rem", "max": "6rem" },
+    "--ts-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--ts-scramble-color": { "type": "color", "default": "#6ee7b7", "label": "Scramble Color" },
+    "--ts-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "scrambleSpeed": { "type": "number", "default": 30, "label": "Scramble Speed (ms)" },
+    "revealDelay": { "type": "number", "default": 50, "label": "Reveal Delay (ms)" },
+    "pauseBetween": { "type": "number", "default": 3000, "label": "Pause Between (ms)" }
+  }
+}

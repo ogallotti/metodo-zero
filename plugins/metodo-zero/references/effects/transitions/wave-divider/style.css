@@ -1,0 +1,128 @@
+:root {
+  --wave-height: 100px;
+  --wave-speed: 12s;
+  --wave-color: #0a0a1a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1a1a2e;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.wave-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.wave-section h1,
+.wave-section h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.wave-section p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+.wave-section--hero {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  padding-bottom: calc(4rem + var(--wave-height));
+}
+
+.wave-section--dark {
+  background: var(--wave-color);
+  color: #fff;
+  padding-bottom: calc(4rem + var(--wave-height));
+}
+
+.wave-section--light {
+  background: #fafafa;
+  padding-bottom: calc(4rem + var(--wave-height));
+}
+
+.wave-section--accent {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: #fff;
+  padding-bottom: calc(4rem + var(--wave-height));
+}
+
+.wave-section--end {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.wave-section p.sub {
+  opacity: 0.7;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* Wave divider */
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--wave-height);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  animation: wave-slide var(--wave-speed) linear infinite;
+}
+
+.wave-divider--reverse svg {
+  animation-direction: reverse;
+}
+
+@keyframes wave-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.wave-footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-divider svg {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --wave-height: 60px;
+  }
+}

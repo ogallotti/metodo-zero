@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowing Menu — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="fm-header"><h1>Flowing Menu</h1><p>Menu items with a flowing highlight that follows your cursor smoothly.</p></div>
+  <nav class="fm-nav">
+    <div class="fm-highlight"></div>
+    <a class="fm-item" href="#"><span class="fm-item-icon">🏠</span><span class="fm-item-text">Dashboard</span><span class="fm-item-arrow">&rarr;</span></a>
+    <a class="fm-item" href="#"><span class="fm-item-icon">📊</span><span class="fm-item-text">Analytics</span><span class="fm-item-badge">New</span><span class="fm-item-arrow">&rarr;</span></a>
+    <a class="fm-item" href="#"><span class="fm-item-icon">👥</span><span class="fm-item-text">Team Members</span><span class="fm-item-arrow">&rarr;</span></a>
+    <a class="fm-item" href="#"><span class="fm-item-icon">📁</span><span class="fm-item-text">Projects</span><span class="fm-item-arrow">&rarr;</span></a>
+    <a class="fm-item" href="#"><span class="fm-item-icon">⚙️</span><span class="fm-item-text">Settings</span><span class="fm-item-arrow">&rarr;</span></a>
+    <a class="fm-item" href="#"><span class="fm-item-icon">🔌</span><span class="fm-item-text">Integrations</span><span class="fm-item-badge">Beta</span><span class="fm-item-arrow">&rarr;</span></a>
+  </nav>
+  <nav class="fm-nav fm-nav-2">
+    <div class="fm-highlight"></div>
+    <a class="fm-item" href="#">Home</a>
+    <a class="fm-item" href="#">Features</a>
+    <a class="fm-item" href="#">Pricing</a>
+    <a class="fm-item" href="#">About</a>
+    <a class="fm-item" href="#">Contact</a>
+  </nav>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "Glare Hover",
+  "slug": "glare-hover",
+  "category": "media",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Image or card with glossy reflective glare effect that moves with cursor on hover.",
+  "params": {
+    "--gh-glare-color": { "type": "color", "default": "#ffffff", "label": "Glare Color" },
+    "--gh-glare-opacity": { "type": "range", "default": "0.25", "min": 0.05, "max": 0.6, "step": 0.01, "label": "Glare Opacity" },
+    "--gh-glare-size": { "type": "range", "default": "60", "min": 30, "max": 100, "unit": "%", "label": "Glare Size" },
+    "--gh-radius": { "type": "range", "default": "16", "min": 0, "max": 32, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

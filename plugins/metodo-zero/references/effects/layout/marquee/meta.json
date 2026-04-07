@@ -1,0 +1,16 @@
+{
+  "name": "Marquee",
+  "slug": "marquee",
+  "category": "layout",
+  "tags": ["continuous", "css-only"],
+  "dependencies": [],
+  "description": "Smooth infinite marquee text scrolling horizontally. Pure CSS animation.",
+  "params": {
+    "--mq-speed": { "type": "range", "default": "20", "min": 5, "max": 60, "unit": "s", "label": "Speed" },
+    "--mq-gap": { "type": "range", "default": "48", "min": 16, "max": 96, "unit": "px", "label": "Text Gap" },
+    "--mq-font-size": { "type": "range", "default": "4", "min": 1.5, "max": 8, "step": 0.5, "unit": "rem", "label": "Font Size" },
+    "--mq-color": { "type": "color", "default": "#fafafa", "label": "Text Color" },
+    "--mq-stroke-color": { "type": "color", "default": "#3f3f46", "label": "Outline Text Color" }
+  },
+  "jsParams": {}
+}

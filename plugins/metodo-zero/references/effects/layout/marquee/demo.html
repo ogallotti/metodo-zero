@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marquee — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mq-header">
+    <h1>Marquee</h1>
+    <p>Smooth infinite scrolling text with alternating filled and outline styles. Hover to pause.</p>
+  </div>
+  <div class="mq-container">
+    <div class="mq-track">
+      <span class="mq-text">Design</span>
+      <span class="mq-separator">—</span>
+      <span class="mq-text mq-text--outline">Engineering</span>
+      <span class="mq-separator">—</span>
+      <span class="mq-text">Innovation</span>
+      <span class="mq-separator">—</span>
+      <span class="mq-text mq-text--outline">Creativity</span>
+      <span class="mq-separator">—</span>
+    </div>
+  </div>
+  <div class="mq-container">
+    <div class="mq-track mq-track--reverse">
+      <span class="mq-text mq-text--outline">Performance</span>
+      <span class="mq-separator">—</span>
+      <span class="mq-text">Simplicity</span>
+      <span class="mq-separator">—</span>
+      <span class="mq-text mq-text--outline">Elegance</span>
+      <span class="mq-separator">—</span>
+      <span class="mq-text">Precision</span>
+      <span class="mq-separator">—</span>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

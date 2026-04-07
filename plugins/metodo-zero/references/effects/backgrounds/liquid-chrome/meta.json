@@ -1,0 +1,20 @@
+{
+  "name": "Liquid Chrome",
+  "slug": "liquid-chrome",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "canvas", "performance-heavy"],
+  "dependencies": [],
+  "description": "Metallic liquid chrome distortion with per-pixel shader simulation and mouse interaction",
+  "params": {
+    "--lc-bg": { "default": "#0a0a0f", "type": "color", "label": "Background color" },
+    "--lc-accent": { "default": "#4488ff", "type": "color", "label": "Accent color" }
+  },
+  "jsParams": {
+    "speed": { "default": 0.008, "type": "number", "label": "Speed", "min": 0.002, "max": 0.03, "step": 0.002 },
+    "complexity": { "default": 4, "type": "number", "label": "Complexity", "min": 2, "max": 6, "step": 1 },
+    "metallic": { "default": 0.85, "type": "number", "label": "Metallic factor", "min": 0, "max": 1, "step": 0.05 },
+    "scale": { "default": 3, "type": "number", "label": "Render scale (lower = sharper)", "min": 2, "max": 6, "step": 1 },
+    "baseHue": { "default": 220, "type": "number", "label": "Base hue", "min": 0, "max": 360, "step": 10 },
+    "saturation": { "default": 0.15, "type": "number", "label": "Saturation", "min": 0, "max": 0.5, "step": 0.05 }
+  }
+}

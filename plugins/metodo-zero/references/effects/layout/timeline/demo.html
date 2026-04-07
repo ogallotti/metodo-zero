@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="tl-header">
+    <h1>Timeline</h1>
+    <p>Scroll to reveal timeline entries with animated line progression and glowing dots.</p>
+  </div>
+  <div class="tl-timeline">
+    <div class="tl-line"></div>
+    <div class="tl-line-fill"></div>
+    <div class="tl-entry">
+      <div class="tl-dot"></div>
+      <div class="tl-date">January 2024</div>
+      <h3>Project Kickoff</h3>
+      <p>Initial research phase and requirements gathering. Mapped out the technical architecture and design system foundations.</p>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-dot"></div>
+      <div class="tl-date">March 2024</div>
+      <h3>Design System v1</h3>
+      <p>Established core design tokens, component library, and interactive documentation. First design review cycle completed.</p>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-dot"></div>
+      <div class="tl-date">June 2024</div>
+      <h3>Beta Launch</h3>
+      <p>Soft launch with early access users. Collected feedback on performance, accessibility, and developer experience.</p>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-dot"></div>
+      <div class="tl-date">September 2024</div>
+      <h3>Public Release</h3>
+      <p>Full public release with 38 production-ready effects, comprehensive documentation, and playground demos.</p>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-dot"></div>
+      <div class="tl-date">December 2024</div>
+      <h3>Community Growth</h3>
+      <p>Open-source contributions, community plugins, and integration guides for popular frameworks.</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

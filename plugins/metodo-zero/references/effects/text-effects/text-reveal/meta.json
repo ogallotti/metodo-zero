@@ -1,0 +1,19 @@
+{
+  "name": "Text Reveal",
+  "slug": "text-reveal",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "reveal", "scroll-trigger"],
+  "dependencies": [],
+  "description": "Text reveals with a sliding mask/wipe effect that sweeps across to uncover text.",
+  "params": {
+    "--tr-font-size": { "type": "range", "default": "4rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--tr-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--tr-accent": { "type": "color", "default": "#6ee7b7", "label": "Wipe Color" },
+    "--tr-duration": { "type": "range", "default": "0.8s", "label": "Duration", "min": "0.3s", "max": "2s" },
+    "--tr-stagger": { "type": "range", "default": "0.15s", "label": "Line Stagger", "min": "0s", "max": "0.5s" },
+    "--tr-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "direction": { "type": "select", "default": "left", "label": "Wipe Direction", "options": ["left", "right"] }
+  }
+}

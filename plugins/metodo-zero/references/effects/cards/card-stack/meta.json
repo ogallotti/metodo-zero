@@ -1,0 +1,16 @@
+{
+  "name": "Card Stack",
+  "slug": "card-stack",
+  "category": "cards",
+  "tags": ["hover", "scroll-trigger"],
+  "dependencies": [],
+  "description": "Stacked cards that fan out on hover or scroll into view with staggered animation.",
+  "params": {
+    "--stack-offset": { "type": "range", "min": 5, "max": 30, "default": 12, "unit": "px", "label": "Stack Offset" },
+    "--stack-rotation": { "type": "range", "min": 0, "max": 8, "default": 3, "unit": "deg", "label": "Fan Rotation" },
+    "--stack-spread": { "type": "range", "min": 20, "max": 120, "default": 60, "unit": "px", "label": "Fan Spread" },
+    "--stack-bg": { "type": "color", "default": "#1a1a2e", "label": "Card Background" },
+    "--stack-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

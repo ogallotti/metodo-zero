@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Before After Slider — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="slider-hero">
+    <h1>Before After Slider</h1>
+    <p>Drag the slider handle to compare two states side by side. Works with images, color blocks, or any content. Touch and keyboard accessible.</p>
+  </section>
+
+  <section class="ba-section">
+    <h2>Design transformation</h2>
+    <div class="ba-slider">
+      <div class="ba-slider__before">
+        <div class="ba-block ba-block--before">
+          <h3>Before</h3>
+          <p>Plain, unstyled default state</p>
+        </div>
+      </div>
+      <div class="ba-slider__after">
+        <div class="ba-block ba-block--after">
+          <h3>After</h3>
+          <p>Polished, branded experience</p>
+        </div>
+      </div>
+      <div class="ba-slider__handle"></div>
+    </div>
+    <div class="ba-labels">
+      <span>Before</span>
+      <span>After</span>
+    </div>
+    <p class="ba-description">Drag the handle or use arrow keys to compare</p>
+  </section>
+
+  <section class="ba-section">
+    <h2>Performance optimization</h2>
+    <div class="ba-slider">
+      <div class="ba-slider__before">
+        <div class="ba-block ba-block--before-2">
+          <h3>Unoptimized</h3>
+          <p>3.2s load time, 85 requests</p>
+        </div>
+      </div>
+      <div class="ba-slider__after">
+        <div class="ba-block ba-block--after-2">
+          <h3>Optimized</h3>
+          <p>0.4s load time, 12 requests</p>
+        </div>
+      </div>
+      <div class="ba-slider__handle"></div>
+    </div>
+    <div class="ba-labels">
+      <span>Before</span>
+      <span>After</span>
+    </div>
+  </section>
+
+  <section class="ba-section">
+    <h2>Accessibility audit</h2>
+    <div class="ba-slider">
+      <div class="ba-slider__before">
+        <div class="ba-block ba-block--before-3">
+          <h3>Non-compliant</h3>
+          <p>23 WCAG violations found</p>
+        </div>
+      </div>
+      <div class="ba-slider__after">
+        <div class="ba-block ba-block--after-3">
+          <h3>Fully accessible</h3>
+          <p>0 violations, AAA compliant</p>
+        </div>
+      </div>
+      <div class="ba-slider__handle"></div>
+    </div>
+    <div class="ba-labels">
+      <span>Before</span>
+      <span>After</span>
+    </div>
+  </section>
+
+  <footer class="slider-footer">
+    <p>Before After Slider — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "Bento Grid",
+  "slug": "bento-grid",
+  "category": "layout",
+  "tags": ["scroll-trigger"],
+  "dependencies": [],
+  "description": "Animated bento-box grid layout with staggered reveal animation on scroll.",
+  "params": {
+    "--bg-gap": { "type": "range", "default": "16", "min": 4, "max": 32, "unit": "px", "label": "Grid Gap" },
+    "--bg-radius": { "type": "range", "default": "16", "min": 0, "max": 32, "unit": "px", "label": "Card Radius" },
+    "--bg-stagger": { "type": "range", "default": "100", "min": 30, "max": 300, "unit": "ms", "label": "Stagger Delay" }
+  },
+  "jsParams": {}
+}

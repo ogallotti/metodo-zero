@@ -1,0 +1,111 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gh-glare-color: #ffffff;
+  --gh-glare-opacity: 0.25;
+  --gh-glare-size: 60%;
+  --gh-radius: 16px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.gh-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.gh-card {
+  position: relative;
+  border-radius: var(--gh-radius);
+  overflow: hidden;
+  background: #18181b;
+  border: 1px solid #27272a;
+  cursor: pointer;
+}
+
+.gh-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.gh-card-body {
+  padding: 20px;
+}
+
+.gh-card-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.gh-card-body p {
+  font-size: 0.85rem;
+  color: #71717a;
+  line-height: 1.5;
+}
+
+.gh-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    circle var(--gh-glare-size) at var(--gh-x, 50%) var(--gh-y, 50%),
+    var(--gh-glare-color),
+    transparent
+  );
+  z-index: 2;
+}
+
+.gh-card:hover .gh-glare {
+  opacity: var(--gh-glare-opacity);
+}
+
+.gh-title {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.gh-title h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.gh-title p {
+  color: #71717a;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-glare {
+    transition: none;
+  }
+}

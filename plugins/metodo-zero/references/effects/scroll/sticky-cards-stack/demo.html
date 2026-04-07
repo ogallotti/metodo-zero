@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sticky Cards Stack — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <section class="section-hero">
+    <h1>Sticky Cards Stack</h1>
+    <p>Cards stack on top of each other as you scroll down, creating a layered deck of content. Each card scales down slightly as the next one takes focus.</p>
+  </section>
+
+  <div class="stack-wrapper">
+    <div class="stack-card">
+      <div class="card-icon">&#9889;</div>
+      <h2>Lightning-fast performance</h2>
+      <p>Sub-second load times across all devices. We optimize every byte, lazy-load strategically, and leverage edge caching to deliver content at the speed of thought.</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-icon">&#127912;</div>
+      <h2>Design that converts</h2>
+      <p>Beautiful isn't enough — it needs to work. Our designs are grounded in conversion psychology, guiding users naturally from interest to action.</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-icon">&#128274;</div>
+      <h2>Security by default</h2>
+      <p>End-to-end encryption, secure authentication, and regular audits. We build with a security-first mindset so your users' data stays protected.</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-icon">&#128200;</div>
+      <h2>Data-driven growth</h2>
+      <p>Built-in analytics, funnel tracking, and experimentation frameworks. Every feature ships with measurability so you can iterate with confidence.</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-icon">&#127793;</div>
+      <h2>Sustainable scaling</h2>
+      <p>Architecture designed to grow with you. From prototype to enterprise, our systems handle increasing load without architectural rewrites.</p>
+    </div>
+  </div>
+
+  <section class="section-end">
+    <div>
+      <h2>All cards stacked</h2>
+      <p>The sticky positioning combined with GSAP-driven scale creates a satisfying deck effect. Great for feature lists, pricing tiers, and comparison sections.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

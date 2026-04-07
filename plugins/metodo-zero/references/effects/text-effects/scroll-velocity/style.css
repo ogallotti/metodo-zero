@@ -1,0 +1,86 @@
+:root {
+  --sv-font-size: 6rem;
+  --sv-color: rgba(255, 255, 255, 0.08);
+  --sv-stroke-color: rgba(255, 255, 255, 0.15);
+  --sv-gap: 2rem;
+  --sv-bg: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 300vh;
+  background: var(--sv-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.sv-spacer {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.sv-section {
+  overflow: hidden;
+  padding: 4rem 0;
+}
+
+.sv-track {
+  display: flex;
+  gap: var(--sv-gap);
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.sv-track-reverse {
+  justify-content: flex-end;
+}
+
+.sv-item {
+  font-size: var(--sv-font-size);
+  font-weight: 700;
+  color: var(--sv-color);
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.sv-item-stroke {
+  -webkit-text-stroke: 1.5px var(--sv-stroke-color);
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.sv-separator {
+  font-size: var(--sv-font-size);
+  color: rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .sv-item,
+  .sv-separator {
+    font-size: calc(var(--sv-font-size) * 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sv-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Dot Grid",
+  "slug": "dot-grid",
+  "category": "backgrounds",
+  "tags": ["hero", "section", "cursor", "canvas"],
+  "dependencies": [],
+  "description": "Interactive dot grid with mouse displacement, glow, and ambient wave animation",
+  "params": {
+    "--dg-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--dg-dot-color": { "default": "rgba(255,255,255,0.3)", "type": "color", "label": "Dot color" },
+    "--dg-glow-color": { "default": "rgba(99,102,241,0.8)", "type": "color", "label": "Glow color" }
+  },
+  "jsParams": {
+    "spacing": { "default": 30, "type": "number", "label": "Grid spacing", "min": 15, "max": 60, "step": 5 },
+    "mouseRadius": { "default": 200, "type": "number", "label": "Mouse radius", "min": 50, "max": 400, "step": 25 },
+    "mouseForce": { "default": 25, "type": "number", "label": "Mouse force", "min": 5, "max": 60, "step": 5 },
+    "maxRadius": { "default": 5, "type": "number", "label": "Max dot radius", "min": 2, "max": 10, "step": 0.5 },
+    "baseAlpha": { "default": 0.2, "type": "number", "label": "Base opacity", "min": 0.05, "max": 0.5, "step": 0.05 }
+  }
+}

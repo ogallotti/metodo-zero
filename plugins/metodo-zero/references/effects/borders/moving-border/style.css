@@ -1,0 +1,105 @@
+:root {
+  --mov-color: #6366f1;
+  --mov-segment: 60deg;
+  --mov-speed: 5s;
+  --mov-width: 2px;
+  --mov-radius: 12px;
+  --mov-bg: #111122;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #08081a;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+@property --mov-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.mov-bdr {
+  position: relative;
+  padding: 40px;
+  border-radius: var(--mov-radius);
+  background: var(--mov-bg);
+  max-width: 480px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mov-bdr::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--mov-width);
+  background: conic-gradient(
+    from var(--mov-angle) at 50% 50%,
+    transparent 0deg,
+    var(--mov-color) 0deg,
+    var(--mov-color) var(--mov-segment),
+    transparent var(--mov-segment)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: mov-rotate var(--mov-speed) linear infinite;
+  pointer-events: none;
+}
+
+/* Subtle base border */
+.mov-bdr::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: var(--mov-width) solid rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+
+@keyframes mov-rotate {
+  to {
+    --mov-angle: 360deg;
+  }
+}
+
+.mov-bdr__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.mov-bdr__desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #7a7f9a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mov-bdr::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mov-bdr {
+    padding: 28px;
+  }
+}

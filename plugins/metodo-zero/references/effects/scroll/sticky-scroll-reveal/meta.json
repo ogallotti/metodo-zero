@@ -1,0 +1,14 @@
+{
+  "name": "Sticky Scroll Reveal",
+  "slug": "sticky-scroll-reveal",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": ["gsap"],
+  "description": "Sticky sidebar with content that changes on scroll, ideal for feature showcases and documentation-style layouts.",
+  "params": {
+    "--sticky-bg": { "type": "color", "default": "#0a0a1a", "label": "Background" },
+    "--sticky-accent": { "type": "color", "default": "#6366f1", "label": "Accent Color" },
+    "--sticky-text-color": { "type": "color", "default": "#ffffff", "label": "Text Color" }
+  },
+  "jsParams": {}
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Color Wipe",
+  "slug": "color-wipe",
+  "category": "transitions",
+  "tags": ["section"],
+  "dependencies": [],
+  "description": "Full color wipe transition between sections using animated pseudo-elements that sweep across the viewport.",
+  "params": {
+    "--wipe-color": { "type": "color", "default": "#6366f1", "label": "Wipe Color" },
+    "--wipe-duration": { "type": "range", "min": 300, "max": 1200, "default": 700, "unit": "ms", "label": "Wipe Duration" }
+  },
+  "jsParams": {}
+}

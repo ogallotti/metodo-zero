@@ -1,0 +1,16 @@
+{
+  "name": "Electric Border",
+  "slug": "electric-border",
+  "category": "borders",
+  "tags": ["continuous"],
+  "dependencies": [],
+  "description": "Electric/lightning crackling border effect with jagged energy arcs along the perimeter.",
+  "params": {
+    "--elec-color": { "type": "color", "default": "#38bdf8", "label": "Electric Color" },
+    "--elec-intensity": { "type": "range", "min": 2, "max": 12, "default": 6, "label": "Arc Count" },
+    "--elec-speed": { "type": "range", "min": 30, "max": 120, "default": 60, "unit": "ms", "label": "Flicker Speed" },
+    "--elec-radius": { "type": "range", "min": 0, "max": 24, "default": 12, "unit": "px", "label": "Border Radius" },
+    "--elec-bg": { "type": "color", "default": "#0c0c20", "label": "Background" }
+  },
+  "jsParams": {}
+}

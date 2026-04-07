@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flip Card — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="flip-card" data-trigger="hover" tabindex="0" role="button" aria-label="Flip card for details">
+    <div class="flip-card__inner">
+      <div class="flip-card__face flip-card__front">
+        <img class="flip-card__front-image" src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&h=350&fit=crop" alt="Blockchain">
+        <div class="flip-card__front-body">
+          <h3 class="flip-card__front-title">Smart Contracts</h3>
+          <p class="flip-card__front-sub">Deploy and manage decentralized applications with ease.</p>
+          <span class="flip-card__front-hint">&#8635; Hover to flip</span>
+        </div>
+      </div>
+      <div class="flip-card__face flip-card__back">
+        <h3 class="flip-card__back-title">Key Features</h3>
+        <ul class="flip-card__back-list">
+          <li class="flip-card__back-item">
+            <span class="flip-card__back-icon">&#10003;</span>
+            Gas-optimized contract templates
+          </li>
+          <li class="flip-card__back-item">
+            <span class="flip-card__back-icon">&#10003;</span>
+            One-click multi-chain deployment
+          </li>
+          <li class="flip-card__back-item">
+            <span class="flip-card__back-icon">&#10003;</span>
+            Automated security auditing
+          </li>
+          <li class="flip-card__back-item">
+            <span class="flip-card__back-icon">&#10003;</span>
+            Real-time transaction monitoring
+          </li>
+        </ul>
+        <button class="flip-card__back-cta">Learn More</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card" data-trigger="click" tabindex="0" role="button" aria-label="Click to flip card">
+    <div class="flip-card__inner">
+      <div class="flip-card__face flip-card__front">
+        <img class="flip-card__front-image" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&h=350&fit=crop" alt="AI">
+        <div class="flip-card__front-body">
+          <h3 class="flip-card__front-title">AI Platform</h3>
+          <p class="flip-card__front-sub">Train, deploy, and scale machine learning models in production.</p>
+          <span class="flip-card__front-hint">&#9758; Click to flip</span>
+        </div>
+      </div>
+      <div class="flip-card__face flip-card__back">
+        <h3 class="flip-card__back-title">Capabilities</h3>
+        <ul class="flip-card__back-list">
+          <li class="flip-card__back-item">
+            <span class="flip-card__back-icon">&#10003;</span>
+            AutoML with zero configuration
+          </li>
+          <li class="flip-card__back-item">
+            <span class="flip-card__back-icon">&#10003;</span>
+            GPU cluster management
+          </li>
+          <li class="flip-card__back-item">
+            <span class="flip-card__back-icon">&#10003;</span>
+            Model versioning and A/B testing
+          </li>
+          <li class="flip-card__back-item">
+            <span class="flip-card__back-icon">&#10003;</span>
+            Edge deployment support
+          </li>
+        </ul>
+        <button class="flip-card__back-cta">Get Started</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

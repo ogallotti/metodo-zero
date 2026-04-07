@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reflective Card — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="reflective-card">
+    <div class="reflective-card__sheen"></div>
+    <div class="reflective-card__rainbow"></div>
+    <div class="reflective-card__header">
+      <div class="reflective-card__logo">M</div>
+      <div class="reflective-card__org">
+        <strong>Metrics Hub</strong>
+        Q4 Performance
+      </div>
+    </div>
+    <div class="reflective-card__body">
+      <div class="reflective-card__stat">94.7%</div>
+      <div class="reflective-card__stat-label">Overall Health Score</div>
+      <div class="reflective-card__bar-group">
+        <div class="reflective-card__bar-row">
+          <span class="reflective-card__bar-label">Uptime</span>
+          <div class="reflective-card__bar">
+            <div class="reflective-card__bar-fill" style="width: 99.9%"></div>
+          </div>
+        </div>
+        <div class="reflective-card__bar-row">
+          <span class="reflective-card__bar-label">Speed</span>
+          <div class="reflective-card__bar">
+            <div class="reflective-card__bar-fill" style="width: 87%"></div>
+          </div>
+        </div>
+        <div class="reflective-card__bar-row">
+          <span class="reflective-card__bar-label">Errors</span>
+          <div class="reflective-card__bar">
+            <div class="reflective-card__bar-fill" style="width: 12%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

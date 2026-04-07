@@ -1,0 +1,20 @@
+{
+  "name": "Scroll Reveal",
+  "slug": "scroll-reveal",
+  "category": "text-effects",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": [],
+  "description": "Text elements animate in staggered fashion as you scroll into view with multiple animation presets.",
+  "params": {
+    "--sr-font-size": { "type": "range", "default": "2.5rem", "label": "Font Size", "min": "1rem", "max": "5rem" },
+    "--sr-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--sr-muted": { "type": "color", "default": "rgba(255,255,255,0.5)", "label": "Muted Color" },
+    "--sr-duration": { "type": "range", "default": "0.8s", "label": "Duration", "min": "0.3s", "max": "2s" },
+    "--sr-stagger": { "type": "range", "default": "0.1s", "label": "Stagger Delay", "min": "0.02s", "max": "0.3s" },
+    "--sr-distance": { "type": "range", "default": "30px", "label": "Travel Distance", "min": "10px", "max": "80px" },
+    "--sr-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "animation": { "type": "select", "default": "fade-up", "label": "Animation", "options": ["fade-up", "fade-down", "fade-left", "fade-right", "scale", "rotate"] }
+  }
+}

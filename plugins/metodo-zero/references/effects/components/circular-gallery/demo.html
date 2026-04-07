@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circular Gallery — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cg-header"><h1>Circular Gallery</h1><p>3D circular gallery. Click arrows or drag to rotate.</p></div>
+  <div class="cg-scene">
+    <div class="cg-ring">
+      <div class="cg-card"><img src="https://picsum.photos/seed/cg1/300/400" alt=""></div>
+      <div class="cg-card"><img src="https://picsum.photos/seed/cg2/300/400" alt=""></div>
+      <div class="cg-card"><img src="https://picsum.photos/seed/cg3/300/400" alt=""></div>
+      <div class="cg-card"><img src="https://picsum.photos/seed/cg4/300/400" alt=""></div>
+      <div class="cg-card"><img src="https://picsum.photos/seed/cg5/300/400" alt=""></div>
+      <div class="cg-card"><img src="https://picsum.photos/seed/cg6/300/400" alt=""></div>
+    </div>
+  </div>
+  <div class="cg-controls">
+    <button class="cg-btn cg-btn--prev" aria-label="Previous">&larr;</button>
+    <button class="cg-btn cg-btn--next" aria-label="Next">&rarr;</button>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

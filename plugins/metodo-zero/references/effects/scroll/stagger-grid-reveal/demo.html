@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stagger Grid Reveal — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="page-hero">
+    <h1>Stagger Grid Reveal</h1>
+    <p>Grid items animate in one by one with a staggered delay as they scroll into the viewport. No GSAP required — pure IntersectionObserver.</p>
+  </section>
+
+  <section class="grid-section">
+    <h2>Core features</h2>
+    <div class="stagger-grid">
+      <div class="stagger-item">
+        <div class="item-icon">&#9889;</div>
+        <h3>Instant deployment</h3>
+        <p>Push to main and your changes are live in seconds. Zero-config CI/CD with automatic rollbacks.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#128171;</div>
+        <h3>Edge computing</h3>
+        <p>Code runs close to your users on 300+ global edge nodes. Sub-50ms response times worldwide.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#128274;</div>
+        <h3>Built-in security</h3>
+        <p>Automatic SSL, DDoS protection, and WAF rules. Enterprise-grade security without the complexity.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#128200;</div>
+        <h3>Real-time analytics</h3>
+        <p>Understand your traffic patterns with built-in analytics. No third-party scripts needed.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#127912;</div>
+        <h3>Custom domains</h3>
+        <p>Connect any domain with automatic DNS configuration and certificate provisioning.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#128736;</div>
+        <h3>Developer experience</h3>
+        <p>First-class TypeScript support, local dev server, and preview deployments for every PR.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="spacer">
+    <p>Keep scrolling to reveal the next grid...</p>
+  </div>
+
+  <section class="grid-section">
+    <h2>Why teams choose us</h2>
+    <div class="stagger-grid">
+      <div class="stagger-item">
+        <div class="item-icon">&#127919;</div>
+        <h3>Focused simplicity</h3>
+        <p>We do one thing and we do it exceptionally well. No feature bloat, no unnecessary complexity.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#129309;</div>
+        <h3>Community-driven</h3>
+        <p>Open-source core with an active community. Contribute, extend, and shape the roadmap.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#128640;</div>
+        <h3>Scale on demand</h3>
+        <p>From prototype to millions of requests. Automatic scaling means you never think about infrastructure.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#128161;</div>
+        <h3>Smart defaults</h3>
+        <p>Sensible conventions that work out of the box. Override when you need to, cruise on autopilot when you don't.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#127760;</div>
+        <h3>Global reach</h3>
+        <p>Multi-region deployment with intelligent routing. Your app is fast everywhere, not just near your server.</p>
+      </div>
+      <div class="stagger-item">
+        <div class="item-icon">&#128218;</div>
+        <h3>Comprehensive docs</h3>
+        <p>Detailed guides, interactive examples, and a searchable API reference. Get answers without filing tickets.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="spacer">
+    <p>Stagger Grid Reveal — Effects Library</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

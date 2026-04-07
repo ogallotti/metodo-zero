@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pointer Highlight — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ph-spotlight"></div>
+  <div class="ph-demo">
+    <h1>Pointer Highlight</h1>
+    <p>A radial gradient spotlight follows your cursor, casting a soft ambient glow across the background.</p>
+    <div class="ph-grid">
+      <div class="ph-card">
+        <h2>Pure CSS Gradient</h2>
+        <p>Uses a radial-gradient with CSS custom properties for the position — no canvas needed.</p>
+      </div>
+      <div class="ph-card">
+        <h2>Zero Overhead</h2>
+        <p>Only updates two CSS variables on mousemove. The browser handles all rendering natively.</p>
+      </div>
+      <div class="ph-card">
+        <h2>Ambient Feel</h2>
+        <p>Creates a natural focus point wherever the user looks, guiding attention subtly.</p>
+      </div>
+      <div class="ph-card">
+        <h2>Easy to Layer</h2>
+        <p>Fixed positioning with pointer-events: none means it layers over any content seamlessly.</p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

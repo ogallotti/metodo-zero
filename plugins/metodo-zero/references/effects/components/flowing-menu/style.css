@@ -1,0 +1,20 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--fm-accent:#6366f1;--fm-radius:8px}
+body{font-family:'Inter',system-ui,sans-serif;background:#09090b;color:#fafafa;min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;gap:48px}
+.fm-header{text-align:center}
+.fm-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
+.fm-header p{color:#71717a;font-size:1rem;max-width:480px;margin:0 auto;line-height:1.6}
+.fm-nav{position:relative;display:flex;flex-direction:column;gap:2px;width:100%;max-width:400px;background:#18181b;border:1px solid #27272a;border-radius:16px;padding:8px;overflow:hidden}
+.fm-highlight{position:absolute;background:var(--fm-accent);opacity:0.1;border-radius:var(--fm-radius);transition:top 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),opacity 0.3s;pointer-events:none;left:8px;right:8px;opacity:0}
+.fm-nav:hover .fm-highlight{opacity:0.1}
+.fm-item{position:relative;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:var(--fm-radius);color:#a1a1aa;text-decoration:none;font-size:0.95rem;font-weight:500;cursor:pointer;transition:color 0.2s;z-index:1}
+.fm-item:hover{color:#fafafa}
+.fm-item-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.fm-item-text{flex:1}
+.fm-item-badge{padding:2px 8px;border-radius:20px;font-size:0.65rem;font-weight:600;background:rgba(99,102,241,0.15);color:#818cf8}
+.fm-item-arrow{color:#3f3f46;transition:transform 0.2s,color 0.2s}
+.fm-item:hover .fm-item-arrow{transform:translateX(3px);color:#71717a}
+.fm-nav-2{flex-direction:row;gap:4px;max-width:600px;border-radius:12px;padding:6px}
+.fm-nav-2 .fm-item{padding:10px 16px;justify-content:center}
+.fm-nav-2 .fm-highlight{top:6px;bottom:6px;left:auto;right:auto}
+@media(prefers-reduced-motion:reduce){.fm-highlight,.fm-item-arrow{transition:none}}

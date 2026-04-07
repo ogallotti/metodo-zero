@@ -1,0 +1,21 @@
+{
+  "name": "Sparkles Text",
+  "slug": "sparkles-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "continuous"],
+  "dependencies": [],
+  "description": "Text with animated sparkle particles floating around it.",
+  "params": {
+    "--sp-font-size": { "type": "range", "default": "4rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--sp-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--sp-sparkle-color-1": { "type": "color", "default": "#fbbf24", "label": "Sparkle Color 1" },
+    "--sp-sparkle-color-2": { "type": "color", "default": "#f472b6", "label": "Sparkle Color 2" },
+    "--sp-sparkle-color-3": { "type": "color", "default": "#60a5fa", "label": "Sparkle Color 3" },
+    "--sp-sparkle-size": { "type": "range", "default": "10px", "label": "Sparkle Size", "min": "4px", "max": "24px" },
+    "--sp-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "sparkleCount": { "type": "number", "default": 20, "label": "Sparkle Count" },
+    "sparkleInterval": { "type": "number", "default": 300, "label": "Spawn Interval (ms)" }
+  }
+}

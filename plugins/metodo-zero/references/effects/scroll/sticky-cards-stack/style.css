@@ -1,0 +1,160 @@
+:root {
+  --stack-bg: #f0f0f5;
+  --stack-card-radius: 16px;
+  --stack-offset: 30px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--stack-bg);
+  color: #1a1a2e;
+  line-height: 1.6;
+}
+
+.section-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+}
+
+.section-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.section-hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0.85;
+  max-width: 540px;
+}
+
+/* Cards stack */
+.stack-wrapper {
+  position: relative;
+  padding: 5vh 0 50vh;
+}
+
+.stack-card {
+  position: sticky;
+  top: 15vh;
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  padding: 3rem;
+  border-radius: var(--stack-card-radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  will-change: transform;
+  transform-origin: top center;
+}
+
+.stack-card:nth-child(1) {
+  background: #fff;
+  z-index: 1;
+}
+
+.stack-card:nth-child(2) {
+  background: #6366f1;
+  color: #fff;
+  z-index: 2;
+}
+
+.stack-card:nth-child(3) {
+  background: #1a1a2e;
+  color: #fff;
+  z-index: 3;
+}
+
+.stack-card:nth-child(4) {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  z-index: 4;
+}
+
+.stack-card:nth-child(5) {
+  background: #10b981;
+  color: #fff;
+  z-index: 5;
+}
+
+.stack-card h2 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.stack-card p {
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.stack-card .card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.stack-card:nth-child(1) .card-icon {
+  background: #f0f0f5;
+}
+
+/* Outro */
+.section-end {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.section-end h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.section-end p {
+  opacity: 0.7;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-card {
+    position: relative;
+    top: auto;
+    will-change: auto;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .stack-card {
+    padding: 2rem 1.5rem;
+    width: 92%;
+  }
+}

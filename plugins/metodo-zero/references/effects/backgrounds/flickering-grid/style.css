@@ -1,0 +1,152 @@
+/* Flickering Grid — Grid of flickering squares */
+:root {
+  --fg-bg: #0a0a1a;
+  --fg-color: rgba(99, 102, 241, 0.4);
+  --fg-color-dim: rgba(99, 102, 241, 0.08);
+  --fg-gap: 2px;
+  --fg-cell-size: 24px;
+  --fg-border-radius: 2px;
+  --fg-speed: 3s;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--fg-bg);
+  color: #fff;
+  overflow: hidden;
+}
+
+.fg-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--fg-bg);
+}
+
+.fg-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--fg-cell-size));
+  grid-auto-rows: var(--fg-cell-size);
+  gap: var(--fg-gap);
+  padding: var(--fg-gap);
+  overflow: hidden;
+}
+
+.fg-cell {
+  background: var(--fg-color-dim);
+  border-radius: var(--fg-border-radius);
+  will-change: opacity;
+  animation: fg-flicker var(--fg-speed) ease-in-out infinite;
+}
+
+/* Stagger animations — 20 unique delays */
+.fg-cell:nth-child(20n+1)  { animation-delay: 0s; animation-duration: calc(var(--fg-speed) * 0.9); }
+.fg-cell:nth-child(20n+2)  { animation-delay: -0.7s; animation-duration: calc(var(--fg-speed) * 1.2); }
+.fg-cell:nth-child(20n+3)  { animation-delay: -1.4s; animation-duration: calc(var(--fg-speed) * 0.8); }
+.fg-cell:nth-child(20n+4)  { animation-delay: -2.1s; animation-duration: calc(var(--fg-speed) * 1.1); }
+.fg-cell:nth-child(20n+5)  { animation-delay: -0.3s; animation-duration: calc(var(--fg-speed) * 1.3); }
+.fg-cell:nth-child(20n+6)  { animation-delay: -1.8s; animation-duration: calc(var(--fg-speed) * 0.7); }
+.fg-cell:nth-child(20n+7)  { animation-delay: -2.5s; animation-duration: calc(var(--fg-speed) * 1.0); }
+.fg-cell:nth-child(20n+8)  { animation-delay: -0.9s; animation-duration: calc(var(--fg-speed) * 1.4); }
+.fg-cell:nth-child(20n+9)  { animation-delay: -1.6s; animation-duration: calc(var(--fg-speed) * 0.85); }
+.fg-cell:nth-child(20n+10) { animation-delay: -2.3s; animation-duration: calc(var(--fg-speed) * 1.15); }
+.fg-cell:nth-child(20n+11) { animation-delay: -0.5s; animation-duration: calc(var(--fg-speed) * 0.95); }
+.fg-cell:nth-child(20n+12) { animation-delay: -1.2s; animation-duration: calc(var(--fg-speed) * 1.25); }
+.fg-cell:nth-child(20n+13) { animation-delay: -1.9s; animation-duration: calc(var(--fg-speed) * 0.75); }
+.fg-cell:nth-child(20n+14) { animation-delay: -2.6s; animation-duration: calc(var(--fg-speed) * 1.05); }
+.fg-cell:nth-child(20n+15) { animation-delay: -0.1s; animation-duration: calc(var(--fg-speed) * 1.35); }
+.fg-cell:nth-child(20n+16) { animation-delay: -1.0s; animation-duration: calc(var(--fg-speed) * 0.9); }
+.fg-cell:nth-child(20n+17) { animation-delay: -2.0s; animation-duration: calc(var(--fg-speed) * 1.1); }
+.fg-cell:nth-child(20n+18) { animation-delay: -0.6s; animation-duration: calc(var(--fg-speed) * 0.8); }
+.fg-cell:nth-child(20n+19) { animation-delay: -1.5s; animation-duration: calc(var(--fg-speed) * 1.2); }
+.fg-cell:nth-child(20n+20) { animation-delay: -2.4s; animation-duration: calc(var(--fg-speed) * 1.0); }
+
+/* Brighten some cells */
+.fg-cell:nth-child(7n+1) {
+  --fg-bright: 1;
+}
+.fg-cell:nth-child(11n+3) {
+  --fg-bright: 1;
+}
+.fg-cell:nth-child(13n+5) {
+  --fg-bright: 1;
+}
+
+/* Vignette fade */
+.fg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 30%,
+    var(--fg-bg) 80%
+  );
+  pointer-events: none;
+}
+
+.fg-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.fg-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fg-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 40ch;
+}
+
+@keyframes fg-flicker {
+  0%, 100% {
+    background: var(--fg-color-dim);
+  }
+  50% {
+    background: var(--fg-bright, 0) == 1 ? var(--fg-color) : var(--fg-color-dim);
+  }
+}
+
+/* Override: proper flicker keyframes */
+@keyframes fg-flicker {
+  0%, 30%, 70%, 100% {
+    opacity: 0.3;
+  }
+  40%, 60% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fg-cell {
+    animation: none !important;
+    opacity: 0.3;
+  }
+}

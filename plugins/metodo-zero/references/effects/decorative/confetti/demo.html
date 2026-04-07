@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confetti — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas class="cf-canvas"></canvas>
+  <div class="cf-demo">
+    <h1>Confetti Burst</h1>
+    <p>Celebrate moments with a colorful confetti explosion. Click the button or anywhere on the page to trigger a burst.</p>
+    <button class="cf-btn">🎉 Launch Confetti</button>
+    <p class="cf-hint">Or click anywhere on the page</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+        if (e.data.scope === 'js' && window.__confettiUpdate) window.__confettiUpdate(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

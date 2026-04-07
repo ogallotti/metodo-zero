@@ -1,0 +1,106 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ihp-radius: 16px;
+  --ihp-shadow: 30px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.ihp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 960px;
+  width: 100%;
+  perspective: 1000px;
+}
+
+.ihp-card {
+  border-radius: var(--ihp-radius);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.ihp-card:hover {
+  box-shadow: 0 var(--ihp-shadow) calc(var(--ihp-shadow) * 2) rgba(0, 0, 0, 0.4);
+}
+
+.ihp-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.ihp-card:hover img {
+  transform: scale(1.05);
+}
+
+.ihp-info {
+  background: #18181b;
+  padding: 20px;
+  transform: translateZ(20px);
+}
+
+.ihp-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ihp-info p {
+  font-size: 0.85rem;
+  color: #71717a;
+  line-height: 1.5;
+}
+
+.ihp-title {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.ihp-title h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.ihp-title p {
+  color: #71717a;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ihp-card {
+    transition: none;
+  }
+  .ihp-card img {
+    transition: none;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Stagger Grid Reveal",
+  "slug": "stagger-grid-reveal",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": [],
+  "description": "Grid items animate in with staggered timing as they enter the viewport using IntersectionObserver.",
+  "params": {
+    "--grid-columns": { "type": "range", "min": 1, "max": 4, "default": 3, "unit": "", "label": "Columns" },
+    "--grid-gap": { "type": "range", "min": 8, "max": 48, "default": 24, "unit": "px", "label": "Gap" },
+    "--grid-stagger": { "type": "range", "min": 50, "max": 300, "default": 100, "unit": "ms", "label": "Stagger Delay" },
+    "--grid-duration": { "type": "range", "min": 200, "max": 1000, "default": 600, "unit": "ms", "label": "Duration" },
+    "--grid-translate-y": { "type": "range", "min": 10, "max": 80, "default": 40, "unit": "px", "label": "Slide Distance" }
+  },
+  "jsParams": {}
+}

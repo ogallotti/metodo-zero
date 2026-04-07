@@ -1,0 +1,19 @@
+{
+  "name": "Scroll Velocity",
+  "slug": "scroll-velocity",
+  "category": "text-effects",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": [],
+  "description": "Text moves horizontally as a marquee that speeds up with scroll velocity.",
+  "params": {
+    "--sv-font-size": { "type": "range", "default": "6rem", "label": "Font Size", "min": "2rem", "max": "12rem" },
+    "--sv-color": { "type": "color", "default": "rgba(255,255,255,0.08)", "label": "Text Color" },
+    "--sv-stroke-color": { "type": "color", "default": "rgba(255,255,255,0.15)", "label": "Stroke Color" },
+    "--sv-gap": { "type": "range", "default": "2rem", "label": "Gap", "min": "0.5rem", "max": "6rem" },
+    "--sv-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "baseSpeed": { "type": "number", "default": 1, "label": "Base Speed" },
+    "scrollMultiplier": { "type": "number", "default": 3, "label": "Scroll Multiplier" }
+  }
+}

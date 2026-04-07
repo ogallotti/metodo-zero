@@ -1,0 +1,131 @@
+:root {
+  --magic-gradient-size: 250px;
+  --magic-gradient-color: rgba(120, 119, 198, 0.15);
+  --magic-bg: #111122;
+  --magic-border-color: rgba(120, 119, 198, 0.25);
+  --magic-radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #08081a;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+.magic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  max-width: 840px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--magic-radius);
+  overflow: hidden;
+}
+
+.magic-card {
+  position: relative;
+  padding: 32px;
+  background: var(--magic-bg);
+  overflow: hidden;
+  cursor: default;
+}
+
+.magic-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    var(--magic-gradient-size) circle at var(--magic-x, 50%) var(--magic-y, 50%),
+    var(--magic-gradient-color),
+    transparent
+  );
+}
+
+.magic-card:hover::before {
+  opacity: 1;
+}
+
+/* Border highlight on adjacent edges */
+.magic-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    var(--magic-gradient-size) circle at var(--magic-x, 50%) var(--magic-y, 50%),
+    var(--magic-border-color),
+    transparent
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.magic-grid:hover .magic-card::after {
+  opacity: 1;
+}
+
+.magic-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(120, 119, 198, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.magic-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.magic-card__desc {
+  font-size: 0.825rem;
+  line-height: 1.6;
+  color: #7a7f9a;
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magic-card::before,
+  .magic-card::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .magic-grid {
+    grid-template-columns: 1fr;
+  }
+}

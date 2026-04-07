@@ -1,0 +1,14 @@
+{
+  "name": "Container Scroll",
+  "slug": "container-scroll",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": ["gsap"],
+  "description": "Container transforms (scale, rotate, perspective) based on scroll position, creating immersive 3D scroll effects.",
+  "params": {
+    "--container-bg": { "type": "color", "default": "#0a0a1a", "label": "Background" },
+    "--container-perspective": { "type": "range", "min": 500, "max": 2000, "default": 1000, "unit": "px", "label": "Perspective" },
+    "--container-max-rotate": { "type": "range", "min": 2, "max": 20, "default": 8, "unit": "deg", "label": "Max Rotation" }
+  },
+  "jsParams": {}
+}

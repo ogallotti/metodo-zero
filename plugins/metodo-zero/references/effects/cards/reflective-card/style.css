@@ -1,0 +1,193 @@
+:root {
+  --ref-sheen-size: 300px;
+  --ref-sheen-color-1: rgba(255, 255, 255, 0.15);
+  --ref-sheen-color-2: rgba(120, 119, 198, 0.1);
+  --ref-bg: #141428;
+  --ref-radius: 16px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #08081a;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+.reflective-card {
+  position: relative;
+  width: 380px;
+  max-width: 90vw;
+  padding: 32px;
+  border-radius: var(--ref-radius);
+  background: var(--ref-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reflective-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.reflective-card__sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background:
+    radial-gradient(
+      var(--ref-sheen-size) circle at var(--ref-mx, 50%) var(--ref-my, 50%),
+      var(--ref-sheen-color-1),
+      transparent
+    ),
+    linear-gradient(
+      105deg,
+      transparent 40%,
+      var(--ref-sheen-color-2) 45%,
+      transparent 50%
+    );
+  background-position: var(--ref-mx, 50%) var(--ref-my, 50%);
+  mix-blend-mode: overlay;
+}
+
+.reflective-card:hover .reflective-card__sheen {
+  opacity: 1;
+}
+
+.reflective-card__rainbow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: linear-gradient(
+    var(--ref-angle, 135deg),
+    rgba(255, 0, 128, 0.06),
+    rgba(0, 128, 255, 0.06),
+    rgba(0, 255, 128, 0.06),
+    rgba(255, 128, 0, 0.06)
+  );
+  mix-blend-mode: screen;
+}
+
+.reflective-card:hover .reflective-card__rainbow {
+  opacity: 1;
+}
+
+.reflective-card__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.reflective-card__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.reflective-card__org {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.reflective-card__org strong {
+  display: block;
+  color: #e2e8f0;
+  font-size: 1rem;
+}
+
+.reflective-card__body {
+  position: relative;
+  z-index: 1;
+}
+
+.reflective-card__stat {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.reflective-card__stat-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.reflective-card__bar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reflective-card__bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reflective-card__bar-label {
+  font-size: 0.75rem;
+  color: #8b8fa8;
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.reflective-card__bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.reflective-card__bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  transition: width 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reflective-card {
+    transition: none;
+  }
+  .reflective-card__sheen,
+  .reflective-card__rainbow {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .reflective-card {
+    width: 100%;
+    padding: 24px;
+  }
+}

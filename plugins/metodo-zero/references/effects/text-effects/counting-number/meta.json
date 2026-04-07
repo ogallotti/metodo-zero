@@ -1,0 +1,19 @@
+{
+  "name": "Counting Number",
+  "slug": "counting-number",
+  "category": "text-effects",
+  "tags": ["section", "scroll-trigger", "stats"],
+  "dependencies": [],
+  "description": "Animates numbers counting up from 0 to target value on scroll into view.",
+  "params": {
+    "--cn-font-size": { "type": "range", "default": "4rem", "label": "Number Size", "min": "1rem", "max": "8rem" },
+    "--cn-color": { "type": "color", "default": "#ffffff", "label": "Number Color" },
+    "--cn-accent": { "type": "color", "default": "#6ee7b7", "label": "Accent Color" },
+    "--cn-label-color": { "type": "color", "default": "rgba(255,255,255,0.5)", "label": "Label Color" },
+    "--cn-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "duration": { "type": "number", "default": 2000, "label": "Count Duration (ms)" },
+    "easing": { "type": "select", "default": "easeOut", "label": "Easing", "options": ["linear", "easeOut", "easeInOut"] }
+  }
+}

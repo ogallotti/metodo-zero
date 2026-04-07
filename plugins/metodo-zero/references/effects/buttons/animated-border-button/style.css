@@ -1,0 +1,131 @@
+:root {
+  --abtn-color-1: #6366f1;
+  --abtn-color-2: #ec4899;
+  --abtn-speed: 3s;
+  --abtn-border: 2px;
+  --abtn-radius: 12px;
+  --abtn-bg: #0f0f1a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: #0a0a14;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+.abtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--abtn-radius);
+  padding: var(--abtn-border);
+  background: conic-gradient(
+    from 0deg,
+    var(--abtn-color-1),
+    var(--abtn-color-2),
+    var(--abtn-color-1)
+  );
+  animation: abtn-spin var(--abtn-speed) linear infinite;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+@property --abtn-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes abtn-spin {
+  to {
+    --abtn-angle: 360deg;
+  }
+}
+
+/* Fallback for browsers not supporting @property */
+@supports not (background: conic-gradient(from var(--abtn-angle, 0deg), red, blue)) {
+  .abtn {
+    overflow: hidden;
+  }
+  .abtn::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(
+      var(--abtn-color-1),
+      var(--abtn-color-2),
+      var(--abtn-color-1)
+    );
+    animation: abtn-rotate var(--abtn-speed) linear infinite;
+    z-index: -2;
+  }
+}
+
+@keyframes abtn-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.abtn::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--abtn-radius) + 8px);
+  background: conic-gradient(
+    from 0deg,
+    var(--abtn-color-1),
+    var(--abtn-color-2),
+    var(--abtn-color-1)
+  );
+  filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  animation: abtn-rotate var(--abtn-speed) linear infinite;
+}
+
+.abtn:hover::after {
+  opacity: 0.4;
+}
+
+.abtn__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: calc(var(--abtn-radius) - var(--abtn-border));
+  background: var(--abtn-bg);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .abtn,
+  .abtn::before,
+  .abtn::after {
+    animation: none;
+  }
+}

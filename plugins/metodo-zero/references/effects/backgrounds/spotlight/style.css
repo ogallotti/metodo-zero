@@ -1,0 +1,205 @@
+/* Spotlight — Cursor-following spotlight effect */
+:root {
+  --spt-bg: #0a0a1a;
+  --spt-color: rgba(99, 102, 241, 0.15);
+  --spt-color-2: rgba(168, 85, 247, 0.1);
+  --spt-size: 400px;
+  --spt-blur: 80px;
+  --spt-border-color: rgba(255, 255, 255, 0.06);
+  --spt-grid-color: rgba(255, 255, 255, 0.03);
+  --spt-grid-size: 60px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--spt-bg);
+  color: #fff;
+  overflow: hidden;
+}
+
+.spt-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--spt-bg);
+}
+
+/* Subtle background grid */
+.spt-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--spt-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--spt-grid-color) 1px, transparent 1px);
+  background-size: var(--spt-grid-size) var(--spt-grid-size);
+  mask-image: radial-gradient(
+    ellipse at var(--spt-x, 50%) var(--spt-y, 50%),
+    black 0%,
+    transparent 50%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at var(--spt-x, 50%) var(--spt-y, 50%),
+    black 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.spt-container:hover .spt-grid,
+.spt-container.spt-touch-active .spt-grid {
+  opacity: 1;
+}
+
+/* Primary spotlight */
+.spt-light {
+  position: absolute;
+  width: var(--spt-size);
+  height: var(--spt-size);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    var(--spt-color) 0%,
+    transparent 70%
+  );
+  filter: blur(var(--spt-blur));
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  left: var(--spt-x, 50%);
+  top: var(--spt-y, 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: left, top;
+}
+
+.spt-container:hover .spt-light,
+.spt-container.spt-touch-active .spt-light {
+  opacity: 1;
+}
+
+/* Secondary spotlight (offset, different color) */
+.spt-light-2 {
+  position: absolute;
+  width: calc(var(--spt-size) * 0.7);
+  height: calc(var(--spt-size) * 0.7);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    var(--spt-color-2) 0%,
+    transparent 70%
+  );
+  filter: blur(calc(var(--spt-blur) * 0.8));
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  left: var(--spt-x2, 50%);
+  top: var(--spt-y2, 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: left, top;
+}
+
+.spt-container:hover .spt-light-2,
+.spt-container.spt-touch-active .spt-light-2 {
+  opacity: 1;
+}
+
+/* Border glow ring around cursor */
+.spt-ring {
+  position: absolute;
+  width: calc(var(--spt-size) * 0.5);
+  height: calc(var(--spt-size) * 0.5);
+  border-radius: 50%;
+  border: 1px solid var(--spt-border-color);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  left: var(--spt-x, 50%);
+  top: var(--spt-y, 50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  will-change: left, top;
+}
+
+.spt-container:hover .spt-ring,
+.spt-container.spt-touch-active .spt-ring {
+  opacity: 1;
+}
+
+/* Ambient gradient that slowly moves */
+.spt-ambient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 20% 80%,
+    rgba(99, 102, 241, 0.04) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 80% 20%,
+    rgba(168, 85, 247, 0.03) 0%,
+    transparent 50%
+  );
+  animation: spt-ambient-shift 20s ease-in-out infinite alternate;
+}
+
+.spt-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+}
+
+.spt-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.spt-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 40ch;
+}
+
+@keyframes spt-ambient-shift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(2%, -3%) scale(1.05);
+  }
+  100% {
+    transform: translate(-2%, 2%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spt-ambient {
+    animation: none !important;
+  }
+  .spt-light,
+  .spt-light-2,
+  .spt-ring,
+  .spt-grid {
+    transition: none !important;
+    display: none;
+  }
+}

@@ -1,0 +1,202 @@
+:root {
+  --zoom-bg: #0a0a1a;
+  --zoom-max-scale: 15;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--zoom-bg);
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.zoom-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.zoom-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.zoom-hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0.7;
+  max-width: 540px;
+}
+
+/* Zoom section */
+.zoom-wrapper {
+  position: relative;
+  min-height: 300vh;
+}
+
+.zoom-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.zoom-frame {
+  position: relative;
+  width: 80vw;
+  max-width: 600px;
+  aspect-ratio: 16 / 10;
+  border-radius: 20px;
+  overflow: hidden;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.zoom-frame__surface {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.zoom-frame__surface--purple {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.zoom-frame__surface--pink {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.zoom-frame__surface--teal {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #1a1a2e;
+}
+
+.zoom-frame h2 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.zoom-frame p {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  opacity: 0.85;
+  max-width: 400px;
+}
+
+/* Revealed section behind zoom */
+.zoom-revealed {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: -1;
+}
+
+.zoom-revealed h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.zoom-revealed p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0;
+  max-width: 540px;
+  transition: opacity 0.4s ease 0.1s;
+}
+
+.zoom-revealed.visible h2,
+.zoom-revealed.visible p {
+  opacity: 1;
+}
+
+.zoom-revealed.visible p {
+  opacity: 0.7;
+}
+
+.zoom-revealed--dark {
+  background: var(--zoom-bg);
+}
+
+.zoom-revealed--gradient {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+/* End section */
+.zoom-end {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.zoom-end h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.zoom-end p {
+  opacity: 0.5;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-frame {
+    transform: none !important;
+    will-change: auto;
+  }
+  .zoom-stage {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+  }
+  .zoom-wrapper {
+    min-height: auto;
+  }
+  .zoom-revealed {
+    position: relative;
+    z-index: auto;
+    min-height: 100vh;
+  }
+  .zoom-revealed h2,
+  .zoom-revealed p {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .zoom-frame {
+    width: 90vw;
+    border-radius: 12px;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Hero Video Dialog",
+  "slug": "hero-video-dialog",
+  "category": "media",
+  "tags": ["click"],
+  "dependencies": [],
+  "description": "Video thumbnail that expands into a full-screen modal dialog with smooth animation.",
+  "params": {
+    "--hvd-radius": { "type": "range", "default": "16", "min": 0, "max": 32, "unit": "px", "label": "Thumbnail Radius" },
+    "--hvd-overlay": { "type": "color", "default": "rgba(0,0,0,0.85)", "label": "Backdrop Color" },
+    "--hvd-accent": { "type": "color", "default": "#6366f1", "label": "Play Button Color" }
+  },
+  "jsParams": {}
+}

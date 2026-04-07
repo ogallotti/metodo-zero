@@ -1,0 +1,14 @@
+{
+  "name": "SVG Draw on Scroll",
+  "slug": "svg-draw-on-scroll",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger"],
+  "dependencies": [],
+  "description": "SVG paths draw progressively as you scroll, creating hand-drawn illustration effects.",
+  "params": {
+    "--svg-stroke-color": { "type": "color", "default": "#6366f1", "label": "Stroke Color" },
+    "--svg-stroke-width": { "type": "range", "min": 1, "max": 6, "default": 2, "unit": "", "label": "Stroke Width" },
+    "--svg-bg": { "type": "color", "default": "#0a0a1a", "label": "Background" }
+  },
+  "jsParams": {}
+}

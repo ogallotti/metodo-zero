@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontal Scroll — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <section class="section-intro">
+    <h1>Horizontal Scroll</h1>
+    <p>Scroll down and watch the panels slide horizontally. Vertical scrolling mapped to horizontal motion creates a cinematic browsing experience.</p>
+  </section>
+
+  <div class="hscroll-wrapper">
+    <div class="hscroll-track">
+      <div class="hscroll-panel">
+        <span class="panel-tag">Strategy</span>
+        <h2>Research-driven decisions</h2>
+        <p>We ground every decision in data. Market analysis, user interviews, and competitive audits inform our strategy from day one, eliminating guesswork.</p>
+      </div>
+      <div class="hscroll-panel">
+        <span class="panel-tag">Design</span>
+        <h2>Pixel-perfect craft</h2>
+        <p>Every component is designed with purpose. From micro-interactions to layout systems, we obsess over the details that separate good from exceptional.</p>
+      </div>
+      <div class="hscroll-panel">
+        <span class="panel-tag">Engineering</span>
+        <h2>Built for performance</h2>
+        <p>Clean architecture, optimized bundles, and edge deployment. We build products that load fast, run smooth, and scale without breaking a sweat.</p>
+      </div>
+      <div class="hscroll-panel">
+        <span class="panel-tag">Growth</span>
+        <h2>Measurable outcomes</h2>
+        <p>Conversion funnels, analytics dashboards, and A/B testing frameworks. We don't just build — we measure, learn, and optimize continuously.</p>
+      </div>
+      <div class="hscroll-panel">
+        <span class="panel-tag">Support</span>
+        <h2>Long-term partnership</h2>
+        <p>Launch is just the beginning. Ongoing maintenance, monitoring, and iteration keep your product competitive and your users delighted.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-outro">
+    <div>
+      <h2>Panels complete</h2>
+      <p>The horizontal section translates vertical scroll into horizontal movement using GSAP ScrollTrigger pinning. Ideal for portfolios, timelines, and feature showcases.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

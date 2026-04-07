@@ -1,0 +1,14 @@
+{
+  "name": "Number Counter Scroll",
+  "slug": "number-counter-scroll",
+  "category": "scroll",
+  "tags": ["section", "scroll-trigger", "stats"],
+  "dependencies": [],
+  "description": "Numbers count up when their section scrolls into view, perfect for statistics and metrics sections.",
+  "params": {
+    "--counter-color": { "type": "color", "default": "#6366f1", "label": "Number Color" },
+    "--counter-bg": { "type": "color", "default": "#0a0a1a", "label": "Background" },
+    "--counter-duration": { "type": "range", "min": 500, "max": 3000, "default": 1500, "unit": "ms", "label": "Count Duration" }
+  },
+  "jsParams": {}
+}

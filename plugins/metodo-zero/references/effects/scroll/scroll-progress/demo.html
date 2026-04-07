@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Progress — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero">
+    <h1>Scroll Progress</h1>
+    <p>A sleek progress bar fixed at the top of the page that tracks your scroll position. Scroll down to see it in action.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Why scroll indicators matter</h2>
+    <p>Scroll progress indicators give users a clear sense of how much content remains. They reduce anxiety on long pages by providing spatial context, turning an unknown journey into a measurable one.</p>
+    <p>This implementation uses a lightweight requestAnimationFrame loop to track scroll position with minimal performance impact. The bar width maps directly to the percentage of the page scrolled.</p>
+    <p>All visual properties are exposed through CSS custom properties, making it trivial to match your brand. Adjust the height, color, and z-index without touching any JavaScript.</p>
+  </section>
+
+  <section class="content-section content-section--alt">
+    <h2>Technical highlights</h2>
+    <p>The progress calculation accounts for viewport height, ensuring the bar reaches 100% exactly when you hit the bottom of the page. Passive event listeners keep scrolling buttery smooth.</p>
+    <p>Accessibility is built in: the progress track carries proper ARIA attributes including role="progressbar" and dynamically updated aria-valuenow. Screen readers can announce scroll progress when needed.</p>
+    <p>The reduced-motion media query is respected — when the user prefers reduced motion, the transition on the bar is removed entirely, ensuring an instant visual update with no animation.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Integration notes</h2>
+    <p>Drop the script into any page and it creates the DOM elements automatically. No initialization required. The bar inserts itself as the first child of the body element.</p>
+    <p>For single-page applications with client-side routing, you may want to reset the bar on navigation. Simply dispatch a scroll event or call the update function after route changes.</p>
+    <p>The z-index is set high by default (9999) to ensure the bar appears above most content. If your site has modal overlays or sticky headers at higher z-index values, adjust the --progress-z variable accordingly.</p>
+  </section>
+
+  <section class="content-section content-section--alt">
+    <h2>Customization options</h2>
+    <p>Change the bar color with --progress-color. Gradient backgrounds work too — just set the CSS variable to a gradient value or override the background property directly on .scroll-progress-bar.</p>
+    <p>The track background defaults to transparent, meaning the bar floats invisibly until it fills. Set --progress-bg to a subtle color for a visible track effect, similar to a traditional progress bar.</p>
+    <p>Height ranges from a barely-visible 2px hairline to a bold 12px strip. The sweet spot for most designs sits around 3-4px — noticeable without being distracting.</p>
+  </section>
+
+  <footer class="footer">
+    <p>Scroll Progress — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "Silk",
+  "slug": "silk",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "canvas"],
+  "dependencies": [],
+  "description": "Flowing silk fabric simulation with layered waves, gradients, and sheen highlights",
+  "params": {
+    "--silk-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--silk-color-1": { "default": "#6366f1", "type": "color", "label": "Color 1" },
+    "--silk-color-2": { "default": "#ec4899", "type": "color", "label": "Color 2" },
+    "--silk-color-3": { "default": "#06b6d4", "type": "color", "label": "Color 3" },
+    "--silk-opacity": { "default": "0.9", "type": "number", "label": "Opacity", "min": 0.3, "max": 1 }
+  },
+  "jsParams": {
+    "speed": { "default": 0.003, "type": "number", "label": "Speed", "min": 0.001, "max": 0.01, "step": 0.001 },
+    "layers": { "default": 5, "type": "number", "label": "Layer count", "min": 2, "max": 8, "step": 1 },
+    "amplitude": { "default": 80, "type": "number", "label": "Wave amplitude", "min": 20, "max": 200, "step": 10 },
+    "waveComplexity": { "default": 3, "type": "number", "label": "Wave complexity", "min": 1, "max": 5, "step": 1 }
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light Rays — Effects Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="lr-container">
+    <div class="lr-rays">
+      <div class="lr-ray lr-ray--1"></div>
+      <div class="lr-ray lr-ray--2"></div>
+      <div class="lr-ray lr-ray--3"></div>
+      <div class="lr-ray lr-ray--4"></div>
+      <div class="lr-ray lr-ray--5"></div>
+      <div class="lr-ray lr-ray--6"></div>
+      <div class="lr-ray lr-ray--7"></div>
+      <div class="lr-ray lr-ray--8"></div>
+      <div class="lr-ray lr-ray--9"></div>
+      <div class="lr-ray lr-ray--10"></div>
+      <div class="lr-ray lr-ray--11"></div>
+      <div class="lr-ray lr-ray--12"></div>
+    </div>
+    <div class="lr-dust"></div>
+    <div class="lr-fog"></div>
+    <div class="lr-content">
+      <h1>Light Rays</h1>
+      <p>Volumetric light rays streaming through fog and dust particles</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

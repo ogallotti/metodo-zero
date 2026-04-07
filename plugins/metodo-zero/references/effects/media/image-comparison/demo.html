@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Comparison — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ic-wrapper">
+    <img class="ic-img ic-img--before" src="https://picsum.photos/seed/before/800/500?grayscale" alt="Before">
+    <img class="ic-img ic-img--after" src="https://picsum.photos/seed/before/800/500" alt="After">
+    <div class="ic-divider"></div>
+    <div class="ic-handle">
+      <span class="ic-handle-arrow ic-handle-arrow--left"></span>
+      <span class="ic-handle-arrow ic-handle-arrow--right"></span>
+    </div>
+  </div>
+  <div class="ic-labels">
+    <span class="ic-label">Before</span>
+    <span class="ic-label">After</span>
+  </div>
+  <div class="ic-title">
+    <h1>Image Comparison</h1>
+    <p>Drag the slider or click anywhere to compare two images side by side. Supports touch on mobile.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

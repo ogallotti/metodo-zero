@@ -1,0 +1,18 @@
+{
+  "name": "Hover Border Gradient",
+  "slug": "hover-border-gradient",
+  "category": "borders",
+  "tags": ["hover", "css-only"],
+  "dependencies": [],
+  "description": "Border gradient that shifts and rotates on hover, transitioning from subtle to vivid.",
+  "params": {
+    "--hbg-color-1": { "type": "color", "default": "#6366f1", "label": "Gradient Color 1" },
+    "--hbg-color-2": { "type": "color", "default": "#ec4899", "label": "Gradient Color 2" },
+    "--hbg-color-3": { "type": "color", "default": "#f59e0b", "label": "Gradient Color 3" },
+    "--hbg-speed": { "type": "range", "min": 200, "max": 800, "default": 400, "unit": "ms", "label": "Transition Speed" },
+    "--hbg-width": { "type": "range", "min": 1, "max": 4, "default": 2, "unit": "px", "label": "Border Width" },
+    "--hbg-radius": { "type": "range", "min": 0, "max": 24, "default": 12, "unit": "px", "label": "Border Radius" },
+    "--hbg-bg": { "type": "color", "default": "#111122", "label": "Background" }
+  },
+  "jsParams": {}
+}

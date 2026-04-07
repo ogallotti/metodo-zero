@@ -1,0 +1,17 @@
+{
+  "name": "Shine Border",
+  "slug": "shine-border",
+  "category": "borders",
+  "tags": ["continuous", "css-only"],
+  "dependencies": [],
+  "description": "Moving shine/highlight traveling along border, like light reflecting on a chrome edge.",
+  "params": {
+    "--shine-bdr-color": { "type": "color", "default": "rgba(255, 255, 255, 0.6)", "label": "Shine Color" },
+    "--shine-bdr-speed": { "type": "range", "min": 2, "max": 10, "default": 4, "unit": "s", "label": "Speed" },
+    "--shine-bdr-width": { "type": "range", "min": 1, "max": 3, "default": 1, "unit": "px", "label": "Border Width" },
+    "--shine-bdr-radius": { "type": "range", "min": 0, "max": 24, "default": 12, "unit": "px", "label": "Border Radius" },
+    "--shine-bdr-base": { "type": "color", "default": "rgba(255, 255, 255, 0.08)", "label": "Base Border Color" },
+    "--shine-bdr-bg": { "type": "color", "default": "#111122", "label": "Background" }
+  },
+  "jsParams": {}
+}

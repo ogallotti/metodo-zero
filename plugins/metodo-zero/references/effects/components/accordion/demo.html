@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="acc-header"><h1>Accordion</h1><p>Smooth animated accordion with auto-height transition and rotating chevrons.</p></div>
+  <div class="acc-group">
+    <div class="acc-item">
+      <button class="acc-trigger">What makes this accordion different?<svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="acc-content"><div class="acc-content-inner">This accordion uses real auto-height measurement instead of fixed max-heights. The content area smoothly transitions to the exact height of its content, creating a natural, fluid animation regardless of content length.</div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger">Is it accessible?<svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="acc-content"><div class="acc-content-inner">Yes. Uses semantic button triggers, proper ARIA attributes can be added easily, and the component respects prefers-reduced-motion by disabling transitions when the user prefers reduced motion.</div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger">How does it handle dynamic content?<svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="acc-content"><div class="acc-content-inner">The accordion measures content height on each open action, so it adapts to dynamically loaded content, images, or any content that changes size. No hardcoded heights needed.</div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger">Can multiple items be open at once?<svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="acc-content"><div class="acc-content-inner">By default, opening one item closes the others (single-open mode). This can easily be modified to allow multiple open items by removing the close-all logic in the click handler.</div></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

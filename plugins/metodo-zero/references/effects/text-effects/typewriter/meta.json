@@ -1,0 +1,21 @@
+{
+  "name": "Typewriter",
+  "slug": "typewriter",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "reveal"],
+  "dependencies": [],
+  "description": "Types text character by character with blinking cursor, supports delete and retype loop.",
+  "params": {
+    "--tw-font-size": { "type": "range", "default": "3.5rem", "label": "Font Size", "min": "1rem", "max": "6rem" },
+    "--tw-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--tw-cursor-color": { "type": "color", "default": "#6ee7b7", "label": "Cursor Color" },
+    "--tw-cursor-width": { "type": "range", "default": "3px", "label": "Cursor Width", "min": "1px", "max": "8px" },
+    "--tw-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "typeSpeed": { "type": "number", "default": 80, "label": "Type Speed (ms)" },
+    "deleteSpeed": { "type": "number", "default": 50, "label": "Delete Speed (ms)" },
+    "pauseBetween": { "type": "number", "default": 2000, "label": "Pause Between (ms)" },
+    "loop": { "type": "boolean", "default": true, "label": "Loop" }
+  }
+}

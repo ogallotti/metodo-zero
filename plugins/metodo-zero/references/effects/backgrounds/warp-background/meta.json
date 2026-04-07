@@ -1,0 +1,20 @@
+{
+  "name": "Warp Background",
+  "slug": "warp-background",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "canvas"],
+  "dependencies": [],
+  "description": "Space warp starfield effect with 3D perspective projection, trails, and motion blur",
+  "params": {
+    "--wrp-bg": { "default": "#000008", "type": "color", "label": "Background color" }
+  },
+  "jsParams": {
+    "starCount": { "default": 600, "type": "number", "label": "Star count", "min": 100, "max": 1500, "step": 50 },
+    "speed": { "default": 2, "type": "number", "label": "Speed", "min": 0.5, "max": 15, "step": 0.5 },
+    "trailLength": { "default": 0.7, "type": "number", "label": "Trail length", "min": 0, "max": 1, "step": 0.1 },
+    "maxRadius": { "default": 2.5, "type": "number", "label": "Max star size", "min": 0.5, "max": 5, "step": 0.5 },
+    "depth": { "default": 1500, "type": "number", "label": "Depth range", "min": 500, "max": 3000, "step": 100 },
+    "centerX": { "default": 0.5, "type": "number", "label": "Center X", "min": 0, "max": 1, "step": 0.05 },
+    "centerY": { "default": 0.5, "type": "number", "label": "Center Y", "min": 0, "max": 1, "step": 0.05 }
+  }
+}

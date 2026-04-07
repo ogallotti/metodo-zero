@@ -1,0 +1,17 @@
+{
+  "name": "Light Rays",
+  "slug": "light-rays",
+  "category": "backgrounds",
+  "tags": ["hero", "section", "css-only"],
+  "dependencies": [],
+  "description": "Volumetric CSS-only light rays with dust particles and fog overlay",
+  "params": {
+    "--lr-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--lr-color": { "default": "rgba(255,255,255,0.03)", "type": "color", "label": "Ray color" },
+    "--lr-accent": { "default": "rgba(99,102,241,0.05)", "type": "color", "label": "Accent color" },
+    "--lr-speed": { "default": "15s", "type": "duration", "label": "Sway speed", "min": 5, "max": 30 },
+    "--lr-origin-x": { "default": "50%", "type": "size", "label": "Origin X position" },
+    "--lr-origin-y": { "default": "-10%", "type": "size", "label": "Origin Y position" }
+  },
+  "jsParams": {}
+}

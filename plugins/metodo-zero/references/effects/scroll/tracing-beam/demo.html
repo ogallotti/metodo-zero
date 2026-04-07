@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracing Beam — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="beam-hero">
+    <h1>Tracing Beam</h1>
+    <p>A glowing beam draws along the sidebar as you scroll, connecting content blocks with a visual thread. Scroll down to trace the path.</p>
+  </section>
+
+  <div class="beam-container">
+    <div class="beam-line">
+      <div class="beam-line__fill">
+        <div class="beam-line__dot"></div>
+      </div>
+    </div>
+
+    <div class="beam-block">
+      <span class="block-meta">January 2024</span>
+      <h2>Project kickoff</h2>
+      <p>We assembled the team, defined the vision, and set aggressive but achievable milestones. The first sprint focused on infrastructure and core architecture decisions.</p>
+      <p>Key decision: going serverless-first with edge functions for all API routes, reducing operational overhead from day one.</p>
+    </div>
+
+    <div class="beam-block">
+      <span class="block-meta">March 2024</span>
+      <h2>Alpha release</h2>
+      <p>The first internal alpha shipped to 50 beta testers. Core workflows were functional, and early feedback shaped the direction for the component library.</p>
+      <p>User testing revealed that the onboarding flow needed simplification — three screens became one, and completion rates jumped 40%.</p>
+    </div>
+
+    <div class="beam-block">
+      <span class="block-meta">June 2024</span>
+      <h2>Public beta</h2>
+      <p>We opened the doors to everyone. 2,000 signups in the first week. The community response validated our core thesis: developers want simplicity without sacrificing power.</p>
+      <p>Performance benchmarks exceeded our targets: 95th percentile response time under 100ms globally.</p>
+    </div>
+
+    <div class="beam-block">
+      <span class="block-meta">September 2024</span>
+      <h2>Version 1.0</h2>
+      <p>The stable release marked a milestone: full API parity, comprehensive documentation, and a plugin ecosystem with 30+ community contributions.</p>
+      <p>Enterprise customers began adopting the platform, validating the architecture decisions made months earlier.</p>
+    </div>
+
+    <div class="beam-block">
+      <span class="block-meta">December 2024</span>
+      <h2>Scale and beyond</h2>
+      <p>Processing over 10 million requests daily with 99.99% uptime. The team doubled in size, and the roadmap now extends through 2026 with ambitious new capabilities.</p>
+      <p>What started as a weekend project is now the foundation for thousands of production applications worldwide.</p>
+    </div>
+  </div>
+
+  <footer class="beam-footer">
+    <p>Tracing Beam — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --fp-size: 40px;
+  --fp-color: #6366f1;
+  --fp-border-color: #818cf8;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.fp-follower {
+  position: fixed;
+  width: var(--fp-size);
+  height: var(--fp-size);
+  border-radius: 50%;
+  background: var(--fp-color);
+  border: 2px solid var(--fp-border-color);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  mix-blend-mode: screen;
+}
+
+.fp-follower::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  animation: fp-ring-pulse 2s ease-in-out infinite;
+}
+
+@keyframes fp-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.3); opacity: 0; }
+}
+
+.fp-trail-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--fp-color);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  opacity: 0.4;
+}
+
+.fp-demo {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.fp-demo h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.fp-demo p {
+  font-size: 1.125rem;
+  color: #a1a1aa;
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto 48px;
+}
+
+.fp-card {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  padding: 40px 32px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.fp-card h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.fp-card p {
+  font-size: 0.9rem;
+  color: #71717a;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fp-follower,
+  .fp-trail-dot {
+    display: none;
+  }
+
+  .fp-follower::after {
+    animation: none;
+  }
+}

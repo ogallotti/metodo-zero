@@ -1,0 +1,13 @@
+{
+  "name": "Zoom Through",
+  "slug": "zoom-through",
+  "category": "transitions",
+  "tags": ["section"],
+  "dependencies": ["gsap"],
+  "description": "Zoom into an element to transition to the next section, creating a fly-through spatial navigation effect.",
+  "params": {
+    "--zoom-bg": { "type": "color", "default": "#0a0a1a", "label": "Background" },
+    "--zoom-max-scale": { "type": "range", "min": 5, "max": 30, "default": 15, "unit": "", "label": "Max Zoom Scale" }
+  },
+  "jsParams": {}
+}

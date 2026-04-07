@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Counter Scroll — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="counter-hero">
+    <h1>Number Counter Scroll</h1>
+    <p>Numbers count up with smooth easing when their section enters the viewport. Perfect for metrics, stats, and social proof sections.</p>
+  </section>
+
+  <section class="stats-section">
+    <h2>Platform metrics</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" data-target="10000" data-suffix="+">0</div>
+        <div class="stat-label">Active users</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="99.9" data-suffix="%" data-decimals="1">0</div>
+        <div class="stat-label">Uptime</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="150" data-suffix="ms">0</div>
+        <div class="stat-label">Avg response</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="45" data-suffix="M">0</div>
+        <div class="stat-label">API calls / day</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <h2>Numbers tell stories</h2>
+    <p>Static numbers are easy to skip. Animated counters draw the eye and make metrics feel dynamic and earned. The easeOutCubic function starts fast and decelerates, creating a satisfying arrival at the final value.</p>
+  </section>
+
+  <section class="stats-section stats-section--light">
+    <h2>Growth indicators</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" data-target="340" data-suffix="%">0</div>
+        <div class="stat-label">Revenue growth</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="2.5" data-suffix="x" data-decimals="1">0</div>
+        <div class="stat-label">Faster deploys</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="89" data-suffix="%">0</div>
+        <div class="stat-label">NPS score</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="500" data-prefix="$" data-suffix="K">0</div>
+        <div class="stat-label">Cost savings</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <h2>Scroll to reveal</h2>
+    <p>Each stats grid triggers independently when it reaches 30% visibility. Counters only animate once — scrolling back up won't reset them. This creates a natural, non-repetitive experience.</p>
+  </section>
+
+  <section class="stats-section">
+    <h2>Community impact</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" data-target="12000" data-suffix="+">0</div>
+        <div class="stat-label">GitHub stars</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="850">0</div>
+        <div class="stat-label">Contributors</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="3.2" data-suffix="M" data-decimals="1">0</div>
+        <div class="stat-label">Downloads / month</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="counter-footer">
+    <p>Number Counter Scroll — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

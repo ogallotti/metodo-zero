@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Bento — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mb-header">
+    <h1>Magic Bento</h1>
+    <p>Hover over the cards to see a spotlight border effect that follows your cursor across the entire grid.</p>
+  </div>
+  <div class="mb-grid">
+    <div class="mb-card mb-card--span-2">
+      <span class="mb-card-icon">⚡</span>
+      <h2>Real-time Collaboration</h2>
+      <p>Work together seamlessly with live cursors, inline comments, and conflict-free merging of design changes.</p>
+    </div>
+    <div class="mb-card">
+      <span class="mb-card-icon">🎯</span>
+      <h2>Pixel Perfect</h2>
+      <p>Sub-pixel rendering with automatic alignment to the device pixel grid.</p>
+    </div>
+    <div class="mb-card">
+      <span class="mb-card-icon">🔌</span>
+      <h2>Plugin System</h2>
+      <p>Extensible architecture for custom effects and integrations.</p>
+    </div>
+    <div class="mb-card">
+      <span class="mb-card-icon">📐</span>
+      <h2>Layout Engine</h2>
+      <p>CSS Grid and Flexbox powered layouts with visual controls.</p>
+    </div>
+    <div class="mb-card">
+      <span class="mb-card-icon">🎨</span>
+      <h2>Color System</h2>
+      <p>Perceptual color spaces with automatic contrast and harmony.</p>
+    </div>
+    <div class="mb-card mb-card--span-2">
+      <span class="mb-card-icon">🧠</span>
+      <h2>AI-Assisted Design</h2>
+      <p>Intelligent suggestions for typography, spacing, and color based on design context and accessibility requirements.</p>
+    </div>
+    <div class="mb-card">
+      <span class="mb-card-icon">📱</span>
+      <h2>Responsive Preview</h2>
+      <p>Test across devices with real-time viewport simulation.</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

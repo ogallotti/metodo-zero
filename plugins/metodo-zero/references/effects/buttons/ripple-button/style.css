@@ -1,0 +1,97 @@
+:root {
+  --ripple-bg: #6366f1;
+  --ripple-color: rgba(255, 255, 255, 0.35);
+  --ripple-duration: 600ms;
+  --ripple-radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: #0a0a14;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+.ripple-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  border: none;
+  border-radius: var(--ripple-radius);
+  background: var(--ripple-bg);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ripple-btn:hover {
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+}
+
+.ripple-btn:active {
+  transform: scale(0.98);
+}
+
+.ripple-btn__wave {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--ripple-color);
+  transform: scale(0);
+  animation: ripple-expand var(--ripple-duration) ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple-expand {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-btn--outline {
+  background: transparent;
+  border: 2px solid var(--ripple-bg);
+  color: var(--ripple-bg);
+}
+
+.ripple-btn--outline .ripple-btn__wave {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.ripple-btn--dark {
+  background: #1e1e3a;
+  color: #e0e0e0;
+}
+
+.ripple-btn--dark .ripple-btn__wave {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple-btn__wave {
+    animation: none;
+    display: none;
+  }
+}

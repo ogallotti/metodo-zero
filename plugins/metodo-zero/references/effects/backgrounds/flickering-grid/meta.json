@@ -1,0 +1,18 @@
+{
+  "name": "Flickering Grid",
+  "slug": "flickering-grid",
+  "category": "backgrounds",
+  "tags": ["hero", "section", "css-only"],
+  "dependencies": [],
+  "description": "Grid of cells with staggered flickering animation, vignette fade, and dynamic sizing",
+  "params": {
+    "--fg-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--fg-color": { "default": "rgba(99,102,241,0.4)", "type": "color", "label": "Cell bright color" },
+    "--fg-color-dim": { "default": "rgba(99,102,241,0.08)", "type": "color", "label": "Cell dim color" },
+    "--fg-gap": { "default": "2px", "type": "size", "label": "Grid gap", "min": 0, "max": 8 },
+    "--fg-cell-size": { "default": "24px", "type": "size", "label": "Cell size", "min": 8, "max": 48 },
+    "--fg-border-radius": { "default": "2px", "type": "size", "label": "Border radius", "min": 0, "max": 12 },
+    "--fg-speed": { "default": "3s", "type": "duration", "label": "Flicker speed", "min": 1, "max": 8 }
+  },
+  "jsParams": {}
+}

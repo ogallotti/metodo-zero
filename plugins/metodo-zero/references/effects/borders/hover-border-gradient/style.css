@@ -1,0 +1,147 @@
+:root {
+  --hbg-color-1: #6366f1;
+  --hbg-color-2: #ec4899;
+  --hbg-color-3: #f59e0b;
+  --hbg-speed: 400ms;
+  --hbg-width: 2px;
+  --hbg-radius: 12px;
+  --hbg-bg: #111122;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: #08081a;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e0e0e0;
+  padding: 40px 20px;
+}
+
+.hbg-box {
+  position: relative;
+  padding: 36px;
+  border-radius: var(--hbg-radius);
+  background: var(--hbg-bg);
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Base subtle border */
+.hbg-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--hbg-width);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity var(--hbg-speed) ease;
+  pointer-events: none;
+}
+
+/* Gradient border on hover */
+.hbg-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--hbg-width);
+  background: linear-gradient(
+    var(--hbg-hover-angle, 135deg),
+    var(--hbg-color-1),
+    var(--hbg-color-2),
+    var(--hbg-color-3)
+  );
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--hbg-speed) ease,
+              background-position var(--hbg-speed) ease;
+  pointer-events: none;
+}
+
+.hbg-box:hover::before {
+  opacity: 1;
+  background-position: 100% 100%;
+}
+
+.hbg-box:hover::after {
+  opacity: 0;
+}
+
+/* Outer glow on hover */
+.hbg-box__glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--hbg-radius) + 4px);
+  background: linear-gradient(
+    135deg,
+    var(--hbg-color-1),
+    var(--hbg-color-2),
+    var(--hbg-color-3)
+  );
+  filter: blur(12px);
+  opacity: 0;
+  transition: opacity var(--hbg-speed) ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hbg-box:hover .hbg-box__glow {
+  opacity: 0.2;
+}
+
+.hbg-box__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.hbg-box__desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #7a7f9a;
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hbg-box::before,
+  .hbg-box::after,
+  .hbg-box__glow {
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hbg-box {
+    padding: 24px;
+  }
+}

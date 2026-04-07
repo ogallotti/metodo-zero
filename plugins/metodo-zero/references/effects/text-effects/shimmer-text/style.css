@@ -1,0 +1,90 @@
+:root {
+  --sh-font-size: 4rem;
+  --sh-color: #71717a;
+  --sh-highlight: #ffffff;
+  --sh-speed: 2.5s;
+  --sh-width: 40%;
+  --sh-bg: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sh-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.sh-container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 90vw;
+}
+
+.sh-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.sh-text {
+  font-size: var(--sh-font-size);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--sh-color);
+  background: linear-gradient(
+    90deg,
+    var(--sh-color) 0%,
+    var(--sh-color) calc(50% - var(--sh-width) / 2),
+    var(--sh-highlight) 50%,
+    var(--sh-color) calc(50% + var(--sh-width) / 2),
+    var(--sh-color) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sh-sweep var(--sh-speed) ease-in-out infinite;
+}
+
+@keyframes sh-sweep {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+.sh-sub {
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .sh-text {
+    font-size: calc(var(--sh-font-size) * 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sh-text {
+    animation: none;
+    color: var(--sh-highlight);
+    -webkit-text-fill-color: var(--sh-highlight);
+  }
+}

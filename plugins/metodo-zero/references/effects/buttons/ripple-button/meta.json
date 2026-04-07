@@ -1,0 +1,15 @@
+{
+  "name": "Ripple Button",
+  "slug": "ripple-button",
+  "category": "buttons",
+  "tags": ["click"],
+  "dependencies": [],
+  "description": "Material-design ripple effect emanating from click point with configurable color and speed.",
+  "params": {
+    "--ripple-bg": { "type": "color", "default": "#6366f1", "label": "Button Background" },
+    "--ripple-color": { "type": "color", "default": "rgba(255, 255, 255, 0.35)", "label": "Ripple Color" },
+    "--ripple-duration": { "type": "range", "min": 200, "max": 1200, "default": 600, "unit": "ms", "label": "Ripple Duration" },
+    "--ripple-radius": { "type": "range", "min": 0, "max": 50, "default": 12, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

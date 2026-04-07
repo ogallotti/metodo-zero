@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Reveal — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="tr-container" data-direction="left">
+    <p class="tr-label">Mask wipe reveal</p>
+    <h1>
+      <span class="tr-line"><span class="tr-line-inner">Stop scrolling.</span></span>
+      <span class="tr-line"><span class="tr-line-inner">Start building.</span></span>
+      <span class="tr-line"><span class="tr-line-inner">Ship today.</span></span>
+    </h1>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

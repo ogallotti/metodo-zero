@@ -1,0 +1,17 @@
+{
+  "name": "Shimmer Text",
+  "slug": "shimmer-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "continuous", "css-only"],
+  "dependencies": [],
+  "description": "Shimmering highlight sweeps across text. Pure CSS.",
+  "params": {
+    "--sh-font-size": { "type": "range", "default": "4rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--sh-color": { "type": "color", "default": "#71717a", "label": "Base Color" },
+    "--sh-highlight": { "type": "color", "default": "#ffffff", "label": "Highlight Color" },
+    "--sh-speed": { "type": "range", "default": "2.5s", "label": "Speed", "min": "1s", "max": "8s" },
+    "--sh-width": { "type": "range", "default": "40%", "label": "Highlight Width", "min": "10%", "max": "80%" },
+    "--sh-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {}
+}

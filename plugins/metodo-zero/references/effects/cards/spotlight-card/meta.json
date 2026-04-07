@@ -1,0 +1,16 @@
+{
+  "name": "Spotlight Card",
+  "slug": "spotlight-card",
+  "category": "cards",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Spotlight glow follows cursor over card surface with soft radial light.",
+  "params": {
+    "--spot-radius": { "type": "range", "min": 100, "max": 600, "default": 300, "unit": "px", "label": "Spotlight Radius" },
+    "--spot-color": { "type": "color", "default": "rgba(120, 119, 198, 0.3)", "label": "Spotlight Color" },
+    "--spot-border-color": { "type": "color", "default": "rgba(120, 119, 198, 0.4)", "label": "Border Spotlight Color" },
+    "--spot-bg": { "type": "color", "default": "#16162a", "label": "Card Background" },
+    "--spot-radius-border": { "type": "range", "min": 0, "max": 24, "default": 12, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

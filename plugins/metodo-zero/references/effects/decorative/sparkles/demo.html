@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sparkles — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sp-demo">
+    <h1>Sparkles</h1>
+    <p>Twinkling sparkle particles that appear and fade with randomized timing. Add magic to any container.</p>
+    <div class="sp-hero-card sp-container">
+      <h2>Design with Delight</h2>
+      <p>Great interfaces surprise and delight users with thoughtful micro-interactions that feel natural and purposeful.</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+        if (e.data.scope === 'js' && window.__sparklesUpdate) window.__sparklesUpdate(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "Timeline",
+  "slug": "timeline",
+  "category": "layout",
+  "tags": ["scroll-trigger"],
+  "dependencies": [],
+  "description": "Animated vertical timeline with entries that reveal on scroll with a growing line.",
+  "params": {
+    "--tl-line-color": { "type": "color", "default": "#27272a", "label": "Line Color" },
+    "--tl-accent": { "type": "color", "default": "#6366f1", "label": "Accent Color" },
+    "--tl-dot-size": { "type": "range", "default": "14", "min": 8, "max": 24, "unit": "px", "label": "Dot Size" }
+  },
+  "jsParams": {}
+}

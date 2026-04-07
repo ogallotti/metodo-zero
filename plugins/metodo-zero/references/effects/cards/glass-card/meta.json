@@ -1,0 +1,16 @@
+{
+  "name": "Glass Card",
+  "slug": "glass-card",
+  "category": "cards",
+  "tags": ["hover", "css-only"],
+  "dependencies": [],
+  "description": "Frosted glass card with backdrop blur, subtle border glow, and animated gradient on hover.",
+  "params": {
+    "--glass-blur": { "type": "range", "min": 4, "max": 40, "default": 16, "unit": "px", "label": "Blur Amount" },
+    "--glass-bg": { "type": "color", "default": "rgba(255, 255, 255, 0.05)", "label": "Glass Tint" },
+    "--glass-border": { "type": "color", "default": "rgba(255, 255, 255, 0.1)", "label": "Border Color" },
+    "--glass-glow": { "type": "color", "default": "rgba(139, 92, 246, 0.4)", "label": "Hover Glow Color" },
+    "--glass-radius": { "type": "range", "min": 0, "max": 32, "default": 20, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {}
+}

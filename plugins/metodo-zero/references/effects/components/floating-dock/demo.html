@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floating Dock — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="fd-header"><h1>Floating Dock</h1><p>Fixed bottom bar with smooth hover interactions. Scroll to see it in action.</p></div>
+  <div class="fd-content">
+    <p>The floating dock remains anchored at the bottom of the viewport as you scroll. Each icon responds to hover with a subtle lift animation and background highlight. Click any icon to mark it as active.</p>
+    <p>This pattern is commonly used for primary navigation in single-page applications, providing persistent access to core actions without consuming header space.</p>
+    <p>The dock uses backdrop-filter blur for a glassmorphism effect that lets the content behind it show through with a frosted glass appearance, maintaining visual context while staying prominent.</p>
+  </div>
+  <nav class="fd-dock">
+    <button class="fd-item fd-item--active" aria-label="Home">🏠</button>
+    <button class="fd-item" aria-label="Search">🔍</button>
+    <button class="fd-item" aria-label="Notifications">🔔</button>
+    <div class="fd-divider"></div>
+    <button class="fd-item" aria-label="Messages">💬</button>
+    <button class="fd-item" aria-label="Profile">👤</button>
+  </nav>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

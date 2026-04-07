@@ -1,0 +1,19 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--dk-bg:rgba(24,24,27,0.8);--dk-icon-size:48px}
+body{font-family:'Inter',system-ui,sans-serif;background:#09090b;color:#fafafa;min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;padding:60px 24px}
+
+.dk-header{text-align:center}
+.dk-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
+.dk-header p{color:#71717a;font-size:1rem;max-width:480px;margin:0 auto;line-height:1.6}
+
+.dk-dock{display:flex;align-items:flex-end;gap:4px;background:var(--dk-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:8px 12px;user-select:none}
+
+.dk-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1)}
+.dk-icon{width:var(--dk-icon-size);height:var(--dk-icon-size);border-radius:12px;background:linear-gradient(135deg,#27272a,#3f3f46);display:flex;align-items:center;justify-content:center;font-size:calc(var(--dk-icon-size) * 0.5);transition:transform 0.15s cubic-bezier(0.16,1,0.3,1),box-shadow 0.15s ease;will-change:transform}
+.dk-icon:hover{box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.dk-label{font-size:0;opacity:0;transition:font-size 0.2s,opacity 0.2s;color:#a1a1aa;white-space:nowrap}
+.dk-item:hover .dk-label{font-size:0.65rem;opacity:1}
+
+.dk-separator{width:1px;height:calc(var(--dk-icon-size) * 0.5);background:#3f3f46;margin:0 4px;align-self:center}
+
+@media(prefers-reduced-motion:reduce){.dk-icon,.dk-item,.dk-label{transition:none}}

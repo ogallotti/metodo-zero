@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glass Card — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glass-card-grid">
+    <div class="glass-card">
+      <div class="glass-card__number">01</div>
+      <h3 class="glass-card__title">Design Systems</h3>
+      <p class="glass-card__desc">Build consistent interfaces with reusable tokens, components, and documentation.</p>
+      <div class="glass-card__dots">
+        <span class="glass-card__dot glass-card__dot--active"></span>
+        <span class="glass-card__dot"></span>
+        <span class="glass-card__dot"></span>
+      </div>
+    </div>
+    <div class="glass-card">
+      <div class="glass-card__number">02</div>
+      <h3 class="glass-card__title">Motion Design</h3>
+      <p class="glass-card__desc">Craft micro-interactions and transitions that feel natural and purposeful.</p>
+      <div class="glass-card__dots">
+        <span class="glass-card__dot"></span>
+        <span class="glass-card__dot glass-card__dot--active"></span>
+        <span class="glass-card__dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

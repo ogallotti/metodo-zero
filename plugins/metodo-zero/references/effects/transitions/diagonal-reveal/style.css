@@ -1,0 +1,141 @@
+:root {
+  --diag-angle: 40px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1a1a2e;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.diag-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.diag-section h1,
+.diag-section h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.diag-section p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+.diag-section p.sub {
+  opacity: 0.7;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* Section colors */
+.diag-section--hero {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+}
+
+.diag-section--dark {
+  background: #0a0a1a;
+  color: #fff;
+}
+
+.diag-section--light {
+  background: #fafafa;
+}
+
+.diag-section--pink {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: #fff;
+}
+
+.diag-section--teal {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #1a1a2e;
+}
+
+/* Diagonal transitions */
+.diag--left {
+  clip-path: polygon(0 0, 100% var(--diag-angle), 100% 100%, 0 100%);
+  margin-top: calc(var(--diag-angle) * -1);
+  padding-top: calc(var(--diag-angle) + 4rem);
+}
+
+.diag--right {
+  clip-path: polygon(0 var(--diag-angle), 100% 0, 100% 100%, 0 100%);
+  margin-top: calc(var(--diag-angle) * -1);
+  padding-top: calc(var(--diag-angle) + 4rem);
+}
+
+/* Alternating top and bottom diagonals */
+.diag--bottom-left {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--diag-angle)), 0 100%);
+  padding-bottom: calc(var(--diag-angle) + 2rem);
+}
+
+.diag--bottom-right {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(--diag-angle)));
+  padding-bottom: calc(var(--diag-angle) + 2rem);
+}
+
+/* Content reveal animation */
+.diag-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.diag-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.diag-footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diag--left,
+  .diag--right,
+  .diag--bottom-left,
+  .diag--bottom-right {
+    clip-path: none;
+    margin-top: 0;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .diag-content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --diag-angle: 25px;
+  }
+}

@@ -1,0 +1,126 @@
+:root {
+  --sn-font-size: 4.5rem;
+  --sn-color: #94a3b8;
+  --sn-shine-color: #ffffff;
+  --sn-shine-width: 120px;
+  --sn-speed: 3s;
+  --sn-delay: 1s;
+  --sn-bg: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sn-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.sn-container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 90vw;
+}
+
+.sn-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.sn-text {
+  font-size: var(--sn-font-size);
+  font-weight: 700;
+  color: var(--sn-color);
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.sn-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: var(--sn-shine-width);
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0) 20%,
+    var(--sn-shine-color) 50%,
+    rgba(255, 255, 255, 0) 80%,
+    transparent
+  );
+  opacity: 0.6;
+  animation: sn-shine calc(var(--sn-speed) + var(--sn-delay)) ease-in-out infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+@keyframes sn-shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    left: 200%;
+    opacity: 0.6;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    left: 200%;
+    opacity: 0;
+  }
+}
+
+.sn-text-metallic {
+  background: linear-gradient(
+    180deg,
+    var(--sn-shine-color) 0%,
+    var(--sn-color) 40%,
+    var(--sn-color) 60%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sn-sub {
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .sn-text {
+    font-size: calc(var(--sn-font-size) * 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sn-text::before {
+    animation: none;
+    display: none;
+  }
+}

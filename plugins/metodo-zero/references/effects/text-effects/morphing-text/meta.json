@@ -1,0 +1,17 @@
+{
+  "name": "Morphing Text",
+  "slug": "morphing-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "continuous"],
+  "dependencies": [],
+  "description": "Smoothly morphs between different words or phrases using blur transitions.",
+  "params": {
+    "--mt-font-size": { "type": "range", "default": "4.5rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--mt-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--mt-duration": { "type": "range", "default": "0.8s", "label": "Morph Duration", "min": "0.3s", "max": "2s" },
+    "--mt-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {
+    "pauseBetween": { "type": "number", "default": 2500, "label": "Pause Between (ms)" }
+  }
+}

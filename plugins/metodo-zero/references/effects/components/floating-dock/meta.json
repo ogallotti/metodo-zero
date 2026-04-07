@@ -1,0 +1,1 @@
+{"name":"Floating Dock","slug":"floating-dock","category":"components","tags":["hover"],"dependencies":[],"description":"Floating action dock fixed at the bottom with smooth hover interactions.","params":{"--fd-bg":{"type":"color","default":"rgba(24,24,27,0.9)","label":"Dock Background"},"--fd-accent":{"type":"color","default":"#6366f1","label":"Active Color"}},"jsParams":{}}

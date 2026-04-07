@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Layers — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="parallax-section">
+    <div class="parallax-layer parallax-layer--bg"></div>
+    <div class="parallax-layer parallax-layer--shapes">
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <div class="parallax-content">
+      <h1>Parallax Layers</h1>
+      <p>Multiple layers move at different speeds as you scroll, creating a sense of depth and visual richness.</p>
+    </div>
+  </section>
+
+  <section class="parallax-section parallax-section--two">
+    <div class="parallax-layer parallax-layer--bg"></div>
+    <div class="parallax-layer parallax-layer--shapes">
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <div class="parallax-content">
+      <h2>Depth through motion</h2>
+      <p>Background elements drift slowly while foreground content stays anchored. The differential speed tricks your brain into perceiving three-dimensional space.</p>
+    </div>
+  </section>
+
+  <section class="parallax-section parallax-section--three">
+    <div class="parallax-layer parallax-layer--bg"></div>
+    <div class="parallax-layer parallax-layer--shapes">
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <div class="parallax-content">
+      <h2>Performance optimized</h2>
+      <p>Only transform properties are animated, keeping compositing on the GPU. Passive scroll listeners and requestAnimationFrame ensure zero jank.</p>
+    </div>
+  </section>
+
+  <section class="parallax-section parallax-section--four">
+    <div class="parallax-layer parallax-layer--bg"></div>
+    <div class="parallax-layer parallax-layer--shapes">
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+      <div class="parallax-shape"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <div class="parallax-content">
+      <h2>Fully customizable</h2>
+      <p>Adjust layer speeds via CSS custom properties. The background and midground layers each have their own speed multiplier for fine-tuned control.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

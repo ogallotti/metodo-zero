@@ -1,0 +1,143 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-gap: 16px;
+  --bg-radius: 16px;
+  --bg-stagger: 100ms;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 60px 24px;
+}
+
+.bg-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.bg-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.bg-header p {
+  color: #71717a;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.bg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: var(--bg-gap);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bg-cell {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: var(--bg-radius);
+  padding: 28px 24px;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.bg-cell.bg-cell--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.bg-cell--span-2 {
+  grid-column: span 2;
+}
+
+.bg-cell--span-row {
+  grid-row: span 2;
+}
+
+.bg-cell--accent {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  border-color: #3730a3;
+}
+
+.bg-cell--highlight {
+  background: linear-gradient(135deg, #1c1917, #292524);
+  border-color: #44403c;
+}
+
+.bg-cell h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.bg-cell p {
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+}
+
+.bg-cell-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.bg-cell img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.bg-metric {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6366f1, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .bg-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .bg-grid {
+    grid-template-columns: 1fr;
+  }
+  .bg-cell--span-2 {
+    grid-column: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-cell {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

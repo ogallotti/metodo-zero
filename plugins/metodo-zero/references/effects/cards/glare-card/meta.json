@@ -1,0 +1,16 @@
+{
+  "name": "Glare Card",
+  "slug": "glare-card",
+  "category": "cards",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Card with glossy glare overlay that moves with cursor, simulating a polished glass surface.",
+  "params": {
+    "--glare-max-opacity": { "type": "range", "min": 0.1, "max": 0.6, "step": 0.05, "default": 0.3, "label": "Max Glare Opacity" },
+    "--glare-size": { "type": "range", "min": 100, "max": 500, "default": 250, "unit": "px", "label": "Glare Size" },
+    "--glare-bg": { "type": "color", "default": "#13132b", "label": "Card Background" },
+    "--glare-radius": { "type": "range", "min": 0, "max": 24, "default": 16, "unit": "px", "label": "Border Radius" },
+    "--glare-tilt": { "type": "range", "min": 0, "max": 20, "default": 8, "unit": "deg", "label": "Tilt Amount" }
+  },
+  "jsParams": {}
+}

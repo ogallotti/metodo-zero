@@ -1,0 +1,136 @@
+:root {
+  --scp-duration: 600ms;
+  --scp-overlap: 80px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1a1a2e;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.scp-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  z-index: 1;
+}
+
+.scp-section h1,
+.scp-section h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.scp-section p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+/* Section variants */
+.scp-section--hero {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+}
+
+.scp-section--dark {
+  background: #0a0a1a;
+  color: #fff;
+}
+
+.scp-section--light {
+  background: #fafafa;
+  color: #1a1a2e;
+}
+
+.scp-section--accent {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: #fff;
+}
+
+.scp-section--green {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #1a1a2e;
+}
+
+/* Clip-path transitions */
+.scp-clip {
+  position: relative;
+  z-index: 2;
+}
+
+/* Arrow/chevron pointing down */
+.scp-clip--arrow {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--scp-overlap)), 50% 100%, 0 calc(100% - var(--scp-overlap)));
+  margin-bottom: calc(var(--scp-overlap) * -1);
+  padding-bottom: var(--scp-overlap);
+}
+
+/* Circle scoop at bottom */
+.scp-clip--scoop {
+  clip-path: ellipse(70% 98% at 50% 0%);
+  margin-bottom: -40px;
+  padding-bottom: 80px;
+}
+
+/* Angular slash */
+.scp-clip--slash {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--scp-overlap)), 0 100%);
+  margin-bottom: calc(var(--scp-overlap) * -0.5);
+  padding-bottom: var(--scp-overlap);
+}
+
+/* Diamond notch */
+.scp-clip--diamond {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--scp-overlap)), 55% 100%, 50% calc(100% - var(--scp-overlap) * 0.3), 45% 100%, 0 calc(100% - var(--scp-overlap)));
+  margin-bottom: calc(var(--scp-overlap) * -0.5);
+  padding-bottom: var(--scp-overlap);
+}
+
+.scp-section p.sub {
+  opacity: 0.7;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+.scp-footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scp-clip--arrow,
+  .scp-clip--scoop,
+  .scp-clip--slash,
+  .scp-clip--diamond {
+    clip-path: none;
+    margin-bottom: 0;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --scp-overlap: 50px;
+  }
+}

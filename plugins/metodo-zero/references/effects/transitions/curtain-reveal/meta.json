@@ -1,0 +1,13 @@
+{
+  "name": "Curtain Reveal",
+  "slug": "curtain-reveal",
+  "category": "transitions",
+  "tags": ["section"],
+  "dependencies": ["gsap"],
+  "description": "Curtain opening effect revealing the next section as two panels slide apart on scroll.",
+  "params": {
+    "--curtain-color": { "type": "color", "default": "#1a1a2e", "label": "Curtain Color" },
+    "--curtain-bg": { "type": "color", "default": "#0a0a1a", "label": "Background Behind" }
+  },
+  "jsParams": {}
+}

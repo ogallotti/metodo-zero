@@ -1,0 +1,1 @@
+{"name":"Modal","slug":"modal","category":"components","tags":["click"],"dependencies":[],"description":"Modal dialog with smooth open/close animation and blurred backdrop.","params":{"--mod-radius":{"type":"range","default":"20","min":0,"max":32,"unit":"px","label":"Modal Radius"},"--mod-accent":{"type":"color","default":"#6366f1","label":"Accent Color"}},"jsParams":{}}

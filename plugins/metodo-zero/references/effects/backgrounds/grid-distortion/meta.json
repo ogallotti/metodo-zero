@@ -1,0 +1,20 @@
+{
+  "name": "Grid Distortion",
+  "slug": "grid-distortion",
+  "category": "backgrounds",
+  "tags": ["hero", "cursor", "canvas"],
+  "dependencies": [],
+  "description": "Wireframe grid that warps and distorts around cursor with ambient wave motion",
+  "params": {
+    "--gd-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--gd-line-color": { "default": "rgba(255,255,255,0.08)", "type": "color", "label": "Line color" },
+    "--gd-glow-color": { "default": "rgba(99,102,241,0.6)", "type": "color", "label": "Glow color" }
+  },
+  "jsParams": {
+    "spacing": { "default": 40, "type": "number", "label": "Grid spacing", "min": 20, "max": 80, "step": 5 },
+    "mouseRadius": { "default": 250, "type": "number", "label": "Mouse radius", "min": 100, "max": 500, "step": 25 },
+    "mouseForce": { "default": 60, "type": "number", "label": "Mouse force", "min": 10, "max": 120, "step": 10 },
+    "lineAlpha": { "default": 0.08, "type": "number", "label": "Line opacity", "min": 0.02, "max": 0.3, "step": 0.02 },
+    "ambientWave": { "default": 3, "type": "number", "label": "Ambient wave strength", "min": 0, "max": 10, "step": 1 }
+  }
+}

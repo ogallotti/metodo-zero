@@ -1,0 +1,17 @@
+{
+  "name": "Following Pointer",
+  "slug": "following-pointer",
+  "category": "decorative",
+  "tags": ["cursor"],
+  "dependencies": [],
+  "description": "Element that smoothly follows cursor with spring physics, creating a natural bouncy motion.",
+  "params": {
+    "--fp-size": { "type": "range", "default": "40", "min": 16, "max": 80, "unit": "px", "label": "Element Size" },
+    "--fp-color": { "type": "color", "default": "#6366f1", "label": "Element Color" },
+    "--fp-border-color": { "type": "color", "default": "#818cf8", "label": "Border Color" }
+  },
+  "jsParams": {
+    "stiffness": { "type": "range", "default": 0.15, "min": 0.02, "max": 0.5, "step": 0.01, "label": "Spring Stiffness" },
+    "damping": { "type": "range", "default": 0.7, "min": 0.3, "max": 0.99, "step": 0.01, "label": "Damping" }
+  }
+}

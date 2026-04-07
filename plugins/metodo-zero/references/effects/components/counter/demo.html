@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cnt-header"><h1>Counter</h1><p>Animated counting display with eased number transitions triggered on scroll.</p></div>
+  <div class="cnt-grid">
+    <div class="cnt-block"><div class="cnt-number" data-target="38" data-suffix="">0</div><div class="cnt-label">Effects</div></div>
+    <div class="cnt-block"><div class="cnt-number" data-target="99.9" data-suffix="%" data-decimals="1">0</div><div class="cnt-label">Performance</div></div>
+    <div class="cnt-block"><div class="cnt-number" data-target="0" data-suffix="">0</div><div class="cnt-label">Dependencies</div></div>
+    <div class="cnt-block"><div class="cnt-number" data-target="60" data-suffix=" fps">0</div><div class="cnt-label">Frame Rate</div></div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value);if(e.data.scope==='js'&&window.__counterUpdate)window.__counterUpdate(e.data.key,e.data.value)}});</script>
+</body>
+</html>

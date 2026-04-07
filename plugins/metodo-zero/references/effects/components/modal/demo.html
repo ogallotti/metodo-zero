@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mod-header"><h1>Modal</h1><p>Smooth modal dialog with scaling animation and blurred backdrop.</p></div>
+  <button class="mod-trigger">Open Modal</button>
+  <div class="mod-overlay">
+    <div class="mod-backdrop"></div>
+    <div class="mod-dialog">
+      <button class="mod-close" aria-label="Close">&times;</button>
+      <h2>Confirm Action</h2>
+      <p>This modal supports keyboard navigation (Escape to close), backdrop click dismissal, and smooth spring-based open/close animations.</p>
+      <div class="mod-actions">
+        <button class="mod-btn mod-btn--ghost" onclick="document.querySelector('.mod-overlay').classList.remove('mod-overlay--open');document.body.style.overflow=''">Cancel</button>
+        <button class="mod-btn mod-btn--primary" onclick="document.querySelector('.mod-overlay').classList.remove('mod-overlay--open');document.body.style.overflow=''">Confirm</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value)}});</script>
+</body>
+</html>

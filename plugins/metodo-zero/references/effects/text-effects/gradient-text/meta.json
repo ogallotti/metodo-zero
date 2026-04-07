@@ -1,0 +1,19 @@
+{
+  "name": "Gradient Text",
+  "slug": "gradient-text",
+  "category": "text-effects",
+  "tags": ["hero", "headline", "continuous", "css-only"],
+  "dependencies": [],
+  "description": "Animated gradient flowing through text. Pure CSS.",
+  "params": {
+    "--gt-font-size": { "type": "range", "default": "4.5rem", "label": "Font Size", "min": "1rem", "max": "8rem" },
+    "--gt-color-1": { "type": "color", "default": "#6ee7b7", "label": "Color 1" },
+    "--gt-color-2": { "type": "color", "default": "#3b82f6", "label": "Color 2" },
+    "--gt-color-3": { "type": "color", "default": "#a78bfa", "label": "Color 3" },
+    "--gt-color-4": { "type": "color", "default": "#f472b6", "label": "Color 4" },
+    "--gt-speed": { "type": "range", "default": "4s", "label": "Animation Speed", "min": "1s", "max": "15s" },
+    "--gt-angle": { "type": "range", "default": "135deg", "label": "Gradient Angle", "min": "0deg", "max": "360deg" },
+    "--gt-bg": { "type": "color", "default": "#0a0a0a", "label": "Background" }
+  },
+  "jsParams": {}
+}

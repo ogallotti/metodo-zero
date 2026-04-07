@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clip Path Reveal — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero-section">
+    <h1>Clip Path Reveal</h1>
+    <p>Sections reveal through animated clip-path shapes as you scroll. Three reveal variants: circle, inset, and polygon.</p>
+  </section>
+
+  <section class="clip-reveal">
+    <div class="clip-reveal__background clip-reveal__background--purple"></div>
+    <div class="clip-reveal__content">
+      <h2>Circle reveal</h2>
+      <p>A circular mask expands from the center of the section, gradually revealing the background behind it. The content fades in once the reveal passes the midpoint.</p>
+    </div>
+  </section>
+
+  <section class="clip-reveal clip-reveal--inset">
+    <div class="clip-reveal__background clip-reveal__background--dark"></div>
+    <div class="clip-reveal__content">
+      <h2>Inset reveal</h2>
+      <p>The section reveals from bottom to top using an inset clip-path. This creates a curtain-like rising effect that feels natural with vertical scroll direction.</p>
+    </div>
+  </section>
+
+  <section class="clip-reveal clip-reveal--polygon">
+    <div class="clip-reveal__background clip-reveal__background--gradient"></div>
+    <div class="clip-reveal__content">
+      <h2>Polygon reveal</h2>
+      <p>A triangular polygon expands upward and outward, creating a dramatic V-shaped unveiling effect. The geometric shape adds visual energy to the transition.</p>
+    </div>
+  </section>
+
+  <section class="clip-reveal">
+    <div class="clip-reveal__background clip-reveal__background--accent"></div>
+    <div class="clip-reveal__content">
+      <h2>Combine freely</h2>
+      <p>Mix and match reveal shapes across sections. Each variant adds a different character — circular for organic feels, inset for clean lines, polygon for dynamic energy.</p>
+    </div>
+  </section>
+
+  <footer class="footer-section">
+    <p>Clip Path Reveal — Effects Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

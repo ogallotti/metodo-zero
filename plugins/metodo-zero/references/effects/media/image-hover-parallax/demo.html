@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Hover Parallax — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ihp-grid">
+    <div class="ihp-card">
+      <img src="https://picsum.photos/seed/parallax1/600/450" alt="Design Systems">
+      <div class="ihp-info">
+        <h3>Design Systems</h3>
+        <p>Building consistent, scalable interfaces through systematic component design.</p>
+      </div>
+    </div>
+    <div class="ihp-card">
+      <img src="https://picsum.photos/seed/parallax2/600/450" alt="Creative Code">
+      <div class="ihp-info">
+        <h3>Creative Code</h3>
+        <p>Where art meets engineering — generative design and interactive experiences.</p>
+      </div>
+    </div>
+    <div class="ihp-card">
+      <img src="https://picsum.photos/seed/parallax3/600/450" alt="Product Thinking">
+      <div class="ihp-info">
+        <h3>Product Thinking</h3>
+        <p>Crafting digital products that solve real problems with elegant simplicity.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ihp-title">
+    <h1>Image Hover Parallax</h1>
+    <p>Hover over the cards to see a smooth 3D tilt effect that responds to your cursor position.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+        if (e.data.scope === 'js' && window.__ihpUpdate) window.__ihpUpdate(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "3D Tilt Card",
+  "slug": "3d-tilt-card",
+  "category": "cards",
+  "tags": ["hover", "cursor"],
+  "dependencies": [],
+  "description": "Card tilts in 3D following cursor with depth layers, shine and shadow.",
+  "params": {
+    "--tilt-max": { "type": "range", "min": 5, "max": 30, "default": 15, "unit": "deg", "label": "Max Tilt" },
+    "--tilt-shine-opacity": { "type": "range", "min": 0, "max": 1, "step": 0.05, "default": 0.3, "label": "Shine Opacity" },
+    "--tilt-perspective": { "type": "range", "min": 400, "max": 1500, "default": 800, "unit": "px", "label": "Perspective" },
+    "--tilt-scale": { "type": "range", "min": 1, "max": 1.15, "step": 0.01, "default": 1.05, "label": "Hover Scale" },
+    "--tilt-transition": { "type": "range", "min": 100, "max": 800, "default": 400, "unit": "ms", "label": "Transition Speed" },
+    "--tilt-bg": { "type": "color", "default": "#1a1a2e", "label": "Card Background" },
+    "--tilt-radius": { "type": "range", "min": 0, "max": 30, "default": 16, "unit": "px", "label": "Border Radius" }
+  },
+  "jsParams": {
+    "maxTilt": { "type": "range", "min": 5, "max": 30, "default": 15, "label": "Max Tilt Angle" },
+    "perspective": { "type": "range", "min": 400, "max": 1500, "default": 800, "label": "Perspective Distance" },
+    "glare": { "type": "boolean", "default": true, "label": "Enable Glare" }
+  }
+}

@@ -1,0 +1,203 @@
+/* Light Rays — Volumetric CSS-only light rays */
+:root {
+  --lr-bg: #0a0a1a;
+  --lr-color: rgba(255, 255, 255, 0.03);
+  --lr-accent: rgba(99, 102, 241, 0.05);
+  --lr-speed: 15s;
+  --lr-origin-x: 50%;
+  --lr-origin-y: -10%;
+  --lr-ray-count: 12;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--lr-bg);
+  color: #fff;
+  overflow: hidden;
+}
+
+.lr-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--lr-bg);
+}
+
+.lr-rays {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Each ray is a rotated gradient strip */
+.lr-ray {
+  position: absolute;
+  top: var(--lr-origin-y);
+  left: var(--lr-origin-x);
+  width: 200vmax;
+  height: 200vmax;
+  transform-origin: 0 0;
+  will-change: transform, opacity;
+}
+
+.lr-ray::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2%;
+  width: 4%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--lr-accent) 0%,
+    var(--lr-color) 20%,
+    transparent 70%
+  );
+}
+
+/* Generate 12 rays with different angles and animations */
+.lr-ray--1  { animation: lr-sway var(--lr-speed) ease-in-out infinite alternate; }
+.lr-ray--2  { animation: lr-sway calc(var(--lr-speed) * 1.1) ease-in-out infinite alternate-reverse; animation-delay: -2s; }
+.lr-ray--3  { animation: lr-sway calc(var(--lr-speed) * 0.9) ease-in-out infinite alternate; animation-delay: -4s; }
+.lr-ray--4  { animation: lr-sway calc(var(--lr-speed) * 1.2) ease-in-out infinite alternate-reverse; animation-delay: -6s; }
+.lr-ray--5  { animation: lr-sway calc(var(--lr-speed) * 0.85) ease-in-out infinite alternate; animation-delay: -8s; }
+.lr-ray--6  { animation: lr-sway calc(var(--lr-speed) * 1.15) ease-in-out infinite alternate-reverse; animation-delay: -1s; }
+.lr-ray--7  { animation: lr-sway calc(var(--lr-speed) * 1.05) ease-in-out infinite alternate; animation-delay: -3s; }
+.lr-ray--8  { animation: lr-sway calc(var(--lr-speed) * 0.95) ease-in-out infinite alternate-reverse; animation-delay: -5s; }
+.lr-ray--9  { animation: lr-sway var(--lr-speed) ease-in-out infinite alternate; animation-delay: -7s; }
+.lr-ray--10 { animation: lr-sway calc(var(--lr-speed) * 1.25) ease-in-out infinite alternate-reverse; animation-delay: -9s; }
+.lr-ray--11 { animation: lr-sway calc(var(--lr-speed) * 0.8) ease-in-out infinite alternate; animation-delay: -11s; }
+.lr-ray--12 { animation: lr-sway calc(var(--lr-speed) * 1.3) ease-in-out infinite alternate-reverse; animation-delay: -10s; }
+
+/* Base rotations spread across 180 degrees */
+.lr-ray--1  { transform: rotate(-80deg); }
+.lr-ray--2  { transform: rotate(-65deg); }
+.lr-ray--3  { transform: rotate(-50deg); }
+.lr-ray--4  { transform: rotate(-35deg); }
+.lr-ray--5  { transform: rotate(-20deg); }
+.lr-ray--6  { transform: rotate(-5deg); }
+.lr-ray--7  { transform: rotate(10deg); }
+.lr-ray--8  { transform: rotate(25deg); }
+.lr-ray--9  { transform: rotate(40deg); }
+.lr-ray--10 { transform: rotate(55deg); }
+.lr-ray--11 { transform: rotate(70deg); }
+.lr-ray--12 { transform: rotate(85deg); }
+
+/* Different widths for variety */
+.lr-ray--1::before,
+.lr-ray--5::before,
+.lr-ray--9::before { width: 6%; left: -3%; }
+
+.lr-ray--3::before,
+.lr-ray--7::before,
+.lr-ray--11::before { width: 3%; left: -1.5%; }
+
+/* Opacity variation */
+.lr-ray--2, .lr-ray--6, .lr-ray--10 { opacity: 0.7; }
+.lr-ray--4, .lr-ray--8, .lr-ray--12 { opacity: 0.5; }
+
+/* Dust particles overlay */
+.lr-dust {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.15) 50%, transparent 100%),
+    radial-gradient(1px 1px at 30% 60%, rgba(255, 255, 255, 0.1) 50%, transparent 100%),
+    radial-gradient(1px 1px at 50% 40%, rgba(255, 255, 255, 0.12) 50%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, rgba(255, 255, 255, 0.08) 50%, transparent 100%),
+    radial-gradient(1px 1px at 90% 10%, rgba(255, 255, 255, 0.1) 50%, transparent 100%),
+    radial-gradient(1px 1px at 20% 90%, rgba(255, 255, 255, 0.06) 50%, transparent 100%),
+    radial-gradient(1px 1px at 80% 50%, rgba(255, 255, 255, 0.08) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 30%, rgba(255, 255, 255, 0.1) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 70%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
+  animation: lr-dust-float 20s linear infinite;
+}
+
+/* Fog layer */
+.lr-fog {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at var(--lr-origin-x) var(--lr-origin-y),
+    rgba(99, 102, 241, 0.06) 0%,
+    transparent 60%
+  );
+}
+
+.lr-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+}
+
+.lr-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lr-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 40ch;
+}
+
+@keyframes lr-sway {
+  0% {
+    transform: rotate(var(--base-rot, 0deg));
+    opacity: var(--base-opacity, 1);
+  }
+  100% {
+    transform: rotate(calc(var(--base-rot, 0deg) + 12deg));
+    opacity: calc(var(--base-opacity, 1) * 0.7);
+  }
+}
+
+/* Per-ray base rotation custom property for animation */
+.lr-ray--1  { --base-rot: -80deg; --base-opacity: 1; }
+.lr-ray--2  { --base-rot: -65deg; --base-opacity: 0.7; }
+.lr-ray--3  { --base-rot: -50deg; --base-opacity: 1; }
+.lr-ray--4  { --base-rot: -35deg; --base-opacity: 0.5; }
+.lr-ray--5  { --base-rot: -20deg; --base-opacity: 1; }
+.lr-ray--6  { --base-rot: -5deg; --base-opacity: 0.7; }
+.lr-ray--7  { --base-rot: 10deg; --base-opacity: 1; }
+.lr-ray--8  { --base-rot: 25deg; --base-opacity: 0.5; }
+.lr-ray--9  { --base-rot: 40deg; --base-opacity: 1; }
+.lr-ray--10 { --base-rot: 55deg; --base-opacity: 0.7; }
+.lr-ray--11 { --base-rot: 70deg; --base-opacity: 1; }
+.lr-ray--12 { --base-rot: 85deg; --base-opacity: 0.5; }
+
+@keyframes lr-dust-float {
+  0% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-3%) translateX(1%); }
+  50% { transform: translateY(-5%) translateX(-1%); }
+  75% { transform: translateY(-2%) translateX(2%); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lr-ray,
+  .lr-dust {
+    animation: none !important;
+  }
+}

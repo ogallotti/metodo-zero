@@ -1,0 +1,15 @@
+{
+  "name": "Liquid Button",
+  "slug": "liquid-button",
+  "category": "buttons",
+  "tags": ["hover"],
+  "dependencies": [],
+  "description": "Liquid/gooey morphing button with SVG filter distortion on hover.",
+  "params": {
+    "--liq-bg": { "type": "color", "default": "#6366f1", "label": "Button Background" },
+    "--liq-color": { "type": "color", "default": "#ffffff", "label": "Text Color" },
+    "--liq-radius": { "type": "range", "min": 8, "max": 50, "default": 24, "unit": "px", "label": "Border Radius" },
+    "--liq-goo-intensity": { "type": "range", "min": 5, "max": 30, "default": 12, "unit": "", "label": "Goo Intensity" }
+  },
+  "jsParams": {}
+}

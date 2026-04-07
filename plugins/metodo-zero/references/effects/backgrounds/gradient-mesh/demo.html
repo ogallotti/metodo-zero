@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Mesh — Effects Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="gm-container">
+    <div class="gm-mesh">
+      <div class="gm-blob gm-blob--1"></div>
+      <div class="gm-blob gm-blob--2"></div>
+      <div class="gm-blob gm-blob--3"></div>
+      <div class="gm-blob gm-blob--4"></div>
+      <div class="gm-blob gm-blob--5"></div>
+    </div>
+    <div class="gm-grain"></div>
+    <div class="gm-content">
+      <h1>Gradient Mesh</h1>
+      <p>Soft, organic color blobs morphing and drifting</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

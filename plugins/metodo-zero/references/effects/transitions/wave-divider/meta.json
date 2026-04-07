@@ -1,0 +1,14 @@
+{
+  "name": "Wave Divider",
+  "slug": "wave-divider",
+  "category": "transitions",
+  "tags": ["section", "continuous"],
+  "dependencies": [],
+  "description": "Animated SVG wave between sections, creating fluid organic transitions with continuous motion.",
+  "params": {
+    "--wave-height": { "type": "range", "min": 40, "max": 200, "default": 100, "unit": "px", "label": "Wave Height" },
+    "--wave-speed": { "type": "range", "min": 5, "max": 30, "default": 12, "unit": "s", "label": "Animation Duration" },
+    "--wave-color": { "type": "color", "default": "#0a0a1a", "label": "Wave Color" }
+  },
+  "jsParams": {}
+}

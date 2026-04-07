@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dock — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dk-header"><h1>Dock</h1><p>macOS-style dock with magnification. Hover over icons to see proximity-based scaling.</p></div>
+  <div class="dk-dock">
+    <div class="dk-item"><div class="dk-icon">📁</div><span class="dk-label">Files</span></div>
+    <div class="dk-item"><div class="dk-icon">🌐</div><span class="dk-label">Browser</span></div>
+    <div class="dk-item"><div class="dk-icon">💬</div><span class="dk-label">Messages</span></div>
+    <div class="dk-item"><div class="dk-icon">📧</div><span class="dk-label">Mail</span></div>
+    <div class="dk-separator"></div>
+    <div class="dk-item"><div class="dk-icon">🎵</div><span class="dk-label">Music</span></div>
+    <div class="dk-item"><div class="dk-icon">📷</div><span class="dk-label">Photos</span></div>
+    <div class="dk-item"><div class="dk-icon">⚙️</div><span class="dk-label">Settings</span></div>
+    <div class="dk-separator"></div>
+    <div class="dk-item"><div class="dk-icon">🗑️</div><span class="dk-label">Trash</span></div>
+  </div>
+  <script src="script.js"></script>
+  <script>window.addEventListener('message',(e)=>{if(e.data?.type==='update-param'){if(e.data.scope==='css')document.documentElement.style.setProperty(e.data.key,e.data.value);if(e.data.scope==='js'&&window.__dockUpdate)window.__dockUpdate(e.data.key,e.data.value)}});</script>
+</body>
+</html>
