@@ -1,0 +1,18 @@
+{
+  "name": "Grainient",
+  "slug": "grainient",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "webgl", "shader", "gradient", "grain"],
+  "dependencies": ["gl-utils"],
+  "description": "Beautiful multi-color gradient with layered organic noise grain — flowing, not flat — rendered via WebGL simplex noise",
+  "params": {
+    "--grn-color-1": { "default": "#ff6b35", "type": "color", "label": "Color 1" },
+    "--grn-color-2": { "default": "#f7c59f", "type": "color", "label": "Color 2" },
+    "--grn-color-3": { "default": "#1a535c", "type": "color", "label": "Color 3" },
+    "--grn-color-4": { "default": "#4ecdc4", "type": "color", "label": "Color 4" },
+    "--grn-grain": { "default": "0.35", "type": "number", "label": "Grain amount", "min": 0, "max": 1, "step": 0.05 },
+    "--grn-speed": { "default": "0.3", "type": "number", "label": "Speed", "min": 0.05, "max": 1, "step": 0.05 },
+    "--grn-warp": { "default": "0.8", "type": "number", "label": "Warp intensity", "min": 0, "max": 2, "step": 0.1 },
+    "--grn-bg": { "default": "#0a0a0a", "type": "color", "label": "Background" }
+  }
+}

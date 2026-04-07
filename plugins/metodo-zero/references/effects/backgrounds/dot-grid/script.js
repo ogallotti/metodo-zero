@@ -1,35 +1,47 @@
-/* Dot Grid — Interactive canvas dot grid with mouse influence */
 (function () {
   'use strict';
 
   const container = document.querySelector('.dg-container');
-  const canvas = document.querySelector('.dg-canvas');
+  const canvas = document.getElementById('dg-canvas');
   if (!container || !canvas) return;
 
   const ctx = canvas.getContext('2d');
+  const style = getComputedStyle(document.documentElement);
+
   let dpr, W, H;
-  let animId = null;
-  let isVisible = true;
   let dots = [];
+  let spatialGrid = {};
+  let running = false;
+  let raf;
   let time = 0;
 
-  const config = {
-    spacing: 30,
-    baseRadius: 1.5,
-    maxRadius: 5,
-    mouseRadius: 200,
-    mouseForce: 25,
-    dotColor: [255, 255, 255],
-    glowColor: [99, 102, 241],
-    baseAlpha: 0.2,
-    pulseSpeed: 0.02,
-    returnSpeed: 0.06,
-    waveAmplitude: 3,
-    waveSpeed: 0.003,
-    waveFreq: 0.01,
-  };
+  // Parse hex color to [r, g, b]
+  function hexToRGB(hex) {
+    hex = hex.replace('#', '').trim();
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    return [
+      parseInt(hex.slice(0, 2), 16),
+      parseInt(hex.slice(2, 4), 16),
+      parseInt(hex.slice(4, 6), 16)
+    ];
+  }
 
   const mouse = { x: -9999, y: -9999, active: false };
+
+  function getConfig() {
+    return {
+      spacing: parseFloat(style.getPropertyValue('--dg-spacing')) || 30,
+      baseRadius: parseFloat(style.getPropertyValue('--dg-dot-size')) || 1.5,
+      maxRadius: 5,
+      mouseRadius: parseFloat(style.getPropertyValue('--dg-mouse-radius')) || 200,
+      connectDistance: parseFloat(style.getPropertyValue('--dg-connect-distance')) || 80,
+      dotColor: hexToRGB(style.getPropertyValue('--dg-dot-color').trim() || '#ffffff'),
+      glowColor: hexToRGB(style.getPropertyValue('--dg-glow-color').trim() || '#6366f1'),
+      baseAlpha: 0.2,
+      mouseForce: 25,
+      returnSpeed: 0.06,
+    };
+  }
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -45,42 +57,75 @@
 
   function initDots() {
     dots = [];
-    const sp = config.spacing;
+    const cfg = getConfig();
+    const sp = cfg.spacing;
     const cols = Math.ceil(W / sp) + 2;
     const rows = Math.ceil(H / sp) + 2;
-    const offsetX = ((W - (cols - 1) * sp) / 2);
-    const offsetY = ((H - (rows - 1) * sp) / 2);
+    const offsetX = (W - (cols - 1) * sp) / 2;
+    const offsetY = (H - (rows - 1) * sp) / 2;
 
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
+        const ox = offsetX + col * sp;
+        const oy = offsetY + row * sp;
         dots.push({
-          ox: offsetX + col * sp,
-          oy: offsetY + row * sp,
-          x: offsetX + col * sp,
-          y: offsetY + row * sp,
-          r: config.baseRadius,
-          alpha: config.baseAlpha,
+          ox, oy,
+          x: ox, y: oy,
+          r: cfg.baseRadius,
+          alpha: cfg.baseAlpha,
         });
       }
     }
   }
 
+  // Spatial grid for fast neighbor lookup near cursor
+  function buildSpatialGrid(cellSize) {
+    spatialGrid = {};
+    for (let i = 0; i < dots.length; i++) {
+      const d = dots[i];
+      const cx = Math.floor(d.x / cellSize);
+      const cy = Math.floor(d.y / cellSize);
+      const key = cx + ',' + cy;
+      if (!spatialGrid[key]) spatialGrid[key] = [];
+      spatialGrid[key].push(i);
+    }
+  }
+
+  function getNeighborIndices(px, py, radius, cellSize) {
+    const indices = [];
+    const minCX = Math.floor((px - radius) / cellSize);
+    const maxCX = Math.floor((px + radius) / cellSize);
+    const minCY = Math.floor((py - radius) / cellSize);
+    const maxCY = Math.floor((py + radius) / cellSize);
+    for (let cx = minCX; cx <= maxCX; cx++) {
+      for (let cy = minCY; cy <= maxCY; cy++) {
+        const key = cx + ',' + cy;
+        if (spatialGrid[key]) {
+          for (let k = 0; k < spatialGrid[key].length; k++) {
+            indices.push(spatialGrid[key][k]);
+          }
+        }
+      }
+    }
+    return indices;
+  }
+
   function update() {
-    time += config.pulseSpeed;
-    const mr = config.mouseRadius;
+    const cfg = getConfig();
+    time += 0.02;
+    const mr = cfg.mouseRadius;
     const mrSq = mr * mr;
 
     for (let i = 0; i < dots.length; i++) {
       const d = dots[i];
 
       // Subtle ambient wave
-      const wave = Math.sin(d.ox * config.waveFreq + time * (config.waveSpeed / config.pulseSpeed)) * config.waveAmplitude;
+      const wave = Math.sin(d.ox * 0.01 + time * 0.15) * 3;
       let targetX = d.ox;
       let targetY = d.oy + wave;
-      let targetR = config.baseRadius;
-      let targetAlpha = config.baseAlpha;
+      let targetR = cfg.baseRadius;
+      let targetAlpha = cfg.baseAlpha;
 
-      // Mouse influence
       if (mouse.active) {
         const dx = d.ox - mouse.x;
         const dy = d.oy - mouse.y;
@@ -91,30 +136,66 @@
           const factor = 1 - dist / mr;
           const factorSq = factor * factor;
 
-          // Push dots away from mouse
-          targetX += (dx / dist) * config.mouseForce * factorSq;
-          targetY += (dy / dist) * config.mouseForce * factorSq;
+          // Push dots toward cursor slightly
+          targetX += (dx / dist) * cfg.mouseForce * factorSq;
+          targetY += (dy / dist) * cfg.mouseForce * factorSq;
 
-          // Scale up and brighten near mouse
-          targetR = config.baseRadius + (config.maxRadius - config.baseRadius) * factorSq;
-          targetAlpha = config.baseAlpha + (1 - config.baseAlpha) * factorSq;
+          targetR = cfg.baseRadius + (cfg.maxRadius - cfg.baseRadius) * factorSq;
+          targetAlpha = cfg.baseAlpha + (1 - cfg.baseAlpha) * factorSq;
         }
       }
 
-      // Smooth interpolation
-      d.x += (targetX - d.x) * config.returnSpeed;
-      d.y += (targetY - d.y) * config.returnSpeed;
-      d.r += (targetR - d.r) * config.returnSpeed;
-      d.alpha += (targetAlpha - d.alpha) * config.returnSpeed;
+      d.x += (targetX - d.x) * cfg.returnSpeed;
+      d.y += (targetY - d.y) * cfg.returnSpeed;
+      d.r += (targetR - d.r) * cfg.returnSpeed;
+      d.alpha += (targetAlpha - d.alpha) * cfg.returnSpeed;
     }
   }
 
   function draw() {
+    const cfg = getConfig();
     ctx.clearRect(0, 0, W, H);
 
-    const gc = config.glowColor;
-    const dc = config.dotColor;
+    const dc = cfg.dotColor;
+    const gc = cfg.glowColor;
+    const connectDist = cfg.connectDistance;
+    const connectDistSq = connectDist * connectDist;
 
+    // Build spatial grid for connection line optimization
+    buildSpatialGrid(connectDist);
+
+    // Draw connection lines between close dots near cursor
+    if (mouse.active) {
+      const nearCursor = getNeighborIndices(mouse.x, mouse.y, cfg.mouseRadius, connectDist);
+      ctx.lineWidth = 0.5;
+
+      for (let a = 0; a < nearCursor.length; a++) {
+        const i = nearCursor[a];
+        const di = dots[i];
+        if (di.alpha <= cfg.baseAlpha + 0.05) continue;
+
+        for (let b = a + 1; b < nearCursor.length; b++) {
+          const j = nearCursor[b];
+          const dj = dots[j];
+          if (dj.alpha <= cfg.baseAlpha + 0.05) continue;
+
+          const dx = di.x - dj.x;
+          const dy = di.y - dj.y;
+          const distSq = dx * dx + dy * dy;
+
+          if (distSq < connectDistSq) {
+            const lineAlpha = (1 - distSq / connectDistSq) * Math.min(di.alpha, dj.alpha) * 0.6;
+            ctx.strokeStyle = `rgba(${gc[0]}, ${gc[1]}, ${gc[2]}, ${lineAlpha})`;
+            ctx.beginPath();
+            ctx.moveTo(di.x, di.y);
+            ctx.lineTo(dj.x, dj.y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // Draw dots
     for (let i = 0; i < dots.length; i++) {
       const d = dots[i];
 
@@ -129,9 +210,8 @@
         ctx.fillRect(d.x - glowSize, d.y - glowSize, glowSize * 2, glowSize * 2);
       }
 
-      // Dot
-      // Blend between base color and glow color based on proximity
-      const t = Math.min(1, (d.alpha - config.baseAlpha) / (1 - config.baseAlpha));
+      // Blend dot color toward glow color based on proximity
+      const t = Math.min(1, (d.alpha - cfg.baseAlpha) / (1 - cfg.baseAlpha));
       const r = dc[0] + (gc[0] - dc[0]) * t;
       const g = dc[1] + (gc[1] - dc[1]) * t;
       const b = dc[2] + (gc[2] - dc[2]) * t;
@@ -144,20 +224,22 @@
   }
 
   function loop() {
-    if (!isVisible) return;
+    if (!running) return;
     update();
     draw();
-    animId = requestAnimationFrame(loop);
+    raf = requestAnimationFrame(loop);
   }
 
-  // Mouse
+  // Mouse/touch
   container.addEventListener('mousemove', (e) => {
     const rect = container.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
     mouse.active = true;
-  });
+  }, { passive: true });
+
   container.addEventListener('mouseleave', () => { mouse.active = false; });
+
   container.addEventListener('touchmove', (e) => {
     const rect = container.getBoundingClientRect();
     const touch = e.touches[0];
@@ -165,23 +247,19 @@
     mouse.y = touch.clientY - rect.top;
     mouse.active = true;
   }, { passive: true });
+
   container.addEventListener('touchend', () => { mouse.active = false; });
 
   // Visibility
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        isVisible = entry.isIntersecting;
-        if (isVisible && !animId) loop();
-        if (!isVisible && animId) {
-          cancelAnimationFrame(animId);
-          animId = null;
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-  observer.observe(container);
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      running = true;
+      raf = requestAnimationFrame(loop);
+    } else {
+      running = false;
+      if (raf) cancelAnimationFrame(raf);
+    }
+  }, { threshold: 0.01 });
 
   let resizeTimeout;
   window.addEventListener('resize', () => {
@@ -189,16 +267,6 @@
     resizeTimeout = setTimeout(resize, 150);
   });
 
-  window.addEventListener('message', (e) => {
-    if (e.data?.type === 'update-param' && e.data.scope === 'js') {
-      const { key, value } = e.data;
-      if (key in config) {
-        config[key] = typeof config[key] === 'number' ? parseFloat(value) : value;
-        if (key === 'spacing') initDots();
-      }
-    }
-  });
-
   resize();
-  loop();
+  observer.observe(container);
 })();

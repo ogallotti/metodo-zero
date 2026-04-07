@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macbook Scroll — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <section class="macbook-hero">
+    <div class="macbook-hero__text">
+      <h1>The Next Generation</h1>
+      <p>Performance reimagined. A chip so advanced it changes everything you can do with a laptop.</p>
+    </div>
+  </section>
+
+  <div class="macbook-pin-wrapper">
+    <section class="macbook-showcase">
+      <div class="macbook-device">
+        <div class="macbook-screen">
+          <div class="macbook-screen__content">
+            <div class="macbook-gradient"></div>
+            <span class="macbook-logo">&#9679;</span>
+          </div>
+        </div>
+        <div class="macbook-base">
+          <div class="macbook-notch"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="macbook-features">
+    <div class="macbook-features__grid">
+      <div class="macbook-feature-card">
+        <div class="macbook-feature-card__icon">&#9889;</div>
+        <h3>Blazing Fast</h3>
+        <p>The new chip delivers up to 3.4x faster CPU performance. Compile code, render timelines, and process data at speeds previously unimaginable on a portable device.</p>
+      </div>
+      <div class="macbook-feature-card">
+        <div class="macbook-feature-card__icon">&#9883;</div>
+        <h3>All-Day Battery</h3>
+        <p>Up to 22 hours of battery life means you can leave the charger at home. Efficiency cores handle lightweight tasks while preserving power for the moments that matter.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="macbook-specs">
+    <h2>Built for Professionals</h2>
+    <p>Every detail is engineered for those who push the boundaries of what's possible. From the Liquid Retina XDR display to the studio-quality microphone array, this is a machine that elevates your craft.</p>
+    <div class="macbook-specs__row">
+      <div class="macbook-spec">
+        <span class="macbook-spec__value">24</span>
+        <span class="macbook-spec__label">GPU Cores</span>
+      </div>
+      <div class="macbook-spec">
+        <span class="macbook-spec__value">96</span>
+        <span class="macbook-spec__label">GB Unified Memory</span>
+      </div>
+      <div class="macbook-spec">
+        <span class="macbook-spec__value">8</span>
+        <span class="macbook-spec__label">TB Storage</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="macbook-cta">
+    <h2>Scroll-Driven Product Showcase</h2>
+    <p>The device image pins and transforms in 3D space as you scroll, revealing feature cards beneath. GSAP ScrollTrigger handles pinning and scrub-based interpolation.</p>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

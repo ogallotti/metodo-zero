@@ -10,26 +10,18 @@
 </head>
 <body>
   <div class="gm-container">
-    <div class="gm-mesh">
-      <div class="gm-blob gm-blob--1"></div>
-      <div class="gm-blob gm-blob--2"></div>
-      <div class="gm-blob gm-blob--3"></div>
-      <div class="gm-blob gm-blob--4"></div>
-      <div class="gm-blob gm-blob--5"></div>
-    </div>
-    <div class="gm-grain"></div>
+    <canvas id="gm-canvas"></canvas>
     <div class="gm-content">
       <h1>Gradient Mesh</h1>
-      <p>Soft, organic color blobs morphing and drifting</p>
+      <p>Organic color blobs morphing and drifting on the GPU</p>
     </div>
   </div>
+  <script src="../../_shared/gl-utils.js"></script>
   <script src="script.js"></script>
   <script>
     window.addEventListener('message', (e) => {
-      if (e.data?.type === 'update-param') {
-        if (e.data.scope === 'css') {
-          document.documentElement.style.setProperty(e.data.key, e.data.value);
-        }
+      if (e.data?.type === 'update-param' && e.data.scope === 'css') {
+        document.documentElement.style.setProperty(e.data.key, e.data.value);
       }
     });
   </script>

@@ -2,17 +2,14 @@
   "name": "Noise",
   "slug": "noise",
   "category": "backgrounds",
-  "tags": ["hero", "section", "css-only"],
+  "tags": ["hero", "texture", "webgl"],
   "dependencies": [],
-  "description": "Animated grain/noise texture overlay with dual noise layers, scanlines, and vignette",
+  "description": "WebGL animated film grain with scanlines, chromatic aberration, and organic texture",
   "params": {
     "--nz-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
-    "--nz-color-1": { "default": "#6366f1", "type": "color", "label": "Gradient color 1" },
-    "--nz-color-2": { "default": "#ec4899", "type": "color", "label": "Gradient color 2" },
-    "--nz-opacity": { "default": "0.12", "type": "number", "label": "Noise opacity", "min": 0.02, "max": 0.4 },
-    "--nz-speed": { "default": "0.1s", "type": "duration", "label": "Animation speed", "min": 0.05, "max": 0.5 },
-    "--nz-blend": { "default": "overlay", "type": "select", "label": "Blend mode", "options": ["overlay", "soft-light", "screen", "multiply"] },
-    "--nz-grain-size": { "default": "200px", "type": "size", "label": "Grain tile size", "min": 100, "max": 400 }
-  },
-  "jsParams": {}
+    "--nz-intensity": { "default": "0.15", "type": "number", "label": "Grain intensity", "min": 0.02, "max": 0.5, "step": 0.01 },
+    "--nz-scanlines": { "default": "0.08", "type": "number", "label": "Scanline opacity", "min": 0, "max": 0.3, "step": 0.01 },
+    "--nz-speed": { "default": "1.0", "type": "number", "label": "Animation speed", "min": 0.1, "max": 3.0, "step": 0.1 },
+    "--nz-chromatic": { "default": "0.003", "type": "number", "label": "Chromatic aberration", "min": 0, "max": 0.015, "step": 0.001 }
+  }
 }

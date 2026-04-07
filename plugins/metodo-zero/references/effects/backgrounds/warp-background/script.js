@@ -1,172 +1,187 @@
-/* Warp Background — Space warp / starfield with depth and trails */
+/* Warp Background — WebGL 3D starfield with depth layers and streaks */
 (function () {
   'use strict';
 
-  const container = document.querySelector('.wrp-container');
-  const canvas = document.querySelector('.wrp-canvas');
-  if (!container || !canvas) return;
+  const canvas = document.getElementById('wrp-canvas');
+  if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
-  let dpr, W, H, cx, cy;
-  let animId = null;
-  let isVisible = true;
-  let stars = [];
+  const gl = GLUtils.create(canvas);
+  if (!gl) return;
 
-  const config = {
-    starCount: 600,
-    speed: 2,
-    maxSpeed: 15,
-    trailLength: 0.7,   // 0..1, how much of travel to draw as trail
-    starColor: [255, 255, 255],
-    trailColor: [150, 180, 255],
-    maxRadius: 2.5,
-    depth: 1500,
-    centerX: 0.5,
-    centerY: 0.5,
-    fadeIn: true,
-  };
+  const vert = `attribute vec2 position;
+void main() { gl_Position = vec4(position, 0.0, 1.0); }`;
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = container.clientWidth;
-    H = container.clientHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    canvas.style.width = W + 'px';
-    canvas.style.height = H + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cx = W * config.centerX;
-    cy = H * config.centerY;
-  }
+  const frag = `precision highp float;
+uniform vec2 uResolution;
+uniform float uTime;
+uniform vec3 uColor;
+uniform vec3 uBg;
+uniform float uSpeed;
+uniform float uDensity;
+uniform float uTrail;
+uniform vec2 uMouse;
 
-  function initStars() {
-    stars = [];
-    for (let i = 0; i < config.starCount; i++) {
-      stars.push(createStar(true));
+#define NUM_LAYERS 4
+
+/* hash for star positions */
+float hash(vec2 p) {
+  vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+  p3 += dot(p3, p3.yzx + 33.33);
+  return fract((p3.x + p3.y) * p3.z);
+}
+
+vec2 hash2(vec2 p) {
+  return vec2(hash(p), hash(p + 71.37));
+}
+
+/*
+ * Render one star layer at a given depth.
+ * Stars are placed in a grid with jitter, then streaked along
+ * the direction from center to simulate warp motion.
+ */
+float starLayer(vec2 uv, float depth, float t, float density) {
+  float stars = 0.0;
+  float scale = 6.0 + depth * 8.0;
+  float speed = (1.0 / (depth + 0.3)) * 0.3;
+
+  /* scroll along Z axis */
+  vec2 scrollUV = uv * scale;
+  scrollUV.y += t * speed;
+
+  vec2 cell = floor(scrollUV);
+  vec2 cellUV = fract(scrollUV);
+
+  /* check 3x3 neighborhood for nearby stars */
+  for (float ox = -1.0; ox <= 1.0; ox++) {
+    for (float oy = -1.0; oy <= 1.0; oy++) {
+      vec2 neighbor = cell + vec2(ox, oy);
+      vec2 starPos = hash2(neighbor);
+
+      /* skip some stars based on density */
+      if (hash(neighbor + 500.0) > density) continue;
+
+      /* star position with jitter */
+      vec2 offset = starPos - cellUV + vec2(ox, oy);
+
+      /* streak: elongate in the direction from center */
+      vec2 dir = normalize(uv + 0.001);
+      float streakLen = (1.0 / (depth + 0.3)) * uTrail * 0.08;
+      float along = dot(offset, dir);
+      float perp = length(offset - dir * along);
+
+      /* star shape: elongated in radial direction */
+      float streakDist = length(vec2(along / (1.0 + streakLen), perp));
+
+      /* star brightness */
+      float size = 0.03 + hash(neighbor + 200.0) * 0.04;
+      size /= (depth + 0.5);
+      float brightness = smoothstep(size, size * 0.2, streakDist);
+
+      /* twinkle */
+      float twinkle = sin(t * 2.0 + hash(neighbor) * 6.28) * 0.3 + 0.7;
+      brightness *= twinkle;
+
+      /* depth fade */
+      brightness *= 1.0 / (depth * 0.5 + 0.5);
+
+      stars += brightness;
     }
   }
 
-  function createStar(randomZ) {
-    return {
-      x: (Math.random() - 0.5) * W * 2,
-      y: (Math.random() - 0.5) * H * 2,
-      z: randomZ ? Math.random() * config.depth : config.depth,
-      pz: config.depth, // previous z for trail
-    };
+  return stars;
+}
+
+void main() {
+  vec2 uv = (gl_FragCoord.xy - uResolution * 0.5) / min(uResolution.x, uResolution.y);
+  float t = uTime * uSpeed;
+
+  /* mouse offset: slight parallax */
+  vec2 mouseOffset = (uMouse - 0.5) * 0.05;
+
+  float totalStars = 0.0;
+
+  /* render multiple depth layers */
+  for (int i = 0; i < NUM_LAYERS; i++) {
+    float depth = float(i) * 0.25 + 0.1;
+    vec2 layerUV = uv + mouseOffset * (1.0 / (depth + 0.3));
+    totalStars += starLayer(layerUV, depth, t, uDensity);
   }
 
-  function update() {
-    const speed = config.speed;
+  totalStars = min(totalStars, 2.0);
 
-    for (let i = 0; i < stars.length; i++) {
-      const s = stars[i];
-      s.pz = s.z;
-      s.z -= speed;
+  /* center glow */
+  float centerDist = length(uv);
+  float glow = 0.02 / (centerDist + 0.15);
+  glow = min(glow, 0.5);
 
-      if (s.z <= 0) {
-        // Reset star
-        s.x = (Math.random() - 0.5) * W * 2;
-        s.y = (Math.random() - 0.5) * H * 2;
-        s.z = config.depth;
-        s.pz = config.depth;
-      }
-    }
+  vec3 col = uBg;
+  col += uColor * totalStars;
+  col += uColor * glow * 0.3;
+
+  /* subtle blue fog at distance */
+  float fog = smoothstep(0.0, 0.8, centerDist);
+  col += vec3(0.01, 0.02, 0.05) * fog;
+
+  /* vignette */
+  float vig = 1.0 - smoothstep(0.4, 1.2, centerDist);
+  col *= mix(0.3, 1.0, vig);
+
+  gl_FragColor = vec4(col, 1.0);
+}`;
+
+  const prog = GLUtils.program(gl, vert, frag);
+  if (!prog) return;
+  GLUtils.fullscreenQuad(gl, prog);
+
+  function getCSS(prop, fallback) {
+    const v = getComputedStyle(document.documentElement).getPropertyValue(prop).trim();
+    return v || fallback;
   }
 
-  function draw() {
-    // Semi-transparent clear for subtle motion blur
-    ctx.fillStyle = 'rgba(0, 0, 8, 0.2)';
-    ctx.fillRect(0, 0, W, H);
+  let running = true;
+  let startTime = performance.now();
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    cx = W * config.centerX;
-    cy = H * config.centerY;
+  let mouse = [0.5, 0.5];
+  function onPointer(e) {
+    const t = e.touches ? e.touches[0] : e;
+    mouse = [t.clientX / window.innerWidth, 1.0 - t.clientY / window.innerHeight];
+  }
+  canvas.addEventListener('mousemove', onPointer);
+  canvas.addEventListener('touchmove', onPointer, { passive: true });
 
-    const sc = config.starColor;
-    const tc = config.trailColor;
+  function frame() {
+    if (!running) { requestAnimationFrame(frame); return; }
 
-    for (let i = 0; i < stars.length; i++) {
-      const s = stars[i];
+    GLUtils.resize(canvas, gl);
 
-      // Project current position
-      const sx = (s.x / s.z) * (W * 0.5) + cx;
-      const sy = (s.y / s.z) * (H * 0.5) + cy;
+    const elapsed = prefersReduced ? 0 : (performance.now() - startTime) / 1000.0;
+    const bg = GLUtils.hexToRGB(getCSS('--wrp-bg', '#000008'));
+    const color = GLUtils.hexToRGB(getCSS('--wrp-color', '#aaccff'));
+    const speed = parseFloat(getCSS('--wrp-speed', '1.0'));
+    const density = parseFloat(getCSS('--wrp-density', '0.5'));
+    const trail = parseFloat(getCSS('--wrp-trail', '0.7'));
 
-      // Project previous position (for trail)
-      const px = (s.x / s.pz) * (W * 0.5) + cx;
-      const py = (s.y / s.pz) * (H * 0.5) + cy;
+    GLUtils.uniform(gl, prog, 'uResolution', '2f', [canvas.width, canvas.height]);
+    GLUtils.uniform(gl, prog, 'uTime', '1f', elapsed);
+    GLUtils.uniform(gl, prog, 'uBg', '3f', bg);
+    GLUtils.uniform(gl, prog, 'uColor', '3f', color);
+    GLUtils.uniform(gl, prog, 'uSpeed', '1f', speed);
+    GLUtils.uniform(gl, prog, 'uDensity', '1f', density);
+    GLUtils.uniform(gl, prog, 'uTrail', '1f', trail);
+    GLUtils.uniform(gl, prog, 'uMouse', '2f', mouse);
 
-      // Skip offscreen
-      if (sx < -10 || sx > W + 10 || sy < -10 || sy > H + 10) continue;
-
-      const depth = 1 - s.z / config.depth; // 0 = far, 1 = near
-      const radius = depth * config.maxRadius;
-      const alpha = depth * 0.9 + 0.1;
-
-      // Trail
-      if (config.trailLength > 0 && depth > 0.1) {
-        const trailAlpha = alpha * config.trailLength * 0.5;
-        ctx.strokeStyle = `rgba(${tc[0]}, ${tc[1]}, ${tc[2]}, ${trailAlpha})`;
-        ctx.lineWidth = radius * 0.8;
-        ctx.beginPath();
-        ctx.moveTo(px, py);
-        ctx.lineTo(sx, sy);
-        ctx.stroke();
-      }
-
-      // Star dot
-      ctx.fillStyle = `rgba(${sc[0]}, ${sc[1]}, ${sc[2]}, ${alpha})`;
-      ctx.beginPath();
-      ctx.arc(sx, sy, Math.max(0.5, radius), 0, Math.PI * 2);
-      ctx.fill();
-    }
+    GLUtils.draw(gl);
+    requestAnimationFrame(frame);
   }
 
-  function loop() {
-    if (!isVisible) return;
-    update();
-    draw();
-    animId = requestAnimationFrame(loop);
-  }
-
-  // Visibility
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        isVisible = entry.isIntersecting;
-        if (isVisible && !animId) loop();
-        if (!isVisible && animId) {
-          cancelAnimationFrame(animId);
-          animId = null;
-        }
-      });
+      entries.forEach((entry) => { running = entry.isIntersecting; });
     },
     { threshold: 0.1 }
   );
-  observer.observe(container);
+  observer.observe(canvas);
 
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      resize();
-      initStars();
-    }, 150);
-  });
-
-  window.addEventListener('message', (e) => {
-    if (e.data?.type === 'update-param' && e.data.scope === 'js') {
-      const { key, value } = e.data;
-      if (key in config) {
-        config[key] = typeof config[key] === 'number' ? parseFloat(value) : value;
-        if (key === 'starCount') initStars();
-      }
-    }
-  });
-
-  resize();
-  initStars();
-  // Clear canvas fully on first frame
-  ctx.fillStyle = '#000008';
-  ctx.fillRect(0, 0, W, H);
-  loop();
+  requestAnimationFrame(frame);
 })();

@@ -1,0 +1,68 @@
+:root {
+  --gmo-item-color: #ffffff;
+  --gmo-item-count: 12;
+  --gmo-speed: 1;
+  --gmo-inertia: 0.92;
+  --gmo-bg: #0f0f1a;
+  --gmo-row-count: 8;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--gmo-bg);
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.gmo-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.gmo-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gmo-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.gmo-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.gmo-content p {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 500px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gmo-canvas { display: none; }
+  .gmo-container {
+    background: var(--gmo-bg);
+  }
+}

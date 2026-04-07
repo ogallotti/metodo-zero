@@ -1,8 +1,12 @@
-/* Hyperspeed — Hyperspace speed lines effect */
+/* Hyperspeed — WebGL hyperspace speed lines */
 :root {
   --hs-bg: #030014;
-  --hs-line-color: rgba(120, 160, 255, 0.8);
-  --hs-core-color: rgba(200, 220, 255, 1);
+  --hs-color: #78a0ff;
+  --hs-speed: 1.0;
+  --hs-count: 40.0;
+  --hs-bloom: 1.5;
+  --hs-center-x: 0.5;
+  --hs-center-y: 0.5;
 }
 
 *,
@@ -28,7 +32,7 @@ body {
   background: var(--hs-bg);
 }
 
-.hs-canvas {
+#hs-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -67,7 +71,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hs-canvas {
-    display: none;
+  #hs-canvas {
+    animation: none;
   }
 }

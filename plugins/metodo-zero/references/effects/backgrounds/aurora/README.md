@@ -1,34 +1,29 @@
 # Aurora Borealis
 
-CSS-only animated aurora borealis effect with layered gradient bands, shimmer overlay, and vignette.
+GPU-powered aurora effect using 2D simplex noise in a WebGL fragment shader.
 
-## When to use
+## Technique
 
-- Hero sections with a dark, ethereal atmosphere
-- Landing pages for creative, tech, or SaaS products
-- Sections where content overlays a dramatic background
+- Simplex noise FBM generates a height field that drives aurora band positions
+- Three configurable color stops blended via exponential Gaussian falloff
+- Vertical streak patterns from high-frequency noise (aurora curtain folds)
+- Mouse interaction warps band positions with smooth exponential decay
+- Shimmer overlay from fine-grained noise
 
-## Integration
+## Parameters
+
+| Param | Default | Description |
+|-|-|-|
+| `--aurora-color-1` | `#00d4aa` | First color stop |
+| `--aurora-color-2` | `#7b2ff7` | Second color stop |
+| `--aurora-color-3` | `#00b4d8` | Third color stop |
+| `--aurora-speed` | `0.4` | Animation speed multiplier |
+| `--aurora-amplitude` | `0.6` | Noise amplitude |
+| `--aurora-blend` | `0.5` | Aurora intensity blend |
+
+## Usage
 
 ```html
-<div class="aur-container">
-  <div class="aur-glow">
-    <div class="aur-band aur-band--1"></div>
-    <div class="aur-band aur-band--2"></div>
-    <div class="aur-band aur-band--3"></div>
-    <div class="aur-band aur-band--4"></div>
-  </div>
-  <div class="aur-shimmer"></div>
-  <div class="aur-vignette"></div>
-  <div class="aur-content">
-    <!-- Your content here -->
-  </div>
-</div>
+<script src="../../_shared/gl-utils.js"></script>
+<script src="script.js"></script>
 ```
-
-## Notes
-
-- Pure CSS animation — no Canvas or JS required for the effect itself
-- JS is only used for IntersectionObserver (pause when offscreen) and param updates
-- Performance is excellent since it uses GPU-composited transforms and opacity
-- Adjust `--aurora-blur` for subtlety: higher values = softer, dreamier look

@@ -1,0 +1,16 @@
+{
+  "name": "Shape Grid",
+  "slug": "shape-grid",
+  "category": "backgrounds",
+  "tags": ["hero", "interactive", "canvas", "geometric"],
+  "dependencies": [],
+  "description": "Grid of geometric shapes (circle, square, triangle, diamond) that rotate, scale, and glow near the cursor with a fading trail",
+  "params": {
+    "--shg-shape": { "default": "circle", "type": "select", "label": "Shape type", "options": ["circle", "square", "triangle", "diamond"] },
+    "--shg-grid-size": { "default": "50", "type": "number", "label": "Grid size", "min": 25, "max": 100, "step": 5 },
+    "--shg-hover-color": { "default": "#8b5cf6", "type": "color", "label": "Hover color" },
+    "--shg-base-color": { "default": "#1e293b", "type": "color", "label": "Base color" },
+    "--shg-trail-length": { "default": "15", "type": "number", "label": "Trail length", "min": 0, "max": 30, "step": 1 },
+    "--shg-bg": { "default": "#0a0a14", "type": "color", "label": "Background" }
+  }
+}

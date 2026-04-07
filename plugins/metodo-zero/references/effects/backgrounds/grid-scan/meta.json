@@ -1,0 +1,16 @@
+{
+  "name": "Grid Scan",
+  "slug": "grid-scan",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "canvas", "sci-fi", "scan"],
+  "dependencies": [],
+  "description": "Uniform grid with a horizontal scanning line that illuminates cells as it passes — glow fades over configurable duration",
+  "params": {
+    "--gsc-grid-size": { "default": "30", "type": "number", "label": "Grid size", "min": 15, "max": 60, "step": 5 },
+    "--gsc-scan-speed": { "default": "1", "type": "number", "label": "Scan speed", "min": 0.2, "max": 3, "step": 0.1 },
+    "--gsc-glow-color": { "default": "#00e5ff", "type": "color", "label": "Glow color" },
+    "--gsc-glow-duration": { "default": "2", "type": "number", "label": "Glow duration (s)", "min": 0.5, "max": 5, "step": 0.5 },
+    "--gsc-grid-color": { "default": "#1a2040", "type": "color", "label": "Grid color" },
+    "--gsc-bg": { "default": "#070b14", "type": "color", "label": "Background" }
+  }
+}

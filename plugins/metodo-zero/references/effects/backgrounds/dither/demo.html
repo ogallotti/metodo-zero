@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dither — Effects Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dt-container">
+    <canvas id="dt-canvas"></canvas>
+    <div class="dt-content">
+      <h1>Dither</h1>
+      <p>Ordered Bayer matrix dithering over animated noise fields</p>
+    </div>
+  </div>
+  <script src="../../_shared/gl-utils.js"></script>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param' && e.data.scope === 'css') {
+        document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

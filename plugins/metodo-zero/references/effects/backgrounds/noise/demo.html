@@ -10,23 +10,18 @@
 </head>
 <body>
   <div class="nz-container">
-    <div class="nz-gradient"></div>
-    <div class="nz-grain"></div>
-    <div class="nz-grain-2"></div>
-    <div class="nz-scanlines"></div>
-    <div class="nz-vignette"></div>
+    <canvas id="nz-canvas"></canvas>
     <div class="nz-content">
       <h1>Noise</h1>
-      <p>Animated grain texture with scanlines and vignette</p>
+      <p>Animated film grain with scanlines and chromatic aberration</p>
     </div>
   </div>
+  <script src="../../_shared/gl-utils.js"></script>
   <script src="script.js"></script>
   <script>
     window.addEventListener('message', (e) => {
-      if (e.data?.type === 'update-param') {
-        if (e.data.scope === 'css') {
-          document.documentElement.style.setProperty(e.data.key, e.data.value);
-        }
+      if (e.data?.type === 'update-param' && e.data.scope === 'css') {
+        document.documentElement.style.setProperty(e.data.key, e.data.value);
       }
     });
   </script>

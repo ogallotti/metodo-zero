@@ -1,6 +1,6 @@
 # Light Rays
 
-Volumetric CSS-only light rays streaming from a configurable origin point, with dust particles and fog.
+WebGL volumetric god-ray effect using radial blur accumulation with FBM noise for organic ray structure and floating dust particles.
 
 ## When to use
 
@@ -12,21 +12,20 @@ Volumetric CSS-only light rays streaming from a configurable origin point, with 
 
 ```html
 <div class="lr-container">
-  <div class="lr-rays">
-    <div class="lr-ray lr-ray--1"></div>
-    <!-- ... up to lr-ray--12 -->
-  </div>
-  <div class="lr-dust"></div>
-  <div class="lr-fog"></div>
+  <canvas id="lr-canvas"></canvas>
   <div class="lr-content">
     <!-- Your content here -->
   </div>
 </div>
+<script src="../../_shared/gl-utils.js"></script>
+<script src="script.js"></script>
 ```
 
 ## Notes
 
-- Pure CSS: rays are pseudo-elements with gradient fills, animated with rotation
-- Dust particles are radial-gradient dots with slow floating animation
-- Each ray has unique width, opacity, speed, and phase for natural variation
-- Origin point can be repositioned via `--lr-origin-x` and `--lr-origin-y`
+- 64-sample radial blur accumulation creates realistic god rays
+- FBM noise modulates ray structure for organic variation
+- Dust particles are GPU-computed with proximity-based brightness
+- Source glow adds a light-source feel
+- IntersectionObserver pauses rendering when offscreen
+- Respects `prefers-reduced-motion`

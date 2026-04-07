@@ -1,0 +1,15 @@
+{
+  "name": "Liquid Ether",
+  "slug": "liquid-ether",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "cursor", "webgl"],
+  "dependencies": [],
+  "description": "Organic fluid-like patterns using FBM with rotation between octaves and mouse warp",
+  "params": {
+    "--le-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--le-color-1": { "default": "#4ecdc4", "type": "color", "label": "Primary color" },
+    "--le-color-2": { "default": "#7b68ee", "type": "color", "label": "Secondary color" },
+    "--le-color-3": { "default": "#ff6b9d", "type": "color", "label": "Accent color" },
+    "--le-speed": { "default": "1.0", "type": "number", "label": "Animation speed", "min": 0.1, "max": 3.0, "step": 0.1 }
+  }
+}

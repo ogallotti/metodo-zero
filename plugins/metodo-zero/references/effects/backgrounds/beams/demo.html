@@ -10,19 +10,18 @@
 </head>
 <body>
   <div class="bm-container">
-    <canvas class="bm-canvas"></canvas>
+    <canvas id="bm-canvas"></canvas>
     <div class="bm-content">
       <h1>Beams</h1>
-      <p>Light beams emanating from a focal point with pulsing glow</p>
+      <p>Light beams radiating from a focal point with layered glow</p>
     </div>
   </div>
+  <script src="../../_shared/gl-utils.js"></script>
   <script src="script.js"></script>
   <script>
     window.addEventListener('message', (e) => {
-      if (e.data?.type === 'update-param') {
-        if (e.data.scope === 'css') {
-          document.documentElement.style.setProperty(e.data.key, e.data.value);
-        }
+      if (e.data?.type === 'update-param' && e.data.scope === 'css') {
+        document.documentElement.style.setProperty(e.data.key, e.data.value);
       }
     });
   </script>

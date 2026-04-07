@@ -1,8 +1,11 @@
-/* Grid Distortion — Grid that warps around cursor */
+/* Grid Distortion — WebGL wireframe grid with noise displacement */
 :root {
   --gd-bg: #0a0a1a;
-  --gd-line-color: rgba(255, 255, 255, 0.08);
-  --gd-glow-color: rgba(99, 102, 241, 0.6);
+  --gd-color: #ffffff;
+  --gd-density: 30.0;
+  --gd-distortion: 0.04;
+  --gd-mouse-radius: 0.2;
+  --gd-glow-color: #6366f1;
 }
 
 *,
@@ -28,7 +31,7 @@ body {
   background: var(--gd-bg);
 }
 
-.gd-canvas {
+#gd-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -67,7 +70,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gd-canvas {
+  #gd-canvas {
     opacity: 0.3;
   }
 }

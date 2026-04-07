@@ -1,0 +1,68 @@
+:root {
+  --gsc-grid-size: 30;
+  --gsc-scan-speed: 1;
+  --gsc-glow-color: #00e5ff;
+  --gsc-glow-duration: 2;
+  --gsc-bg: #070b14;
+  --gsc-grid-color: #1a2040;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--gsc-bg);
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.gsc-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.gsc-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gsc-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.gsc-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-shadow: 0 0 40px rgba(0, 229, 255, 0.4);
+}
+
+.gsc-content p {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 500px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gsc-canvas { display: none; }
+  .gsc-container {
+    background: var(--gsc-bg);
+  }
+}

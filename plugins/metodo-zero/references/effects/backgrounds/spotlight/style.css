@@ -1,39 +1,35 @@
-/* Spotlight — Cursor-following spotlight effect */
 :root {
   --spt-bg: #0a0a1a;
-  --spt-color: rgba(99, 102, 241, 0.15);
-  --spt-color-2: rgba(168, 85, 247, 0.1);
-  --spt-size: 400px;
-  --spt-blur: 80px;
-  --spt-border-color: rgba(255, 255, 255, 0.06);
-  --spt-grid-color: rgba(255, 255, 255, 0.03);
+  --spt-color: #6366f1;
+  --spt-radius: 400;
+  --spt-grid-visible: 1;
+  --spt-grid-color: rgba(255, 255, 255, 0.04);
   --spt-grid-size: 60px;
+  --spt-x: 50%;
+  --spt-y: 50%;
+  --spt-x2: 50%;
+  --spt-y2: 50%;
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--spt-bg);
   color: #fff;
   overflow: hidden;
+  height: 100vh;
 }
 
 .spt-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   background: var(--spt-bg);
 }
 
-/* Subtle background grid */
+/* Grid pattern revealed only within spotlight radius */
 .spt-grid {
   position: absolute;
   inset: 0;
@@ -41,88 +37,91 @@ body {
     linear-gradient(var(--spt-grid-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--spt-grid-color) 1px, transparent 1px);
   background-size: var(--spt-grid-size) var(--spt-grid-size);
-  mask-image: radial-gradient(
-    ellipse at var(--spt-x, 50%) var(--spt-y, 50%),
-    black 0%,
-    transparent 50%
-  );
   -webkit-mask-image: radial-gradient(
-    ellipse at var(--spt-x, 50%) var(--spt-y, 50%),
+    circle calc(var(--spt-radius) * 1px) at var(--spt-x) var(--spt-y),
     black 0%,
-    transparent 50%
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle calc(var(--spt-radius) * 1px) at var(--spt-x) var(--spt-y),
+    black 0%,
+    transparent 100%
   );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .spt-container:hover .spt-grid,
 .spt-container.spt-touch-active .spt-grid {
-  opacity: 1;
+  opacity: var(--spt-grid-visible);
 }
 
-/* Primary spotlight */
+/* Primary spotlight glow */
 .spt-light {
   position: absolute;
-  width: var(--spt-size);
-  height: var(--spt-size);
+  width: calc(var(--spt-radius) * 2px);
+  height: calc(var(--spt-radius) * 2px);
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
     var(--spt-color) 0%,
     transparent 70%
   );
-  filter: blur(var(--spt-blur));
+  opacity: 0;
+  filter: blur(60px);
   pointer-events: none;
   transform: translate(-50%, -50%);
-  left: var(--spt-x, 50%);
-  top: var(--spt-y, 50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  left: var(--spt-x);
+  top: var(--spt-y);
+  transition: opacity 0.4s ease;
   will-change: left, top;
+  mix-blend-mode: screen;
 }
 
 .spt-container:hover .spt-light,
 .spt-container.spt-touch-active .spt-light {
-  opacity: 1;
+  opacity: 0.2;
 }
 
-/* Secondary spotlight (offset, different color) */
-.spt-light-2 {
+/* Secondary trailing spotlight */
+.spt-light-secondary {
   position: absolute;
-  width: calc(var(--spt-size) * 0.7);
-  height: calc(var(--spt-size) * 0.7);
+  width: calc(var(--spt-radius) * 1.4px);
+  height: calc(var(--spt-radius) * 1.4px);
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
-    var(--spt-color-2) 0%,
+    var(--spt-color) 0%,
     transparent 70%
   );
-  filter: blur(calc(var(--spt-blur) * 0.8));
+  opacity: 0;
+  filter: blur(80px) hue-rotate(30deg);
   pointer-events: none;
   transform: translate(-50%, -50%);
-  left: var(--spt-x2, 50%);
-  top: var(--spt-y2, 50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  left: var(--spt-x2);
+  top: var(--spt-y2);
+  transition: opacity 0.4s ease;
   will-change: left, top;
+  mix-blend-mode: screen;
 }
 
-.spt-container:hover .spt-light-2,
-.spt-container.spt-touch-active .spt-light-2 {
-  opacity: 1;
+.spt-container:hover .spt-light-secondary,
+.spt-container.spt-touch-active .spt-light-secondary {
+  opacity: 0.12;
 }
 
-/* Border glow ring around cursor */
+/* Ring around cursor */
 .spt-ring {
   position: absolute;
-  width: calc(var(--spt-size) * 0.5);
-  height: calc(var(--spt-size) * 0.5);
+  width: calc(var(--spt-radius) * 0.6px);
+  height: calc(var(--spt-radius) * 0.6px);
   border-radius: 50%;
-  border: 1px solid var(--spt-border-color);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   pointer-events: none;
   transform: translate(-50%, -50%);
-  left: var(--spt-x, 50%);
-  top: var(--spt-y, 50%);
+  left: var(--spt-x);
+  top: var(--spt-y);
   opacity: 0;
   transition: opacity 0.5s ease;
   will-change: left, top;
@@ -131,23 +130,6 @@ body {
 .spt-container:hover .spt-ring,
 .spt-container.spt-touch-active .spt-ring {
   opacity: 1;
-}
-
-/* Ambient gradient that slowly moves */
-.spt-ambient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 20% 80%,
-    rgba(99, 102, 241, 0.04) 0%,
-    transparent 50%
-  ),
-  radial-gradient(
-    ellipse at 80% 20%,
-    rgba(168, 85, 247, 0.03) 0%,
-    transparent 50%
-  );
-  animation: spt-ambient-shift 20s ease-in-out infinite alternate;
 }
 
 .spt-content {
@@ -179,27 +161,11 @@ body {
   max-width: 40ch;
 }
 
-@keyframes spt-ambient-shift {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(2%, -3%) scale(1.05);
-  }
-  100% {
-    transform: translate(-2%, 2%) scale(1);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .spt-ambient {
-    animation: none !important;
-  }
   .spt-light,
-  .spt-light-2,
+  .spt-light-secondary,
   .spt-ring,
   .spt-grid {
-    transition: none !important;
-    display: none;
+    display: none !important;
   }
 }

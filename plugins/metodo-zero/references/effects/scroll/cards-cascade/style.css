@@ -1,0 +1,157 @@
+:root {
+  --cascade-card-count: 8;
+  --cascade-stagger: 80ms;
+  --cascade-slide-distance: 100px;
+  --cascade-accent: #f59e0b;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #f5f5f7;
+  background: #0a0a0f;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.cascade-hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.cascade-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.cascade-hero p {
+  font-size: 1.1rem;
+  opacity: 0.5;
+  max-width: 520px;
+}
+
+.cascade-section {
+  padding: 4rem 2rem;
+}
+
+.cascade-section--alt {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cascade-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cascade-container h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cascade-container > p {
+  font-size: 1.05rem;
+  opacity: 0.7;
+  line-height: 1.8;
+}
+
+.cascade-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cascade-card[data-cascade="left"] {
+  transform: translateX(calc(var(--cascade-slide-distance) * -1));
+}
+
+.cascade-card[data-cascade="right"] {
+  transform: translateX(var(--cascade-slide-distance));
+}
+
+.cascade-card.cascaded {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cascade-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.cascade-card__number {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  opacity: 0.08;
+  color: var(--cascade-accent);
+  line-height: 1;
+}
+
+.cascade-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--cascade-accent);
+}
+
+.cascade-card p {
+  font-size: 0.95rem;
+  opacity: 0.65;
+  line-height: 1.7;
+}
+
+.cascade-footer {
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.cascade-footer p {
+  opacity: 0.4;
+  font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cascade-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .cascade-card {
+    padding: 1.5rem;
+  }
+
+  .cascade-card[data-cascade="left"],
+  .cascade-card[data-cascade="right"] {
+    transform: translateY(30px);
+  }
+
+  .cascade-card.cascaded {
+    transform: translateY(0);
+  }
+}

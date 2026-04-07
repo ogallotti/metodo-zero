@@ -1,0 +1,15 @@
+{
+  "name": "Dither",
+  "slug": "dither",
+  "category": "backgrounds",
+  "tags": ["hero", "section", "webgl"],
+  "dependencies": [],
+  "description": "Ordered dithering with 8x8 Bayer matrix applied to animated noise fields for a retro/analog aesthetic",
+  "params": {
+    "--dt-bg": { "default": "#0a0a12", "type": "color", "label": "Background color" },
+    "--dt-color-1": { "default": "#4ecdc4", "type": "color", "label": "Primary color" },
+    "--dt-color-2": { "default": "#ff6b9d", "type": "color", "label": "Secondary color" },
+    "--dt-pattern-size": { "default": "4.0", "type": "number", "label": "Pattern scale", "min": 1.0, "max": 8.0, "step": 1.0 },
+    "--dt-speed": { "default": "1.0", "type": "number", "label": "Animation speed", "min": 0.1, "max": 3.0, "step": 0.1 }
+  }
+}

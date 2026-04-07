@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Hero Images — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="phero">
+    <div class="phero-layer" data-speed="1">
+      <div class="phero-element phero-element--circle phero-element--a"></div>
+      <div class="phero-element phero-element--circle phero-element--b"></div>
+    </div>
+    <div class="phero-layer" data-speed="2">
+      <div class="phero-element phero-element--rect phero-element--c"></div>
+      <div class="phero-element phero-element--diamond phero-element--d"></div>
+    </div>
+    <div class="phero-layer" data-speed="3">
+      <div class="phero-element phero-element--blob phero-element--e"></div>
+      <div class="phero-element phero-element--circle phero-element--f"></div>
+      <div class="phero-element phero-element--rect phero-element--g"></div>
+    </div>
+    <div class="phero-layer" data-speed="4">
+      <div class="phero-element phero-element--ring phero-element--h"></div>
+      <div class="phero-element phero-element--diamond phero-element--i"></div>
+    </div>
+    <div class="phero-layer" data-speed="5">
+      <div class="phero-element phero-element--dot phero-element--j"></div>
+      <div class="phero-element phero-element--dot phero-element--k"></div>
+      <div class="phero-element phero-element--dot phero-element--l"></div>
+    </div>
+    <div class="phero-content">
+      <h1>Parallax Hero</h1>
+      <p>Multiple layers at different scroll speeds create a stunning depth illusion</p>
+    </div>
+  </section>
+
+  <section class="phero-text-section">
+    <h2>Layers Create Depth</h2>
+    <p>The parallax effect distributes visual elements across five independent layers. Each layer moves at a different rate relative to the user's scroll, tricking the brain into perceiving three-dimensional space on a flat screen. The closest layers move fastest while the background barely shifts.</p>
+  </section>
+
+  <section class="phero-text-section phero-text-section--alt">
+    <h2>Performance First</h2>
+    <p>Only translateY transforms are applied per frame, keeping all animations on the GPU compositor layer. Passive scroll listeners and requestAnimationFrame throttle ensure smooth 60fps even with many layers active simultaneously.</p>
+  </section>
+
+  <section class="phero-text-section">
+    <h2>Customizable Speeds</h2>
+    <p>Each layer's speed is driven by a CSS custom property, letting designers tune the depth relationship without touching JavaScript. Negative values invert the direction for creative effects like elements that float upward as you scroll down.</p>
+  </section>
+
+  <section class="phero-text-section phero-text-section--alt">
+    <h2>A Canvas for Creativity</h2>
+    <p>Swap the geometric shapes for images, illustrations, or SVGs to match your brand. The layering system accepts any content and applies the same depth mechanics regardless of what is inside each layer.</p>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "Scroll Video Sync",
+  "slug": "scroll-video-sync",
+  "category": "scroll",
+  "tags": ["canvas", "animation", "video-like", "procedural", "sync"],
+  "dependencies": [],
+  "description": "A video-like experience driven by scroll. Canvas draws animated content synced to scroll position with a progress bar.",
+  "params": {
+    "--vsync-speed": { "type": "range", "min": 0.5, "max": 3, "step": 0.1, "default": 1, "unit": "", "label": "Animation Speed" },
+    "--vsync-smoothing": { "type": "range", "min": 0.03, "max": 0.2, "step": 0.01, "default": 0.06, "unit": "", "label": "Smoothing" },
+    "--vsync-accent": { "type": "color", "default": "#ec4899", "label": "Accent Color" }
+  },
+  "jsParams": {}
+}

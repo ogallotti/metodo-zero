@@ -1,0 +1,133 @@
+/* Orb — CSS gradient sphere with parallax */
+:root {
+  --orb-bg: #0a0a1a;
+  --orb-color-1: #6366f1;
+  --orb-color-2: #ec4899;
+  --orb-color-3: #06b6d4;
+  --orb-size: 60vh;
+  --orb-blur: 80px;
+  --orb-opacity: 0.7;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--orb-bg);
+  color: #fff;
+  overflow: hidden;
+}
+
+.orb-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--orb-bg);
+}
+
+.orb-sphere {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--orb-size);
+  height: var(--orb-size);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.orb-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  filter: blur(var(--orb-blur));
+  opacity: var(--orb-opacity);
+  will-change: transform;
+  animation: orb-breathe 8s ease-in-out infinite;
+}
+
+.orb-layer--1 {
+  background: radial-gradient(
+    circle at 40% 40%,
+    var(--orb-color-1) 0%,
+    transparent 70%
+  );
+  animation-delay: 0s;
+}
+
+.orb-layer--2 {
+  background: radial-gradient(
+    circle at 60% 35%,
+    var(--orb-color-2) 0%,
+    transparent 65%
+  );
+  animation-delay: -2.5s;
+  transform: scale(1.1);
+}
+
+.orb-layer--3 {
+  background: radial-gradient(
+    circle at 50% 60%,
+    var(--orb-color-3) 0%,
+    transparent 60%
+  );
+  animation-delay: -5s;
+  transform: scale(0.9);
+}
+
+@keyframes orb-breathe {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.05) translate(2%, -1%);
+  }
+  50% {
+    transform: scale(0.97) translate(-1%, 2%);
+  }
+  75% {
+    transform: scale(1.03) translate(1%, 1%);
+  }
+}
+
+.orb-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.orb-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.orb-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 40ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-layer {
+    animation: none !important;
+  }
+}

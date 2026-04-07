@@ -1,27 +1,26 @@
 # Waves
 
-Layered sine wave animation with gradient fills, stroke lines, and organic multi-frequency motion.
+Multi-layered wave animation driven by proper Perlin noise with gradient fills and smooth bezier curves.
 
-## When to use
+## Technique
 
-- Section dividers with animated backgrounds
-- Hero sections with a calm, flowing aesthetic
-- Backgrounds for audio, music, or data visualization contexts
+- Perlin noise FBM (4 octaves) generates smooth, organic wave shapes — not random sine math
+- Quadratic bezier curves between sample points for anti-aliased smoothness
+- Gradient fills per layer with configurable colors (5 stops)
+- Sheen highlights detected at wave peaks via local minima check
+- Back-to-front rendering creates natural depth
 
-## Integration
+## Parameters
+
+| Param | Default | Description |
+|-|-|-|
+| `--wav-color-1` through `--wav-color-5` | Various | Wave layer colors |
+| `--wav-speed` | `0.015` | Animation speed |
+| `--wav-amplitude` | `60` | Wave height in pixels |
+| `--wav-layers` | `6` | Number of wave layers |
+
+## Usage
 
 ```html
-<div class="wav-container">
-  <canvas class="wav-canvas"></canvas>
-  <div class="wav-content">
-    <!-- Your content here -->
-  </div>
-</div>
+<script src="script.js"></script>
 ```
-
-## Notes
-
-- Each wave uses multiple sine/cosine frequencies for organic movement
-- Waves drawn back-to-front with gradient fills for depth
-- Adjust `verticalCenter` and `verticalSpread` to position waves in the viewport
-- Lightweight: only draws paths, no per-pixel computation

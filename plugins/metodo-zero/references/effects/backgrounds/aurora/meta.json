@@ -2,23 +2,16 @@
   "name": "Aurora Borealis",
   "slug": "aurora",
   "category": "backgrounds",
-  "tags": ["hero", "continuous", "css-only"],
-  "dependencies": [],
-  "description": "Animated aurora borealis gradient waves with layered color bands and shimmer overlay",
+  "tags": ["hero", "continuous", "webgl", "shader"],
+  "dependencies": ["gl-utils"],
+  "description": "GPU-rendered aurora borealis with simplex noise height fields, vertical streaks, and 3-color gradient ramp",
   "params": {
-    "--aurora-color-1": { "default": "#00d4aa", "type": "color", "label": "Primary color" },
-    "--aurora-color-2": { "default": "#7b2ff7", "type": "color", "label": "Secondary color" },
-    "--aurora-color-3": { "default": "#00b4d8", "type": "color", "label": "Tertiary color" },
-    "--aurora-color-4": { "default": "#2dff73", "type": "color", "label": "Accent color 1" },
-    "--aurora-color-5": { "default": "#c471f5", "type": "color", "label": "Accent color 2" },
+    "--aurora-color-1": { "default": "#00d4aa", "type": "color", "label": "Color stop 1" },
+    "--aurora-color-2": { "default": "#7b2ff7", "type": "color", "label": "Color stop 2" },
+    "--aurora-color-3": { "default": "#00b4d8", "type": "color", "label": "Color stop 3" },
     "--aurora-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
-    "--aurora-speed": { "default": "8s", "type": "duration", "label": "Animation speed", "min": 2, "max": 20 },
-    "--aurora-opacity": { "default": "0.6", "type": "number", "label": "Band opacity", "min": 0.1, "max": 1 },
-    "--aurora-blur": { "default": "80px", "type": "size", "label": "Blur amount", "min": 20, "max": 200 },
-    "--aurora-height": { "default": "60%", "type": "size", "label": "Band height" }
-  },
-  "jsParams": {
-    "intensity": { "default": 0.6, "type": "number", "label": "Intensity", "min": 0.1, "max": 1, "step": 0.05 },
-    "speed": { "default": 8, "type": "number", "label": "Speed (seconds)", "min": 2, "max": 20, "step": 1 }
+    "--aurora-speed": { "default": "0.4", "type": "number", "label": "Speed", "min": 0.1, "max": 2, "step": 0.05 },
+    "--aurora-amplitude": { "default": "0.6", "type": "number", "label": "Amplitude", "min": 0.1, "max": 1.5, "step": 0.05 },
+    "--aurora-blend": { "default": "0.5", "type": "number", "label": "Blend intensity", "min": 0, "max": 1, "step": 0.05 }
   }
 }

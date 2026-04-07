@@ -1,0 +1,70 @@
+:root {
+  --grn-color-1: #ff6b35;
+  --grn-color-2: #f7c59f;
+  --grn-color-3: #1a535c;
+  --grn-color-4: #4ecdc4;
+  --grn-grain: 0.35;
+  --grn-speed: 0.3;
+  --grn-warp: 0.8;
+  --grn-bg: #0a0a0a;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--grn-bg);
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.grn-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.grn-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.grn-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.grn-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+}
+
+.grn-content p {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 500px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grn-canvas { display: none; }
+  .grn-container {
+    background: linear-gradient(135deg, #ff6b35 0%, #1a535c 50%, #4ecdc4 100%);
+  }
+}

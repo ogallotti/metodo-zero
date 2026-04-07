@@ -1,0 +1,14 @@
+{
+  "name": "Text Highlight on Scroll",
+  "slug": "text-highlight-on-scroll",
+  "category": "scroll",
+  "tags": ["text", "highlight", "scrollytelling", "reading"],
+  "dependencies": [],
+  "description": "Words in paragraphs progressively highlight as the user scrolls past them, creating a reading-like scroll experience.",
+  "params": {
+    "--highlight-color": { "type": "color", "default": "#a78bfa", "label": "Highlight Color" },
+    "--highlight-inactive-opacity": { "type": "range", "min": 0.1, "max": 0.5, "step": 0.05, "default": 0.2, "unit": "", "label": "Inactive Opacity" },
+    "--highlight-speed": { "type": "range", "min": 0.5, "max": 3, "step": 0.1, "default": 1, "unit": "", "label": "Speed Multiplier" }
+  },
+  "jsParams": {}
+}

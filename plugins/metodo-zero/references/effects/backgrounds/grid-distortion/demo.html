@@ -10,19 +10,18 @@
 </head>
 <body>
   <div class="gd-container">
-    <canvas class="gd-canvas"></canvas>
+    <canvas id="gd-canvas"></canvas>
     <div class="gd-content">
       <h1>Grid Distortion</h1>
       <p>A wireframe grid that warps and bends around your cursor</p>
     </div>
   </div>
+  <script src="../../_shared/gl-utils.js"></script>
   <script src="script.js"></script>
   <script>
     window.addEventListener('message', (e) => {
-      if (e.data?.type === 'update-param') {
-        if (e.data.scope === 'css') {
-          document.documentElement.style.setProperty(e.data.key, e.data.value);
-        }
+      if (e.data?.type === 'update-param' && e.data.scope === 'css') {
+        document.documentElement.style.setProperty(e.data.key, e.data.value);
       }
     });
   </script>

@@ -1,0 +1,76 @@
+/* Threads — Flowing convergent lines */
+:root {
+  --th-bg: #0a0a1a;
+  --th-color-1: #00d4ff;
+  --th-color-2: #7b2ff7;
+  --th-speed: 1.0;
+  --th-opacity: 0.9;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--th-bg);
+  color: #fff;
+  overflow: hidden;
+}
+
+.th-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--th-bg);
+}
+
+#th-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: var(--th-opacity);
+}
+
+.th-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.th-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.th-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 40ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #th-canvas {
+    display: none;
+  }
+}

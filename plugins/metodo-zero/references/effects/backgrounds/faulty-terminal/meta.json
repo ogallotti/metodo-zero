@@ -1,0 +1,16 @@
+{
+  "name": "Faulty Terminal",
+  "slug": "faulty-terminal",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "canvas", "matrix", "cyberpunk"],
+  "dependencies": [],
+  "description": "Matrix-like falling characters on a CRT display with scanlines, glitch blocks, and horizontal tears",
+  "params": {
+    "--ftr-text-color": { "default": "#00ff41", "type": "color", "label": "Text color" },
+    "--ftr-font-size": { "default": "14", "type": "number", "label": "Font size", "min": 8, "max": 24, "step": 1 },
+    "--ftr-glitch-speed": { "default": "1", "type": "number", "label": "Glitch speed", "min": 0.2, "max": 3, "step": 0.1 },
+    "--ftr-scanlines": { "default": "1", "type": "number", "label": "Scanlines", "min": 0, "max": 1, "step": 1 },
+    "--ftr-glow": { "default": "0.6", "type": "number", "label": "Glow intensity", "min": 0, "max": 1, "step": 0.1 },
+    "--ftr-bg": { "default": "#0a0a0a", "type": "color", "label": "Background" }
+  }
+}

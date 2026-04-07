@@ -1,0 +1,140 @@
+:root {
+  --seq-frame-count: 60;
+  --seq-smoothing: 0.08;
+  --seq-accent: #6366f1;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #f5f5f7;
+  background: #08080c;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.seq-hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.seq-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.seq-hero p {
+  font-size: 1.1rem;
+  opacity: 0.5;
+  max-width: 500px;
+}
+
+.seq-canvas-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.seq-canvas {
+  width: min(90vw, 600px);
+  height: min(90vw, 600px);
+  border-radius: 16px;
+  background: #111;
+}
+
+.seq-progress-bar {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80vw, 400px);
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.seq-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--seq-accent);
+  border-radius: 2px;
+  transition: width 0.1s ease;
+}
+
+.seq-frame-counter {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  opacity: 0.4;
+  font-variant-numeric: tabular-nums;
+}
+
+.seq-content {
+  position: relative;
+  z-index: 20;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #08080c;
+}
+
+.seq-content--alt {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.seq-content h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.seq-content p {
+  font-size: 1.05rem;
+  opacity: 0.7;
+  line-height: 1.8;
+}
+
+.seq-footer {
+  position: relative;
+  z-index: 20;
+  padding: 6rem 2rem;
+  text-align: center;
+  background: #08080c;
+}
+
+.seq-footer p {
+  opacity: 0.4;
+  font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seq-canvas-wrapper {
+    position: relative;
+  }
+}

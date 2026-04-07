@@ -2,19 +2,15 @@
   "name": "Liquid Chrome",
   "slug": "liquid-chrome",
   "category": "backgrounds",
-  "tags": ["hero", "continuous", "canvas", "performance-heavy"],
-  "dependencies": [],
-  "description": "Metallic liquid chrome distortion with per-pixel shader simulation and mouse interaction",
+  "tags": ["hero", "continuous", "webgl", "shader", "cursor"],
+  "dependencies": ["gl-utils"],
+  "description": "GPU-rendered liquid chrome with iterative sine wave domain distortion, mouse-reactive ripple, and 3x3 supersampling",
   "params": {
     "--lc-bg": { "default": "#0a0a0f", "type": "color", "label": "Background color" },
-    "--lc-accent": { "default": "#4488ff", "type": "color", "label": "Accent color" }
-  },
-  "jsParams": {
-    "speed": { "default": 0.008, "type": "number", "label": "Speed", "min": 0.002, "max": 0.03, "step": 0.002 },
-    "complexity": { "default": 4, "type": "number", "label": "Complexity", "min": 2, "max": 6, "step": 1 },
-    "metallic": { "default": 0.85, "type": "number", "label": "Metallic factor", "min": 0, "max": 1, "step": 0.05 },
-    "scale": { "default": 3, "type": "number", "label": "Render scale (lower = sharper)", "min": 2, "max": 6, "step": 1 },
-    "baseHue": { "default": 220, "type": "number", "label": "Base hue", "min": 0, "max": 360, "step": 10 },
-    "saturation": { "default": 0.15, "type": "number", "label": "Saturation", "min": 0, "max": 0.5, "step": 0.05 }
+    "--lc-base-color": { "default": "#4488ff", "type": "color", "label": "Base color" },
+    "--lc-speed": { "default": "0.4", "type": "number", "label": "Speed", "min": 0.1, "max": 2, "step": 0.1 },
+    "--lc-amplitude": { "default": "1.0", "type": "number", "label": "Amplitude", "min": 0.2, "max": 2, "step": 0.1 },
+    "--lc-frequency-x": { "default": "3.0", "type": "number", "label": "Frequency X", "min": 1, "max": 8, "step": 0.5 },
+    "--lc-frequency-y": { "default": "4.0", "type": "number", "label": "Frequency Y", "min": 1, "max": 8, "step": 0.5 }
   }
 }

@@ -1,0 +1,117 @@
+:root {
+  --morph-speed: 1;
+  --morph-color-1: #1e1b4b;
+  --morph-color-2: #164e63;
+  --morph-color-3: #3b0764;
+  --morph-color-4: #1c1917;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #f5f5f7;
+  background: #0a0a0f;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.morph-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 8rem;
+}
+
+.morph-section--1 {
+  background: var(--morph-color-1);
+}
+
+.morph-section--2 {
+  background: var(--morph-color-2);
+}
+
+.morph-section--3 {
+  background: var(--morph-color-3);
+}
+
+.morph-section--4 {
+  background: var(--morph-color-4);
+}
+
+.morph-section--5 {
+  background: linear-gradient(180deg, #0a0a0f 0%, #111 100%);
+}
+
+.morph-content {
+  max-width: 640px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.morph-content h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.morph-content h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.morph-content p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  opacity: 0.75;
+  line-height: 1.8;
+}
+
+.morph-divider {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 1;
+  will-change: clip-path;
+}
+
+.morph-section--1 .morph-divider {
+  background: var(--morph-color-2);
+}
+
+.morph-section--2 .morph-divider {
+  background: var(--morph-color-3);
+}
+
+.morph-section--3 .morph-divider {
+  background: var(--morph-color-4);
+}
+
+.morph-section--4 .morph-divider {
+  background: #0a0a0f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .morph-divider {
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%) !important;
+    will-change: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .morph-divider {
+    height: 80px;
+  }
+}

@@ -1,0 +1,134 @@
+:root {
+  --vsync-speed: 1;
+  --vsync-smoothing: 0.06;
+  --vsync-accent: #ec4899;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #f5f5f7;
+  background: #06060a;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.vsync-hero {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.vsync-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.vsync-hero p {
+  font-size: 1.1rem;
+  opacity: 0.5;
+  max-width: 480px;
+}
+
+.vsync-sticky-wrapper {
+  height: 400vh;
+  position: relative;
+}
+
+.vsync-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.vsync-canvas {
+  width: min(90vw, 800px);
+  height: min(50vw, 450px);
+  border-radius: 12px;
+  background: #111;
+}
+
+.vsync-progress {
+  width: min(90vw, 800px);
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.vsync-progress__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--vsync-accent);
+  border-radius: 2px;
+}
+
+.vsync-time {
+  font-size: 0.75rem;
+  opacity: 0.4;
+  margin-top: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.vsync-spacer {
+  height: 1px;
+}
+
+.vsync-text {
+  padding: 6rem 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.vsync-text--alt {
+  background: rgba(255, 255, 255, 0.02);
+  max-width: none;
+}
+
+.vsync-text--alt > * {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vsync-text h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.vsync-text p {
+  font-size: 1.05rem;
+  opacity: 0.7;
+  line-height: 1.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vsync-sticky-wrapper {
+    height: auto;
+  }
+
+  .vsync-sticky {
+    position: relative;
+    height: auto;
+    padding: 4rem 0;
+  }
+}

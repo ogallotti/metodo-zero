@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Highlight on Scroll — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="th-hero">
+    <h1>Text Highlight on Scroll</h1>
+    <p>Scroll down to see words illuminate as you read through each section.</p>
+    <div class="th-scroll-hint">&#8595;</div>
+  </section>
+
+  <section class="th-section">
+    <div class="th-container">
+      <h2>The Future of Design Systems</h2>
+      <p class="th-highlight-text">Design systems are no longer optional. They are the foundation upon which teams build consistent, scalable, and beautiful products. Every component tells a story, every token carries intention, and every pattern reduces the cognitive load on both designers and developers.</p>
+    </div>
+  </section>
+
+  <section class="th-section th-section--alt">
+    <div class="th-container">
+      <h2>Engineering at Scale</h2>
+      <p class="th-highlight-text">When your codebase serves millions of users, every millisecond matters. Performance is not an afterthought but a first-class citizen in every architectural decision. We instrument, we measure, we optimize relentlessly until the experience feels instant.</p>
+    </div>
+  </section>
+
+  <section class="th-section">
+    <div class="th-container">
+      <h2>The Craft of Typography</h2>
+      <p class="th-highlight-text">Great typography is invisible. It guides the eye without drawing attention to itself. The spacing between letters, the rhythm of the baseline, the contrast between heading and body all work in concert to create a reading experience that feels effortless and natural.</p>
+    </div>
+  </section>
+
+  <section class="th-section th-section--alt">
+    <div class="th-container">
+      <h2>Motion with Purpose</h2>
+      <p class="th-highlight-text">Animation should communicate, not decorate. Each transition provides feedback, establishes spatial relationships, or directs attention toward what matters most. When motion serves the narrative, the interface feels alive and responsive to the user's intent.</p>
+    </div>
+  </section>
+
+  <section class="th-footer">
+    <h2>Words Come Alive</h2>
+    <p>Each word activates based on its scroll position within the section. Pure vanilla JS with scroll position calculation.</p>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

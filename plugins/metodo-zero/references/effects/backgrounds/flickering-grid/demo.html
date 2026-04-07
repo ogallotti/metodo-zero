@@ -10,20 +10,18 @@
 </head>
 <body>
   <div class="fg-container">
-    <div class="fg-grid"></div>
-    <div class="fg-vignette"></div>
+    <canvas id="fg-canvas"></canvas>
     <div class="fg-content">
       <h1>Flickering Grid</h1>
-      <p>A grid of cells flickering with staggered animation</p>
+      <p>A grid of cells flickering independently on the GPU</p>
     </div>
   </div>
+  <script src="../../_shared/gl-utils.js"></script>
   <script src="script.js"></script>
   <script>
     window.addEventListener('message', (e) => {
-      if (e.data?.type === 'update-param') {
-        if (e.data.scope === 'css') {
-          document.documentElement.style.setProperty(e.data.key, e.data.value);
-        }
+      if (e.data?.type === 'update-param' && e.data.scope === 'css') {
+        document.documentElement.style.setProperty(e.data.key, e.data.value);
       }
     });
   </script>

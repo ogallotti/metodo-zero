@@ -1,0 +1,14 @@
+{
+  "name": "Ripple Grid",
+  "slug": "ripple-grid",
+  "category": "backgrounds",
+  "tags": ["hero", "section", "cursor", "click", "webgl"],
+  "dependencies": [],
+  "description": "Grid of dots with click-spawned ripple waves that propagate outward, displacing dot size and brightness",
+  "params": {
+    "--rg-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--rg-dot-color": { "default": "#4ecdc4", "type": "color", "label": "Dot color" },
+    "--rg-wave-color": { "default": "#7b68ee", "type": "color", "label": "Wave color" },
+    "--rg-speed": { "default": "1.0", "type": "number", "label": "Animation speed", "min": 0.1, "max": 3.0, "step": 0.1 }
+  }
+}

@@ -1,188 +1,148 @@
-/* Beams — Animated light beams emanating from a focal point */
+/* Beams — WebGL light beams from focal point with bloom */
 (function () {
   'use strict';
 
-  const container = document.querySelector('.bm-container');
-  const canvas = document.querySelector('.bm-canvas');
-  if (!container || !canvas) return;
+  const canvas = document.getElementById('bm-canvas');
+  if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
-  let dpr, W, H;
-  let animId = null;
-  let isVisible = true;
-  let time = 0;
-  let beams = [];
+  const gl = GLUtils.create(canvas);
+  if (!gl) return;
 
-  const config = {
-    beamCount: 14,
-    speed: 0.005,
-    originX: 0.5,  // 0..1
-    originY: 0.3,  // 0..1
-    minWidth: 0.02,
-    maxWidth: 0.12,
-    minLength: 0.6,
-    maxLength: 1.4,
-    colors: [
-      [99, 102, 241],
-      [168, 85, 247],
-      [59, 130, 246],
-      [139, 92, 246],
-      [79, 70, 229],
-      [6, 182, 212],
-    ],
-    baseAlpha: 0.12,
-    pulseAmount: 0.06,
-    rotationSpeed: 0.08,
-    glowSize: 120,
-    glowAlpha: 0.15,
-  };
+  const vert = `attribute vec2 position;
+void main() { gl_Position = vec4(position, 0.0, 1.0); }`;
 
-  function initBeams() {
-    beams = [];
-    for (let i = 0; i < config.beamCount; i++) {
-      const angle = (Math.PI * 2 * i) / config.beamCount + Math.random() * 0.3;
-      beams.push({
-        angle,
-        width: config.minWidth + Math.random() * (config.maxWidth - config.minWidth),
-        length: config.minLength + Math.random() * (config.maxLength - config.minLength),
-        color: config.colors[i % config.colors.length],
-        alpha: config.baseAlpha * (0.5 + Math.random() * 0.5),
-        phaseOffset: Math.random() * Math.PI * 2,
-        speedMult: 0.7 + Math.random() * 0.6,
-      });
-    }
+  const frag = `precision highp float;
+uniform vec2 uResolution;
+uniform float uTime;
+uniform vec3 uColor;
+uniform vec3 uBg;
+uniform float uCount;
+uniform float uSpeed;
+uniform vec2 uFocal;
+uniform vec2 uMouse;
+
+#define PI 3.14159265359
+#define TAU 6.28318530718
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / uResolution;
+  float aspect = uResolution.x / uResolution.y;
+
+  /* center on focal point */
+  vec2 p = uv - uFocal;
+  p.x *= aspect;
+
+  float angle = atan(p.y, p.x);
+  float dist = length(p);
+
+  float t = uTime * uSpeed;
+  float n = uCount;
+
+  /* layer 1: primary beams — wide, bright */
+  float a1 = angle + t * 0.7;
+  float seg1 = fract(a1 * n / TAU + 0.5);
+  float beams1 = smoothstep(0.5, 0.47, abs(seg1 - 0.5));
+  beams1 *= smoothstep(1.6, 0.0, dist);
+
+  /* layer 2: thinner counter-rotating beams */
+  float a2 = angle - t * 0.5;
+  float seg2 = fract(a2 * n * 1.5 / TAU + 0.5);
+  float beams2 = smoothstep(0.5, 0.485, abs(seg2 - 0.5));
+  beams2 *= smoothstep(1.2, 0.1, dist) * 0.5;
+
+  /* layer 3: wide slow accent beams */
+  float a3 = angle + t * 0.25;
+  float seg3 = fract(a3 * (n * 0.5) / TAU + 0.5);
+  float beams3 = smoothstep(0.5, 0.40, abs(seg3 - 0.5));
+  beams3 *= smoothstep(1.8, 0.0, dist) * 0.35;
+
+  float intensity = beams1 + beams2 + beams3;
+
+  /* bloom: square intensity for glow falloff */
+  float bloom = intensity * intensity;
+
+  /* center glow */
+  float glow = 0.18 / (dist + 0.06);
+  glow = min(glow, 3.0);
+
+  /* pulsating core */
+  float pulse = 0.5 + 0.5 * sin(t * 3.0);
+  glow *= 0.8 + pulse * 0.2;
+
+  /* mouse proximity brightens area */
+  vec2 mp = uMouse - uFocal;
+  mp.x *= aspect;
+  float mouseDist = length(p - mp);
+  float mouseBoost = smoothstep(0.5, 0.0, mouseDist) * 0.25;
+
+  float final = bloom + glow * 0.35 + mouseBoost;
+
+  vec3 col = uBg + uColor * final;
+
+  /* vignette */
+  float vig = 1.0 - smoothstep(0.4, 1.5, length(uv - 0.5));
+  col *= mix(0.5, 1.0, vig);
+
+  /* tone map */
+  col = col / (1.0 + col * 0.2);
+
+  gl_FragColor = vec4(col, 1.0);
+}`;
+
+  const prog = GLUtils.program(gl, vert, frag);
+  if (!prog) return;
+  GLUtils.fullscreenQuad(gl, prog);
+
+  function getCSS(prop, fallback) {
+    const v = getComputedStyle(document.documentElement).getPropertyValue(prop).trim();
+    return v || fallback;
   }
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = container.clientWidth;
-    H = container.clientHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    canvas.style.width = W + 'px';
-    canvas.style.height = H + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  let running = true;
+  let startTime = performance.now();
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let mouse = [0.5, 0.5];
+  function onPointer(e) {
+    const t = e.touches ? e.touches[0] : e;
+    mouse = [t.clientX / window.innerWidth, 1.0 - t.clientY / window.innerHeight];
+  }
+  canvas.addEventListener('mousemove', onPointer);
+  canvas.addEventListener('touchmove', onPointer, { passive: true });
+
+  function frame() {
+    if (!running) { requestAnimationFrame(frame); return; }
+
+    GLUtils.resize(canvas, gl);
+
+    const elapsed = prefersReduced ? 0 : (performance.now() - startTime) / 1000.0;
+    const bg = GLUtils.hexToRGB(getCSS('--bm-bg', '#050510'));
+    const color = GLUtils.hexToRGB(getCSS('--bm-color', '#4a9eff'));
+    const count = parseFloat(getCSS('--bm-count', '12'));
+    const speed = parseFloat(getCSS('--bm-speed', '0.4'));
+    const focalX = parseFloat(getCSS('--bm-focal-x', '0.5'));
+    const focalY = parseFloat(getCSS('--bm-focal-y', '0.5'));
+
+    GLUtils.uniform(gl, prog, 'uResolution', '2f', [canvas.width, canvas.height]);
+    GLUtils.uniform(gl, prog, 'uTime', '1f', elapsed);
+    GLUtils.uniform(gl, prog, 'uBg', '3f', bg);
+    GLUtils.uniform(gl, prog, 'uColor', '3f', color);
+    GLUtils.uniform(gl, prog, 'uCount', '1f', count);
+    GLUtils.uniform(gl, prog, 'uSpeed', '1f', speed);
+    GLUtils.uniform(gl, prog, 'uFocal', '2f', [focalX, focalY]);
+    GLUtils.uniform(gl, prog, 'uMouse', '2f', mouse);
+
+    GLUtils.draw(gl);
+    requestAnimationFrame(frame);
   }
 
-  function drawBeam(beam, t) {
-    const ox = W * config.originX;
-    const oy = H * config.originY;
-    const maxDim = Math.max(W, H) * 1.5;
-
-    const angle = beam.angle + t * config.rotationSpeed * beam.speedMult;
-    const halfWidth = beam.width * 0.5;
-    const len = beam.length * maxDim;
-
-    // Pulse
-    const pulse = Math.sin(t * 3 + beam.phaseOffset) * config.pulseAmount;
-    const alpha = beam.alpha + pulse;
-
-    // Beam as a triangle/trapezoid
-    const cos = Math.cos(angle);
-    const sin = Math.sin(angle);
-    const perpCos = Math.cos(angle + Math.PI / 2);
-    const perpSin = Math.sin(angle + Math.PI / 2);
-
-    const nearW = maxDim * halfWidth * 0.1;
-    const farW = maxDim * halfWidth;
-
-    // Near edge (at origin)
-    const n1x = ox + perpCos * nearW;
-    const n1y = oy + perpSin * nearW;
-    const n2x = ox - perpCos * nearW;
-    const n2y = oy - perpSin * nearW;
-
-    // Far edge
-    const fx = ox + cos * len;
-    const fy = oy + sin * len;
-    const f1x = fx + perpCos * farW;
-    const f1y = fy + perpSin * farW;
-    const f2x = fx - perpCos * farW;
-    const f2y = fy - perpSin * farW;
-
-    // Gradient along beam
-    const grad = ctx.createLinearGradient(ox, oy, fx, fy);
-    const c = beam.color;
-    grad.addColorStop(0, `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${alpha * 1.5})`);
-    grad.addColorStop(0.3, `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${alpha})`);
-    grad.addColorStop(0.7, `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${alpha * 0.4})`);
-    grad.addColorStop(1, `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0)`);
-
-    ctx.beginPath();
-    ctx.moveTo(n1x, n1y);
-    ctx.lineTo(f1x, f1y);
-    ctx.lineTo(f2x, f2y);
-    ctx.lineTo(n2x, n2y);
-    ctx.closePath();
-    ctx.fillStyle = grad;
-    ctx.fill();
-  }
-
-  function render() {
-    ctx.clearRect(0, 0, W, H);
-
-    // Draw beams
-    ctx.globalCompositeOperation = 'screen';
-    for (let i = 0; i < beams.length; i++) {
-      drawBeam(beams[i], time);
-    }
-
-    // Origin glow
-    ctx.globalCompositeOperation = 'screen';
-    const ox = W * config.originX;
-    const oy = H * config.originY;
-    const glowGrad = ctx.createRadialGradient(ox, oy, 0, ox, oy, config.glowSize);
-    glowGrad.addColorStop(0, `rgba(200, 200, 255, ${config.glowAlpha})`);
-    glowGrad.addColorStop(0.5, `rgba(99, 102, 241, ${config.glowAlpha * 0.5})`);
-    glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-    ctx.fillStyle = glowGrad;
-    ctx.beginPath();
-    ctx.arc(ox, oy, config.glowSize, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.globalCompositeOperation = 'source-over';
-  }
-
-  function loop() {
-    if (!isVisible) return;
-    time += config.speed;
-    render();
-    animId = requestAnimationFrame(loop);
-  }
-
-  // Visibility
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        isVisible = entry.isIntersecting;
-        if (isVisible && !animId) loop();
-        if (!isVisible && animId) {
-          cancelAnimationFrame(animId);
-          animId = null;
-        }
-      });
+      entries.forEach((entry) => { running = entry.isIntersecting; });
     },
     { threshold: 0.1 }
   );
-  observer.observe(container);
+  observer.observe(canvas);
 
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(resize, 150);
-  });
-
-  window.addEventListener('message', (e) => {
-    if (e.data?.type === 'update-param' && e.data.scope === 'js') {
-      const { key, value } = e.data;
-      if (key in config) {
-        config[key] = typeof config[key] === 'number' ? parseFloat(value) : value;
-        if (key === 'beamCount') initBeams();
-      }
-    }
-  });
-
-  resize();
-  initBeams();
-  loop();
+  requestAnimationFrame(frame);
 })();

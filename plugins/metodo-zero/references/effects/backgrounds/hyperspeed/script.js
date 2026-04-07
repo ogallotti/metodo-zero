@@ -1,196 +1,191 @@
-/* Hyperspeed — Hyperspace speed lines with radial blur and color layers */
+/* Hyperspeed — WebGL hyperspace speed lines with bloom */
 (function () {
   'use strict';
 
-  const container = document.querySelector('.hs-container');
-  const canvas = document.querySelector('.hs-canvas');
-  if (!container || !canvas) return;
+  const canvas = document.getElementById('hs-canvas');
+  if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
-  let dpr, W, H, cx, cy;
-  let animId = null;
-  let isVisible = true;
-  let lines = [];
-  let time = 0;
+  const gl = GLUtils.create(canvas);
+  if (!gl) return;
 
-  const config = {
-    lineCount: 300,
-    speed: 8,
-    minLength: 50,
-    maxLength: 400,
-    minWidth: 0.5,
-    maxWidth: 3,
-    colors: [
-      [120, 160, 255],  // blue
-      [200, 220, 255],  // white-blue
-      [80, 120, 255],   // deep blue
-      [160, 100, 255],  // purple
-      [100, 200, 255],  // cyan
-      [255, 255, 255],  // white
-    ],
-    spread: 1.2,        // radial spread multiplier
-    fadeSpeed: 0.15,     // bg fade per frame
-    centerX: 0.5,
-    centerY: 0.5,
-    bloom: true,
-    bloomRadius: 200,
-    bloomAlpha: 0.08,
-  };
+  const vert = `attribute vec2 position;
+void main() { gl_Position = vec4(position, 0.0, 1.0); }`;
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = container.clientWidth;
-    H = container.clientHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    canvas.style.width = W + 'px';
-    canvas.style.height = H + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cx = W * config.centerX;
-    cy = H * config.centerY;
+  const frag = `precision highp float;
+uniform vec2 uResolution;
+uniform float uTime;
+uniform vec3 uColor;
+uniform vec3 uBg;
+uniform float uSpeed;
+uniform float uCount;
+uniform float uBloom;
+uniform vec2 uCenter;
+uniform vec2 uMouse;
+
+#define PI 3.14159265359
+#define TAU 6.28318530718
+
+float hash(float p) {
+  return fract(sin(p * 127.1) * 43758.5453);
+}
+
+float hash2(vec2 p) {
+  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+}
+
+/* value noise for streak width modulation */
+float vnoise(float p) {
+  float i = floor(p);
+  float f = fract(p);
+  f = f * f * (3.0 - 2.0 * f);
+  return mix(hash(i), hash(i + 1.0), f);
+}
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / uResolution;
+  float aspect = uResolution.x / uResolution.y;
+
+  /* center on configurable point */
+  vec2 p = uv - uCenter;
+  p.x *= aspect;
+
+  float angle = atan(p.y, p.x);
+  float dist = length(p);
+
+  float t = uTime * uSpeed;
+
+  float totalIntensity = 0.0;
+
+  /* radial streaks with noise-modulated width */
+  float n = uCount;
+  float angleNorm = (angle + PI) / TAU;
+
+  /* layer 1: primary streaks */
+  for (float i = 0.0; i < 80.0; i++) {
+    if (i >= n) break;
+
+    float streakAngle = (i / n) + hash(i) * 0.02;
+    float diff = abs(fract(angleNorm - streakAngle + 0.5) - 0.5);
+
+    /* noise-modulated width */
+    float width = 0.003 + vnoise(i * 3.7 + t * 0.5) * 0.004;
+    float streak = smoothstep(width, width * 0.1, diff);
+
+    /* radial falloff: bright in middle, fade at center and edges */
+    float radial = smoothstep(0.0, 0.15, dist) * smoothstep(1.2, 0.2, dist);
+
+    /* per-streak animation: moving light point */
+    float lightPos = fract(t * (0.3 + hash(i + 10.0) * 0.4) + hash(i) * 5.0);
+    float lightDist = abs(dist / 1.0 - lightPos);
+    float light = smoothstep(0.3, 0.0, lightDist) * 2.0;
+
+    /* brightness variation per streak */
+    float brightness = 0.3 + hash(i + 50.0) * 0.7;
+
+    totalIntensity += streak * radial * (0.5 + light) * brightness;
   }
 
-  function initLines() {
-    lines = [];
-    for (let i = 0; i < config.lineCount; i++) {
-      lines.push(createLine(true));
-    }
+  /* layer 2: broader glow streaks (fewer, wider) */
+  float broadCount = floor(n * 0.3);
+  for (float i = 0.0; i < 24.0; i++) {
+    if (i >= broadCount) break;
+
+    float streakAngle = (i / broadCount) + hash(i + 200.0) * 0.05;
+    float diff = abs(fract(angleNorm - streakAngle + 0.5) - 0.5);
+    float width = 0.008 + vnoise(i * 5.1 + t * 0.3) * 0.008;
+    float streak = smoothstep(width, width * 0.1, diff);
+    float radial = smoothstep(0.0, 0.1, dist) * smoothstep(1.5, 0.1, dist);
+
+    totalIntensity += streak * radial * 0.15;
   }
 
-  function createLine(randomProgress) {
-    const angle = Math.random() * Math.PI * 2;
-    const maxDim = Math.max(W, H);
-    const distance = 20 + Math.random() * maxDim * config.spread;
+  /* bloom: cube for intense glow */
+  float bloom = pow(totalIntensity, 2.0) * uBloom;
 
-    return {
-      angle,
-      distance: randomProgress ? Math.random() * distance : 0,
-      maxDistance: distance,
-      speed: config.speed * (0.5 + Math.random() * 1),
-      length: config.minLength + Math.random() * (config.maxLength - config.minLength),
-      width: config.minWidth + Math.random() * (config.maxWidth - config.minWidth),
-      color: config.colors[Math.floor(Math.random() * config.colors.length)],
-      alpha: 0.3 + Math.random() * 0.7,
-    };
+  /* center glow */
+  float centerGlow = 0.06 / (dist + 0.04);
+  centerGlow = min(centerGlow, 3.0);
+  float pulse = 0.8 + 0.2 * sin(t * 2.5);
+  centerGlow *= pulse;
+
+  /* mouse interaction: subtle brightness near cursor */
+  vec2 mp = uMouse - uCenter;
+  mp.x *= aspect;
+  float mouseDist = length(p - mp);
+  float mouseGlow = smoothstep(0.4, 0.0, mouseDist) * 0.2;
+
+  float final = bloom + centerGlow * 0.2 + mouseGlow;
+
+  /* color with slight blue-to-white shift on intensity */
+  vec3 streakColor = mix(uColor, vec3(1.0), smoothstep(0.5, 2.0, final) * 0.5);
+  vec3 col = uBg + streakColor * final;
+
+  /* vignette */
+  float vig = 1.0 - smoothstep(0.3, 1.4, length(uv - 0.5));
+  col *= mix(0.3, 1.0, vig);
+
+  /* tone map */
+  col = col / (1.0 + col * 0.15);
+
+  gl_FragColor = vec4(col, 1.0);
+}`;
+
+  const prog = GLUtils.program(gl, vert, frag);
+  if (!prog) return;
+  GLUtils.fullscreenQuad(gl, prog);
+
+  function getCSS(prop, fallback) {
+    const v = getComputedStyle(document.documentElement).getPropertyValue(prop).trim();
+    return v || fallback;
   }
 
-  function update() {
-    cx = W * config.centerX;
-    cy = H * config.centerY;
+  let running = true;
+  let startTime = performance.now();
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    for (let i = 0; i < lines.length; i++) {
-      const l = lines[i];
-      l.distance += l.speed;
+  let mouse = [0.5, 0.5];
+  function onPointer(e) {
+    const t = e.touches ? e.touches[0] : e;
+    mouse = [t.clientX / window.innerWidth, 1.0 - t.clientY / window.innerHeight];
+  }
+  canvas.addEventListener('mousemove', onPointer);
+  canvas.addEventListener('touchmove', onPointer, { passive: true });
 
-      // Reset when past max distance
-      if (l.distance > l.maxDistance + l.length) {
-        lines[i] = createLine(false);
-      }
-    }
+  function frame() {
+    if (!running) { requestAnimationFrame(frame); return; }
+
+    GLUtils.resize(canvas, gl);
+
+    const elapsed = prefersReduced ? 0 : (performance.now() - startTime) / 1000.0;
+    const bg = GLUtils.hexToRGB(getCSS('--hs-bg', '#030014'));
+    const color = GLUtils.hexToRGB(getCSS('--hs-color', '#78a0ff'));
+    const speed = parseFloat(getCSS('--hs-speed', '1.0'));
+    const count = parseFloat(getCSS('--hs-count', '40.0'));
+    const bloom = parseFloat(getCSS('--hs-bloom', '1.5'));
+    const centerX = parseFloat(getCSS('--hs-center-x', '0.5'));
+    const centerY = parseFloat(getCSS('--hs-center-y', '0.5'));
+
+    GLUtils.uniform(gl, prog, 'uResolution', '2f', [canvas.width, canvas.height]);
+    GLUtils.uniform(gl, prog, 'uTime', '1f', elapsed);
+    GLUtils.uniform(gl, prog, 'uBg', '3f', bg);
+    GLUtils.uniform(gl, prog, 'uColor', '3f', color);
+    GLUtils.uniform(gl, prog, 'uSpeed', '1f', speed);
+    GLUtils.uniform(gl, prog, 'uCount', '1f', count);
+    GLUtils.uniform(gl, prog, 'uBloom', '1f', bloom);
+    GLUtils.uniform(gl, prog, 'uCenter', '2f', [centerX, centerY]);
+    GLUtils.uniform(gl, prog, 'uMouse', '2f', mouse);
+
+    GLUtils.draw(gl);
+    requestAnimationFrame(frame);
   }
 
-  function draw() {
-    // Fade background
-    ctx.fillStyle = `rgba(3, 0, 20, ${config.fadeSpeed})`;
-    ctx.fillRect(0, 0, W, H);
-
-    // Center bloom
-    if (config.bloom) {
-      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, config.bloomRadius);
-      grad.addColorStop(0, `rgba(150, 180, 255, ${config.bloomAlpha})`);
-      grad.addColorStop(0.5, `rgba(100, 120, 255, ${config.bloomAlpha * 0.3})`);
-      grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(cx, cy, config.bloomRadius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    // Draw lines
-    for (let i = 0; i < lines.length; i++) {
-      const l = lines[i];
-      const cos = Math.cos(l.angle);
-      const sin = Math.sin(l.angle);
-
-      // Line start and end (radial from center)
-      const startDist = Math.max(0, l.distance - l.length);
-      const endDist = l.distance;
-
-      const x1 = cx + cos * startDist;
-      const y1 = cy + sin * startDist;
-      const x2 = cx + cos * endDist;
-      const y2 = cy + sin * endDist;
-
-      // Fade in from center, fade out at edge
-      const progress = l.distance / l.maxDistance;
-      let alpha = l.alpha;
-      if (progress < 0.1) alpha *= progress / 0.1;
-      if (progress > 0.8) alpha *= (1 - progress) / 0.2;
-
-      const c = l.color;
-
-      // Gradient along line
-      const grad = ctx.createLinearGradient(x1, y1, x2, y2);
-      grad.addColorStop(0, `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0)`);
-      grad.addColorStop(0.3, `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${alpha * 0.5})`);
-      grad.addColorStop(1, `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${alpha})`);
-
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = l.width * (0.5 + progress * 0.5);
-      ctx.lineCap = 'round';
-      ctx.beginPath();
-      ctx.moveTo(x1, y1);
-      ctx.lineTo(x2, y2);
-      ctx.stroke();
-    }
-  }
-
-  function loop() {
-    if (!isVisible) return;
-    time++;
-    update();
-    draw();
-    animId = requestAnimationFrame(loop);
-  }
-
-  // Visibility
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        isVisible = entry.isIntersecting;
-        if (isVisible && !animId) loop();
-        if (!isVisible && animId) {
-          cancelAnimationFrame(animId);
-          animId = null;
-        }
-      });
+      entries.forEach((entry) => { running = entry.isIntersecting; });
     },
     { threshold: 0.1 }
   );
-  observer.observe(container);
+  observer.observe(canvas);
 
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      resize();
-      initLines();
-    }, 150);
-  });
-
-  window.addEventListener('message', (e) => {
-    if (e.data?.type === 'update-param' && e.data.scope === 'js') {
-      const { key, value } = e.data;
-      if (key in config) {
-        config[key] = typeof config[key] === 'number' ? parseFloat(value) : value;
-        if (key === 'lineCount') initLines();
-      }
-    }
-  });
-
-  resize();
-  initLines();
-  ctx.fillStyle = '#030014';
-  ctx.fillRect(0, 0, W, H);
-  loop();
+  requestAnimationFrame(frame);
 })();

@@ -1,0 +1,17 @@
+{
+  "name": "Orb",
+  "slug": "orb",
+  "category": "backgrounds",
+  "tags": ["hero", "section", "css-only"],
+  "dependencies": [],
+  "description": "Large soft-edge gradient sphere with multiple color layers, breathing animation, and mouse parallax",
+  "params": {
+    "--orb-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
+    "--orb-color-1": { "default": "#6366f1", "type": "color", "label": "Layer 1 color" },
+    "--orb-color-2": { "default": "#ec4899", "type": "color", "label": "Layer 2 color" },
+    "--orb-color-3": { "default": "#06b6d4", "type": "color", "label": "Layer 3 color" },
+    "--orb-size": { "default": "60vh", "type": "size", "label": "Orb size" },
+    "--orb-blur": { "default": "80px", "type": "size", "label": "Blur amount", "min": 20, "max": 200 },
+    "--orb-opacity": { "default": "0.7", "type": "number", "label": "Opacity", "min": 0.2, "max": 1 }
+  }
+}

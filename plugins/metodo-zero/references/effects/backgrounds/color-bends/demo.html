@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Bends — Effects Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cb-container">
+    <canvas id="cb-canvas"></canvas>
+    <div class="cb-content">
+      <h1>Color Bends</h1>
+      <p>Flowing color ribbons bending and weaving through space</p>
+    </div>
+  </div>
+  <script src="../../_shared/gl-utils.js"></script>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param' && e.data.scope === 'css') {
+        document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

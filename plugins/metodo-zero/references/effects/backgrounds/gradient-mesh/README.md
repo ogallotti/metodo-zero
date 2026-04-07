@@ -1,6 +1,6 @@
 # Gradient Mesh
 
-CSS-only animated mesh gradient with soft, organic color blobs and a subtle grain texture overlay.
+WebGL fragment shader with 5 animated color blobs that drift organically, blended additively with a subtle film grain overlay.
 
 ## When to use
 
@@ -12,23 +12,19 @@ CSS-only animated mesh gradient with soft, organic color blobs and a subtle grai
 
 ```html
 <div class="gm-container">
-  <div class="gm-mesh">
-    <div class="gm-blob gm-blob--1"></div>
-    <div class="gm-blob gm-blob--2"></div>
-    <div class="gm-blob gm-blob--3"></div>
-    <div class="gm-blob gm-blob--4"></div>
-    <div class="gm-blob gm-blob--5"></div>
-  </div>
-  <div class="gm-grain"></div>
+  <canvas id="gm-canvas"></canvas>
   <div class="gm-content">
     <!-- Your content here -->
   </div>
 </div>
+<script src="../../_shared/gl-utils.js"></script>
+<script src="script.js"></script>
 ```
 
 ## Notes
 
-- Pure CSS — blobs are radial gradients with blur filter
-- Grain overlay adds texture and prevents banding
-- Each blob has a unique animation path and timing for natural feel
-- Adjust `--gm-blur` to control softness of the mesh
+- Real WebGL shader — blobs use smoothstep fields with additive blending
+- Grain is generated in-shader via hash noise
+- Soft tone mapping prevents color blowout
+- IntersectionObserver pauses rendering when offscreen
+- Respects `prefers-reduced-motion`

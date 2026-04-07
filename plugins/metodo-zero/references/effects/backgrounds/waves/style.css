@@ -1,37 +1,34 @@
-/* Waves — Layered sine wave animation */
 :root {
   --wav-bg: #0a0a1a;
-  --wav-color-1: rgba(99, 102, 241, 0.4);
-  --wav-color-2: rgba(168, 85, 247, 0.3);
-  --wav-color-3: rgba(59, 130, 246, 0.25);
-  --wav-color-4: rgba(6, 182, 212, 0.2);
-  --wav-stroke-width: 2;
+  --wav-color-1: #6366f1;
+  --wav-color-2: #a855f7;
+  --wav-color-3: #3b82f6;
+  --wav-color-4: #06b6d4;
+  --wav-color-5: #8b5cf6;
+  --wav-speed: 0.015;
+  --wav-amplitude: 60;
+  --wav-layers: 6;
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--wav-bg);
   color: #fff;
   overflow: hidden;
+  height: 100vh;
 }
 
 .wav-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   background: var(--wav-bg);
 }
 
-.wav-canvas {
+#wav-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -70,7 +67,5 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wav-canvas {
-    display: none;
-  }
+  #wav-canvas { display: none; }
 }

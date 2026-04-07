@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Snap Sections — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="snap-nav">
+    <div class="snap-nav__dots" id="snapDots"></div>
+  </nav>
+
+  <main class="snap-container" id="snapContainer">
+    <section class="snap-section snap-section--1">
+      <div class="snap-section__inner">
+        <span class="snap-section__number">01</span>
+        <h1>Scroll Snap Sections</h1>
+        <p>Full-viewport sections with native CSS snap scrolling. Each section fills the screen and the browser snaps to the nearest boundary as you scroll.</p>
+      </div>
+    </section>
+
+    <section class="snap-section snap-section--2">
+      <div class="snap-section__inner">
+        <span class="snap-section__number">02</span>
+        <h2>Seamless Transitions</h2>
+        <p>Content within each section animates as it becomes the active viewport. Headings slide up, paragraphs fade in, and decorative elements scale into view with carefully timed delays.</p>
+      </div>
+    </section>
+
+    <section class="snap-section snap-section--3">
+      <div class="snap-section__inner">
+        <span class="snap-section__number">03</span>
+        <h2>Precision Navigation</h2>
+        <p>The dot navigation on the right updates in real-time as you scroll between sections. Click any dot to jump directly to that section with smooth scroll behavior.</p>
+      </div>
+    </section>
+
+    <section class="snap-section snap-section--4">
+      <div class="snap-section__inner">
+        <span class="snap-section__number">04</span>
+        <h2>Zero Dependencies</h2>
+        <p>Built entirely with CSS scroll-snap and a lightweight IntersectionObserver for active state detection. No JavaScript scroll hijacking, no heavy libraries.</p>
+      </div>
+    </section>
+
+    <section class="snap-section snap-section--5">
+      <div class="snap-section__inner">
+        <span class="snap-section__number">05</span>
+        <h2>The Perfect Foundation</h2>
+        <p>Ideal for presentations, portfolios, product showcases, and story-driven landing pages where each section deserves the user's full attention before moving on.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline Scroll — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="tl-hero">
+    <h1>Timeline Scroll</h1>
+    <p>A timeline that draws itself as you scroll, with nodes and content cards appearing at each milestone.</p>
+  </section>
+
+  <section class="tl-timeline">
+    <div class="tl-line-track">
+      <div class="tl-line-fill" id="tlLineFill"></div>
+    </div>
+
+    <div class="tl-item tl-item--left">
+      <div class="tl-node"></div>
+      <div class="tl-card">
+        <span class="tl-card__date">Phase 1</span>
+        <h3>Research &amp; Discovery</h3>
+        <p>Deep user research uncovers the core problems worth solving. We interview stakeholders, analyze competitors, and map the opportunity landscape to build a foundation of understanding.</p>
+      </div>
+    </div>
+
+    <div class="tl-item tl-item--right">
+      <div class="tl-node"></div>
+      <div class="tl-card">
+        <span class="tl-card__date">Phase 2</span>
+        <h3>Architecture &amp; Prototyping</h3>
+        <p>Technical architecture decisions shape everything that follows. We prototype the riskiest assumptions first, validating feasibility before committing to a full implementation path.</p>
+      </div>
+    </div>
+
+    <div class="tl-item tl-item--left">
+      <div class="tl-node"></div>
+      <div class="tl-card">
+        <span class="tl-card__date">Phase 3</span>
+        <h3>Design System Foundation</h3>
+        <p>A robust design system ensures visual consistency across every screen. Tokens, components, and patterns are documented and stress-tested before scaling to the full product surface.</p>
+      </div>
+    </div>
+
+    <div class="tl-item tl-item--right">
+      <div class="tl-node"></div>
+      <div class="tl-card">
+        <span class="tl-card__date">Phase 4</span>
+        <h3>Development Sprint</h3>
+        <p>Two-week sprints with daily standups keep momentum high. Each iteration ships a testable increment, gathering real feedback that feeds directly into the next cycle of improvement.</p>
+      </div>
+    </div>
+
+    <div class="tl-item tl-item--left">
+      <div class="tl-node"></div>
+      <div class="tl-card">
+        <span class="tl-card__date">Phase 5</span>
+        <h3>Launch &amp; Iterate</h3>
+        <p>Launch is the beginning, not the end. Telemetry and user sessions reveal the real usage patterns. We iterate rapidly, refining performance, accessibility, and delight with every release.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tl-footer">
+    <h2>Scroll-Driven Storytelling</h2>
+    <p>The timeline line fills as you scroll. Nodes light up and cards animate in as each milestone enters the viewport. Pure vanilla JS with IntersectionObserver.</p>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

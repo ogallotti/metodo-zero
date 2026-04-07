@@ -1,31 +1,26 @@
 # Iridescence
 
-Holographic iridescent color shift using layered CSS gradients, conic rainbow rotation, and fresnel-like edge glow.
+GPU-rendered holographic iridescence using iterative cosine accumulation in a WebGL fragment shader.
 
-## When to use
+## Technique
 
-- Hero sections for creative/design brands
-- Product pages with a futuristic, holographic aesthetic
-- Sections needing a vibrant, eye-catching background
+- 8-iteration cosine/sine accumulation loop builds organic spectral color patterns
+- `a += cos(i - d - a*uv.x)` and `d += sin(uv.y*i + a)` create self-referencing feedback
+- Color built from `cos(uv * vec3(d, a, d)) * 0.6 + 0.4` — full spectrum output
+- Mouse shifts UV center for interactive exploration
+- Configurable color tint blends with the raw iridescent output
 
-## Integration
+## Parameters
+
+| Param | Default | Description |
+|-|-|-|
+| `--iri-tint` | `#6366f1` | Color tint overlay |
+| `--iri-speed` | `0.3` | Animation speed |
+| `--iri-amplitude` | `1.0` | Pattern amplitude |
+
+## Usage
 
 ```html
-<div class="iri-container">
-  <div class="iri-layer iri-base"></div>
-  <div class="iri-layer iri-shift"></div>
-  <div class="iri-layer iri-rainbow"></div>
-  <div class="iri-layer iri-fresnel"></div>
-  <div class="iri-noise"></div>
-  <div class="iri-content">
-    <!-- Your content here -->
-  </div>
-</div>
+<script src="../../_shared/gl-utils.js"></script>
+<script src="script.js"></script>
 ```
-
-## Notes
-
-- Four CSS layers create depth: base gradient, shifted gradient, conic rainbow, fresnel edge
-- Uses `screen` blend mode for additive color mixing
-- Noise texture overlay prevents gradient banding
-- Heading text also has a matching iridescent gradient animation

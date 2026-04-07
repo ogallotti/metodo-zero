@@ -6,35 +6,28 @@
     "tags": [
       "hero",
       "continuous",
-      "css-only"
+      "webgl",
+      "shader"
     ],
-    "dependencies": [],
-    "description": "Animated aurora borealis gradient waves with layered color bands and shimmer overlay",
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "GPU-rendered aurora borealis with simplex noise height fields, vertical streaks, and 3-color gradient ramp",
     "params": {
       "--aurora-color-1": {
         "default": "#00d4aa",
         "type": "color",
-        "label": "Primary color"
+        "label": "Color stop 1"
       },
       "--aurora-color-2": {
         "default": "#7b2ff7",
         "type": "color",
-        "label": "Secondary color"
+        "label": "Color stop 2"
       },
       "--aurora-color-3": {
         "default": "#00b4d8",
         "type": "color",
-        "label": "Tertiary color"
-      },
-      "--aurora-color-4": {
-        "default": "#2dff73",
-        "type": "color",
-        "label": "Accent color 1"
-      },
-      "--aurora-color-5": {
-        "default": "#c471f5",
-        "type": "color",
-        "label": "Accent color 2"
+        "label": "Color stop 3"
       },
       "--aurora-bg": {
         "default": "#0a0a1a",
@@ -42,48 +35,130 @@
         "label": "Background color"
       },
       "--aurora-speed": {
-        "default": "8s",
-        "type": "duration",
-        "label": "Animation speed",
-        "min": 2,
-        "max": 20
-      },
-      "--aurora-opacity": {
-        "default": "0.6",
+        "default": "0.4",
         "type": "number",
-        "label": "Band opacity",
+        "label": "Speed",
         "min": 0.1,
-        "max": 1
-      },
-      "--aurora-blur": {
-        "default": "80px",
-        "type": "size",
-        "label": "Blur amount",
-        "min": 20,
-        "max": 200
-      },
-      "--aurora-height": {
-        "default": "60%",
-        "type": "size",
-        "label": "Band height"
-      }
-    },
-    "jsParams": {
-      "intensity": {
-        "default": 0.6,
-        "type": "number",
-        "label": "Intensity",
-        "min": 0.1,
-        "max": 1,
+        "max": 2,
         "step": 0.05
       },
-      "speed": {
-        "default": 8,
+      "--aurora-amplitude": {
+        "default": "0.6",
         "type": "number",
-        "label": "Speed (seconds)",
-        "min": 2,
-        "max": 20,
-        "step": 1
+        "label": "Amplitude",
+        "min": 0.1,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "--aurora-blend": {
+        "default": "0.5",
+        "type": "number",
+        "label": "Blend intensity",
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      }
+    }
+  },
+  {
+    "name": "Balatro",
+    "slug": "balatro",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl",
+      "shader",
+      "psychedelic"
+    ],
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "Psychedelic domain-warped pattern inspired by the card game Balatro — 4-layer sin/cos distortion mapped to a smooth color gradient",
+    "params": {
+      "--bal-color-1": {
+        "default": "#ff6b6b",
+        "type": "color",
+        "label": "Color 1"
+      },
+      "--bal-color-2": {
+        "default": "#4ecdc4",
+        "type": "color",
+        "label": "Color 2"
+      },
+      "--bal-color-3": {
+        "default": "#45b7d1",
+        "type": "color",
+        "label": "Color 3"
+      },
+      "--bal-color-4": {
+        "default": "#f7dc6f",
+        "type": "color",
+        "label": "Color 4"
+      },
+      "--bal-bg": {
+        "default": "#1a0a2e",
+        "type": "color",
+        "label": "Background"
+      },
+      "--bal-speed": {
+        "default": "0.5",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.1,
+        "max": 2,
+        "step": 0.1
+      },
+      "--bal-warp": {
+        "default": "2.5",
+        "type": "number",
+        "label": "Warp intensity",
+        "min": 0.5,
+        "max": 5,
+        "step": 0.1
+      }
+    }
+  },
+  {
+    "name": "Ballpit",
+    "slug": "ballpit",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "cursor",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Soft-edged metaball blobs that merge organically with mouse repulsion",
+    "params": {
+      "--bp-bg": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--bp-color-1": {
+        "default": "#ff6b6b",
+        "type": "color",
+        "label": "Ball color 1"
+      },
+      "--bp-color-2": {
+        "default": "#4ecdc4",
+        "type": "color",
+        "label": "Ball color 2"
+      },
+      "--bp-color-3": {
+        "default": "#ffe66d",
+        "type": "color",
+        "label": "Ball color 3"
+      },
+      "--bp-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
       }
     }
   },
@@ -93,74 +168,201 @@
     "category": "backgrounds",
     "tags": [
       "hero",
-      "section",
-      "canvas"
+      "dramatic",
+      "webgl"
     ],
     "dependencies": [],
-    "description": "Animated light beams emanating from a focal point with rotation and pulsing glow",
+    "description": "WebGL light beams radiating from a focal point with layered rotation and bloom glow",
     "params": {
       "--bm-bg": {
-        "default": "#0a0a1a",
+        "default": "#050510",
         "type": "color",
         "label": "Background color"
-      }
-    },
-    "jsParams": {
-      "beamCount": {
-        "default": 14,
+      },
+      "--bm-color": {
+        "default": "#4a9eff",
+        "type": "color",
+        "label": "Beam color"
+      },
+      "--bm-count": {
+        "default": "12",
         "type": "number",
         "label": "Beam count",
         "min": 4,
-        "max": 24,
-        "step": 2
+        "max": 32,
+        "step": 1
       },
-      "speed": {
-        "default": 0.005,
-        "type": "number",
-        "label": "Speed",
-        "min": 0.001,
-        "max": 0.02,
-        "step": 0.001
-      },
-      "originX": {
-        "default": 0.5,
-        "type": "number",
-        "label": "Origin X",
-        "min": 0,
-        "max": 1,
-        "step": 0.05
-      },
-      "originY": {
-        "default": 0.3,
-        "type": "number",
-        "label": "Origin Y",
-        "min": 0,
-        "max": 1,
-        "step": 0.05
-      },
-      "baseAlpha": {
-        "default": 0.12,
-        "type": "number",
-        "label": "Beam opacity",
-        "min": 0.03,
-        "max": 0.3,
-        "step": 0.01
-      },
-      "rotationSpeed": {
-        "default": 0.08,
+      "--bm-speed": {
+        "default": "0.4",
         "type": "number",
         "label": "Rotation speed",
-        "min": 0,
-        "max": 0.3,
-        "step": 0.02
+        "min": 0.05,
+        "max": 2.0,
+        "step": 0.05
       },
-      "glowSize": {
-        "default": 120,
+      "--bm-focal-x": {
+        "default": "0.5",
         "type": "number",
-        "label": "Glow size",
-        "min": 40,
-        "max": 300,
-        "step": 20
+        "label": "Focal point X",
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "--bm-focal-y": {
+        "default": "0.5",
+        "type": "number",
+        "label": "Focal point Y",
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      }
+    }
+  },
+  {
+    "name": "Color Bends",
+    "slug": "color-bends",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Flowing color bands that bend and weave like ribbons using parametric curves and smooth distance fields",
+    "params": {
+      "--cb-bg": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--cb-color-1": {
+        "default": "#ff6b6b",
+        "type": "color",
+        "label": "Band color 1"
+      },
+      "--cb-color-2": {
+        "default": "#4ecdc4",
+        "type": "color",
+        "label": "Band color 2"
+      },
+      "--cb-color-3": {
+        "default": "#ffe66d",
+        "type": "color",
+        "label": "Band color 3"
+      },
+      "--cb-color-4": {
+        "default": "#7b68ee",
+        "type": "color",
+        "label": "Band color 4"
+      },
+      "--cb-color-5": {
+        "default": "#ff9a9e",
+        "type": "color",
+        "label": "Band color 5"
+      },
+      "--cb-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      }
+    }
+  },
+  {
+    "name": "Dark Veil",
+    "slug": "dark-veil",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "css",
+      "fog",
+      "atmospheric",
+      "parallax"
+    ],
+    "dependencies": [],
+    "description": "Multiple semi-transparent dark gradient fog layers with CSS drift animations and mouse-driven parallax displacement",
+    "params": {
+      "--dkv-fog-color": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Fog color"
+      },
+      "--dkv-opacity": {
+        "default": "0.6",
+        "type": "number",
+        "label": "Opacity",
+        "min": 0.1,
+        "max": 1,
+        "step": 0.1
+      },
+      "--dkv-parallax": {
+        "default": "1",
+        "type": "number",
+        "label": "Parallax strength",
+        "min": 0,
+        "max": 3,
+        "step": 0.1
+      },
+      "--dkv-speed": {
+        "default": "1",
+        "type": "number",
+        "label": "Drift speed",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1
+      },
+      "--dkv-bg": {
+        "default": "#0f0f1a",
+        "type": "color",
+        "label": "Background"
+      }
+    }
+  },
+  {
+    "name": "Dither",
+    "slug": "dither",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "section",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Ordered dithering with 8x8 Bayer matrix applied to animated noise fields for a retro/analog aesthetic",
+    "params": {
+      "--dt-bg": {
+        "default": "#0a0a12",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--dt-color-1": {
+        "default": "#4ecdc4",
+        "type": "color",
+        "label": "Primary color"
+      },
+      "--dt-color-2": {
+        "default": "#ff6b9d",
+        "type": "color",
+        "label": "Secondary color"
+      },
+      "--dt-pattern-size": {
+        "default": "4.0",
+        "type": "number",
+        "label": "Pattern scale",
+        "min": 1.0,
+        "max": 8.0,
+        "step": 1.0
+      },
+      "--dt-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
       }
     }
   },
@@ -175,7 +377,7 @@
       "canvas"
     ],
     "dependencies": [],
-    "description": "Interactive dot grid with mouse displacement, glow, and ambient wave animation",
+    "description": "Interactive dot grid with proximity glow, displacement, connection lines, and spatial grid optimization",
     "params": {
       "--dg-bg": {
         "default": "#0a0a1a",
@@ -183,56 +385,158 @@
         "label": "Background color"
       },
       "--dg-dot-color": {
-        "default": "rgba(255,255,255,0.3)",
+        "default": "#ffffff",
         "type": "color",
         "label": "Dot color"
       },
       "--dg-glow-color": {
-        "default": "rgba(99,102,241,0.8)",
+        "default": "#6366f1",
         "type": "color",
         "label": "Glow color"
-      }
-    },
-    "jsParams": {
-      "spacing": {
-        "default": 30,
+      },
+      "--dg-dot-size": {
+        "default": "1.5",
+        "type": "number",
+        "label": "Dot size",
+        "min": 0.5,
+        "max": 4,
+        "step": 0.5
+      },
+      "--dg-spacing": {
+        "default": "30",
         "type": "number",
         "label": "Grid spacing",
         "min": 15,
         "max": 60,
         "step": 5
       },
-      "mouseRadius": {
-        "default": 200,
+      "--dg-mouse-radius": {
+        "default": "200",
         "type": "number",
         "label": "Mouse radius",
         "min": 50,
         "max": 400,
         "step": 25
       },
-      "mouseForce": {
-        "default": 25,
+      "--dg-connect-distance": {
+        "default": "80",
         "type": "number",
-        "label": "Mouse force",
-        "min": 5,
-        "max": 60,
-        "step": 5
+        "label": "Connection distance",
+        "min": 30,
+        "max": 150,
+        "step": 10
+      }
+    }
+  },
+  {
+    "name": "Evil Eye",
+    "slug": "evil-eye",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl",
+      "shader",
+      "interactive"
+    ],
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "Concentric pulsing iris with radial fibers and a pupil that smoothly tracks the cursor",
+    "params": {
+      "--eye-iris-color": {
+        "default": "#1e88e5",
+        "type": "color",
+        "label": "Iris color"
       },
-      "maxRadius": {
-        "default": 5,
-        "type": "number",
-        "label": "Max dot radius",
-        "min": 2,
-        "max": 10,
-        "step": 0.5
+      "--eye-pupil-color": {
+        "default": "#0d0d0d",
+        "type": "color",
+        "label": "Pupil color"
       },
-      "baseAlpha": {
-        "default": 0.2,
+      "--eye-glow-color": {
+        "default": "#2196f3",
+        "type": "color",
+        "label": "Glow color"
+      },
+      "--eye-ring-count": {
+        "default": "12",
         "type": "number",
-        "label": "Base opacity",
-        "min": 0.05,
-        "max": 0.5,
-        "step": 0.05
+        "label": "Ring count",
+        "min": 4,
+        "max": 24,
+        "step": 1
+      },
+      "--eye-pulse-speed": {
+        "default": "0.8",
+        "type": "number",
+        "label": "Pulse speed",
+        "min": 0.1,
+        "max": 3,
+        "step": 0.1
+      },
+      "--eye-bg": {
+        "default": "#0a0a12",
+        "type": "color",
+        "label": "Background"
+      }
+    }
+  },
+  {
+    "name": "Faulty Terminal",
+    "slug": "faulty-terminal",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "canvas",
+      "matrix",
+      "cyberpunk"
+    ],
+    "dependencies": [],
+    "description": "Matrix-like falling characters on a CRT display with scanlines, glitch blocks, and horizontal tears",
+    "params": {
+      "--ftr-text-color": {
+        "default": "#00ff41",
+        "type": "color",
+        "label": "Text color"
+      },
+      "--ftr-font-size": {
+        "default": "14",
+        "type": "number",
+        "label": "Font size",
+        "min": 8,
+        "max": 24,
+        "step": 1
+      },
+      "--ftr-glitch-speed": {
+        "default": "1",
+        "type": "number",
+        "label": "Glitch speed",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1
+      },
+      "--ftr-scanlines": {
+        "default": "1",
+        "type": "number",
+        "label": "Scanlines",
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "--ftr-glow": {
+        "default": "0.6",
+        "type": "number",
+        "label": "Glow intensity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1
+      },
+      "--ftr-bg": {
+        "default": "#0a0a0a",
+        "type": "color",
+        "label": "Background"
       }
     }
   },
@@ -242,11 +546,11 @@
     "category": "backgrounds",
     "tags": [
       "hero",
-      "section",
-      "css-only"
+      "tech",
+      "webgl"
     ],
     "dependencies": [],
-    "description": "Grid of cells with staggered flickering animation, vignette fade, and dynamic sizing",
+    "description": "WebGL grid of independently flickering squares with mouse-reactive flicker acceleration",
     "params": {
       "--fg-bg": {
         "default": "#0a0a1a",
@@ -254,45 +558,190 @@
         "label": "Background color"
       },
       "--fg-color": {
-        "default": "rgba(99,102,241,0.4)",
+        "default": "#6366f1",
         "type": "color",
-        "label": "Cell bright color"
+        "label": "Cell color"
       },
-      "--fg-color-dim": {
-        "default": "rgba(99,102,241,0.08)",
-        "type": "color",
-        "label": "Cell dim color"
+      "--fg-size": {
+        "default": "24.0",
+        "type": "number",
+        "label": "Grid cell size (px)",
+        "min": 8,
+        "max": 60,
+        "step": 2
       },
       "--fg-gap": {
-        "default": "2px",
-        "type": "size",
-        "label": "Grid gap",
+        "default": "2.0",
+        "type": "number",
+        "label": "Cell gap (px)",
         "min": 0,
-        "max": 8
-      },
-      "--fg-cell-size": {
-        "default": "24px",
-        "type": "size",
-        "label": "Cell size",
-        "min": 8,
-        "max": 48
-      },
-      "--fg-border-radius": {
-        "default": "2px",
-        "type": "size",
-        "label": "Border radius",
-        "min": 0,
-        "max": 12
+        "max": 8,
+        "step": 1
       },
       "--fg-speed": {
-        "default": "3s",
-        "type": "duration",
+        "default": "1.0",
+        "type": "number",
         "label": "Flicker speed",
-        "min": 1,
-        "max": 8
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      },
+      "--fg-mouse-radius": {
+        "default": "0.2",
+        "type": "number",
+        "label": "Mouse influence radius",
+        "min": 0.05,
+        "max": 0.5,
+        "step": 0.05
       }
-    },
-    "jsParams": {}
+    }
+  },
+  {
+    "name": "Floating Lines",
+    "slug": "floating-lines",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "canvas",
+      "subtle",
+      "elegant"
+    ],
+    "dependencies": [],
+    "description": "Gently floating diagonal lines that drift across the screen with soft gradient edges",
+    "params": {
+      "--fln-line-color": {
+        "default": "#ffffff",
+        "type": "color",
+        "label": "Line color"
+      },
+      "--fln-line-count": {
+        "default": "40",
+        "type": "number",
+        "label": "Line count",
+        "min": 10,
+        "max": 100,
+        "step": 5
+      },
+      "--fln-speed": {
+        "default": "0.5",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.1,
+        "max": 2,
+        "step": 0.1
+      },
+      "--fln-opacity": {
+        "default": "0.12",
+        "type": "number",
+        "label": "Opacity",
+        "min": 0.02,
+        "max": 0.4,
+        "step": 0.02
+      },
+      "--fln-bg": {
+        "default": "#0f172a",
+        "type": "color",
+        "label": "Background"
+      }
+    }
+  },
+  {
+    "name": "Galaxy",
+    "slug": "galaxy",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Spiral galaxy with log-spiral arms, scattered stars, color temperature gradient, and nebula dust",
+    "params": {
+      "--gx-bg": {
+        "default": "#020208",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--gx-core-color": {
+        "default": "#aaccff",
+        "type": "color",
+        "label": "Core color (blue)"
+      },
+      "--gx-arm-color": {
+        "default": "#ff8844",
+        "type": "color",
+        "label": "Arm color (warm)"
+      },
+      "--gx-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Rotation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      }
+    }
+  },
+  {
+    "name": "Gradient Blinds",
+    "slug": "gradient-blinds",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "css",
+      "gradient",
+      "elegant"
+    ],
+    "dependencies": [],
+    "description": "Horizontal venetian blinds with staggered gradient animations — each strip shifts at a different speed and direction",
+    "params": {
+      "--gbl-color-1": {
+        "default": "#667eea",
+        "type": "color",
+        "label": "Color 1"
+      },
+      "--gbl-color-2": {
+        "default": "#764ba2",
+        "type": "color",
+        "label": "Color 2"
+      },
+      "--gbl-color-3": {
+        "default": "#f093fb",
+        "type": "color",
+        "label": "Color 3"
+      },
+      "--gbl-strip-height": {
+        "default": "40",
+        "type": "number",
+        "label": "Strip height",
+        "min": 10,
+        "max": 100,
+        "step": 5
+      },
+      "--gbl-speed": {
+        "default": "1",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1
+      },
+      "--gbl-gap": {
+        "default": "2",
+        "type": "number",
+        "label": "Gap (px)",
+        "min": 0,
+        "max": 10,
+        "step": 1
+      },
+      "--gbl-bg": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Background"
+      }
+    }
   },
   {
     "name": "Gradient Mesh",
@@ -301,10 +750,10 @@
     "tags": [
       "hero",
       "continuous",
-      "css-only"
+      "webgl"
     ],
     "dependencies": [],
-    "description": "Animated mesh gradient with soft color blobs, grain overlay, and organic motion",
+    "description": "WebGL animated mesh gradient with 5 smooth color blobs, organic motion, and film grain overlay",
     "params": {
       "--gm-bg": {
         "default": "#0a0a1a",
@@ -314,63 +763,106 @@
       "--gm-color-1": {
         "default": "#ff6b6b",
         "type": "color",
-        "label": "Color 1"
+        "label": "Blob color 1"
       },
       "--gm-color-2": {
         "default": "#4ecdc4",
         "type": "color",
-        "label": "Color 2"
+        "label": "Blob color 2"
       },
       "--gm-color-3": {
         "default": "#7b68ee",
         "type": "color",
-        "label": "Color 3"
+        "label": "Blob color 3"
       },
       "--gm-color-4": {
         "default": "#ffa07a",
         "type": "color",
-        "label": "Color 4"
-      },
-      "--gm-color-5": {
-        "default": "#00d4ff",
-        "type": "color",
-        "label": "Color 5"
+        "label": "Blob color 4"
       },
       "--gm-speed": {
-        "default": "20s",
-        "type": "duration",
+        "default": "1.0",
+        "type": "number",
         "label": "Animation speed",
-        "min": 5,
-        "max": 40
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
       },
-      "--gm-blur": {
-        "default": "100px",
-        "type": "size",
-        "label": "Blur amount",
-        "min": 40,
-        "max": 200
-      },
-      "--gm-opacity": {
-        "default": "0.7",
+      "--gm-grain": {
+        "default": "0.06",
         "type": "number",
-        "label": "Opacity",
-        "min": 0.2,
-        "max": 1
-      },
-      "--gm-blob-size": {
-        "default": "45%",
-        "type": "size",
-        "label": "Blob size"
+        "label": "Grain intensity",
+        "min": 0,
+        "max": 0.2,
+        "step": 0.01
       }
-    },
-    "jsParams": {
-      "blobCount": {
-        "default": 5,
+    }
+  },
+  {
+    "name": "Grainient",
+    "slug": "grainient",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl",
+      "shader",
+      "gradient",
+      "grain"
+    ],
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "Beautiful multi-color gradient with layered organic noise grain — flowing, not flat — rendered via WebGL simplex noise",
+    "params": {
+      "--grn-color-1": {
+        "default": "#ff6b35",
+        "type": "color",
+        "label": "Color 1"
+      },
+      "--grn-color-2": {
+        "default": "#f7c59f",
+        "type": "color",
+        "label": "Color 2"
+      },
+      "--grn-color-3": {
+        "default": "#1a535c",
+        "type": "color",
+        "label": "Color 3"
+      },
+      "--grn-color-4": {
+        "default": "#4ecdc4",
+        "type": "color",
+        "label": "Color 4"
+      },
+      "--grn-grain": {
+        "default": "0.35",
         "type": "number",
-        "label": "Visible blobs",
-        "min": 2,
-        "max": 5,
-        "step": 1
+        "label": "Grain amount",
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "--grn-speed": {
+        "default": "0.3",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.05,
+        "max": 1,
+        "step": 0.05
+      },
+      "--grn-warp": {
+        "default": "0.8",
+        "type": "number",
+        "label": "Warp intensity",
+        "min": 0,
+        "max": 2,
+        "step": 0.1
+      },
+      "--grn-bg": {
+        "default": "#0a0a0a",
+        "type": "color",
+        "label": "Background"
       }
     }
   },
@@ -381,67 +873,161 @@
     "tags": [
       "hero",
       "cursor",
-      "canvas"
+      "webgl"
     ],
     "dependencies": [],
-    "description": "Wireframe grid that warps and distorts around cursor with ambient wave motion",
+    "description": "WebGL wireframe grid with noise-based displacement, mouse distortion bubble, and glowing intersections",
     "params": {
       "--gd-bg": {
         "default": "#0a0a1a",
         "type": "color",
         "label": "Background color"
       },
-      "--gd-line-color": {
-        "default": "rgba(255,255,255,0.08)",
+      "--gd-color": {
+        "default": "#ffffff",
         "type": "color",
-        "label": "Line color"
+        "label": "Grid color"
+      },
+      "--gd-density": {
+        "default": "30.0",
+        "type": "number",
+        "label": "Grid density",
+        "min": 10,
+        "max": 60,
+        "step": 2
+      },
+      "--gd-distortion": {
+        "default": "0.04",
+        "type": "number",
+        "label": "Distortion amount",
+        "min": 0.0,
+        "max": 0.12,
+        "step": 0.005
+      },
+      "--gd-mouse-radius": {
+        "default": "0.2",
+        "type": "number",
+        "label": "Mouse radius",
+        "min": 0.05,
+        "max": 0.5,
+        "step": 0.05
       },
       "--gd-glow-color": {
-        "default": "rgba(99,102,241,0.6)",
+        "default": "#6366f1",
         "type": "color",
         "label": "Glow color"
       }
-    },
-    "jsParams": {
-      "spacing": {
-        "default": 40,
+    }
+  },
+  {
+    "name": "Grid Motion",
+    "slug": "grid-motion",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "interactive",
+      "canvas",
+      "parallax"
+    ],
+    "dependencies": [],
+    "description": "Rows of rounded rectangles that shift horizontally based on mouse X position with inertia — different rows at different speeds",
+    "params": {
+      "--gmo-item-color": {
+        "default": "#ffffff",
+        "type": "color",
+        "label": "Item color"
+      },
+      "--gmo-item-count": {
+        "default": "12",
         "type": "number",
-        "label": "Grid spacing",
-        "min": 20,
-        "max": 80,
+        "label": "Items per row",
+        "min": 4,
+        "max": 24,
+        "step": 1
+      },
+      "--gmo-row-count": {
+        "default": "8",
+        "type": "number",
+        "label": "Row count",
+        "min": 3,
+        "max": 16,
+        "step": 1
+      },
+      "--gmo-speed": {
+        "default": "1",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1
+      },
+      "--gmo-inertia": {
+        "default": "0.92",
+        "type": "number",
+        "label": "Inertia",
+        "min": 0.8,
+        "max": 0.99,
+        "step": 0.01
+      },
+      "--gmo-bg": {
+        "default": "#0f0f1a",
+        "type": "color",
+        "label": "Background"
+      }
+    }
+  },
+  {
+    "name": "Grid Scan",
+    "slug": "grid-scan",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "canvas",
+      "sci-fi",
+      "scan"
+    ],
+    "dependencies": [],
+    "description": "Uniform grid with a horizontal scanning line that illuminates cells as it passes — glow fades over configurable duration",
+    "params": {
+      "--gsc-grid-size": {
+        "default": "30",
+        "type": "number",
+        "label": "Grid size",
+        "min": 15,
+        "max": 60,
         "step": 5
       },
-      "mouseRadius": {
-        "default": 250,
+      "--gsc-scan-speed": {
+        "default": "1",
         "type": "number",
-        "label": "Mouse radius",
-        "min": 100,
-        "max": 500,
-        "step": 25
+        "label": "Scan speed",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1
       },
-      "mouseForce": {
-        "default": 60,
-        "type": "number",
-        "label": "Mouse force",
-        "min": 10,
-        "max": 120,
-        "step": 10
+      "--gsc-glow-color": {
+        "default": "#00e5ff",
+        "type": "color",
+        "label": "Glow color"
       },
-      "lineAlpha": {
-        "default": 0.08,
+      "--gsc-glow-duration": {
+        "default": "2",
         "type": "number",
-        "label": "Line opacity",
-        "min": 0.02,
-        "max": 0.3,
-        "step": 0.02
+        "label": "Glow duration (s)",
+        "min": 0.5,
+        "max": 5,
+        "step": 0.5
       },
-      "ambientWave": {
-        "default": 3,
-        "type": "number",
-        "label": "Ambient wave strength",
-        "min": 0,
-        "max": 10,
-        "step": 1
+      "--gsc-grid-color": {
+        "default": "#1a2040",
+        "type": "color",
+        "label": "Grid color"
+      },
+      "--gsc-bg": {
+        "default": "#070b14",
+        "type": "color",
+        "label": "Background"
       }
     }
   },
@@ -451,83 +1037,61 @@
     "category": "backgrounds",
     "tags": [
       "hero",
-      "continuous",
-      "canvas",
-      "performance-heavy"
+      "dramatic",
+      "webgl"
     ],
     "dependencies": [],
-    "description": "Hyperspace speed lines radiating from center with bloom, gradients, and motion blur",
+    "description": "WebGL hyperspace speed lines with radial streaks, noise-modulated width, and bloom glow",
     "params": {
       "--hs-bg": {
         "default": "#030014",
         "type": "color",
         "label": "Background color"
-      }
-    },
-    "jsParams": {
-      "lineCount": {
-        "default": 300,
-        "type": "number",
-        "label": "Line count",
-        "min": 50,
-        "max": 800,
-        "step": 25
       },
-      "speed": {
-        "default": 8,
+      "--hs-color": {
+        "default": "#78a0ff",
+        "type": "color",
+        "label": "Line color"
+      },
+      "--hs-speed": {
+        "default": "1.0",
         "type": "number",
         "label": "Speed",
-        "min": 1,
-        "max": 20,
-        "step": 1
+        "min": 0.1,
+        "max": 4.0,
+        "step": 0.1
       },
-      "maxLength": {
-        "default": 400,
+      "--hs-count": {
+        "default": "40.0",
         "type": "number",
-        "label": "Max trail length",
-        "min": 50,
-        "max": 800,
-        "step": 50
+        "label": "Line count",
+        "min": 10,
+        "max": 80,
+        "step": 5
       },
-      "maxWidth": {
-        "default": 3,
+      "--hs-bloom": {
+        "default": "1.5",
         "type": "number",
-        "label": "Max line width",
+        "label": "Bloom intensity",
         "min": 0.5,
-        "max": 6,
-        "step": 0.5
+        "max": 4.0,
+        "step": 0.25
       },
-      "fadeSpeed": {
-        "default": 0.15,
-        "type": "number",
-        "label": "Fade speed",
-        "min": 0.05,
-        "max": 0.4,
-        "step": 0.05
-      },
-      "centerX": {
-        "default": 0.5,
+      "--hs-center-x": {
+        "default": "0.5",
         "type": "number",
         "label": "Center X",
         "min": 0,
         "max": 1,
         "step": 0.05
       },
-      "centerY": {
-        "default": 0.5,
+      "--hs-center-y": {
+        "default": "0.5",
         "type": "number",
         "label": "Center Y",
         "min": 0,
         "max": 1,
         "step": 0.05
-      },
-      "bloomRadius": {
-        "default": 200,
-        "type": "number",
-        "label": "Bloom radius",
-        "min": 50,
-        "max": 500,
-        "step": 25
       }
     }
   },
@@ -538,51 +1102,175 @@
     "tags": [
       "hero",
       "continuous",
-      "css-only"
+      "webgl",
+      "shader",
+      "cursor"
     ],
-    "dependencies": [],
-    "description": "Iridescent holographic color shift with layered gradient spectrum and conic rainbow rotation",
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "GPU-rendered iridescent holographic color shift using iterative cosine accumulation with mouse-reactive UV shift",
     "params": {
       "--iri-bg": {
         "default": "#0a0a1a",
         "type": "color",
         "label": "Background color"
       },
-      "--iri-speed": {
-        "default": "6s",
-        "type": "duration",
-        "label": "Animation speed",
-        "min": 2,
-        "max": 15
+      "--iri-tint": {
+        "default": "#6366f1",
+        "type": "color",
+        "label": "Color tint"
       },
-      "--iri-intensity": {
+      "--iri-speed": {
+        "default": "0.3",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.05,
+        "max": 1,
+        "step": 0.05
+      },
+      "--iri-amplitude": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Amplitude",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1
+      }
+    }
+  },
+  {
+    "name": "Letter Glitch",
+    "slug": "letter-glitch",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "canvas",
+      "cyberpunk",
+      "glitch"
+    ],
+    "dependencies": [],
+    "description": "Screen filled with random ASCII characters overlaid by randomly appearing colored glitch blocks — cyberpunk hacker aesthetic",
+    "params": {
+      "--lgl-color-1": {
+        "default": "#ff003c",
+        "type": "color",
+        "label": "Glitch color 1"
+      },
+      "--lgl-color-2": {
+        "default": "#00ff87",
+        "type": "color",
+        "label": "Glitch color 2"
+      },
+      "--lgl-color-3": {
+        "default": "#0088ff",
+        "type": "color",
+        "label": "Glitch color 3"
+      },
+      "--lgl-color-4": {
+        "default": "#ff00ff",
+        "type": "color",
+        "label": "Glitch color 4"
+      },
+      "--lgl-text-color": {
+        "default": "#2a3a2a",
+        "type": "color",
+        "label": "Text color"
+      },
+      "--lgl-font-size": {
+        "default": "12",
+        "type": "number",
+        "label": "Font size",
+        "min": 8,
+        "max": 20,
+        "step": 1
+      },
+      "--lgl-glitch-speed": {
         "default": "1",
         "type": "number",
-        "label": "Intensity",
+        "label": "Glitch speed",
         "min": 0.2,
-        "max": 1.5
-      },
-      "--iri-angle": {
-        "default": "135deg",
-        "type": "number",
-        "label": "Gradient angle",
-        "min": 0,
-        "max": 360
-      },
-      "--iri-scale": {
-        "default": "200%",
-        "type": "size",
-        "label": "Gradient scale"
-      }
-    },
-    "jsParams": {
-      "intensity": {
-        "default": 1,
-        "type": "number",
-        "label": "Intensity",
-        "min": 0.2,
-        "max": 1.5,
+        "max": 3,
         "step": 0.1
+      },
+      "--lgl-vignette": {
+        "default": "0.6",
+        "type": "number",
+        "label": "Vignette",
+        "min": 0,
+        "max": 1,
+        "step": 0.1
+      },
+      "--lgl-bg": {
+        "default": "#0a0f0a",
+        "type": "color",
+        "label": "Background"
+      }
+    }
+  },
+  {
+    "name": "Light Pillar",
+    "slug": "light-pillar",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl",
+      "shader",
+      "beam"
+    ],
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "Vertical light beam with Gaussian glow, noise-flickering edges, volumetric rays, and sparkle particles",
+    "params": {
+      "--lpl-top-color": {
+        "default": "#00d4ff",
+        "type": "color",
+        "label": "Top color"
+      },
+      "--lpl-bottom-color": {
+        "default": "#7c3aed",
+        "type": "color",
+        "label": "Bottom color"
+      },
+      "--lpl-width": {
+        "default": "0.15",
+        "type": "number",
+        "label": "Beam width",
+        "min": 0.02,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "--lpl-glow": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Glow intensity",
+        "min": 0,
+        "max": 2,
+        "step": 0.1
+      },
+      "--lpl-rotation": {
+        "default": "0",
+        "type": "number",
+        "label": "Rotation (deg)",
+        "min": -45,
+        "max": 45,
+        "step": 1
+      },
+      "--lpl-speed": {
+        "default": "0.5",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.1,
+        "max": 2,
+        "step": 0.1
+      },
+      "--lpl-bg": {
+        "default": "#050510",
+        "type": "color",
+        "label": "Background"
       }
     }
   },
@@ -592,46 +1280,121 @@
     "category": "backgrounds",
     "tags": [
       "hero",
-      "section",
-      "css-only"
+      "dramatic",
+      "webgl"
     ],
     "dependencies": [],
-    "description": "Volumetric CSS-only light rays with dust particles and fog overlay",
+    "description": "WebGL volumetric god-ray effect with radial light accumulation and floating dust particles",
     "params": {
       "--lr-bg": {
-        "default": "#0a0a1a",
+        "default": "#050510",
         "type": "color",
         "label": "Background color"
       },
       "--lr-color": {
-        "default": "rgba(255,255,255,0.03)",
+        "default": "#ffd080",
         "type": "color",
         "label": "Ray color"
       },
-      "--lr-accent": {
-        "default": "rgba(99,102,241,0.05)",
-        "type": "color",
-        "label": "Accent color"
+      "--lr-source-x": {
+        "default": "0.5",
+        "type": "number",
+        "label": "Source X",
+        "min": 0,
+        "max": 1,
+        "step": 0.05
       },
-      "--lr-speed": {
-        "default": "15s",
-        "type": "duration",
-        "label": "Sway speed",
-        "min": 5,
-        "max": 30
+      "--lr-source-y": {
+        "default": "0.85",
+        "type": "number",
+        "label": "Source Y",
+        "min": 0,
+        "max": 1,
+        "step": 0.05
       },
-      "--lr-origin-x": {
-        "default": "50%",
-        "type": "size",
-        "label": "Origin X position"
+      "--lr-intensity": {
+        "default": "1.2",
+        "type": "number",
+        "label": "Intensity",
+        "min": 0.3,
+        "max": 3.0,
+        "step": 0.1
       },
-      "--lr-origin-y": {
-        "default": "-10%",
-        "type": "size",
-        "label": "Origin Y position"
+      "--lr-decay": {
+        "default": "0.96",
+        "type": "number",
+        "label": "Decay",
+        "min": 0.9,
+        "max": 0.99,
+        "step": 0.01
+      },
+      "--lr-dust": {
+        "default": "0.3",
+        "type": "number",
+        "label": "Dust amount",
+        "min": 0,
+        "max": 1.0,
+        "step": 0.05
       }
-    },
-    "jsParams": {}
+    }
+  },
+  {
+    "name": "Line Waves",
+    "slug": "line-waves",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "canvas",
+      "waves",
+      "elegant"
+    ],
+    "dependencies": [],
+    "description": "20-30 horizontal sine wave lines stacked vertically, each with different phase and amplitude — smooth and mesmerizing",
+    "params": {
+      "--lwv-line-color": {
+        "default": "#6366f1",
+        "type": "color",
+        "label": "Line color"
+      },
+      "--lwv-line-count": {
+        "default": "25",
+        "type": "number",
+        "label": "Line count",
+        "min": 8,
+        "max": 50,
+        "step": 1
+      },
+      "--lwv-amplitude": {
+        "default": "40",
+        "type": "number",
+        "label": "Amplitude",
+        "min": 10,
+        "max": 100,
+        "step": 5
+      },
+      "--lwv-speed": {
+        "default": "0.8",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.1,
+        "max": 3,
+        "step": 0.1
+      },
+      "--lwv-line-width": {
+        "default": "1.5",
+        "type": "number",
+        "label": "Line width",
+        "min": 0.5,
+        "max": 4,
+        "step": 0.5
+      },
+      "--lwv-bg": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Background"
+      }
+    }
   },
   {
     "name": "Liquid Chrome",
@@ -640,71 +1403,99 @@
     "tags": [
       "hero",
       "continuous",
-      "canvas",
-      "performance-heavy"
+      "webgl",
+      "shader",
+      "cursor"
     ],
-    "dependencies": [],
-    "description": "Metallic liquid chrome distortion with per-pixel shader simulation and mouse interaction",
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "GPU-rendered liquid chrome with iterative sine wave domain distortion, mouse-reactive ripple, and 3x3 supersampling",
     "params": {
       "--lc-bg": {
         "default": "#0a0a0f",
         "type": "color",
         "label": "Background color"
       },
-      "--lc-accent": {
+      "--lc-base-color": {
         "default": "#4488ff",
         "type": "color",
-        "label": "Accent color"
-      }
-    },
-    "jsParams": {
-      "speed": {
-        "default": 0.008,
+        "label": "Base color"
+      },
+      "--lc-speed": {
+        "default": "0.4",
         "type": "number",
         "label": "Speed",
-        "min": 0.002,
-        "max": 0.03,
-        "step": 0.002
+        "min": 0.1,
+        "max": 2,
+        "step": 0.1
       },
-      "complexity": {
-        "default": 4,
+      "--lc-amplitude": {
+        "default": "1.0",
         "type": "number",
-        "label": "Complexity",
-        "min": 2,
-        "max": 6,
-        "step": 1
+        "label": "Amplitude",
+        "min": 0.2,
+        "max": 2,
+        "step": 0.1
       },
-      "metallic": {
-        "default": 0.85,
+      "--lc-frequency-x": {
+        "default": "3.0",
         "type": "number",
-        "label": "Metallic factor",
-        "min": 0,
-        "max": 1,
-        "step": 0.05
+        "label": "Frequency X",
+        "min": 1,
+        "max": 8,
+        "step": 0.5
       },
-      "scale": {
-        "default": 3,
+      "--lc-frequency-y": {
+        "default": "4.0",
         "type": "number",
-        "label": "Render scale (lower = sharper)",
-        "min": 2,
-        "max": 6,
-        "step": 1
+        "label": "Frequency Y",
+        "min": 1,
+        "max": 8,
+        "step": 0.5
+      }
+    }
+  },
+  {
+    "name": "Liquid Ether",
+    "slug": "liquid-ether",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "cursor",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Organic fluid-like patterns using FBM with rotation between octaves and mouse warp",
+    "params": {
+      "--le-bg": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Background color"
       },
-      "baseHue": {
-        "default": 220,
-        "type": "number",
-        "label": "Base hue",
-        "min": 0,
-        "max": 360,
-        "step": 10
+      "--le-color-1": {
+        "default": "#4ecdc4",
+        "type": "color",
+        "label": "Primary color"
       },
-      "saturation": {
-        "default": 0.15,
+      "--le-color-2": {
+        "default": "#7b68ee",
+        "type": "color",
+        "label": "Secondary color"
+      },
+      "--le-color-3": {
+        "default": "#ff6b9d",
+        "type": "color",
+        "label": "Accent color"
+      },
+      "--le-speed": {
+        "default": "1.0",
         "type": "number",
-        "label": "Saturation",
-        "min": 0,
-        "max": 0.5,
-        "step": 0.05
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
       }
     }
   },
@@ -714,61 +1505,103 @@
     "category": "backgrounds",
     "tags": [
       "hero",
-      "section",
-      "css-only"
+      "texture",
+      "webgl"
     ],
     "dependencies": [],
-    "description": "Animated grain/noise texture overlay with dual noise layers, scanlines, and vignette",
+    "description": "WebGL animated film grain with scanlines, chromatic aberration, and organic texture",
     "params": {
       "--nz-bg": {
         "default": "#0a0a1a",
         "type": "color",
         "label": "Background color"
       },
-      "--nz-color-1": {
-        "default": "#6366f1",
-        "type": "color",
-        "label": "Gradient color 1"
-      },
-      "--nz-color-2": {
-        "default": "#ec4899",
-        "type": "color",
-        "label": "Gradient color 2"
-      },
-      "--nz-opacity": {
-        "default": "0.12",
+      "--nz-intensity": {
+        "default": "0.15",
         "type": "number",
-        "label": "Noise opacity",
+        "label": "Grain intensity",
         "min": 0.02,
-        "max": 0.4
+        "max": 0.5,
+        "step": 0.01
+      },
+      "--nz-scanlines": {
+        "default": "0.08",
+        "type": "number",
+        "label": "Scanline opacity",
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
       },
       "--nz-speed": {
-        "default": "0.1s",
-        "type": "duration",
+        "default": "1.0",
+        "type": "number",
         "label": "Animation speed",
-        "min": 0.05,
-        "max": 0.5
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
       },
-      "--nz-blend": {
-        "default": "overlay",
-        "type": "select",
-        "label": "Blend mode",
-        "options": [
-          "overlay",
-          "soft-light",
-          "screen",
-          "multiply"
-        ]
-      },
-      "--nz-grain-size": {
-        "default": "200px",
-        "type": "size",
-        "label": "Grain tile size",
-        "min": 100,
-        "max": 400
+      "--nz-chromatic": {
+        "default": "0.003",
+        "type": "number",
+        "label": "Chromatic aberration",
+        "min": 0,
+        "max": 0.015,
+        "step": 0.001
       }
-    },
-    "jsParams": {}
+    }
+  },
+  {
+    "name": "Orb",
+    "slug": "orb",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "section",
+      "css-only"
+    ],
+    "dependencies": [],
+    "description": "Large soft-edge gradient sphere with multiple color layers, breathing animation, and mouse parallax",
+    "params": {
+      "--orb-bg": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--orb-color-1": {
+        "default": "#6366f1",
+        "type": "color",
+        "label": "Layer 1 color"
+      },
+      "--orb-color-2": {
+        "default": "#ec4899",
+        "type": "color",
+        "label": "Layer 2 color"
+      },
+      "--orb-color-3": {
+        "default": "#06b6d4",
+        "type": "color",
+        "label": "Layer 3 color"
+      },
+      "--orb-size": {
+        "default": "60vh",
+        "type": "size",
+        "label": "Orb size"
+      },
+      "--orb-blur": {
+        "default": "80px",
+        "type": "size",
+        "label": "Blur amount",
+        "min": 20,
+        "max": 200
+      },
+      "--orb-opacity": {
+        "default": "0.7",
+        "type": "number",
+        "label": "Opacity",
+        "min": 0.2,
+        "max": 1
+      }
+    }
   },
   {
     "name": "Particles Constellation",
@@ -781,64 +1614,416 @@
       "cursor"
     ],
     "dependencies": [],
-    "description": "Interactive particle constellation with mouse repulsion and connecting lines",
+    "description": "Perlin noise-driven particle constellation with connection lines and mouse repulsion",
     "params": {
       "--ptc-bg": {
         "default": "#0a0a1a",
         "type": "color",
         "label": "Background color"
       },
-      "--ptc-color": {
-        "default": "rgba(255,255,255,0.8)",
+      "--ptc-particle-color": {
+        "default": "#ffffff",
         "type": "color",
         "label": "Particle color"
       },
       "--ptc-line-color": {
-        "default": "rgba(255,255,255,0.15)",
+        "default": "#ffffff",
         "type": "color",
-        "label": "Line color"
-      }
-    },
-    "jsParams": {
-      "count": {
-        "default": 120,
-        "type": "number",
-        "label": "Particle count",
-        "min": 20,
-        "max": 300,
-        "step": 10
+        "label": "Connection line color"
       },
-      "maxSpeed": {
-        "default": 0.4,
+      "--ptc-glow-color": {
+        "default": "#64c8ff",
+        "type": "color",
+        "label": "Mouse glow color"
+      },
+      "--ptc-speed": {
+        "default": "0.4",
         "type": "number",
-        "label": "Max speed",
+        "label": "Speed",
         "min": 0.1,
         "max": 2,
         "step": 0.1
       },
-      "linkDistance": {
-        "default": 150,
+      "--ptc-connect-distance": {
+        "default": "150",
         "type": "number",
-        "label": "Link distance",
+        "label": "Connection distance",
         "min": 50,
         "max": 300,
         "step": 10
       },
-      "mouseRadius": {
-        "default": 180,
+      "--ptc-mouse-radius": {
+        "default": "180",
         "type": "number",
         "label": "Mouse radius",
         "min": 50,
         "max": 400,
         "step": 10
+      }
+    }
+  },
+  {
+    "name": "Pixel Blast",
+    "slug": "pixel-blast",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "canvas",
+      "particles",
+      "explosion"
+    ],
+    "dependencies": [],
+    "description": "Hundreds of small pixel squares exploding outward from center and reforming in a continuous looping cycle",
+    "params": {
+      "--pxb-color-1": {
+        "default": "#ff4757",
+        "type": "color",
+        "label": "Color 1"
       },
-      "mouseForce": {
-        "default": 0.08,
+      "--pxb-color-2": {
+        "default": "#ffa502",
+        "type": "color",
+        "label": "Color 2"
+      },
+      "--pxb-color-3": {
+        "default": "#2ed573",
+        "type": "color",
+        "label": "Color 3"
+      },
+      "--pxb-color-4": {
+        "default": "#1e90ff",
+        "type": "color",
+        "label": "Color 4"
+      },
+      "--pxb-particle-count": {
+        "default": "400",
         "type": "number",
-        "label": "Mouse force",
+        "label": "Particle count",
+        "min": 100,
+        "max": 1000,
+        "step": 50
+      },
+      "--pxb-speed": {
+        "default": "1",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1
+      },
+      "--pxb-radius": {
+        "default": "300",
+        "type": "number",
+        "label": "Explosion radius",
+        "min": 100,
+        "max": 600,
+        "step": 50
+      },
+      "--pxb-bg": {
+        "default": "#0a0a0f",
+        "type": "color",
+        "label": "Background"
+      }
+    }
+  },
+  {
+    "name": "Pixel Snow",
+    "slug": "pixel-snow",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "canvas",
+      "particles",
+      "cozy"
+    ],
+    "dependencies": [],
+    "description": "Falling square pixel snow particles with horizontal wind drift and realistic accumulation at the bottom edge",
+    "params": {
+      "--psn-snow-color": {
+        "default": "#e8ecf0",
+        "type": "color",
+        "label": "Snow color"
+      },
+      "--psn-density": {
+        "default": "200",
+        "type": "number",
+        "label": "Density",
+        "min": 50,
+        "max": 500,
+        "step": 25
+      },
+      "--psn-fall-speed": {
+        "default": "1",
+        "type": "number",
+        "label": "Fall speed",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1
+      },
+      "--psn-wind": {
+        "default": "0.3",
+        "type": "number",
+        "label": "Wind",
+        "min": 0,
+        "max": 2,
+        "step": 0.1
+      },
+      "--psn-bg": {
+        "default": "#0c1929",
+        "type": "color",
+        "label": "Background"
+      }
+    }
+  },
+  {
+    "name": "Plasma",
+    "slug": "plasma",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl",
+      "performance-heavy"
+    ],
+    "dependencies": [],
+    "description": "3D volumetric raymarching through a plasma field with torus-like SDF and sin/cos domain warping",
+    "params": {
+      "--pl-bg": {
+        "default": "#050510",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--pl-color-1": {
+        "default": "#ff3366",
+        "type": "color",
+        "label": "Primary color"
+      },
+      "--pl-color-2": {
+        "default": "#6633ff",
+        "type": "color",
+        "label": "Secondary color"
+      },
+      "--pl-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      }
+    }
+  },
+  {
+    "name": "Prism",
+    "slug": "prism",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Light refraction and dispersion through a rotating prism with chromatic aberration and rainbow bands",
+    "params": {
+      "--pr-bg": {
+        "default": "#080812",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--pr-intensity": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Light intensity",
+        "min": 0.3,
+        "max": 2.0,
+        "step": 0.1
+      },
+      "--pr-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      }
+    }
+  },
+  {
+    "name": "Prismatic Burst",
+    "slug": "prismatic-burst",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "webgl",
+      "shader",
+      "rainbow",
+      "chromatic"
+    ],
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "Prismatic light burst with 12-band spectral chromatic aberration — each wavelength refracts at a different angle creating rainbow halos",
+    "params": {
+      "--prb-intensity": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Intensity",
+        "min": 0.2,
+        "max": 2,
+        "step": 0.1
+      },
+      "--prb-speed": {
+        "default": "0.5",
+        "type": "number",
+        "label": "Speed",
+        "min": 0.1,
+        "max": 2,
+        "step": 0.1
+      },
+      "--prb-dispersion": {
+        "default": "0.08",
+        "type": "number",
+        "label": "Dispersion",
         "min": 0.01,
-        "max": 0.3,
+        "max": 0.2,
         "step": 0.01
+      },
+      "--prb-bg": {
+        "default": "#050505",
+        "type": "color",
+        "label": "Background"
+      }
+    }
+  },
+  {
+    "name": "Radar",
+    "slug": "radar",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "section",
+      "continuous",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Radar sweep effect with concentric rings, rotating sweep line, and blips that fade after being revealed",
+    "params": {
+      "--rd-bg": {
+        "default": "#060a0f",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--rd-color": {
+        "default": "#00ff88",
+        "type": "color",
+        "label": "Radar color"
+      },
+      "--rd-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Sweep speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      }
+    }
+  },
+  {
+    "name": "Ripple Grid",
+    "slug": "ripple-grid",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "section",
+      "cursor",
+      "click",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Grid of dots with click-spawned ripple waves that propagate outward, displacing dot size and brightness",
+    "params": {
+      "--rg-bg": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--rg-dot-color": {
+        "default": "#4ecdc4",
+        "type": "color",
+        "label": "Dot color"
+      },
+      "--rg-wave-color": {
+        "default": "#7b68ee",
+        "type": "color",
+        "label": "Wave color"
+      },
+      "--rg-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      }
+    }
+  },
+  {
+    "name": "Shape Grid",
+    "slug": "shape-grid",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "interactive",
+      "canvas",
+      "geometric"
+    ],
+    "dependencies": [],
+    "description": "Grid of geometric shapes (circle, square, triangle, diamond) that rotate, scale, and glow near the cursor with a fading trail",
+    "params": {
+      "--shg-shape": {
+        "default": "circle",
+        "type": "select",
+        "label": "Shape type",
+        "options": [
+          "circle",
+          "square",
+          "triangle",
+          "diamond"
+        ]
+      },
+      "--shg-grid-size": {
+        "default": "50",
+        "type": "number",
+        "label": "Grid size",
+        "min": 25,
+        "max": 100,
+        "step": 5
+      },
+      "--shg-hover-color": {
+        "default": "#8b5cf6",
+        "type": "color",
+        "label": "Hover color"
+      },
+      "--shg-base-color": {
+        "default": "#1e293b",
+        "type": "color",
+        "label": "Base color"
+      },
+      "--shg-trail-length": {
+        "default": "15",
+        "type": "number",
+        "label": "Trail length",
+        "min": 0,
+        "max": 30,
+        "step": 1
+      },
+      "--shg-bg": {
+        "default": "#0a0a14",
+        "type": "color",
+        "label": "Background"
       }
     }
   },
@@ -849,71 +2034,98 @@
     "tags": [
       "hero",
       "continuous",
-      "canvas"
+      "webgl",
+      "shader"
     ],
-    "dependencies": [],
-    "description": "Flowing silk fabric simulation with layered waves, gradients, and sheen highlights",
+    "dependencies": [
+      "gl-utils"
+    ],
+    "description": "GPU-rendered flowing silk with layered rotated sine patterns and film grain noise",
     "params": {
       "--silk-bg": {
         "default": "#0a0a1a",
         "type": "color",
         "label": "Background color"
       },
-      "--silk-color-1": {
+      "--silk-color": {
         "default": "#6366f1",
         "type": "color",
-        "label": "Color 1"
+        "label": "Silk color"
       },
-      "--silk-color-2": {
-        "default": "#ec4899",
-        "type": "color",
-        "label": "Color 2"
-      },
-      "--silk-color-3": {
-        "default": "#06b6d4",
-        "type": "color",
-        "label": "Color 3"
-      },
-      "--silk-opacity": {
-        "default": "0.9",
-        "type": "number",
-        "label": "Opacity",
-        "min": 0.3,
-        "max": 1
-      }
-    },
-    "jsParams": {
-      "speed": {
-        "default": 0.003,
+      "--silk-speed": {
+        "default": "0.3",
         "type": "number",
         "label": "Speed",
-        "min": 0.001,
-        "max": 0.01,
-        "step": 0.001
+        "min": 0.05,
+        "max": 1,
+        "step": 0.05
       },
-      "layers": {
-        "default": 5,
+      "--silk-scale": {
+        "default": "1.0",
         "type": "number",
-        "label": "Layer count",
-        "min": 2,
-        "max": 8,
-        "step": 1
+        "label": "Scale",
+        "min": 0.3,
+        "max": 3,
+        "step": 0.1
       },
-      "amplitude": {
-        "default": 80,
+      "--silk-rotation": {
+        "default": "0.0",
         "type": "number",
-        "label": "Wave amplitude",
-        "min": 20,
-        "max": 200,
-        "step": 10
+        "label": "Rotation (radians)",
+        "min": -3.14,
+        "max": 3.14,
+        "step": 0.1
       },
-      "waveComplexity": {
-        "default": 3,
+      "--silk-noise-intensity": {
+        "default": "0.04",
         "type": "number",
-        "label": "Wave complexity",
-        "min": 1,
-        "max": 5,
-        "step": 1
+        "label": "Grain intensity",
+        "min": 0,
+        "max": 0.15,
+        "step": 0.01
+      }
+    }
+  },
+  {
+    "name": "Soft Aurora",
+    "slug": "soft-aurora",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "section",
+      "continuous",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Soft, diffuse aurora with FBM noise and gentle pastel gradient transitions",
+    "params": {
+      "--sa-bg": {
+        "default": "#0c0c20",
+        "type": "color",
+        "label": "Background color"
+      },
+      "--sa-color-1": {
+        "default": "#a8d8ea",
+        "type": "color",
+        "label": "Band color 1"
+      },
+      "--sa-color-2": {
+        "default": "#d4a5ff",
+        "type": "color",
+        "label": "Band color 2"
+      },
+      "--sa-color-3": {
+        "default": "#ffb7c5",
+        "type": "color",
+        "label": "Band color 3"
+      },
+      "--sa-speed": {
+        "default": "1.0",
+        "type": "number",
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
       }
     }
   },
@@ -924,10 +2136,11 @@
     "tags": [
       "hero",
       "section",
-      "cursor"
+      "cursor",
+      "css"
     ],
     "dependencies": [],
-    "description": "Cursor-following spotlight with dual color glow, grid reveal, and smooth tracking",
+    "description": "Cursor-following spotlight with dual glow, grid reveal via CSS mask, and smooth tracking",
     "params": {
       "--spt-bg": {
         "default": "#0a0a1a",
@@ -935,36 +2148,28 @@
         "label": "Background color"
       },
       "--spt-color": {
-        "default": "rgba(99,102,241,0.15)",
+        "default": "#6366f1",
         "type": "color",
-        "label": "Primary glow color"
+        "label": "Spotlight color"
       },
-      "--spt-color-2": {
-        "default": "rgba(168,85,247,0.1)",
-        "type": "color",
-        "label": "Secondary glow color"
+      "--spt-radius": {
+        "default": "400",
+        "type": "number",
+        "label": "Spotlight radius",
+        "min": 150,
+        "max": 800,
+        "step": 25
       },
-      "--spt-size": {
-        "default": "400px",
-        "type": "size",
-        "label": "Spotlight size",
-        "min": 200,
-        "max": 800
-      },
-      "--spt-blur": {
-        "default": "80px",
-        "type": "size",
-        "label": "Blur amount",
-        "min": 20,
-        "max": 200
-      },
-      "--spt-border-color": {
-        "default": "rgba(255,255,255,0.06)",
-        "type": "color",
-        "label": "Ring border color"
+      "--spt-grid-visible": {
+        "default": "1",
+        "type": "number",
+        "label": "Grid visible",
+        "min": 0,
+        "max": 1,
+        "step": 1
       },
       "--spt-grid-color": {
-        "default": "rgba(255,255,255,0.03)",
+        "default": "rgba(255,255,255,0.04)",
         "type": "color",
         "label": "Grid color"
       },
@@ -975,31 +2180,50 @@
         "min": 20,
         "max": 120
       }
-    },
-    "jsParams": {
-      "smoothing": {
-        "default": 0.08,
-        "type": "number",
-        "label": "Smoothing factor",
-        "min": 0.02,
-        "max": 0.2,
-        "step": 0.02
+    }
+  },
+  {
+    "name": "Threads",
+    "slug": "threads",
+    "category": "backgrounds",
+    "tags": [
+      "hero",
+      "continuous",
+      "cursor",
+      "webgl"
+    ],
+    "dependencies": [],
+    "description": "Flowing lines with Perlin noise displacement converging at a cursor-influenced point",
+    "params": {
+      "--th-bg": {
+        "default": "#0a0a1a",
+        "type": "color",
+        "label": "Background color"
       },
-      "secondaryDelay": {
-        "default": 0.04,
-        "type": "number",
-        "label": "Secondary delay",
-        "min": 0.01,
-        "max": 0.1,
-        "step": 0.01
+      "--th-color-1": {
+        "default": "#00d4ff",
+        "type": "color",
+        "label": "Start color"
       },
-      "secondaryOffset": {
-        "default": 30,
+      "--th-color-2": {
+        "default": "#7b2ff7",
+        "type": "color",
+        "label": "End color"
+      },
+      "--th-speed": {
+        "default": "1.0",
         "type": "number",
-        "label": "Secondary offset (px)",
-        "min": 0,
-        "max": 80,
-        "step": 5
+        "label": "Animation speed",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      },
+      "--th-opacity": {
+        "default": "0.9",
+        "type": "number",
+        "label": "Opacity",
+        "min": 0.3,
+        "max": 1
       }
     }
   },
@@ -1010,73 +2234,44 @@
     "tags": [
       "hero",
       "continuous",
-      "canvas"
+      "webgl"
     ],
     "dependencies": [],
-    "description": "Space warp starfield effect with 3D perspective projection, trails, and motion blur",
+    "description": "WebGL 3D starfield with layered depth, speed streaks, and motion trails",
     "params": {
       "--wrp-bg": {
         "default": "#000008",
         "type": "color",
         "label": "Background color"
-      }
-    },
-    "jsParams": {
-      "starCount": {
-        "default": 600,
-        "type": "number",
-        "label": "Star count",
-        "min": 100,
-        "max": 1500,
-        "step": 50
       },
-      "speed": {
-        "default": 2,
+      "--wrp-color": {
+        "default": "#aaccff",
+        "type": "color",
+        "label": "Star color"
+      },
+      "--wrp-speed": {
+        "default": "1.0",
         "type": "number",
         "label": "Speed",
-        "min": 0.5,
-        "max": 15,
-        "step": 0.5
-      },
-      "trailLength": {
-        "default": 0.7,
-        "type": "number",
-        "label": "Trail length",
-        "min": 0,
-        "max": 1,
+        "min": 0.1,
+        "max": 5.0,
         "step": 0.1
       },
-      "maxRadius": {
-        "default": 2.5,
+      "--wrp-density": {
+        "default": "0.5",
         "type": "number",
-        "label": "Max star size",
-        "min": 0.5,
-        "max": 5,
-        "step": 0.5
+        "label": "Star density",
+        "min": 0.1,
+        "max": 1.0,
+        "step": 0.1
       },
-      "depth": {
-        "default": 1500,
+      "--wrp-trail": {
+        "default": "0.7",
         "type": "number",
-        "label": "Depth range",
-        "min": 500,
-        "max": 3000,
-        "step": 100
-      },
-      "centerX": {
-        "default": 0.5,
-        "type": "number",
-        "label": "Center X",
-        "min": 0,
-        "max": 1,
-        "step": 0.05
-      },
-      "centerY": {
-        "default": 0.5,
-        "type": "number",
-        "label": "Center Y",
-        "min": 0,
-        "max": 1,
-        "step": 0.05
+        "label": "Trail length",
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.1
       }
     }
   },
@@ -1091,61 +2286,61 @@
       "canvas"
     ],
     "dependencies": [],
-    "description": "Layered sine wave animation with gradient fills and dynamic stroke lines",
+    "description": "Multi-layered Perlin noise waves with gradient fills, bezier curves, and sheen highlights",
     "params": {
       "--wav-bg": {
         "default": "#0a0a1a",
         "type": "color",
         "label": "Background color"
       },
-      "--wav-stroke-width": {
-        "default": "2",
-        "type": "number",
-        "label": "Stroke width",
-        "min": 0.5,
-        "max": 4
-      }
-    },
-    "jsParams": {
-      "speed": {
-        "default": 0.015,
+      "--wav-color-1": {
+        "default": "#6366f1",
+        "type": "color",
+        "label": "Wave color 1"
+      },
+      "--wav-color-2": {
+        "default": "#a855f7",
+        "type": "color",
+        "label": "Wave color 2"
+      },
+      "--wav-color-3": {
+        "default": "#3b82f6",
+        "type": "color",
+        "label": "Wave color 3"
+      },
+      "--wav-color-4": {
+        "default": "#06b6d4",
+        "type": "color",
+        "label": "Wave color 4"
+      },
+      "--wav-color-5": {
+        "default": "#8b5cf6",
+        "type": "color",
+        "label": "Wave color 5"
+      },
+      "--wav-speed": {
+        "default": "0.015",
         "type": "number",
         "label": "Speed",
         "min": 0.005,
         "max": 0.04,
         "step": 0.005
       },
-      "waveCount": {
-        "default": 6,
-        "type": "number",
-        "label": "Wave count",
-        "min": 2,
-        "max": 10,
-        "step": 1
-      },
-      "baseAmplitude": {
-        "default": 50,
+      "--wav-amplitude": {
+        "default": "60",
         "type": "number",
         "label": "Amplitude",
-        "min": 10,
+        "min": 20,
         "max": 150,
         "step": 10
       },
-      "verticalCenter": {
-        "default": 0.55,
+      "--wav-layers": {
+        "default": "6",
         "type": "number",
-        "label": "Vertical position",
-        "min": 0.2,
-        "max": 0.8,
-        "step": 0.05
-      },
-      "verticalSpread": {
-        "default": 0.4,
-        "type": "number",
-        "label": "Vertical spread",
-        "min": 0.1,
-        "max": 0.8,
-        "step": 0.05
+        "label": "Layer count",
+        "min": 2,
+        "max": 10,
+        "step": 1
       }
     }
   },
@@ -4079,6 +5274,55 @@
     "jsParams": {}
   },
   {
+    "name": "Cards Cascade",
+    "slug": "cards-cascade",
+    "category": "scroll",
+    "tags": [
+      "cards",
+      "cascade",
+      "waterfall",
+      "stagger",
+      "reveal"
+    ],
+    "dependencies": [],
+    "description": "Cards that cascade into view from alternating sides as the user scrolls, with stagger and overlap creating a dynamic, energetic feel.",
+    "params": {
+      "--cascade-card-count": {
+        "type": "range",
+        "min": 4,
+        "max": 12,
+        "step": 1,
+        "default": 8,
+        "unit": "",
+        "label": "Card Count"
+      },
+      "--cascade-stagger": {
+        "type": "range",
+        "min": 30,
+        "max": 200,
+        "step": 10,
+        "default": 80,
+        "unit": "ms",
+        "label": "Stagger Delay"
+      },
+      "--cascade-slide-distance": {
+        "type": "range",
+        "min": 40,
+        "max": 200,
+        "step": 10,
+        "default": 100,
+        "unit": "px",
+        "label": "Slide Distance"
+      },
+      "--cascade-accent": {
+        "type": "color",
+        "default": "#f59e0b",
+        "label": "Accent Color"
+      }
+    },
+    "jsParams": {}
+  },
+  {
     "name": "Clip Path Reveal",
     "slug": "clip-path-reveal",
     "category": "scroll",
@@ -4177,6 +5421,156 @@
     "jsParams": {}
   },
   {
+    "name": "Image Sequence Scrub",
+    "slug": "image-sequence-scrub",
+    "category": "scroll",
+    "tags": [
+      "canvas",
+      "animation",
+      "scrub",
+      "sequence",
+      "procedural"
+    ],
+    "dependencies": [],
+    "description": "Scrub through a sequence of procedurally generated frames on a canvas based on scroll position, like a video controlled by scroll.",
+    "params": {
+      "--seq-frame-count": {
+        "type": "range",
+        "min": 30,
+        "max": 120,
+        "step": 10,
+        "default": 60,
+        "unit": "",
+        "label": "Frame Count"
+      },
+      "--seq-smoothing": {
+        "type": "range",
+        "min": 0.02,
+        "max": 0.2,
+        "step": 0.01,
+        "default": 0.08,
+        "unit": "",
+        "label": "Smoothing"
+      },
+      "--seq-accent": {
+        "type": "color",
+        "default": "#6366f1",
+        "label": "Accent Color"
+      }
+    },
+    "jsParams": {}
+  },
+  {
+    "name": "Macbook Scroll",
+    "slug": "macbook-scroll",
+    "category": "scroll",
+    "tags": [
+      "product",
+      "showcase",
+      "gsap",
+      "scroll-trigger",
+      "3d"
+    ],
+    "dependencies": [
+      "gsap",
+      "scrolltrigger"
+    ],
+    "description": "Product showcase where an image transforms (scales down, rotates in 3D) as the user scrolls, revealing content below. Inspired by Apple product pages.",
+    "params": {
+      "--macbook-rotation-x": {
+        "type": "range",
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "default": 35,
+        "unit": "deg",
+        "label": "Rotation X"
+      },
+      "--macbook-rotation-y": {
+        "type": "range",
+        "min": -30,
+        "max": 30,
+        "step": 1,
+        "default": 0,
+        "unit": "deg",
+        "label": "Rotation Y"
+      },
+      "--macbook-scale-start": {
+        "type": "range",
+        "min": 0.8,
+        "max": 1.5,
+        "step": 0.05,
+        "default": 1.2,
+        "unit": "",
+        "label": "Start Scale"
+      },
+      "--macbook-scale-end": {
+        "type": "range",
+        "min": 0.3,
+        "max": 0.9,
+        "step": 0.05,
+        "default": 0.6,
+        "unit": "",
+        "label": "End Scale"
+      },
+      "--macbook-pin-duration": {
+        "type": "range",
+        "min": 500,
+        "max": 3000,
+        "step": 100,
+        "default": 1500,
+        "unit": "px",
+        "label": "Pin Duration"
+      }
+    },
+    "jsParams": {}
+  },
+  {
+    "name": "Morphing Sections",
+    "slug": "morphing-sections",
+    "category": "scroll",
+    "tags": [
+      "clip-path",
+      "morph",
+      "organic",
+      "transitions"
+    ],
+    "dependencies": [],
+    "description": "Sections that morph shape via clip-path transitions as you scroll between them, creating organic flowing boundaries.",
+    "params": {
+      "--morph-speed": {
+        "type": "range",
+        "min": 0.5,
+        "max": 3,
+        "step": 0.1,
+        "default": 1,
+        "unit": "",
+        "label": "Transition Speed"
+      },
+      "--morph-color-1": {
+        "type": "color",
+        "default": "#1e1b4b",
+        "label": "Section 1 Color"
+      },
+      "--morph-color-2": {
+        "type": "color",
+        "default": "#164e63",
+        "label": "Section 2 Color"
+      },
+      "--morph-color-3": {
+        "type": "color",
+        "default": "#3b0764",
+        "label": "Section 3 Color"
+      },
+      "--morph-color-4": {
+        "type": "color",
+        "default": "#1c1917",
+        "label": "Section 4 Color"
+      }
+    },
+    "jsParams": {}
+  },
+  {
     "name": "Number Counter Scroll",
     "slug": "number-counter-scroll",
     "category": "scroll",
@@ -4205,6 +5599,76 @@
         "default": 1500,
         "unit": "ms",
         "label": "Count Duration"
+      }
+    },
+    "jsParams": {}
+  },
+  {
+    "name": "Parallax Hero Images",
+    "slug": "parallax-hero-images",
+    "category": "scroll",
+    "tags": [
+      "parallax",
+      "hero",
+      "depth",
+      "layers"
+    ],
+    "dependencies": [],
+    "description": "Hero section with multiple element layers at different parallax speeds creating a depth illusion as the user scrolls.",
+    "params": {
+      "--hero-layer-count": {
+        "type": "range",
+        "min": 3,
+        "max": 7,
+        "step": 1,
+        "default": 5,
+        "unit": "",
+        "label": "Layer Count"
+      },
+      "--hero-speed-1": {
+        "type": "range",
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.05,
+        "default": 0.1,
+        "unit": "",
+        "label": "Speed Layer 1 (far)"
+      },
+      "--hero-speed-2": {
+        "type": "range",
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.05,
+        "default": 0.2,
+        "unit": "",
+        "label": "Speed Layer 2"
+      },
+      "--hero-speed-3": {
+        "type": "range",
+        "min": -0.8,
+        "max": 0.8,
+        "step": 0.05,
+        "default": 0.35,
+        "unit": "",
+        "label": "Speed Layer 3"
+      },
+      "--hero-speed-4": {
+        "type": "range",
+        "min": -1,
+        "max": 1,
+        "step": 0.05,
+        "default": 0.5,
+        "unit": "",
+        "label": "Speed Layer 4"
+      },
+      "--hero-speed-5": {
+        "type": "range",
+        "min": -1.2,
+        "max": 1.2,
+        "step": 0.05,
+        "default": 0.7,
+        "unit": "",
+        "label": "Speed Layer 5 (near)"
       }
     },
     "jsParams": {}
@@ -4276,6 +5740,58 @@
         "type": "color",
         "default": "#ffffff",
         "label": "Text Color"
+      }
+    },
+    "jsParams": {}
+  },
+  {
+    "name": "Reveal on Scroll",
+    "slug": "reveal-on-scroll",
+    "category": "scroll",
+    "tags": [
+      "reveal",
+      "animation",
+      "intersection-observer",
+      "data-attributes"
+    ],
+    "dependencies": [],
+    "description": "Elements reveal with various animations (slide-up, slide-left, fade, scale, rotate) as they enter the viewport, configurable per-element with data attributes.",
+    "params": {
+      "--reveal-duration": {
+        "type": "range",
+        "min": 0.2,
+        "max": 1.5,
+        "step": 0.1,
+        "default": 0.6,
+        "unit": "s",
+        "label": "Duration"
+      },
+      "--reveal-threshold": {
+        "type": "range",
+        "min": 0,
+        "max": 0.5,
+        "step": 0.05,
+        "default": 0.15,
+        "unit": "",
+        "label": "Threshold"
+      },
+      "--reveal-distance": {
+        "type": "range",
+        "min": 20,
+        "max": 100,
+        "step": 5,
+        "default": 40,
+        "unit": "px",
+        "label": "Slide Distance"
+      },
+      "--reveal-stagger": {
+        "type": "range",
+        "min": 0,
+        "max": 300,
+        "step": 10,
+        "default": 80,
+        "unit": "ms",
+        "label": "Stagger Delay"
       }
     },
     "jsParams": {}
@@ -4353,6 +5869,85 @@
         "default": 9999,
         "unit": "",
         "label": "Z-Index"
+      }
+    },
+    "jsParams": {}
+  },
+  {
+    "name": "Scroll Snap Sections",
+    "slug": "scroll-snap-sections",
+    "category": "scroll",
+    "tags": [
+      "scroll-snap",
+      "fullpage",
+      "sections",
+      "transitions"
+    ],
+    "dependencies": [],
+    "description": "Full-page sections with smooth CSS snap scrolling. Each section animates in as it becomes active.",
+    "params": {
+      "--snap-transition-duration": {
+        "type": "range",
+        "min": 0.3,
+        "max": 1.5,
+        "step": 0.1,
+        "default": 0.6,
+        "unit": "s",
+        "label": "Transition Duration"
+      },
+      "--snap-behavior": {
+        "type": "select",
+        "options": [
+          "mandatory",
+          "proximity"
+        ],
+        "default": "mandatory",
+        "label": "Snap Behavior"
+      },
+      "--snap-accent": {
+        "type": "color",
+        "default": "#06b6d4",
+        "label": "Accent Color"
+      }
+    },
+    "jsParams": {}
+  },
+  {
+    "name": "Scroll Video Sync",
+    "slug": "scroll-video-sync",
+    "category": "scroll",
+    "tags": [
+      "canvas",
+      "animation",
+      "video-like",
+      "procedural",
+      "sync"
+    ],
+    "dependencies": [],
+    "description": "A video-like experience driven by scroll. Canvas draws animated content synced to scroll position with a progress bar.",
+    "params": {
+      "--vsync-speed": {
+        "type": "range",
+        "min": 0.5,
+        "max": 3,
+        "step": 0.1,
+        "default": 1,
+        "unit": "",
+        "label": "Animation Speed"
+      },
+      "--vsync-smoothing": {
+        "type": "range",
+        "min": 0.03,
+        "max": 0.2,
+        "step": 0.01,
+        "default": 0.06,
+        "unit": "",
+        "label": "Smoothing"
+      },
+      "--vsync-accent": {
+        "type": "color",
+        "default": "#ec4899",
+        "label": "Accent Color"
       }
     },
     "jsParams": {}
@@ -4507,6 +6102,91 @@
         "type": "color",
         "default": "#0a0a1a",
         "label": "Background"
+      }
+    },
+    "jsParams": {}
+  },
+  {
+    "name": "Text Highlight on Scroll",
+    "slug": "text-highlight-on-scroll",
+    "category": "scroll",
+    "tags": [
+      "text",
+      "highlight",
+      "scrollytelling",
+      "reading"
+    ],
+    "dependencies": [],
+    "description": "Words in paragraphs progressively highlight as the user scrolls past them, creating a reading-like scroll experience.",
+    "params": {
+      "--highlight-color": {
+        "type": "color",
+        "default": "#a78bfa",
+        "label": "Highlight Color"
+      },
+      "--highlight-inactive-opacity": {
+        "type": "range",
+        "min": 0.1,
+        "max": 0.5,
+        "step": 0.05,
+        "default": 0.2,
+        "unit": "",
+        "label": "Inactive Opacity"
+      },
+      "--highlight-speed": {
+        "type": "range",
+        "min": 0.5,
+        "max": 3,
+        "step": 0.1,
+        "default": 1,
+        "unit": "",
+        "label": "Speed Multiplier"
+      }
+    },
+    "jsParams": {}
+  },
+  {
+    "name": "Timeline Scroll",
+    "slug": "timeline-scroll",
+    "category": "scroll",
+    "tags": [
+      "timeline",
+      "scroll-draw",
+      "nodes",
+      "cards",
+      "storytelling"
+    ],
+    "dependencies": [],
+    "description": "Animated timeline that draws and fills as user scrolls. Center line grows, nodes appear with content cards alternating left and right.",
+    "params": {
+      "--tl-line-color": {
+        "type": "color",
+        "default": "#6366f1",
+        "label": "Line Color"
+      },
+      "--tl-node-color": {
+        "type": "color",
+        "default": "#a78bfa",
+        "label": "Node Color"
+      },
+      "--tl-card-animation": {
+        "type": "select",
+        "options": [
+          "slide",
+          "fade",
+          "scale"
+        ],
+        "default": "slide",
+        "label": "Card Animation"
+      },
+      "--tl-line-width": {
+        "type": "range",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 3,
+        "unit": "px",
+        "label": "Line Width"
       }
     },
     "jsParams": {}

@@ -1,0 +1,15 @@
+{
+  "name": "Dark Veil",
+  "slug": "dark-veil",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "css", "fog", "atmospheric", "parallax"],
+  "dependencies": [],
+  "description": "Multiple semi-transparent dark gradient fog layers with CSS drift animations and mouse-driven parallax displacement",
+  "params": {
+    "--dkv-fog-color": { "default": "#0a0a1a", "type": "color", "label": "Fog color" },
+    "--dkv-opacity": { "default": "0.6", "type": "number", "label": "Opacity", "min": 0.1, "max": 1, "step": 0.1 },
+    "--dkv-parallax": { "default": "1", "type": "number", "label": "Parallax strength", "min": 0, "max": 3, "step": 0.1 },
+    "--dkv-speed": { "default": "1", "type": "number", "label": "Drift speed", "min": 0.2, "max": 3, "step": 0.1 },
+    "--dkv-bg": { "default": "#0f0f1a", "type": "color", "label": "Background" }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Plasma",
+  "slug": "plasma",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "webgl", "performance-heavy"],
+  "dependencies": [],
+  "description": "3D volumetric raymarching through a plasma field with torus-like SDF and sin/cos domain warping",
+  "params": {
+    "--pl-bg": { "default": "#050510", "type": "color", "label": "Background color" },
+    "--pl-color-1": { "default": "#ff3366", "type": "color", "label": "Primary color" },
+    "--pl-color-2": { "default": "#6633ff", "type": "color", "label": "Secondary color" },
+    "--pl-speed": { "default": "1.0", "type": "number", "label": "Animation speed", "min": 0.1, "max": 3.0, "step": 0.1 }
+  }
+}

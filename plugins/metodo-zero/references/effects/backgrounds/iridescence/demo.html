@@ -10,16 +10,13 @@
 </head>
 <body>
   <div class="iri-container">
-    <div class="iri-layer iri-base"></div>
-    <div class="iri-layer iri-shift"></div>
-    <div class="iri-layer iri-rainbow"></div>
-    <div class="iri-layer iri-fresnel"></div>
-    <div class="iri-noise"></div>
+    <canvas id="iri-canvas"></canvas>
     <div class="iri-content">
       <h1>Iridescence</h1>
-      <p>Holographic color shift with rainbow spectrum and fresnel glow</p>
+      <p>Holographic color shift rendered with iterative cosine accumulation</p>
     </div>
   </div>
+  <script src="../../_shared/gl-utils.js"></script>
   <script src="script.js"></script>
   <script>
     window.addEventListener('message', (e) => {

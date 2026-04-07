@@ -2,22 +2,15 @@
   "name": "Spotlight",
   "slug": "spotlight",
   "category": "backgrounds",
-  "tags": ["hero", "section", "cursor"],
+  "tags": ["hero", "section", "cursor", "css"],
   "dependencies": [],
-  "description": "Cursor-following spotlight with dual color glow, grid reveal, and smooth tracking",
+  "description": "Cursor-following spotlight with dual glow, grid reveal via CSS mask, and smooth tracking",
   "params": {
     "--spt-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
-    "--spt-color": { "default": "rgba(99,102,241,0.15)", "type": "color", "label": "Primary glow color" },
-    "--spt-color-2": { "default": "rgba(168,85,247,0.1)", "type": "color", "label": "Secondary glow color" },
-    "--spt-size": { "default": "400px", "type": "size", "label": "Spotlight size", "min": 200, "max": 800 },
-    "--spt-blur": { "default": "80px", "type": "size", "label": "Blur amount", "min": 20, "max": 200 },
-    "--spt-border-color": { "default": "rgba(255,255,255,0.06)", "type": "color", "label": "Ring border color" },
-    "--spt-grid-color": { "default": "rgba(255,255,255,0.03)", "type": "color", "label": "Grid color" },
+    "--spt-color": { "default": "#6366f1", "type": "color", "label": "Spotlight color" },
+    "--spt-radius": { "default": "400", "type": "number", "label": "Spotlight radius", "min": 150, "max": 800, "step": 25 },
+    "--spt-grid-visible": { "default": "1", "type": "number", "label": "Grid visible", "min": 0, "max": 1, "step": 1 },
+    "--spt-grid-color": { "default": "rgba(255,255,255,0.04)", "type": "color", "label": "Grid color" },
     "--spt-grid-size": { "default": "60px", "type": "size", "label": "Grid cell size", "min": 20, "max": 120 }
-  },
-  "jsParams": {
-    "smoothing": { "default": 0.08, "type": "number", "label": "Smoothing factor", "min": 0.02, "max": 0.2, "step": 0.02 },
-    "secondaryDelay": { "default": 0.04, "type": "number", "label": "Secondary delay", "min": 0.01, "max": 0.1, "step": 0.01 },
-    "secondaryOffset": { "default": 30, "type": "number", "label": "Secondary offset (px)", "min": 0, "max": 80, "step": 5 }
   }
 }

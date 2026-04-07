@@ -1,6 +1,6 @@
 # Noise
 
-Animated grain/noise texture overlay using SVG feTurbulence, with scanlines and vignette.
+WebGL animated film grain using multi-octave hash noise with scanlines, chromatic aberration, and a subtle color wash.
 
 ## When to use
 
@@ -12,21 +12,21 @@ Animated grain/noise texture overlay using SVG feTurbulence, with scanlines and 
 
 ```html
 <div class="nz-container">
-  <div class="nz-gradient"></div>
-  <div class="nz-grain"></div>
-  <div class="nz-grain-2"></div>
-  <div class="nz-scanlines"></div>
-  <div class="nz-vignette"></div>
+  <canvas id="nz-canvas"></canvas>
   <div class="nz-content">
     <!-- Your content here -->
   </div>
 </div>
+<script src="../../_shared/gl-utils.js"></script>
+<script src="script.js"></script>
 ```
 
 ## Notes
 
-- Grain is SVG-based via inline data URI — no external assets
-- Animation uses `steps()` for a flickering, film-like feel
-- Two noise layers with different seeds and frequencies create depth
-- Scanlines and vignette are optional decorative layers
-- Blend mode is configurable: `overlay` is default, try `soft-light` for subtlety
+- Three hash functions at different scales for organic, non-pixelated grain
+- Film-like flicker at 12fps seed changes
+- Optional scanlines with horizontal flicker band
+- Chromatic aberration shifts R/B grain offset and adds edge fringing
+- Vignette and subtle color wash for depth
+- IntersectionObserver pauses rendering when offscreen
+- Respects `prefers-reduced-motion`

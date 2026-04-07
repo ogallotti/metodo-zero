@@ -1,0 +1,17 @@
+{
+  "name": "Balatro",
+  "slug": "balatro",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "webgl", "shader", "psychedelic"],
+  "dependencies": ["gl-utils"],
+  "description": "Psychedelic domain-warped pattern inspired by the card game Balatro — 4-layer sin/cos distortion mapped to a smooth color gradient",
+  "params": {
+    "--bal-color-1": { "default": "#ff6b6b", "type": "color", "label": "Color 1" },
+    "--bal-color-2": { "default": "#4ecdc4", "type": "color", "label": "Color 2" },
+    "--bal-color-3": { "default": "#45b7d1", "type": "color", "label": "Color 3" },
+    "--bal-color-4": { "default": "#f7dc6f", "type": "color", "label": "Color 4" },
+    "--bal-bg": { "default": "#1a0a2e", "type": "color", "label": "Background" },
+    "--bal-speed": { "default": "0.5", "type": "number", "label": "Speed", "min": 0.1, "max": 2, "step": 0.1 },
+    "--bal-warp": { "default": "2.5", "type": "number", "label": "Warp intensity", "min": 0.5, "max": 5, "step": 0.1 }
+  }
+}

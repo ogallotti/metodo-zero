@@ -1,0 +1,16 @@
+{
+  "name": "Grid Motion",
+  "slug": "grid-motion",
+  "category": "backgrounds",
+  "tags": ["hero", "interactive", "canvas", "parallax"],
+  "dependencies": [],
+  "description": "Rows of rounded rectangles that shift horizontally based on mouse X position with inertia — different rows at different speeds",
+  "params": {
+    "--gmo-item-color": { "default": "#ffffff", "type": "color", "label": "Item color" },
+    "--gmo-item-count": { "default": "12", "type": "number", "label": "Items per row", "min": 4, "max": 24, "step": 1 },
+    "--gmo-row-count": { "default": "8", "type": "number", "label": "Row count", "min": 3, "max": 16, "step": 1 },
+    "--gmo-speed": { "default": "1", "type": "number", "label": "Speed", "min": 0.2, "max": 3, "step": 0.1 },
+    "--gmo-inertia": { "default": "0.92", "type": "number", "label": "Inertia", "min": 0.8, "max": 0.99, "step": 0.01 },
+    "--gmo-bg": { "default": "#0f0f1a", "type": "color", "label": "Background" }
+  }
+}

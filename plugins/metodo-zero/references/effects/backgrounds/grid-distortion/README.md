@@ -1,6 +1,6 @@
 # Grid Distortion
 
-Wireframe grid that warps and bends around the cursor, with smooth interpolated tracking and ambient wave motion.
+WebGL wireframe grid with FBM noise-based displacement, mouse-reactive distortion bubble, and glowing intersections.
 
 ## When to use
 
@@ -12,16 +12,22 @@ Wireframe grid that warps and bends around the cursor, with smooth interpolated 
 
 ```html
 <div class="gd-container">
-  <canvas class="gd-canvas"></canvas>
+  <canvas id="gd-canvas"></canvas>
   <div class="gd-content">
     <!-- Your content here -->
   </div>
 </div>
+<script src="../../_shared/gl-utils.js"></script>
+<script src="script.js"></script>
 ```
 
 ## Notes
 
-- Grid lines brighten and shift color near cursor for a glowing effect
+- Grid lines drawn via SDF (distance to nearest integer boundary)
+- FBM noise displaces grid coordinates for organic waviness
+- Mouse creates a push-away distortion bubble
+- Intersections glow brighter than lines, especially near mouse
 - Smooth mouse tracking with interpolation prevents jitter
-- Ambient sine waves give life even without cursor interaction
-- Grid auto-adjusts to viewport on resize
+- All computation runs on GPU -- no JS per-cell logic
+- IntersectionObserver pauses rendering when offscreen
+- Respects `prefers-reduced-motion`

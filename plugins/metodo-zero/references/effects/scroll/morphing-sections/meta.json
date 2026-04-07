@@ -1,0 +1,16 @@
+{
+  "name": "Morphing Sections",
+  "slug": "morphing-sections",
+  "category": "scroll",
+  "tags": ["clip-path", "morph", "organic", "transitions"],
+  "dependencies": [],
+  "description": "Sections that morph shape via clip-path transitions as you scroll between them, creating organic flowing boundaries.",
+  "params": {
+    "--morph-speed": { "type": "range", "min": 0.5, "max": 3, "step": 0.1, "default": 1, "unit": "", "label": "Transition Speed" },
+    "--morph-color-1": { "type": "color", "default": "#1e1b4b", "label": "Section 1 Color" },
+    "--morph-color-2": { "type": "color", "default": "#164e63", "label": "Section 2 Color" },
+    "--morph-color-3": { "type": "color", "default": "#3b0764", "label": "Section 3 Color" },
+    "--morph-color-4": { "type": "color", "default": "#1c1917", "label": "Section 4 Color" }
+  },
+  "jsParams": {}
+}

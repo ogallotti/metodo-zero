@@ -1,33 +1,31 @@
-/* Liquid Chrome — Metallic distortion canvas */
 :root {
   --lc-bg: #0a0a0f;
-  --lc-accent: #4488ff;
+  --lc-base-color: #4488ff;
+  --lc-speed: 0.4;
+  --lc-amplitude: 1.0;
+  --lc-frequency-x: 3.0;
+  --lc-frequency-y: 4.0;
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--lc-bg);
   color: #fff;
   overflow: hidden;
+  height: 100vh;
 }
 
 .lc-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   background: var(--lc-bg);
 }
 
-.lc-canvas {
+#lc-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -66,9 +64,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lc-canvas {
-    display: none;
-  }
+  #lc-canvas { display: none; }
   .lc-container {
     background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #1a1a2e 100%);
   }

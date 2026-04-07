@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape Grid — Effects Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shg-container">
+    <canvas class="shg-canvas"></canvas>
+    <div class="shg-content">
+      <h1>Shape Grid</h1>
+      <p>Geometric shapes that react to your cursor with a glowing trail</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') {
+          document.documentElement.style.setProperty(e.data.key, e.data.value);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

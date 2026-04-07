@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards Cascade — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="cascade-hero">
+    <h1>Cards Cascade</h1>
+    <p>Cards waterfall into view from alternating sides with stagger, creating a dynamic and energetic scroll experience.</p>
+  </section>
+
+  <section class="cascade-section">
+    <div class="cascade-container">
+      <div class="cascade-card" data-cascade="left">
+        <div class="cascade-card__number">01</div>
+        <h3>Strategic Foundation</h3>
+        <p>Every project begins with strategy. We define success metrics, map user journeys, and establish the technical constraints that will guide every decision from concept to launch.</p>
+      </div>
+
+      <div class="cascade-card" data-cascade="right">
+        <div class="cascade-card__number">02</div>
+        <h3>Visual Identity</h3>
+        <p>A compelling visual language sets the tone. Typography, color, spacing, and motion work together to create an identity that feels authentic and memorable across every touchpoint.</p>
+      </div>
+
+      <div class="cascade-card" data-cascade="left">
+        <div class="cascade-card__number">03</div>
+        <h3>Component Architecture</h3>
+        <p>Building blocks matter. Each component is designed for composability, accessibility, and performance. The system scales gracefully from a single page to an entire product ecosystem.</p>
+      </div>
+
+      <div class="cascade-card" data-cascade="right">
+        <div class="cascade-card__number">04</div>
+        <h3>Interactive Prototyping</h3>
+        <p>Prototypes reveal truth faster than specifications. We build interactive demonstrations that let stakeholders experience the product before a single line of production code is written.</p>
+      </div>
+
+      <div class="cascade-card" data-cascade="left">
+        <div class="cascade-card__number">05</div>
+        <h3>Performance Engineering</h3>
+        <p>Speed is a feature. We profile render paths, optimize critical resources, and implement smart loading strategies that make the application feel instant regardless of network conditions.</p>
+      </div>
+
+      <div class="cascade-card" data-cascade="right">
+        <div class="cascade-card__number">06</div>
+        <h3>Accessibility First</h3>
+        <p>Inclusive design is not optional. Screen readers, keyboard navigation, reduced motion, and high contrast modes are tested throughout development, never as an afterthought.</p>
+      </div>
+
+      <div class="cascade-card" data-cascade="left">
+        <div class="cascade-card__number">07</div>
+        <h3>Analytics Integration</h3>
+        <p>Data informs iteration. Every interaction is instrumented to reveal real usage patterns, allowing the team to prioritize improvements based on evidence rather than assumption.</p>
+      </div>
+
+      <div class="cascade-card" data-cascade="right">
+        <div class="cascade-card__number">08</div>
+        <h3>Continuous Delivery</h3>
+        <p>Ship early, ship often. Automated pipelines test, build, and deploy every change. Feature flags enable safe rollouts while monitoring catches issues before users notice them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cascade-section cascade-section--alt">
+    <div class="cascade-container" style="text-align:center; max-width:600px;">
+      <h2>Dynamic Energy</h2>
+      <p>The alternating slide direction and staggered timing create a sense of movement and energy. Each card slightly overlaps the previous one's timing, building momentum as the user scrolls through the content.</p>
+    </div>
+  </section>
+
+  <section class="cascade-section">
+    <div class="cascade-container" style="text-align:center; max-width:600px;">
+      <h2>Lightweight and Performant</h2>
+      <p>IntersectionObserver triggers each card's entrance. CSS transitions handle the animation with GPU-accelerated transforms. No scroll listeners, no layout thrashing, no heavy libraries.</p>
+    </div>
+  </section>
+
+  <section class="cascade-footer">
+    <p>Pure vanilla JS with IntersectionObserver and CSS transitions.</p>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

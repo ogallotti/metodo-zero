@@ -1,0 +1,132 @@
+:root {
+  --highlight-color: #a78bfa;
+  --highlight-inactive-opacity: 0.2;
+  --highlight-speed: 1;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #f5f5f7;
+  background: #0a0a0f;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.th-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.th-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.th-hero p {
+  font-size: 1.1rem;
+  opacity: 0.5;
+  max-width: 500px;
+}
+
+.th-scroll-hint {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: th-bounce 2s infinite;
+}
+
+@keyframes th-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.th-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+}
+
+.th-section--alt {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.th-container {
+  max-width: 720px;
+  width: 100%;
+}
+
+.th-container h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--highlight-color);
+}
+
+.th-highlight-text {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  line-height: 1.8;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.th-highlight-text .th-word {
+  opacity: var(--highlight-inactive-opacity);
+  transition: opacity 0.15s ease, color 0.15s ease;
+  display: inline;
+}
+
+.th-highlight-text .th-word.active {
+  opacity: 1;
+  color: var(--highlight-color);
+}
+
+.th-footer {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.th-footer h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.th-footer p {
+  opacity: 0.5;
+  max-width: 480px;
+  font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .th-highlight-text .th-word {
+    opacity: 1 !important;
+    color: inherit !important;
+    transition: none !important;
+  }
+
+  .th-scroll-hint {
+    animation: none;
+  }
+}

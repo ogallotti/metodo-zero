@@ -1,0 +1,17 @@
+{
+  "name": "Gradient Blinds",
+  "slug": "gradient-blinds",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "css", "gradient", "elegant"],
+  "dependencies": [],
+  "description": "Horizontal venetian blinds with staggered gradient animations — each strip shifts at a different speed and direction",
+  "params": {
+    "--gbl-color-1": { "default": "#667eea", "type": "color", "label": "Color 1" },
+    "--gbl-color-2": { "default": "#764ba2", "type": "color", "label": "Color 2" },
+    "--gbl-color-3": { "default": "#f093fb", "type": "color", "label": "Color 3" },
+    "--gbl-strip-height": { "default": "40", "type": "number", "label": "Strip height", "min": 10, "max": 100, "step": 5 },
+    "--gbl-speed": { "default": "1", "type": "number", "label": "Speed", "min": 0.2, "max": 3, "step": 0.1 },
+    "--gbl-gap": { "default": "2", "type": "number", "label": "Gap (px)", "min": 0, "max": 10, "step": 1 },
+    "--gbl-bg": { "default": "#0a0a1a", "type": "color", "label": "Background" }
+  }
+}

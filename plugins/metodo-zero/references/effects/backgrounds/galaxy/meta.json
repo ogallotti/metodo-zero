@@ -1,0 +1,14 @@
+{
+  "name": "Galaxy",
+  "slug": "galaxy",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "webgl"],
+  "dependencies": [],
+  "description": "Spiral galaxy with log-spiral arms, scattered stars, color temperature gradient, and nebula dust",
+  "params": {
+    "--gx-bg": { "default": "#020208", "type": "color", "label": "Background color" },
+    "--gx-core-color": { "default": "#aaccff", "type": "color", "label": "Core color (blue)" },
+    "--gx-arm-color": { "default": "#ff8844", "type": "color", "label": "Arm color (warm)" },
+    "--gx-speed": { "default": "1.0", "type": "number", "label": "Rotation speed", "min": 0.1, "max": 3.0, "step": 0.1 }
+  }
+}

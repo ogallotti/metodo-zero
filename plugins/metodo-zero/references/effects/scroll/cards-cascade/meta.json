@@ -1,0 +1,15 @@
+{
+  "name": "Cards Cascade",
+  "slug": "cards-cascade",
+  "category": "scroll",
+  "tags": ["cards", "cascade", "waterfall", "stagger", "reveal"],
+  "dependencies": [],
+  "description": "Cards that cascade into view from alternating sides as the user scrolls, with stagger and overlap creating a dynamic, energetic feel.",
+  "params": {
+    "--cascade-card-count": { "type": "range", "min": 4, "max": 12, "step": 1, "default": 8, "unit": "", "label": "Card Count" },
+    "--cascade-stagger": { "type": "range", "min": 30, "max": 200, "step": 10, "default": 80, "unit": "ms", "label": "Stagger Delay" },
+    "--cascade-slide-distance": { "type": "range", "min": 40, "max": 200, "step": 10, "default": 100, "unit": "px", "label": "Slide Distance" },
+    "--cascade-accent": { "type": "color", "default": "#f59e0b", "label": "Accent Color" }
+  },
+  "jsParams": {}
+}

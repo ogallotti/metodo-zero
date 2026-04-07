@@ -1,27 +1,28 @@
 # Silk
 
-Flowing fabric simulation with layered waves, gradient fills, and shimmering highlights on wave peaks.
+GPU-rendered flowing silk fabric using layered sine patterns at different rotations with film grain overlay.
 
-## When to use
+## Technique
 
-- Elegant hero sections for fashion, lifestyle, or luxury brands
-- Backgrounds needing organic, flowing movement
-- Sections with a premium, artistic feel
+- Six sine pattern layers at different rotations and frequencies create organic fabric folds
+- Rotated UV coordinates for each layer produce cross-weave effect
+- Sheen highlights computed via pow() on luminance peaks
+- Film grain from fract(sin(dot())*43758.5453) — classic shader noise
+- All math runs on GPU at full resolution
 
-## Integration
+## Parameters
+
+| Param | Default | Description |
+|-|-|-|
+| `--silk-color` | `#6366f1` | Base silk color |
+| `--silk-speed` | `0.3` | Animation speed |
+| `--silk-scale` | `1.0` | Pattern scale |
+| `--silk-rotation` | `0.0` | Base rotation (radians) |
+| `--silk-noise-intensity` | `0.04` | Film grain intensity |
+
+## Usage
 
 ```html
-<div class="slk-container">
-  <canvas class="slk-canvas"></canvas>
-  <div class="slk-content">
-    <!-- Your content here -->
-  </div>
-</div>
+<script src="../../_shared/gl-utils.js"></script>
+<script src="script.js"></script>
 ```
-
-## Notes
-
-- Multiple wave layers create depth with different colors and speeds
-- Sheen highlights appear on wave peaks for a realistic silk look
-- Shadow blur adds glow behind each layer
-- Adjust `layers` and `waveComplexity` for performance tuning

@@ -1,0 +1,17 @@
+{
+  "name": "Light Pillar",
+  "slug": "light-pillar",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "webgl", "shader", "beam"],
+  "dependencies": ["gl-utils"],
+  "description": "Vertical light beam with Gaussian glow, noise-flickering edges, volumetric rays, and sparkle particles",
+  "params": {
+    "--lpl-top-color": { "default": "#00d4ff", "type": "color", "label": "Top color" },
+    "--lpl-bottom-color": { "default": "#7c3aed", "type": "color", "label": "Bottom color" },
+    "--lpl-width": { "default": "0.15", "type": "number", "label": "Beam width", "min": 0.02, "max": 0.5, "step": 0.01 },
+    "--lpl-glow": { "default": "1.0", "type": "number", "label": "Glow intensity", "min": 0, "max": 2, "step": 0.1 },
+    "--lpl-rotation": { "default": "0", "type": "number", "label": "Rotation (deg)", "min": -45, "max": 45, "step": 1 },
+    "--lpl-speed": { "default": "0.5", "type": "number", "label": "Speed", "min": 0.1, "max": 2, "step": 0.1 },
+    "--lpl-bg": { "default": "#050510", "type": "color", "label": "Background" }
+  }
+}

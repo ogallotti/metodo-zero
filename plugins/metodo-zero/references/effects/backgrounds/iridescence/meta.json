@@ -2,17 +2,13 @@
   "name": "Iridescence",
   "slug": "iridescence",
   "category": "backgrounds",
-  "tags": ["hero", "continuous", "css-only"],
-  "dependencies": [],
-  "description": "Iridescent holographic color shift with layered gradient spectrum and conic rainbow rotation",
+  "tags": ["hero", "continuous", "webgl", "shader", "cursor"],
+  "dependencies": ["gl-utils"],
+  "description": "GPU-rendered iridescent holographic color shift using iterative cosine accumulation with mouse-reactive UV shift",
   "params": {
     "--iri-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" },
-    "--iri-speed": { "default": "6s", "type": "duration", "label": "Animation speed", "min": 2, "max": 15 },
-    "--iri-intensity": { "default": "1", "type": "number", "label": "Intensity", "min": 0.2, "max": 1.5 },
-    "--iri-angle": { "default": "135deg", "type": "number", "label": "Gradient angle", "min": 0, "max": 360 },
-    "--iri-scale": { "default": "200%", "type": "size", "label": "Gradient scale" }
-  },
-  "jsParams": {
-    "intensity": { "default": 1, "type": "number", "label": "Intensity", "min": 0.2, "max": 1.5, "step": 0.1 }
+    "--iri-tint": { "default": "#6366f1", "type": "color", "label": "Color tint" },
+    "--iri-speed": { "default": "0.3", "type": "number", "label": "Speed", "min": 0.05, "max": 1, "step": 0.05 },
+    "--iri-amplitude": { "default": "1.0", "type": "number", "label": "Amplitude", "min": 0.2, "max": 3, "step": 0.1 }
   }
 }

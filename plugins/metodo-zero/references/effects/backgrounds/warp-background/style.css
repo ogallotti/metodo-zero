@@ -1,8 +1,10 @@
-/* Warp Background — Space warp / starfield effect */
+/* Warp Background — WebGL starfield */
 :root {
   --wrp-bg: #000008;
-  --wrp-star-color: rgba(255, 255, 255, 0.9);
-  --wrp-trail-color: rgba(150, 180, 255, 0.6);
+  --wrp-color: #aaccff;
+  --wrp-speed: 1.0;
+  --wrp-density: 0.5;
+  --wrp-trail: 0.7;
 }
 
 *,
@@ -28,7 +30,7 @@ body {
   background: var(--wrp-bg);
 }
 
-.wrp-canvas {
+#wrp-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -67,7 +69,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wrp-canvas {
-    display: none;
+  #wrp-canvas {
+    animation: none;
   }
 }

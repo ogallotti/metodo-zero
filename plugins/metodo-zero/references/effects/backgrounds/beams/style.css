@@ -1,9 +1,11 @@
-/* Beams — Light beams emanating from a point */
+/* Beams — WebGL light beams */
 :root {
-  --bm-bg: #0a0a1a;
-  --bm-color-1: rgba(99, 102, 241, 0.6);
-  --bm-color-2: rgba(168, 85, 247, 0.4);
-  --bm-color-3: rgba(59, 130, 246, 0.5);
+  --bm-bg: #050510;
+  --bm-color: #4a9eff;
+  --bm-count: 12;
+  --bm-speed: 0.4;
+  --bm-focal-x: 0.5;
+  --bm-focal-y: 0.5;
 }
 
 *,
@@ -29,7 +31,7 @@ body {
   background: var(--bm-bg);
 }
 
-.bm-canvas {
+#bm-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -55,20 +57,17 @@ body {
   font-weight: 700;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.5);
 }
 
 .bm-content p {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   max-width: 40ch;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bm-canvas {
-    display: none;
+  #bm-canvas {
+    animation: none;
   }
 }

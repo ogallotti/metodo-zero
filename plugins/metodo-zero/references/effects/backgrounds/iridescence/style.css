@@ -1,130 +1,34 @@
-/* Iridescence — Holographic color shift effect */
 :root {
   --iri-bg: #0a0a1a;
-  --iri-speed: 6s;
-  --iri-intensity: 1;
-  --iri-angle: 135deg;
-  --iri-scale: 200%;
+  --iri-tint: #6366f1;
+  --iri-speed: 0.3;
+  --iri-amplitude: 1.0;
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--iri-bg);
   color: #fff;
   overflow: hidden;
+  height: 100vh;
 }
 
 .iri-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   background: var(--iri-bg);
 }
 
-.iri-layer {
-  position: absolute;
-  inset: -20%;
-  width: 140%;
-  height: 140%;
-}
-
-/* Base iridescent gradient */
-.iri-base {
-  background: linear-gradient(
-    var(--iri-angle),
-    #ff006640 0%,
-    #ff00ff30 10%,
-    #8b00ff35 20%,
-    #0000ff30 30%,
-    #00bfff35 40%,
-    #00ff8030 50%,
-    #ffff0025 60%,
-    #ff800030 70%,
-    #ff006635 80%,
-    #ff00ff30 90%,
-    #8b00ff35 100%
-  );
-  background-size: var(--iri-scale) var(--iri-scale);
-  animation: iri-shift-1 var(--iri-speed) ease-in-out infinite alternate;
-  opacity: var(--iri-intensity);
-  mix-blend-mode: screen;
-}
-
-/* Secondary shift layer for depth */
-.iri-shift {
-  background: linear-gradient(
-    calc(var(--iri-angle) + 60deg),
-    #00ffff30 0%,
-    #ff00ff25 15%,
-    #ffff0020 30%,
-    #00ff0025 45%,
-    #0000ff30 60%,
-    #ff000025 75%,
-    #00ffff30 90%,
-    transparent 100%
-  );
-  background-size: calc(var(--iri-scale) * 1.5) calc(var(--iri-scale) * 1.5);
-  animation: iri-shift-2 calc(var(--iri-speed) * 1.4) ease-in-out infinite alternate-reverse;
-  animation-delay: -2s;
-  opacity: calc(var(--iri-intensity) * 0.7);
-  mix-blend-mode: screen;
-}
-
-/* Third layer for rainbow complexity */
-.iri-rainbow {
-  background: conic-gradient(
-    from 0deg at 50% 50%,
-    #ff000015 0deg,
-    #ff800015 30deg,
-    #ffff0015 60deg,
-    #00ff0015 90deg,
-    #00ffff15 120deg,
-    #0000ff15 150deg,
-    #8b00ff15 180deg,
-    #ff00ff15 210deg,
-    #ff000015 240deg,
-    #ff800015 270deg,
-    #ffff0015 300deg,
-    #00ff0015 330deg,
-    #ff000015 360deg
-  );
-  background-size: 100% 100%;
-  animation: iri-rotate var(--iri-speed) linear infinite;
-  opacity: calc(var(--iri-intensity) * 0.8);
-  mix-blend-mode: screen;
-}
-
-/* Fresnel-like edge glow */
-.iri-fresnel {
-  background: radial-gradient(
-    ellipse at 50% 50%,
-    transparent 30%,
-    #ff00ff10 50%,
-    #00ffff15 65%,
-    #ff00ff10 80%,
-    transparent 100%
-  );
-  animation: iri-pulse calc(var(--iri-speed) * 0.8) ease-in-out infinite alternate;
-  opacity: var(--iri-intensity);
-}
-
-/* Noise texture for realism */
-.iri-noise {
+#iri-canvas {
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
-  opacity: 0.5;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .iri-content {
@@ -137,6 +41,7 @@ body {
   height: 100%;
   text-align: center;
   padding: 2rem;
+  pointer-events: none;
 }
 
 .iri-content h1 {
@@ -158,7 +63,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: iri-text-shift calc(var(--iri-speed) * 0.8) ease-in-out infinite alternate;
+  animation: iri-text-shift 4s ease-in-out infinite alternate;
 }
 
 .iri-content p {
@@ -167,53 +72,15 @@ body {
   max-width: 40ch;
 }
 
-@keyframes iri-shift-1 {
-  0% {
-    background-position: 0% 0%;
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    background-position: 50% 50%;
-    transform: rotate(2deg) scale(1.05);
-  }
-  100% {
-    background-position: 100% 100%;
-    transform: rotate(-2deg) scale(1);
-  }
-}
-
-@keyframes iri-shift-2 {
-  0% {
-    background-position: 100% 0%;
-    transform: rotate(0deg);
-  }
-  100% {
-    background-position: 0% 100%;
-    transform: rotate(-3deg);
-  }
-}
-
-@keyframes iri-rotate {
-  0% { transform: rotate(0deg) scale(1.3); }
-  100% { transform: rotate(360deg) scale(1.3); }
-}
-
-@keyframes iri-pulse {
-  0% { transform: scale(1); opacity: var(--iri-intensity); }
-  100% { transform: scale(1.1); opacity: calc(var(--iri-intensity) * 0.6); }
-}
-
 @keyframes iri-text-shift {
   0% { background-position: 0% center; }
   100% { background-position: 100% center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .iri-base,
-  .iri-shift,
-  .iri-rainbow,
-  .iri-fresnel,
-  .iri-content h1 {
-    animation: none !important;
+  #iri-canvas { display: none; }
+  .iri-content h1 { animation: none; }
+  .iri-container {
+    background: linear-gradient(135deg, #1a0a2e 0%, #0a1a2e 50%, #2e0a1a 100%);
   }
 }

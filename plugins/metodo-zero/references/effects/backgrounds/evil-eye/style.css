@@ -1,0 +1,68 @@
+:root {
+  --eye-iris-color: #1e88e5;
+  --eye-pupil-color: #0d0d0d;
+  --eye-ring-count: 12;
+  --eye-pulse-speed: 0.8;
+  --eye-bg: #0a0a12;
+  --eye-glow-color: #2196f3;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--eye-bg);
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.eye-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.eye-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.eye-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.eye-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-shadow: 0 0 60px rgba(33, 150, 243, 0.5);
+}
+
+.eye-content p {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 500px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eye-canvas { display: none; }
+  .eye-container {
+    background: radial-gradient(circle, #0d1b3e 0%, #0a0a12 70%);
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Letter Glitch",
+  "slug": "letter-glitch",
+  "category": "backgrounds",
+  "tags": ["hero", "continuous", "canvas", "cyberpunk", "glitch"],
+  "dependencies": [],
+  "description": "Screen filled with random ASCII characters overlaid by randomly appearing colored glitch blocks — cyberpunk hacker aesthetic",
+  "params": {
+    "--lgl-color-1": { "default": "#ff003c", "type": "color", "label": "Glitch color 1" },
+    "--lgl-color-2": { "default": "#00ff87", "type": "color", "label": "Glitch color 2" },
+    "--lgl-color-3": { "default": "#0088ff", "type": "color", "label": "Glitch color 3" },
+    "--lgl-color-4": { "default": "#ff00ff", "type": "color", "label": "Glitch color 4" },
+    "--lgl-text-color": { "default": "#2a3a2a", "type": "color", "label": "Text color" },
+    "--lgl-font-size": { "default": "12", "type": "number", "label": "Font size", "min": 8, "max": 20, "step": 1 },
+    "--lgl-glitch-speed": { "default": "1", "type": "number", "label": "Glitch speed", "min": 0.2, "max": 3, "step": 0.1 },
+    "--lgl-vignette": { "default": "0.6", "type": "number", "label": "Vignette", "min": 0, "max": 1, "step": 0.1 },
+    "--lgl-bg": { "default": "#0a0f0a", "type": "color", "label": "Background" }
+  }
+}

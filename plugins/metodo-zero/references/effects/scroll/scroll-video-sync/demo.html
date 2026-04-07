@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Video Sync — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="vsync-hero">
+    <h1>Scroll Video Sync</h1>
+    <p>A procedural animation that plays like a video, controlled entirely by your scroll position.</p>
+  </section>
+
+  <div class="vsync-sticky-wrapper">
+    <div class="vsync-sticky">
+      <canvas class="vsync-canvas" id="vsyncCanvas"></canvas>
+      <div class="vsync-progress" id="vsyncProgress">
+        <div class="vsync-progress__fill" id="vsyncFill"></div>
+      </div>
+      <div class="vsync-time" id="vsyncTime">0:00 / 0:10</div>
+    </div>
+  </div>
+
+  <div class="vsync-spacer"></div>
+
+  <section class="vsync-text">
+    <h2>Scroll-Driven Storytelling</h2>
+    <p>Instead of a traditional video file, this canvas draws a procedural animation scene that evolves with scroll. Particles form and dissolve, shapes orbit and transform, creating a narrative that unfolds at the user's own pace.</p>
+  </section>
+
+  <section class="vsync-text vsync-text--alt">
+    <h2>No Video Files Needed</h2>
+    <p>Every frame is generated mathematically in real-time. This means zero loading time, infinite resolution, and the animation can respond to CSS custom properties for theming. Change the accent color and the entire animation adapts instantly.</p>
+  </section>
+
+  <section class="vsync-text">
+    <h2>Precise Control</h2>
+    <p>The smoothing parameter controls how quickly the canvas catches up to the scroll position. Higher smoothing values create a more cinematic feel with momentum, while lower values give precise frame-by-frame control.</p>
+  </section>
+
+  <section class="vsync-text vsync-text--alt">
+    <h2>Versatile Application</h2>
+    <p>Swap the procedural animation for any canvas-based visualization: data transitions, product reveals, diagram builds, or generative art. The scroll-sync engine is agnostic to what it renders.</p>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

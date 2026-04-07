@@ -1,27 +1,31 @@
 # Beams
 
-Animated light beams that radiate from a configurable focal point, with slow rotation and pulsing opacity.
+WebGL light beams radiating from a configurable focal point. Multiple beam layers rotate at different speeds with bloom glow and mouse interaction.
 
 ## When to use
 
-- Hero sections with a dramatic, spotlight feel
+- Dramatic hero sections
 - Product launch or announcement pages
-- Sections where you want to draw attention to a central element
+- Dark-themed landing pages needing a cinematic look
 
 ## Integration
 
 ```html
 <div class="bm-container">
-  <canvas class="bm-canvas"></canvas>
+  <canvas id="bm-canvas"></canvas>
   <div class="bm-content">
     <!-- Your content here -->
   </div>
 </div>
+<script src="../../_shared/gl-utils.js"></script>
+<script src="script.js"></script>
 ```
 
 ## Notes
 
-- Uses `screen` composite mode for additive light blending
-- Each beam has a unique width, length, color, speed, and phase
-- Origin point is configurable with `originX`/`originY` (0..1)
-- Beams are drawn as gradient-filled trapezoids for realistic divergence
+- Three beam layers with different widths, speeds, and directions
+- Bloom effect via intensity squaring
+- Pulsating center glow adds a light-source feel
+- Mouse proximity brightens nearby area
+- IntersectionObserver pauses rendering when offscreen
+- Respects `prefers-reduced-motion`

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Sequence Scrub — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="seq-hero">
+    <h1>Image Sequence Scrub</h1>
+    <p>Scroll to scrub through a procedurally animated canvas, frame by frame.</p>
+  </section>
+
+  <div class="seq-canvas-wrapper">
+    <canvas class="seq-canvas" id="seqCanvas"></canvas>
+    <div class="seq-progress-bar">
+      <div class="seq-progress-fill" id="seqProgressFill"></div>
+    </div>
+    <div class="seq-frame-counter" id="seqFrameCounter">Frame 0 / 60</div>
+  </div>
+
+  <section class="seq-content">
+    <h2>Procedural 3D Cube</h2>
+    <p>No image assets required. The canvas generates a rotating 3D wireframe cube entirely through math. Scroll position maps directly to the rotation angle, creating a video-like scrub experience.</p>
+  </section>
+
+  <section class="seq-content seq-content--alt">
+    <h2>Smooth Interpolation</h2>
+    <p>A lerp-based smoothing algorithm prevents jittery frame jumps. The canvas interpolates between the target frame and current frame at a configurable rate, producing buttery playback even at high scroll speeds.</p>
+  </section>
+
+  <section class="seq-content">
+    <h2>Zero Dependencies</h2>
+    <p>Pure canvas rendering with requestAnimationFrame. No external libraries, no image loading. The entire animation is generated mathematically, making it lightweight and instantly available without network requests.</p>
+  </section>
+
+  <section class="seq-footer">
+    <p>Canvas + scroll position calculation. Fully procedural frame generation.</p>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

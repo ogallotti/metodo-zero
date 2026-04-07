@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reveal on Scroll — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="reveal-hero">
+    <h1 data-reveal="fade">Reveal on Scroll</h1>
+    <p data-reveal="slide-up" data-reveal-delay="200">Elements animate into view as you scroll, each with its own configurable animation type.</p>
+  </section>
+
+  <section class="reveal-section">
+    <div class="reveal-container">
+      <h2 data-reveal="slide-up">Slide Up</h2>
+      <p data-reveal="slide-up" data-reveal-delay="100">Content glides upward from below, the most natural and popular scroll-reveal pattern. It creates a sense of content emerging from beneath the fold, guiding the eye downward through the page.</p>
+      <div class="reveal-cards">
+        <div class="reveal-card" data-reveal="slide-up" data-reveal-stagger="0">
+          <h3>Design</h3>
+          <p>Every pixel serves a purpose in our design philosophy.</p>
+        </div>
+        <div class="reveal-card" data-reveal="slide-up" data-reveal-stagger="1">
+          <h3>Develop</h3>
+          <p>Clean, performant code that scales with your ambition.</p>
+        </div>
+        <div class="reveal-card" data-reveal="slide-up" data-reveal-stagger="2">
+          <h3>Deploy</h3>
+          <p>Ship with confidence to production in minutes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal-section reveal-section--alt">
+    <div class="reveal-container">
+      <h2 data-reveal="slide-left">Slide from Left</h2>
+      <p data-reveal="slide-left" data-reveal-delay="100">Horizontal reveals create a different energy, suggesting lateral movement and progression. They work especially well for timeline-style content or feature comparisons that flow from one side to the other.</p>
+      <div class="reveal-row">
+        <div class="reveal-box" data-reveal="slide-left" data-reveal-stagger="0">Alpha</div>
+        <div class="reveal-box" data-reveal="slide-left" data-reveal-stagger="1">Beta</div>
+        <div class="reveal-box" data-reveal="slide-right" data-reveal-stagger="2">Gamma</div>
+        <div class="reveal-box" data-reveal="slide-right" data-reveal-stagger="3">Delta</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal-section">
+    <div class="reveal-container">
+      <h2 data-reveal="scale">Scale In</h2>
+      <p data-reveal="scale" data-reveal-delay="100">Elements that scale from small to full size create a zoom-like effect, drawing the eye to the center of each element. This pattern works beautifully for hero images, icons, and call-to-action buttons.</p>
+      <div class="reveal-circles">
+        <div class="reveal-circle" data-reveal="scale" data-reveal-stagger="0"></div>
+        <div class="reveal-circle" data-reveal="scale" data-reveal-stagger="1"></div>
+        <div class="reveal-circle" data-reveal="scale" data-reveal-stagger="2"></div>
+        <div class="reveal-circle" data-reveal="scale" data-reveal-stagger="3"></div>
+        <div class="reveal-circle" data-reveal="scale" data-reveal-stagger="4"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal-section reveal-section--alt">
+    <div class="reveal-container">
+      <h2 data-reveal="rotate">Rotate In</h2>
+      <p data-reveal="fade" data-reveal-delay="100">A subtle rotation combined with opacity gives elements a playful entrance. Best used sparingly for accent elements that need to stand out from the rest of the page content.</p>
+      <div class="reveal-grid">
+        <div class="reveal-grid-item" data-reveal="rotate" data-reveal-stagger="0">01</div>
+        <div class="reveal-grid-item" data-reveal="rotate" data-reveal-stagger="1">02</div>
+        <div class="reveal-grid-item" data-reveal="rotate" data-reveal-stagger="2">03</div>
+        <div class="reveal-grid-item" data-reveal="rotate" data-reveal-stagger="3">04</div>
+        <div class="reveal-grid-item" data-reveal="rotate" data-reveal-stagger="4">05</div>
+        <div class="reveal-grid-item" data-reveal="rotate" data-reveal-stagger="5">06</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal-section">
+    <div class="reveal-container" style="text-align:center">
+      <h2 data-reveal="fade">Mix and Match</h2>
+      <p data-reveal="slide-up" data-reveal-delay="150">Use `data-reveal` attributes to assign any animation type per element. Combine with `data-reveal-stagger` for sequenced entrances and `data-reveal-delay` for custom timing.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "Parallax Hero Images",
+  "slug": "parallax-hero-images",
+  "category": "scroll",
+  "tags": ["parallax", "hero", "depth", "layers"],
+  "dependencies": [],
+  "description": "Hero section with multiple element layers at different parallax speeds creating a depth illusion as the user scrolls.",
+  "params": {
+    "--hero-layer-count": { "type": "range", "min": 3, "max": 7, "step": 1, "default": 5, "unit": "", "label": "Layer Count" },
+    "--hero-speed-1": { "type": "range", "min": -0.5, "max": 0.5, "step": 0.05, "default": 0.1, "unit": "", "label": "Speed Layer 1 (far)" },
+    "--hero-speed-2": { "type": "range", "min": -0.5, "max": 0.5, "step": 0.05, "default": 0.2, "unit": "", "label": "Speed Layer 2" },
+    "--hero-speed-3": { "type": "range", "min": -0.8, "max": 0.8, "step": 0.05, "default": 0.35, "unit": "", "label": "Speed Layer 3" },
+    "--hero-speed-4": { "type": "range", "min": -1, "max": 1, "step": 0.05, "default": 0.5, "unit": "", "label": "Speed Layer 4" },
+    "--hero-speed-5": { "type": "range", "min": -1.2, "max": 1.2, "step": 0.05, "default": 0.7, "unit": "", "label": "Speed Layer 5 (near)" }
+  },
+  "jsParams": {}
+}

@@ -1,28 +1,29 @@
 # Particles Constellation
 
-Interactive particle system with constellation-style connecting lines and mouse repulsion.
+Perlin noise-driven particle system with constellation connection lines and mouse repulsion.
 
-## When to use
+## Technique
 
-- Hero sections for tech/SaaS products
-- Interactive backgrounds where user engagement matters
-- Sections with a network/connection visual metaphor
+- 2D Perlin noise flow field drives particle velocity (not random walk)
+- Each particle has unique noise offsets for organic, non-uniform movement
+- Size pulsing via sine wave with random phase offset per particle
+- Constellation lines drawn between nearby particles with distance-based alpha
+- Mouse repulsion with smooth falloff pushes particles away from cursor
+- Particle count auto-adjusts based on viewport area for consistent performance
 
-## Integration
+## Parameters
+
+| Param | Default | Description |
+|-|-|-|
+| `--ptc-particle-color` | `#ffffff` | Particle color |
+| `--ptc-line-color` | `#ffffff` | Connection line color |
+| `--ptc-glow-color` | `#64c8ff` | Mouse glow color |
+| `--ptc-speed` | `0.4` | Movement speed |
+| `--ptc-connect-distance` | `150` | Max distance for connection lines |
+| `--ptc-mouse-radius` | `180` | Mouse repulsion radius |
+
+## Usage
 
 ```html
-<div class="ptc-container">
-  <canvas class="ptc-canvas"></canvas>
-  <div class="ptc-content">
-    <!-- Your content here -->
-  </div>
-</div>
+<script src="script.js"></script>
 ```
-
-## Notes
-
-- Canvas is DPR-aware for crisp rendering on Retina displays
-- Particle count auto-adjusts on mobile for smooth performance
-- Mouse repulsion creates an organic, responsive feel
-- IntersectionObserver pauses animation when offscreen
-- Touch support included for mobile devices

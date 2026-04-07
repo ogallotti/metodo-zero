@@ -9,20 +9,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="aur-container">
-    <div class="aur-glow">
-      <div class="aur-band aur-band--1"></div>
-      <div class="aur-band aur-band--2"></div>
-      <div class="aur-band aur-band--3"></div>
-      <div class="aur-band aur-band--4"></div>
-    </div>
-    <div class="aur-shimmer"></div>
-    <div class="aur-vignette"></div>
-    <div class="aur-content">
+  <div class="aurora-container">
+    <canvas id="aurora-canvas"></canvas>
+    <div class="aurora-content">
       <h1>Aurora Borealis</h1>
-      <p>Animated gradient waves dancing across the sky</p>
+      <p>Real-time simplex noise aurora rendered on the GPU</p>
     </div>
   </div>
+  <script src="../../_shared/gl-utils.js"></script>
   <script src="script.js"></script>
   <script>
     window.addEventListener('message', (e) => {

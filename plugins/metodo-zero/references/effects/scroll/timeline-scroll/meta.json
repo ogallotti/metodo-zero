@@ -1,0 +1,15 @@
+{
+  "name": "Timeline Scroll",
+  "slug": "timeline-scroll",
+  "category": "scroll",
+  "tags": ["timeline", "scroll-draw", "nodes", "cards", "storytelling"],
+  "dependencies": [],
+  "description": "Animated timeline that draws and fills as user scrolls. Center line grows, nodes appear with content cards alternating left and right.",
+  "params": {
+    "--tl-line-color": { "type": "color", "default": "#6366f1", "label": "Line Color" },
+    "--tl-node-color": { "type": "color", "default": "#a78bfa", "label": "Node Color" },
+    "--tl-card-animation": { "type": "select", "options": ["slide", "fade", "scale"], "default": "slide", "label": "Card Animation" },
+    "--tl-line-width": { "type": "range", "min": 1, "max": 6, "step": 1, "default": 3, "unit": "px", "label": "Line Width" }
+  },
+  "jsParams": {}
+}

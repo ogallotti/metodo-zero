@@ -2,19 +2,15 @@
   "name": "Beams",
   "slug": "beams",
   "category": "backgrounds",
-  "tags": ["hero", "section", "canvas"],
+  "tags": ["hero", "dramatic", "webgl"],
   "dependencies": [],
-  "description": "Animated light beams emanating from a focal point with rotation and pulsing glow",
+  "description": "WebGL light beams radiating from a focal point with layered rotation and bloom glow",
   "params": {
-    "--bm-bg": { "default": "#0a0a1a", "type": "color", "label": "Background color" }
-  },
-  "jsParams": {
-    "beamCount": { "default": 14, "type": "number", "label": "Beam count", "min": 4, "max": 24, "step": 2 },
-    "speed": { "default": 0.005, "type": "number", "label": "Speed", "min": 0.001, "max": 0.02, "step": 0.001 },
-    "originX": { "default": 0.5, "type": "number", "label": "Origin X", "min": 0, "max": 1, "step": 0.05 },
-    "originY": { "default": 0.3, "type": "number", "label": "Origin Y", "min": 0, "max": 1, "step": 0.05 },
-    "baseAlpha": { "default": 0.12, "type": "number", "label": "Beam opacity", "min": 0.03, "max": 0.3, "step": 0.01 },
-    "rotationSpeed": { "default": 0.08, "type": "number", "label": "Rotation speed", "min": 0, "max": 0.3, "step": 0.02 },
-    "glowSize": { "default": 120, "type": "number", "label": "Glow size", "min": 40, "max": 300, "step": 20 }
+    "--bm-bg": { "default": "#050510", "type": "color", "label": "Background color" },
+    "--bm-color": { "default": "#4a9eff", "type": "color", "label": "Beam color" },
+    "--bm-count": { "default": "12", "type": "number", "label": "Beam count", "min": 4, "max": 32, "step": 1 },
+    "--bm-speed": { "default": "0.4", "type": "number", "label": "Rotation speed", "min": 0.05, "max": 2.0, "step": 0.05 },
+    "--bm-focal-x": { "default": "0.5", "type": "number", "label": "Focal point X", "min": 0, "max": 1, "step": 0.05 },
+    "--bm-focal-y": { "default": "0.5", "type": "number", "label": "Focal point Y", "min": 0, "max": 1, "step": 0.05 }
   }
 }

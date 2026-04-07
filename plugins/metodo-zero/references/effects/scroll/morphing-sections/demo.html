@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morphing Sections — Effects Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="morph-section morph-section--1" data-morph-index="0">
+    <div class="morph-content">
+      <h1>Morphing Sections</h1>
+      <p>Sections flow into each other with organic clip-path transitions that morph as you scroll. Each boundary is alive, shifting between fluid shapes.</p>
+    </div>
+    <div class="morph-divider" data-morph-divider="0"></div>
+  </section>
+
+  <section class="morph-section morph-section--2" data-morph-index="1">
+    <div class="morph-content">
+      <h2>Organic Boundaries</h2>
+      <p>Traditional hard edges between sections feel static and lifeless. By interpolating clip-path polygons based on scroll position, we create a sense of organic flow. The boundary between sections feels like liquid, morphing and reshaping as the user navigates.</p>
+    </div>
+    <div class="morph-divider" data-morph-divider="1"></div>
+  </section>
+
+  <section class="morph-section morph-section--3" data-morph-index="2">
+    <div class="morph-content">
+      <h2>Mathematical Beauty</h2>
+      <p>Each shape is defined by a polygon with control points that transition smoothly between presets. Sine waves, circular arcs, and bezier curves blend to create shapes that feel natural despite being entirely procedural and calculated in real-time.</p>
+    </div>
+    <div class="morph-divider" data-morph-divider="2"></div>
+  </section>
+
+  <section class="morph-section morph-section--4" data-morph-index="3">
+    <div class="morph-content">
+      <h2>Pure CSS Power</h2>
+      <p>The clip-path property, combined with scroll-driven values from JavaScript, creates effects that previously required heavy SVG manipulation or canvas rendering. The result is crisp at every resolution and plays nicely with the browser's rendering pipeline.</p>
+    </div>
+    <div class="morph-divider" data-morph-divider="3"></div>
+  </section>
+
+  <section class="morph-section morph-section--5" data-morph-index="4">
+    <div class="morph-content">
+      <h2>Flowing Storytelling</h2>
+      <p>Use morphing sections to create seamless transitions between narrative beats. Each section flows naturally into the next, supporting the story you want to tell without abrupt visual breaks.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === 'update-param') {
+        if (e.data.scope === 'css') document.documentElement.style.setProperty(e.data.key, e.data.value);
+      }
+    });
+  </script>
+</body>
+</html>

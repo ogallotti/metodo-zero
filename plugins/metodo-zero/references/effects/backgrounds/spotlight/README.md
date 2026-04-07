@@ -1,32 +1,27 @@
 # Spotlight
 
-Cursor-following spotlight with dual-color glow, grid reveal mask, ring border, and smooth interpolated tracking.
+Cursor-following spotlight with dual glow layers, grid reveal via CSS mask, and smooth interpolated tracking.
 
-## When to use
+## Technique
 
-- Hero sections where cursor interaction adds premium feel
-- Dark backgrounds needing a subtle interactive element
-- Sections with card layouts where spotlight reveals hidden grid
+- Radial gradient follows cursor with rAF-driven smooth interpolation
+- CSS `mask-image` on grid layer reveals grid pattern only within spotlight radius (Aceternity-style grid reveal)
+- Dual spotlight layers: primary follows cursor, secondary trails with hue-rotate offset
+- Ring border provides subtle cursor indicator
+- All positioning via CSS custom properties for zero-layout-thrash updates
 
-## Integration
+## Parameters
+
+| Param | Default | Description |
+|-|-|-|
+| `--spt-color` | `#6366f1` | Spotlight glow color |
+| `--spt-radius` | `400` | Spotlight radius in pixels |
+| `--spt-grid-visible` | `1` | Grid visibility (0 or 1) |
+| `--spt-grid-color` | `rgba(255,255,255,0.04)` | Grid line color |
+| `--spt-grid-size` | `60px` | Grid cell size |
+
+## Usage
 
 ```html
-<div class="spt-container">
-  <div class="spt-ambient"></div>
-  <div class="spt-grid"></div>
-  <div class="spt-light"></div>
-  <div class="spt-light-2"></div>
-  <div class="spt-ring"></div>
-  <div class="spt-content">
-    <!-- Your content here -->
-  </div>
-</div>
+<script src="script.js"></script>
 ```
-
-## Notes
-
-- Uses CSS `mask-image` on the grid to reveal only around cursor
-- Dual spotlights: primary follows cursor directly, secondary trails behind with offset
-- Smooth interpolation via requestAnimationFrame prevents jitter
-- Spotlight fades in/out on hover and touch
-- Touch support included with `.spt-touch-active` class toggle
