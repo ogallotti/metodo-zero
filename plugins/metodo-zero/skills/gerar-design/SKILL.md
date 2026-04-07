@@ -69,8 +69,8 @@ Apos escolha, remover arquivo temporario.
 
 ## Etapa 4: Opcoes de Hero (3 no browser)
 
-1. Leia `references/effects/README.md` e selecione 3 hero patterns de ALTO IMPACTO
-2. Para CADA opcao, leia o arquivo COMPLETO do efeito em `references/effects/hero-patterns/`
+1. Consulte os `meta.json` em `references/effects/backgrounds/` para selecionar 3 hero patterns de ALTO IMPACTO (filtrar por tag `hero`)
+2. Para CADA opcao, leia `script.js`, `style.css` e `demo.html` do efeito em `references/effects/backgrounds/{slug}/`
 3. Crie 3 arquivos separados (`_hero-1.html`, `_hero-2.html`, `_hero-3.html`), cada um com:
    - Paleta escolhida como tokens CSS
    - Tipografia escolhida carregada
@@ -105,9 +105,9 @@ Com paleta + tipografia + hero escolhidos, gere o design system seguindo `refere
 
 1. Defina o DNA Visual (elemento recorrente, tratamento de midia, movimento de assinatura, detalhe tipografico)
 2. Selecione efeitos complementares da biblioteca:
-   - 2-3 scroll effects
-   - 1-2 transitions
-   - 3-5 micro-interactions
+   - 2-3 efeitos de `references/effects/scroll/`
+   - 1-2 efeitos de `references/effects/transitions/`
+   - 3-5 efeitos de `references/effects/buttons/`, `borders/`, `decorative/` ou `text-effects/`
 3. Registre DNA Visual e efeitos como comentario no style.css
 
 ---

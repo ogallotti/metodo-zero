@@ -115,8 +115,8 @@ TIPOGRAFIA (3 opcoes no browser):
 - Informe URL. PARE e aguarde escolha.
 
 HERO (3 opcoes no browser):
-- Selecione 3 hero patterns de ALTO IMPACTO de references/effects/hero-patterns/
-- EVITE gradient-mesh-animated (generico demais)
+- Consulte `meta.json` em `references/effects/backgrounds/` (filtrar tag `hero`) para selecionar 3 patterns de ALTO IMPACTO
+- Leia `script.js`, `style.css` e `demo.html` de cada efeito escolhido
 - Crie _hero-1.html, _hero-2.html, _hero-3.html. Cada um com paleta+fonte escolhidas e codigo do efeito COPIADO LITERALMENTE da biblioteca
 - Layout do hero NAO pode ser coluna centralizada simples
 - Informe URLs. PARE e aguarde escolha.

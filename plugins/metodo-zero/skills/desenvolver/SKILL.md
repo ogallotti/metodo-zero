@@ -42,15 +42,18 @@ Liste:
 
 Quando o `layout.md` referencia um efeito de `references/effects/`:
 
-### Passo 1: Ler o arquivo COMPLETO do efeito
+### Passo 1: Ler os arquivos do efeito
 ```
-Leia references/effects/[categoria]/[nome-do-efeito].md
+Leia references/effects/{categoria}/{slug}/script.js
+Leia references/effects/{categoria}/{slug}/style.css
+Leia references/effects/{categoria}/{slug}/demo.html  (para o markup HTML)
+Leia references/effects/{categoria}/{slug}/meta.json   (para parametros)
 ```
 
 ### Passo 2: Copiar LITERALMENTE
-- Copie o bloco HTML para o `index.html`
-- Copie o bloco CSS para o `style.css`
-- Copie o bloco JS para o `script.js`
+- Copie o markup HTML do `demo.html` (apenas o conteudo dentro de `<body>`, sem o boilerplate)
+- Copie o CSS do `style.css` para o `style.css` do projeto
+- Copie o JS do `script.js` para o `script.js` do projeto
 
 ### Passo 3: Adaptar APENAS tokens
 Substitua variaveis CSS:
