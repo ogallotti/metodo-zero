@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Effects Library — Método Zero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="playground.css">
+</head>
+<body>
+  <div class="pg-app catalog-view" id="app">
+    <!-- Header -->
+    <header class="pg-header">
+      <div class="pg-logo">Effects <span>Library</span></div>
+
+      <button class="pg-back-btn" id="backBtn" onclick="showCatalog()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar
+      </button>
+
+      <div class="pg-search">
+        <svg class="pg-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar efeitos..." oninput="handleSearch(this.value)">
+      </div>
+
+      <div class="pg-tag-filters" id="tagFilters"></div>
+
+      <div class="pg-header-actions">
+        <div class="pg-viewport-btns" id="viewportBtns" style="display:none">
+          <button class="pg-viewport-btn active" data-viewport="desktop" onclick="setViewport('desktop')">Desktop</button>
+          <button class="pg-viewport-btn" data-viewport="tablet" onclick="setViewport('tablet')">Tablet</button>
+          <button class="pg-viewport-btn" data-viewport="mobile" onclick="setViewport('mobile')">Mobile</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="pg-sidebar" id="sidebar"></nav>
+
+    <!-- Catalog Grid -->
+    <main class="pg-catalog" id="catalog">
+      <div class="pg-catalog-grid" id="catalogGrid"></div>
+    </main>
+
+    <!-- Preview -->
+    <section class="pg-preview" id="preview">
+      <div class="pg-preview-toolbar">
+        <span class="pg-preview-title" id="previewTitle">Selecione um efeito</span>
+      </div>
+      <div class="pg-preview-frame-wrap">
+        <iframe class="pg-preview-frame" id="previewFrame" sandbox="allow-scripts allow-same-origin"></iframe>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <aside class="pg-controls" id="controls">
+      <div class="pg-controls-header">
+        <span class="pg-controls-title">Parâmetros</span>
+        <button class="pg-reset-btn" onclick="resetParams()">Reset</button>
+      </div>
+      <div id="controlsBody"></div>
+      <div class="pg-copy-section">
+        <button class="pg-copy-btn" id="copyBtn" onclick="copyPrompt()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copiar Prompt
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="playground.js"></script>
+</body>
+</html>
