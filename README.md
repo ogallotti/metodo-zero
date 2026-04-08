@@ -8,7 +8,7 @@ O Método Zero automatiza o processo completo de criação de landing pages com 
 
 - **HTML/CSS/JS puro** -- sem frameworks, sem bundlers, sem npm install
 - **Pipeline interativa** -- cada decisão criativa (paleta, tipografia, hero) é apresentada com 3 opções visuais no browser
-- **Biblioteca de 55 efeitos testados** -- copiados literalmente para o projeto, nunca reescritos ou simplificados
+- **Biblioteca de 155 efeitos testados** -- código real funcional, copiados literalmente para o projeto, nunca reescritos ou simplificados
 - **Do briefing ao deploy** -- coleta de informações, copy, design, build, otimização, publicação
 - **Autonomia total** -- o agente executa todos os comandos; o usuário nunca precisa abrir o terminal
 
@@ -112,16 +112,25 @@ Publicar (opcional)
 
 ## Biblioteca de Efeitos
 
-55 efeitos visuais testados e prontos para produção, organizados em 4 categorias com sistema de tiers (1 = alto impacto, 3 = nicho).
+155 efeitos visuais com código 100% original e funcional, organizados em 11 categorias. Inspirados em libs como Magic UI, Aceternity, Motion Primitives, Animate UI e React Bits — reescritos do zero em vanilla JS/CSS.
 
 | Categoria | Qtd | Exemplos |
 |-|-|-|
-| Hero Patterns | 20 | particle-field, kinetic-typography, parallax-depth-hero, noise-distortion |
-| Scroll Effects | 15 | pin-and-reveal, parallax-layers, horizontal-scroll-section, sticky-cards-stack |
-| Transitions | 10 | section-clip-path, wave-divider-animated, curtain-reveal, morph-between-sections |
-| Micro-interactions | 10 | magnetic-button, hover-card-3d-tilt, custom-cursor-trail, text-hover-reveal |
+| Backgrounds | 44 | aurora, particles, gradient-mesh, beams, ballpit |
+| Text Effects | 16 | typewriter, scramble, split, gradient, glitch |
+| Cards | 11 | 3d-tilt, spotlight, glass, hover-reveal |
+| Buttons | 8 | magnetic, ripple, shimmer, morphing |
+| Borders | 8 | beam, trail, glow, animated |
+| Scroll | 24 | parallax, pin-reveal, horizontal, sticky-cards |
+| Transitions | 6 | clip-path, wave, curtain, morph |
+| Decorative | 9 | cursor-trail, sparkles, meteors, confetti |
+| Media | 8 | comparison, lens, parallax, gallery |
+| Layout | 7 | bento-grid, masonry, marquee |
+| Components | 14 | carousel, accordion, tabs, modal |
 
-Cada efeito é um arquivo `.md` com código completo (HTML + CSS + JS), parâmetros customizáveis, versão mobile responsiva e suporte a `prefers-reduced-motion`. Dependências variam de CSS puro a GSAP, Three.js e WebGL.
+Cada efeito é uma pasta com `demo.html` (preview), `style.css`, `script.js`, `meta.json` (parâmetros/tags) e `README.md`. Todos com `prefers-reduced-motion`, `IntersectionObserver` para pausar fora da viewport, e CSS custom properties para personalização.
+
+**Playground interativo** em `references/effects/_playground/` — abre no browser para navegar, ajustar parâmetros ao vivo e copiar prompts formatados.
 
 Regra fundamental: efeitos são **copiados literalmente** para o projeto. O agente substitui apenas variáveis CSS pelos tokens do design system. Nunca reescreve, nunca simplifica.
 
@@ -135,7 +144,7 @@ O diretório `references/` contém 10 documentos técnicos consultados pelas ski
 | `copy-rules.md` | Regras anti-IA para copy (tom, estrutura, validação) |
 | `design-system-guide.md` | Guia completo para gerar design systems (escala tipográfica, paleta, sombras, tokens) |
 | `hero-checklist.md` | Checklist obrigatório que bloqueia progresso se o hero falhar |
-| `effects/` | Biblioteca de 55 efeitos visuais (ver seção acima) |
+| `effects/` | Biblioteca de 155 efeitos visuais com playground interativo (ver seção acima) |
 | `forms.md` | Formulários Netlify + intl-tel-input |
 | `tracking.md` | GTM + Meta Pixel (instalação, eventos, testes) |
 | `deploy.md` | GitHub + Netlify CI/CD (primeiro deploy e atualizações) |
@@ -188,7 +197,7 @@ plugins/metodo-zero/
     copy-rules.md
     design-system-guide.md
     hero-checklist.md
-    effects/            -- 55 efeitos em 4 categorias
+    effects/            -- 155 efeitos em 11 categorias + playground interativo
     forms.md
     tracking.md
     deploy.md
