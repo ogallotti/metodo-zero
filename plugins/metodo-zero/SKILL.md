@@ -17,6 +17,9 @@ Leia `rules.md` neste diretorio para as regras globais do framework.
 - `metodo-zero:criar-pipeline` - Pipeline orquestrada: briefing ao deploy automatico
 - `metodo-zero:criar-agentes` - Agent Team: especialistas coordenados
 
+### Consulta e Inspiração
+- `metodo-zero:referencias` - Modo consultor: navega efeitos no playground, font pairings, paletas, arquétipos e regras de copy. Use para projetos existentes
+
 ### Skills Individuais (uso avulso)
 - `metodo-zero:iniciar` - Scaffold de novo projeto
 - `metodo-zero:gerar-copy` - Geracao de copy persuasiva
